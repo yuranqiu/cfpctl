@@ -7,9 +7,22 @@
   - systems
   homepage: https://www.asplos-conference.org/asplos2027/cfp/
   location: Crete, Greece
+  verified: true
   cycles:
-  - name: '2027'
-    deadline: '2026-09-09T23:59:59-12:00'
+  - name: Spring 2027
+    tracks:
+    - name: Architecture
+      abstract: '2026-08-02T23:59:59-12:00'
+      deadline: '2026-08-09T23:59:59-12:00'
+      notification: '2026-11-01'
+    - name: Systems
+      abstract: '2026-08-02T23:59:59-12:00'
+      deadline: '2026-08-09T23:59:59-12:00'
+      notification: '2026-11-01'
+    - name: Programming Languages
+      abstract: '2026-08-02T23:59:59-12:00'
+      deadline: '2026-08-09T23:59:59-12:00'
+      notification: '2026-11-01'
 - name: CCGRID
   slug: ccgrid
   rank:

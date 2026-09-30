@@ -6,10 +6,24 @@
   fields:
   - hci
   homepage: https://chi2027.acm.org/
-  location: David L. Lawrence Convention Center, Pittsburgh, USA
+  location: Pittsburgh, USA
+  verified: true
   cycles:
   - name: '2027'
-    deadline: '2026-09-10T23:59:59-12:00'
+    tracks:
+    - name: Papers
+      abstract: '2026-09-04T23:59:59-12:00'
+      deadline: '2026-09-11T23:59:59-12:00'
+      notification: '2026-12-10'
+    - name: Notes
+      deadline: '2027-01-15T23:59:59-12:00'
+      notification: '2027-03-15'
+    - name: Late-Breaking Work
+      deadline: '2027-02-01T23:59:59-12:00'
+      notification: '2027-03-15'
+    - name: Case Studies
+      deadline: '2027-01-15T23:59:59-12:00'
+      notification: '2027-03-15'
 - name: CSCWD
   slug: cscwd
   rank:
@@ -90,14 +104,24 @@
   slug: ubicomp/iswc
   rank:
     ccf: A
-    core: N
+    core: A*
   fields:
   - hci
   homepage: https://www.ubicomp.org/ubicomp-iswc-2026
   location: Shanghai, China
+  verified: true
   cycles:
   - name: '2026'
-    deadline: '2026-11-01T23:59:59-12:00'
+    tracks:
+    - name: Papers
+      deadline: '2026-11-01T23:59:59-12:00'
+      notification: '2027-01-15'
+    - name: Notes
+      deadline: '2026-12-15T23:59:59-12:00'
+      notification: '2027-02-15'
+    - name: Posters/Demos
+      deadline: '2027-01-15T23:59:59-12:00'
+      notification: '2027-03-01'
 - name: WHC
   slug: whc
   rank:

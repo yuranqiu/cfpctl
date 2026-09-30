@@ -54,11 +54,20 @@
   - security
   homepage: https://www.sigsac.org/ccs
   location: TBD
+  verified: true
   cycles:
-  - name: '2026'
-    abstract: '2026-01-22T23:59:59-12:00'
-    deadline: '2026-01-29T23:59:59-12:00'
-    notification: '2026-05-15'
+  - name: '2027'
+    tracks:
+    - name: Research
+      abstract: '2027-01-15T23:59:59-12:00'
+      deadline: '2027-01-22T23:59:59-12:00'
+      notification: '2027-05-01'
+    - name: Industry
+      deadline: '2027-02-15T23:59:59-12:00'
+      notification: '2027-05-15'
+    - name: Poster/Demo
+      deadline: '2027-06-01T23:59:59-12:00'
+      notification: '2027-07-15'
 - name: NDSS
   slug: ndss
   rank:
@@ -68,10 +77,16 @@
   - security
   homepage: https://www.ndss-symposium.org
   location: TBD
+  verified: true
   cycles:
-  - name: '2027'
-    deadline: '2026-10-12T23:59:59-12:00'
-    notification: '2026-12-15'
+  - name: Spring 2027
+    tracks:
+    - name: Research
+      deadline: '2026-10-12T23:59:59-12:00'
+      notification: '2026-12-15'
+    - name: Poster/Demo
+      deadline: '2026-11-15T23:59:59-12:00'
+      notification: '2026-12-30'
 - name: Eurocrypt
   slug: eurocrypt
   rank:

@@ -20,7 +20,17 @@
   - interdisciplinary
   homepage: https://www2027.thewebconf.org/
   location: Dublin, Ireland
+  verified: true
   cycles:
   - name: '2027'
-    abstract: '2026-10-18T23:59:59-12:00'
-    deadline: '2026-10-25T23:59:59-12:00'
+    tracks:
+    - name: Research
+      abstract: '2026-10-18T23:59:59-12:00'
+      deadline: '2026-10-25T23:59:59-12:00'
+      notification: '2027-01-15'
+    - name: Industry
+      deadline: '2026-11-15T23:59:59-12:00'
+      notification: '2027-01-30'
+    - name: Web Engineering
+      deadline: '2026-11-08T23:59:59-12:00'
+      notification: '2027-01-20'

@@ -1,0 +1,194 @@
+- name: ASPLOS
+  slug: asplos
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - systems
+  homepage: https://www.asplos-conference.org/asplos2027/cfp/
+  location: Crete, Greece
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-09T23:59:59-12:00'
+- name: CCGRID
+  slug: ccgrid
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - systems
+  homepage: https://hpcclab.org/ccgrid27/
+  location: Dallas-Fort Worth, Texas, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-11-24T23:59:59-12:00'
+    deadline: '2026-12-01T23:59:59-12:00'
+- name: DAC
+  slug: dac
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - systems
+  homepage: https://dac.com/2027/authors/call-for-contributions
+  location: San Jose, CA
+  cycles:
+  - name: '2027'
+    abstract: '2026-11-11T17:00:00-08:00'
+    deadline: '2026-11-18T17:00:00-08:00'
+- name: DATE
+  slug: date
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://www.date-conference.com/date-2027-call-papers
+  location: Dresden, Germany
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-13T23:59:59-12:00'
+    deadline: '2026-09-20T23:59:59-12:00'
+- name: EuroSys
+  slug: eurosys
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - systems
+  homepage: https://2027.eurosys.org/
+  location: Rabat, Morocco
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-17T23:59:59-12:00'
+    deadline: '2026-09-24T23:59:59-12:00'
+- name: FAST
+  slug: fast
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - systems
+  homepage: https://www.usenix.org/conference/fast27
+  location: Renton, WA, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-15T23:59:00-12:00'
+- name: FPGA
+  slug: fpga
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - systems
+  homepage: https://www.isfpga.org/
+  location: Monterey, California, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-01T23:59:59-12:00'
+    deadline: '2026-10-08T23:59:59-12:00'
+- name: IEEE/ACM CGO
+  slug: ieee/acm-cgo
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://conf.researchr.org/home/cgo-2027
+  location: Salt Lake City, Utah, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-10T23:59:59-12:00'
+- name: IPDPS
+  slug: ipdps
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://www.ipdps.org/
+  location: Seattle, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-01T23:59:59-12:00'
+    deadline: '2026-10-08T23:59:59-12:00'
+- name: ISCAS
+  slug: iscas
+  rank:
+    ccf: B
+    core: C
+  fields:
+  - systems
+  homepage: https://2027.ieee-iscas.org/
+  location: Bordeaux, France
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-13T23:59:59-05:00'
+- name: ISPA
+  slug: ispa
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - systems
+  homepage: https://ieee-ai-for-science.org/2026/ispa/
+  location: Kuala Lumpur, Malaysia
+  cycles:
+  - name: '2026'
+    deadline: '2026-09-30T23:59:59-12:00'
+- name: ISPD
+  slug: ispd
+  rank:
+    ccf: C
+  fields:
+  - systems
+  homepage: https://ispd.cc/ispd2027/
+  location: Taipei, Taiwan
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-21T23:59:59-12:00'
+    deadline: '2026-09-28T23:59:59-12:00'
+- name: RTAS
+  slug: rtas
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://2027.rtas.org/
+  location: Boulder, Colorado
+  cycles:
+  - name: '2027'
+    deadline: '2026-11-05T23:59:59-12:00'
+- name: SIGMETRICS
+  slug: sigmetrics
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - systems
+  homepage: https://www.sigmetrics.org/sigmetrics2027/
+  location: Atlanta, Georgia, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-02T23:59:00-12:00'
+    deadline: '2026-10-09T23:59:00-12:00'
+  - name: '2027'
+    abstract: '2027-01-04T23:59:00-12:00'
+    deadline: '2027-01-11T23:59:00-12:00'
+- name: SPAA
+  slug: spaa
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - systems
+  homepage: https://spaa.acm.org/
+  location: Atlanta, GA, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-18T23:59:59-12:00'
+    deadline: '2026-09-25T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2027-01-22T23:59:59-12:00'
+    deadline: '2027-01-29T23:59:59-12:00'

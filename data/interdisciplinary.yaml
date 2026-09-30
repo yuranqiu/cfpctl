@@ -1,0 +1,26 @@
+- name: RECOMB
+  slug: recomb
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://recomb.org/recomb2027/
+  location: Toronto, Canada
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-28T23:59:59-12:00'
+    deadline: '2026-11-04T23:59:59-12:00'
+- name: WWW
+  slug: www
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - interdisciplinary
+  homepage: https://www2027.thewebconf.org/
+  location: Dublin, Ireland
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-18T23:59:59-12:00'
+    deadline: '2026-10-25T23:59:59-12:00'

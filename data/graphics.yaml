@@ -1,0 +1,108 @@
+- name: CGI
+  slug: cgi
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - vision
+  - graphics
+  homepage: https://cgs-network.org/cgi27/
+  location: Cairns, Australia
+  cycles:
+  - name: '2027'
+    deadline: '2027-04-20T23:59:59-12:00'
+- name: CVM
+  slug: cvm
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: http://iccvm.org/2027/
+  location: Nanyang Technological University, Singapore
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-23T23:59:59+00:00'
+    deadline: '2026-10-26T23:59:59+00:00'
+- name: DCC
+  slug: dcc
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://datacompressionconference.org/
+  location: Snowbird, Utah, United States
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-02T23:59:59-12:00'
+- name: Eurographics
+  slug: eurographics
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://eg2027.isti.cnr.it/
+  location: Lucca, Italy
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-26T09:59:00-12:00'
+    deadline: '2026-10-01T23:59:00-12:00'
+- name: GMP
+  slug: gmp
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - vision
+  - graphics
+  homepage: https://gmp-conference-2027.github.io/gmp2027/
+  location: Singapore
+  cycles:
+  - name: '2027'
+    abstract: '2026-12-14T23:59:59-12:00'
+    deadline: '2026-12-21T23:59:59-12:00'
+- name: ICMR
+  slug: icmr
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.icmr2027.org/
+  location: Singapore
+  cycles:
+  - name: '2027'
+    deadline: '2027-01-31T23:59:59-12:00'
+- name: InterSpeech
+  slug: interspeech
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - vision
+  - graphics
+  homepage: https://interspeech2027.org/
+  location: São Paulo, Brazil
+  cycles:
+  - name: '2027'
+    deadline: '2027-02-09T23:59:59+00:00'
+- name: PacificVis
+  slug: pacificvis
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://pacificvis2027.github.io/
+  location: Busan, South Korea
+  cycles:
+  - name: '2027'
+    abstract: '2026-11-02T23:59:59-12:00'
+    deadline: '2026-11-09T23:59:59-12:00'

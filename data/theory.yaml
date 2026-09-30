@@ -1,0 +1,62 @@
+- name: CADE
+  slug: cade
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - theory
+  homepage: https://fscd-cade.science.ru.nl/
+  location: Nijmegen, Netherlands
+  cycles:
+  - name: '2027'
+    abstract: '2027-02-15T23:59:59-12:00'
+    deadline: '2027-02-22T23:59:59-12:00'
+- name: CAV
+  slug: cav
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - theory
+  homepage: https://conferences.i-cav.org/2027/
+  location: KIT, Amsterdam, The Netherlands
+  cycles:
+  - name: '2027'
+    deadline: '2027-01-20T23:59:59-12:00'
+- name: HSCC
+  slug: hscc
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - theory
+  homepage: https://hscc.acm.org/2027/
+  location: Boulder, Colorado, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-29T23:59:59-12:00'
+    deadline: '2026-11-05T23:59:59-12:00'
+- name: ICALP
+  slug: icalp
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - theory
+  homepage: https://icalp.uj.edu.pl/
+  location: Kraków, Poland
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-15T23:59:59-12:00'
+- name: STOC
+  slug: stoc
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - theory
+  homepage: https://acm-stoc.org/stoc2027/
+  location: Atlanta, Georgia, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-11-02T23:59:59-12:00'

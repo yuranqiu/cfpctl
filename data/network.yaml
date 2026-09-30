@@ -1,0 +1,88 @@
+- name: ICC
+  slug: icc
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - network
+  homepage: https://icc2027.ieee-icc.org
+  location: Washington, DC, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-02T23:59:59-04:00'
+- name: MobiCom
+  slug: mobicom
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - network
+  homepage: https://www.sigmobile.org/mobicom/2027/
+  location: TBD
+  cycles:
+  - name: '2027'
+    abstract: '2026-08-26T23:59:59-12:00'
+    deadline: '2026-09-02T23:59:59-12:00'
+- name: MobiSys
+  slug: mobisys
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - network
+  homepage: https://www.sigmobile.org/mobisys/2027/
+  location: Ho Chi Minh City, Vietnam
+  cycles:
+  - name: '2027'
+    abstract: '2026-11-27T23:59:59-12:00'
+    deadline: '2026-12-04T23:59:59-12:00'
+- name: NSDI
+  slug: nsdi
+  rank:
+    ccf: A
+    core: N
+  fields:
+  - network
+  homepage: https://www.usenix.org/conference/nsdi27
+  location: Providence, RI, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-10T23:59:59-04:00'
+    deadline: '2026-09-17T23:59:59-04:00'
+- name: SECON
+  slug: secon
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - network
+  homepage: https://secon2027.ieee-secon.org/
+  location: Lisbon, Portugal
+  cycles:
+  - name: '2027'
+    deadline: '2026-11-30T23:59:59-05:00'
+- name: SenSys
+  slug: sensys
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - network
+  homepage: https://sensys.acm.org/2027/
+  location: Boulder, CO, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-29T23:59:00-12:00'
+    deadline: '2026-11-05T23:59:00-12:00'
+- name: WoWMoM
+  slug: wowmom
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - network
+  homepage: https://wowmom2027.dii.unipi.it/index.html
+  location: Irvine, California, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-12-01T23:59:59-12:00'

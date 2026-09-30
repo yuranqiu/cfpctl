@@ -1,0 +1,111 @@
+- name: CHI
+  slug: chi
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - hci
+  homepage: https://chi2027.acm.org/
+  location: David L. Lawrence Convention Center, Pittsburgh, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-10T23:59:59-12:00'
+- name: CSCWD
+  slug: cscwd
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - hci
+  homepage: http://2027.cscwd.org
+  location: Brisbane, Australia
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-31T23:59:59-12:00'
+- name: DIS
+  slug: dis
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - hci
+  homepage: https://dis.acm.org/2027/
+  location: Stockholm, Sweden
+  cycles:
+  - name: '2027'
+    abstract: '2027-01-11T23:59:59-12:00'
+    deadline: '2027-01-18T23:59:59-12:00'
+- name: ICWSM
+  slug: icwsm
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - hci
+  homepage: https://www.icwsm.org/2027/
+  location: Edinburgh, Scotland
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-15T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2027-01-15T23:59:59-12:00'
+- name: INTERACT
+  slug: interact
+  rank:
+    ccf: C
+  fields:
+  - hci
+  homepage: https://interact2027.org/
+  location: Tallinn, Estonia
+  cycles:
+  - name: '2027'
+    abstract: '2027-01-25T23:59:59-12:00'
+    deadline: '2027-02-01T23:59:59-12:00'
+- name: MobileHCI
+  slug: mobilehci
+  rank:
+    ccf: B
+  fields:
+  - hci
+  homepage: https://mobilehci.acm.org/2027/
+  location: Limassol, Cyprus
+  cycles:
+  - name: '2027'
+    abstract: '2027-02-10T23:59:59-12:00'
+    deadline: '2027-02-17T23:59:59-12:00'
+- name: PerCom
+  slug: percom
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - hci
+  homepage: https://percom.org/
+  location: Goa, India
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-11T23:59:59-12:00'
+    deadline: '2026-09-18T23:59:59-12:00'
+- name: UbiComp/ISWC
+  slug: ubicomp/iswc
+  rank:
+    ccf: A
+    core: N
+  fields:
+  - hci
+  homepage: https://www.ubicomp.org/ubicomp-iswc-2026
+  location: Shanghai, China
+  cycles:
+  - name: '2026'
+    deadline: '2026-11-01T23:59:59-12:00'
+- name: WHC
+  slug: whc
+  rank:
+    ccf: C
+  fields:
+  - hci
+  homepage: https://2027.worldhaptics.org/
+  location: Boston, Massachusetts, USA
+  cycles:
+  - name: '2027'
+    deadline: '2027-01-29T23:59:59-12:00'

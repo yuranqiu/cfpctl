@@ -1,0 +1,81 @@
+name: Daily Data Update
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Download latest data from ccfddl
+        run: python scripts/convert_ccfddl.py
+
+      - name: Clean invalid entries
+        run: |
+          python scripts/clean_tbd.py
+          python scripts/clean_no_deadline.py
+
+      - name: Scrape CFP pages for track data
+        run: python scripts/scrape_cfp.py || true  # Don't fail on scrape errors
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Validate data
+        run: |
+          go build -o bin/cfpctl .
+          ./bin/cfpctl validate
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet data/; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(data): daily update from ccfddl + CFP scrape"
+          title: "📅 Daily data update"
+          body: |
+            Automated daily data update.
+
+            ## Changes
+            - Synced latest conference data from [ccfddl/ccf-deadlines](https://github.com/ccfddl/ccf-deadlines)
+            - Scraped CFP pages for track-level deadlines
+            - Cleaned invalid/TBD entries
+            - Validated all data files
+
+            ## Validation
+            All data files pass `cfpctl validate`.
+          branch: auto/daily-update
+          delete-branch: true
+          labels: automated,data-update
+
+      - name: No changes
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No data changes detected."

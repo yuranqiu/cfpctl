@@ -1,0 +1,144 @@
+- name: DASFAA
+  slug: dasfaa
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - database
+  homepage: https://dasfaa2027.github.io/
+  location: Shenyang, China
+  cycles:
+  - name: '2027'
+    deadline: '2026-11-25T23:59:59-12:00'
+- name: ECIR
+  slug: ecir
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - database
+  homepage: https://ecir2027.co.uk/
+  location: Southampton, UK
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-21T23:59:59+00:00'
+    deadline: '2026-10-05T23:59:59+00:00'
+- name: EDBT
+  slug: edbt
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://edbticdt2027.github.io/
+  location: Lille, France
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-07T23:59:59-12:00'
+- name: ICDE
+  slug: icde
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - database
+  homepage: https://icde2027.github.io/
+  location: Copenhagen, Denmark
+  cycles:
+  - name: '2027'
+    deadline: '2026-11-11T17:00:00-12:00'
+- name: ICDT
+  slug: icdt
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://edbticdt2027.github.io/
+  location: Lille, France
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-03T23:59:59-12:00'
+    deadline: '2026-09-10T23:59:59-12:00'
+- name: PAKDD
+  slug: pakdd
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - database
+  homepage: https://www.pakdd2027.org/
+  location: Wellington, New Zealand
+  cycles:
+  - name: '2027'
+    deadline: '2026-11-20T23:59:59-12:00'
+- name: PODS
+  slug: pods
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - database
+  homepage: https://2027.sigmod.org/
+  location: Huntington Beach, California, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-12-03T23:59:59-12:00'
+    deadline: '2026-12-10T23:59:59-12:00'
+- name: SIGIR
+  slug: sigir
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - database
+  homepage: https://sigir2027.org/
+  location: San Jose, California, USA
+  cycles:
+  - name: '2027'
+    abstract: '2027-01-14T23:59:59-12:00'
+    deadline: '2027-01-21T23:59:59-12:00'
+- name: SIGMOD
+  slug: sigmod
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - database
+  homepage: https://2027.sigmod.org/
+  location: Huntington Beach, CA, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-10T23:59:00-12:00'
+    deadline: '2026-10-17T23:59:00-12:00'
+- name: VLDB
+  slug: vldb
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - database
+  homepage: https://www.vldb.org/2027/
+  location: Athens, Greece
+  cycles:
+  - name: '2027'
+    abstract: '2026-08-25T17:00:00-12:00'
+    deadline: '2026-09-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-09-25T17:00:00-12:00'
+    deadline: '2026-10-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-10-25T17:00:00-12:00'
+    deadline: '2026-11-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-11-25T17:00:00-12:00'
+    deadline: '2026-12-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-12-25T17:00:00-12:00'
+    deadline: '2027-01-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2027-01-25T17:00:00-12:00'
+    deadline: '2027-02-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2027-02-25T17:00:00-12:00'
+    deadline: '2027-03-01T17:00:00-12:00'

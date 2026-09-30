@@ -1,0 +1,179 @@
+- name: AAMAS
+  slug: aamas
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - ai
+  homepage: https://warwick.ac.uk/fac/sci/dcs/aamas2027/
+  location: Hanoi, Vietnam
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-01T23:59:59-12:00'
+    deadline: '2026-10-08T23:59:59-12:00'
+- name: AISTATS
+  slug: aistats
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - ai
+  homepage: https://virtual.aistats.org/Conferences/2027
+  location: Montréal, Canada
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-29T23:59:59-12:00'
+    deadline: '2026-10-06T23:59:59-12:00'
+- name: ALT
+  slug: alt
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - ai
+  homepage: https://algorithmiclearningtheory.org/alt2027/
+  location: Leiden, Netherlands
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-12T23:59:59-12:00'
+- name: COLING
+  slug: coling
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - ai
+  homepage: https://2027.coling-iccl.org/
+  location: Macau SAR, China
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-12T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-12-23T23:59:59-12:00'
+- name: CVPR
+  slug: cvpr
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - ai
+  homepage: https://cvpr.thecvf.com/Conferences/2027
+  location: Seattle, WA, United States
+  cycles:
+  - name: '2027'
+    abstract: '2026-11-10T23:59:00-12:00'
+    deadline: '2026-11-16T23:59:00-12:00'
+- name: ECAI
+  slug: ecai
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - ai
+  homepage: https://ecai2027.org/
+  location: Athens, Greece
+  cycles:
+  - name: '2027'
+    deadline: '2027-04-14T23:59:59-12:00'
+- name: FG
+  slug: fg
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - ai
+  homepage: https://fg2027.ieee-biometrics.org/
+  location: Marrakesh, Morocco
+  cycles:
+  - name: '2027'
+    abstract: '2026-10-09T23:59:59-12:00'
+    deadline: '2026-10-16T23:59:59-12:00'
+- name: ICAPS
+  slug: icaps
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - ai
+  homepage: https://icaps27.icaps-conference.org/
+  location: Columbia, SC, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-12-07T23:59:59-12:00'
+    deadline: '2026-12-14T23:59:59-12:00'
+- name: ICDAR
+  slug: icdar
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - ai
+  homepage: https://icdar2027.org/
+  location: Kuala Lumpur, Malaysia
+  cycles:
+  - name: '2027'
+    abstract: '2027-01-31T23:59:59-12:00'
+    deadline: '2027-02-20T23:59:59-12:00'
+- name: ICLR
+  slug: iclr
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - ai
+  homepage: https://iclr.cc/Conferences/2027
+  location: San Francisco, CA, USA
+  cycles:
+  - name: '2027'
+    abstract: '2026-09-18T23:59:59-12:00'
+    deadline: '2026-09-25T23:59:59-12:00'
+- name: ICRA
+  slug: icra
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - ai
+  homepage: https://2027.ieee-icra.org/
+  location: Seoul, Republic of Korea
+  cycles:
+  - name: '2027'
+    deadline: '2026-09-16T23:59:59-08:00'
+- name: IEEE CEC
+  slug: ieee-cec
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - ai
+  homepage: https://ieeecec.org/2027
+  location: Edinburgh, Scotland, UK
+  cycles:
+  - name: '2027'
+    deadline: '2027-02-28T23:59:59-12:00'
+- name: IJCNN
+  slug: ijcnn
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - ai
+  homepage: https://ijcnn.org/2027
+  location: Cape Town, South Africa
+  cycles:
+  - name: '2027'
+    deadline: '2027-01-31T23:59:59-12:00'
+- name: NAACL
+  slug: naacl
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - ai
+  homepage: https://2027.naacl.org/
+  location: San Francisco, California, USA
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-12T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-12-23T23:59:59-12:00'

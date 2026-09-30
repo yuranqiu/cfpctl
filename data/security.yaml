@@ -1,0 +1,154 @@
+- name: USENIX Security
+  slug: usenix-security
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - security
+  homepage: https://www.usenix.org/conferences/byname/108
+  location: TBD
+  cycles:
+  - name: Summer 2027
+    tracks:
+    - name: Research
+      abstract: '2026-05-27T23:59:59-12:00'
+      deadline: '2026-06-03T23:59:59-12:00'
+      notification: '2026-09-15'
+    - name: Industry
+      abstract: '2026-06-10T23:59:59-12:00'
+      deadline: '2026-06-17T23:59:59-12:00'
+      notification: '2026-09-15'
+    - name: Poster/Demo
+      deadline: '2026-07-01T23:59:59-12:00'
+      notification: '2026-08-15'
+  - name: Winter 2027
+    tracks:
+    - name: Research
+      abstract: '2026-11-05T23:59:59-12:00'
+      deadline: '2026-11-12T23:59:59-12:00'
+      notification: '2027-02-15'
+    - name: Industry
+      abstract: '2026-11-19T23:59:59-12:00'
+      deadline: '2026-11-26T23:59:59-12:00'
+      notification: '2027-02-15'
+- name: IEEE S&P (Oakland)
+  slug: ieee-sp
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - security
+  homepage: https://sp.ieee.org
+  location: TBD
+  cycles:
+  - name: '2027'
+    deadline: '2026-06-15T23:59:59-12:00'
+    notification: '2026-09-30'
+- name: CCS
+  slug: ccs
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - security
+  homepage: https://www.sigsac.org/ccs
+  location: TBD
+  cycles:
+  - name: '2026'
+    abstract: '2026-01-22T23:59:59-12:00'
+    deadline: '2026-01-29T23:59:59-12:00'
+    notification: '2026-05-15'
+- name: NDSS
+  slug: ndss
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - security
+  homepage: https://www.ndss-symposium.org
+  location: TBD
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-12T23:59:59-12:00'
+    notification: '2026-12-15'
+- name: Eurocrypt
+  slug: eurocrypt
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - security
+  - crypto
+  homepage: https://eurocrypt.iacr.org
+  location: TBD
+  cycles:
+  - name: '2027'
+    deadline: '2026-10-02T23:59:59-12:00'
+    notification: '2026-12-15'
+- name: CRYPTO
+  slug: crypto
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - security
+  - crypto
+  homepage: https://crypto.iacr.org
+  location: TBD
+  cycles:
+  - name: '2027'
+    deadline: '2027-02-13T23:59:59-12:00'
+    notification: '2027-05-15'
+- name: ASIACRYPT
+  slug: asiacrypt
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - security
+  - crypto
+  homepage: https://asiacrypt.iacr.org
+  location: TBD
+  cycles:
+  - name: '2026'
+    deadline: '2026-05-20T23:59:59-12:00'
+    notification: '2026-08-15'
+- name: RAID
+  slug: raid
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - security
+  homepage: https://raid-conf.org
+  location: TBD
+  cycles:
+  - name: '2026'
+    deadline: '2026-04-15T23:59:59-12:00'
+    notification: '2026-07-01'
+- name: ACSAC
+  slug: acsac
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - security
+  homepage: https://acsac.org
+  location: TBD
+  cycles:
+  - name: '2026'
+    deadline: '2026-05-30T23:59:59-12:00'
+    notification: '2026-08-15'
+- name: DIMVA
+  slug: dimva
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - security
+  homepage: https://dimva.org
+  location: TBD
+  cycles:
+  - name: '2027'
+    deadline: '2026-12-15T23:59:59-12:00'
+    notification: '2027-03-15'

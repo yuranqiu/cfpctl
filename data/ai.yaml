@@ -188,14 +188,20 @@
   cycles:
   - name: '2027'
     tracks:
-    - name: Main Conference
+    - name: Main Conference (via ARR)
       deadline: '2026-10-12T23:59:59-12:00'
-      notification: '2026-12-15'
-    - name: Findings
-      deadline: '2026-10-12T23:59:59-12:00'
-      notification: '2026-12-15'
-    - name: Industry
-      deadline: '2026-11-01T23:59:59-12:00'
-      notification: '2027-01-10'
+      notification: '2027-02-10'
+    - name: Industry Track
+      deadline: '2026-10-31T23:59:59-12:00'
+      notification: '2027-02-24'
+    - name: System Demonstrations
+      deadline: '2026-12-04T23:59:59-12:00'
+      notification: '2027-02-10'
+    - name: Tutorial Proposal
+      deadline: '2026-10-02T23:59:59-12:00'
+      notification: '2026-11-25'
+    - name: Workshop Proposal
+      deadline: '2026-09-04T23:59:59-12:00'
+      notification: '2026-10-02'
   - name: '2027'
     deadline: '2026-12-23T23:59:59-12:00'

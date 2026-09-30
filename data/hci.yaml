@@ -11,19 +11,27 @@
   cycles:
   - name: '2027'
     tracks:
-    - name: Papers
-      abstract: '2026-09-04T23:59:59-12:00'
-      deadline: '2026-09-11T23:59:59-12:00'
-      notification: '2026-12-10'
-    - name: Notes
-      deadline: '2027-01-15T23:59:59-12:00'
-      notification: '2027-03-15'
-    - name: Late-Breaking Work
-      deadline: '2027-02-01T23:59:59-12:00'
-      notification: '2027-03-15'
-    - name: Case Studies
-      deadline: '2027-01-15T23:59:59-12:00'
-      notification: '2027-03-15'
+    - name: Full Papers
+      deadline: '2026-09-10T23:59:59-12:00'
+      notification: '2026-12-17'
+    - name: Panels
+      deadline: '2026-11-19T23:59:59-12:00'
+      notification: '2027-01-14'
+    - name: Workshops (Organizer)
+      deadline: '2026-10-01T23:59:59-12:00'
+      notification: '2026-11-19'
+    - name: Posters
+      deadline: '2027-01-21T23:59:59-12:00'
+      notification: '2027-02-18'
+    - name: Interactive Demos
+      deadline: '2027-01-21T23:59:59-12:00'
+      notification: '2027-02-18'
+    - name: Student Research Competition
+      deadline: '2027-01-21T23:59:59-12:00'
+      notification: '2027-02-18'
+    - name: Digital Experience Competition
+      deadline: '2026-12-04T23:59:59-12:00'
+      notification: '2027-01-31'
 - name: CSCWD
   slug: cscwd
   rank:
@@ -107,21 +115,33 @@
     core: A*
   fields:
   - hci
-  homepage: https://www.ubicomp.org/ubicomp-iswc-2026
+  homepage: https://www.ubicomp.org/ubicomp-iswc-2026/author/
   location: Shanghai, China
   verified: true
   cycles:
   - name: '2026'
     tracks:
-    - name: Papers
-      deadline: '2026-11-01T23:59:59-12:00'
-      notification: '2027-01-15'
-    - name: Notes
-      deadline: '2026-12-15T23:59:59-12:00'
-      notification: '2027-02-15'
-    - name: Posters/Demos
-      deadline: '2027-01-15T23:59:59-12:00'
-      notification: '2027-03-01'
+    - name: ISWC Notes & Briefs
+      abstract: '2026-05-17T23:59:59-12:00'
+      deadline: '2026-05-24T23:59:59-12:00'
+      notification: '2026-07-01'
+    - name: Workshop Proposal
+      deadline: '2026-04-30T23:59:59-12:00'
+      notification: '2026-05-02'
+    - name: Tutorial Proposal
+      deadline: '2026-05-07T23:59:59-12:00'
+    - name: Posters & Demos
+      deadline: '2026-06-06T23:59:59-12:00'
+      notification: '2026-07-20'
+    - name: Design Exhibition
+      deadline: '2026-06-22T23:59:59-12:00'
+      notification: '2026-07-24'
+    - name: Doctoral Colloquium
+      deadline: '2026-06-19T23:59:59-12:00'
+      notification: '2026-07-15'
+    - name: Student Challenge
+      deadline: '2026-06-24T23:59:59-12:00'
+      notification: '2026-07-20'
 - name: WHC
   slug: whc
   rank:

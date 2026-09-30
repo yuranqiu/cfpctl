@@ -5,33 +5,22 @@
     core: A*
   fields:
   - security
-  homepage: https://www.usenix.org/conferences/byname/108
-  location: TBD
+  homepage: https://www.usenix.org/conference/usenixsecurity27/call-for-papers
+  location: Denver, CO, USA
   verified: true
   cycles:
-  - name: Summer 2027
+  - name: Cycle 1
     tracks:
-    - name: Research
-      abstract: '2026-05-27T23:59:59-12:00'
-      deadline: '2026-06-03T23:59:59-12:00'
-      notification: '2026-09-15'
-    - name: Industry
-      abstract: '2026-06-10T23:59:59-12:00'
-      deadline: '2026-06-17T23:59:59-12:00'
-      notification: '2026-09-15'
-    - name: Poster/Demo
-      deadline: '2026-07-01T23:59:59-12:00'
-      notification: '2026-08-15'
-  - name: Winter 2027
+    - name: Paper (incl. SoK)
+      abstract: '2026-08-18T23:59:59-12:00'
+      deadline: '2026-08-25T23:59:59-12:00'
+      notification: '2026-12-03'
+  - name: Cycle 2
     tracks:
-    - name: Research
-      abstract: '2026-11-05T23:59:59-12:00'
-      deadline: '2026-11-12T23:59:59-12:00'
-      notification: '2027-02-15'
-    - name: Industry
-      abstract: '2026-11-19T23:59:59-12:00'
-      deadline: '2026-11-26T23:59:59-12:00'
-      notification: '2027-02-15'
+    - name: Paper (incl. SoK)
+      abstract: '2027-01-19T23:59:59-12:00'
+      deadline: '2027-01-26T23:59:59-12:00'
+      notification: '2027-05-06'
 - name: IEEE S&P (Oakland)
   slug: ieee-sp
   rank:
@@ -75,18 +64,20 @@
     core: A
   fields:
   - security
-  homepage: https://www.ndss-symposium.org
+  homepage: https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/
   location: TBD
   verified: true
   cycles:
-  - name: Spring 2027
+  - name: Summer Cycle
     tracks:
-    - name: Research
-      deadline: '2026-10-12T23:59:59-12:00'
-      notification: '2026-12-15'
-    - name: Poster/Demo
-      deadline: '2026-11-15T23:59:59-12:00'
-      notification: '2026-12-30'
+    - name: Technical Papers
+      deadline: '2026-05-06T23:59:59-12:00'
+      notification: '2026-07-29'
+  - name: Fall Cycle
+    tracks:
+    - name: Technical Papers
+      deadline: '2026-08-19T23:59:59-12:00'
+      notification: '2026-11-24'
 - name: Eurocrypt
   slug: eurocrypt
   rank:

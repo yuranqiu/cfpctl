@@ -105,22 +105,54 @@
     core: A*
   fields:
   - database
-  homepage: https://2027.sigmod.org/
+  homepage: https://2027.sigmod.org/calls_papers_important_dates.shtml
   location: Huntington Beach, CA, USA
   verified: true
   cycles:
-  - name: Round 4
+  - name: Research Round 1
     tracks:
-    - name: Research
+    - name: Research Paper
+      abstract: '2026-01-10T23:59:59-12:00'
+      deadline: '2026-01-17T23:59:59-12:00'
+      notification: '2026-04-19'
+  - name: Research Round 2
+    tracks:
+    - name: Research Paper
+      abstract: '2026-04-10T23:59:59-12:00'
+      deadline: '2026-04-17T23:59:59-12:00'
+      notification: '2026-07-19'
+  - name: Research Round 3
+    tracks:
+    - name: Research Paper
+      abstract: '2026-07-10T23:59:59-12:00'
+      deadline: '2026-07-17T23:59:59-12:00'
+      notification: '2026-10-19'
+  - name: Research Round 4
+    tracks:
+    - name: Research Paper
       abstract: '2026-10-10T23:59:59-12:00'
       deadline: '2026-10-17T23:59:59-12:00'
       notification: '2027-01-19'
-    - name: Industrial
+  - name: Industrial & Demo
+    tracks:
+    - name: Industrial Track
       deadline: '2026-11-24T23:59:59-12:00'
-      notification: '2027-02-15'
+      notification: '2027-03-04'
     - name: Demonstration
       deadline: '2027-01-11T23:59:59-12:00'
-      notification: '2027-03-01'
+      notification: '2027-03-08'
+  - name: PODS Cycle 1
+    tracks:
+    - name: PODS Paper
+      abstract: '2026-05-23T23:59:59-12:00'
+      deadline: '2026-05-30T23:59:59-12:00'
+      notification: '2026-08-11'
+  - name: PODS Cycle 2
+    tracks:
+    - name: PODS Paper
+      abstract: '2026-12-03T23:59:59-12:00'
+      deadline: '2026-12-10T23:59:59-12:00'
+      notification: '2027-02-08'
 - name: VLDB
   slug: vldb
   rank:

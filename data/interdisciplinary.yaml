@@ -24,13 +24,20 @@
   cycles:
   - name: '2027'
     tracks:
-    - name: Research
+    - name: Full Paper (Research & Industry)
       abstract: '2026-10-18T23:59:59-12:00'
       deadline: '2026-10-25T23:59:59-12:00'
-      notification: '2027-01-15'
-    - name: Industry
-      deadline: '2026-11-15T23:59:59-12:00'
-      notification: '2027-01-30'
-    - name: Web Engineering
-      deadline: '2026-11-08T23:59:59-12:00'
-      notification: '2027-01-20'
+      notification: '2027-01-04'
+    - name: Short Paper
+      abstract: '2026-11-09T23:59:59-12:00'
+      deadline: '2026-11-16T23:59:59-12:00'
+      notification: '2027-01-04'
+    - name: Demo Paper
+      deadline: '2026-11-16T23:59:59-12:00'
+      notification: '2027-01-04'
+    - name: Workshop Proposal
+      deadline: '2026-09-28T23:59:59-12:00'
+      notification: '2026-10-12'
+    - name: Tutorial Proposal
+      deadline: '2026-10-19T23:59:59-12:00'
+      notification: '2026-11-02'

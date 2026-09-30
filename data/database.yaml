@@ -1,3 +1,102 @@
+- name: ADMA
+  slug: adma
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - database
+  homepage: https://adma2026.github.io/
+  location: Hong Kong, China
+  cycles:
+  - name: '2022'
+    deadline: '2022-07-15T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-04-08T23:59:59-07:00'
+    deadline: '2023-04-30T23:59:59-07:00'
+  - name: '2024'
+    deadline: '2024-03-15T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-07-05T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-06-05T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-07-17T23:59:59-12:00'
+- name: APWeb-WAIM
+  slug: apweb-waim
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - database
+  homepage: https://conferences.sigappfr.org/apweb2026/
+  location: Danang, Vietnam
+  cycles:
+  - name: '2024'
+    deadline: '2024-03-20T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-05-23T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-03-02T23:59:59-08:00'
+  - name: '2025'
+    deadline: '2025-05-04T23:59:59-08:00'
+  - name: '2026'
+    deadline: '2026-03-31T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-05-24T23:59:59-12:00'
+- name: CIDR
+  slug: cidr
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://www.cidrdb.org/cidr2027/
+  location: Amsterdam, The Netherlands
+  cycles:
+  - name: '2021'
+    deadline: '2020-08-28T23:59:00-07:00'
+  - name: '2022'
+    deadline: '2021-08-31T23:59:00-07:00'
+  - name: '2023'
+    deadline: '2022-09-02T23:59:00-07:00'
+  - name: '2024'
+    deadline: '2023-07-31T23:59:59-07:00'
+  - name: '2025'
+    deadline: '2024-08-02T23:59:59-07:00'
+  - name: '2026'
+    deadline: '2025-08-05T23:59:59-07:00'
+  - name: '2027'
+    deadline: '2026-08-04T23:59:59-07:00'
+- name: CIKM
+  slug: cikm
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://cikm2026.diag.uniroma1.it/
+  location: Rome, Italy
+  cycles:
+  - name: '2020'
+    deadline: '2020-05-01T23:59:59-12:00'
+  - name: '2021'
+    abstract: '2021-05-19T23:59:00-12:00'
+    deadline: '2021-05-26T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-05-12T23:59:59-12:00'
+    deadline: '2022-05-19T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-05-26T23:59:59-12:00'
+    deadline: '2023-06-02T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-05-13T23:59:59-12:00'
+    deadline: '2024-05-20T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-05-16T23:59:59-12:00'
+    deadline: '2025-05-23T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-16T23:59:59-12:00'
+    deadline: '2026-05-23T23:59:59-12:00'
 - name: DASFAA
   slug: dasfaa
   rank:
@@ -8,6 +107,22 @@
   homepage: https://dasfaa2027.github.io/
   location: Shenyang, China
   cycles:
+  - name: '2021'
+    deadline: '2020-10-28T23:59:59-07:00'
+  - name: '2022'
+    abstract: '2021-10-28T23:59:59-12:00'
+    deadline: '2021-11-04T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-11-04T23:59:59-12:00'
+    deadline: '2022-11-11T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-12-15T23:59:59-12:00'
+    deadline: '2023-12-22T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-25T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-20T23:59:59-12:00'
+    deadline: '2025-10-27T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-11-25T23:59:59-12:00'
 - name: ECIR
@@ -20,9 +135,54 @@
   homepage: https://ecir2027.co.uk/
   location: Southampton, UK
   cycles:
+  - name: '2021'
+    deadline: '2020-10-15T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2021-09-30T23:59:00-12:00'
+    deadline: '2021-10-07T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2022-09-30T23:59:00-12:00'
+    deadline: '2022-10-07T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2023-09-27T23:59:00-12:00'
+    deadline: '2023-10-04T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2024-10-09T23:59:59-12:00'
+    deadline: '2024-10-16T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-25T23:59:59-12:00'
+    deadline: '2025-10-02T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-09-21T23:59:59+00:00'
     deadline: '2026-10-05T23:59:59+00:00'
+- name: ECML-PKDD
+  slug: ecml-pkdd
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://ecmlpkdd.org/2027/
+  location: Eindhoven, The Netherlands
+  cycles:
+  - name: '2021'
+    abstract: '2021-03-26T23:59:59-12:00'
+    deadline: '2021-04-02T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-03-30T23:59:59-12:00'
+    deadline: '2022-04-06T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-03-26T23:59:59-12:00'
+    deadline: '2023-04-02T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-03-15T23:59:59-12:00'
+    deadline: '2024-03-22T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-03-07T23:59:59-12:00'
+    deadline: '2025-03-14T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-05T23:59:59-12:00'
+    deadline: '2026-03-12T23:59:59-12:00'
 - name: EDBT
   slug: edbt
   rank:
@@ -33,6 +193,36 @@
   homepage: https://edbticdt2027.github.io/
   location: Lille, France
   cycles:
+  - name: '2022'
+    deadline: '2021-10-01T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-02-15T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-06-01T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-09-30T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-02-15T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-06-01T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-10-03T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-02-07T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-06-05T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-10-09T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-02-05T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-06-04T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-10-08T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-02-04T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-06-10T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-07T23:59:59-12:00'
 - name: ICDE
@@ -45,8 +235,56 @@
   homepage: https://icde2027.github.io/
   location: Copenhagen, Denmark
   cycles:
+  - name: '2021'
+    deadline: '2020-10-01T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2021-07-21T23:59:59-08:00'
+  - name: '2022'
+    deadline: '2021-11-19T23:59:59-08:00'
+  - name: '2023'
+    deadline: '2022-04-25T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-07-08T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-10-08T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-07-28T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-12-03T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-08-02T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-25T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-06-18T17:00:00-07:00'
+  - name: '2026'
+    deadline: '2025-10-27T17:00:00-07:00'
+  - name: '2027'
+    deadline: '2026-06-11T17:00:00-12:00'
   - name: '2027'
     deadline: '2026-11-11T17:00:00-12:00'
+- name: ICDM
+  slug: icdm
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - database
+  homepage: http://icdm2026.neu.edu.cn/
+  location: Shenyang, China
+  cycles:
+  - name: '2021'
+    deadline: '2021-06-12T14:59:00+08:00'
+  - name: '2022'
+    deadline: '2022-06-10T23:59:00-07:00'
+  - name: '2023'
+    deadline: '2023-07-01T23:59:59+08:00'
+  - name: '2024'
+    deadline: '2024-06-14T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-06-06T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-06T23:59:59-12:00'
 - name: ICDT
   slug: icdt
   rank:
@@ -57,9 +295,70 @@
   homepage: https://edbticdt2027.github.io/
   location: Lille, France
   cycles:
+  - name: '2022'
+    abstract: '2021-04-03T23:59:00-12:00'
+    deadline: '2021-04-10T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2021-09-13T23:59:59-12:00'
+    deadline: '2021-09-20T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-03-14T23:59:59-12:00'
+    deadline: '2022-03-21T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-09-14T23:59:59-12:00'
+    deadline: '2022-09-21T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-03-20T23:59:59-12:00'
+    deadline: '2023-03-27T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-09-13T23:59:59-12:00'
+    deadline: '2023-09-20T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-03-11T23:59:59-12:00'
+    deadline: '2024-03-18T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-09-12T23:59:59-12:00'
+    deadline: '2024-09-19T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-03-13T23:59:59-12:00'
+    deadline: '2025-03-20T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-03T23:59:59-12:00'
+    deadline: '2025-09-10T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-03-03T23:59:59-12:00'
+    deadline: '2026-03-10T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-09-03T23:59:59-12:00'
     deadline: '2026-09-10T23:59:59-12:00'
+- name: ISWC
+  slug: iswc
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://iswc2026.semanticweb.org/
+  location: Bari, Italy
+  cycles:
+  - name: '2021'
+    abstract: '2021-04-12T23:59:00-12:00'
+    deadline: '2021-04-19T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-04-28T23:59:59-12:00'
+    deadline: '2022-05-05T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-05-02T23:59:59-12:00'
+    deadline: '2023-05-09T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-04-10T23:59:59-12:00'
+    deadline: '2024-04-17T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-05-06T23:59:59-12:00'
+    deadline: '2025-05-13T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-02T23:59:59-12:00'
+    deadline: '2026-05-07T23:59:59-12:00'
 - name: PAKDD
   slug: pakdd
   rank:
@@ -70,6 +369,19 @@
   homepage: https://www.pakdd2027.org/
   location: Wellington, New Zealand
   cycles:
+  - name: '2021'
+    abstract: '2020-11-23T23:59:00-08:00'
+    deadline: '2020-11-30T23:59:00-08:00'
+  - name: '2022'
+    deadline: '2021-11-15T23:59:59-08:00'
+  - name: '2023'
+    deadline: '2022-12-07T23:59:59-08:00'
+  - name: '2024'
+    deadline: '2023-11-29T23:59:59-08:00'
+  - name: '2025'
+    deadline: '2024-12-14T23:59:59-08:00'
+  - name: '2026'
+    deadline: '2025-11-25T23:59:59-08:00'
   - name: '2027'
     deadline: '2026-11-20T23:59:59-12:00'
 - name: PODS
@@ -82,9 +394,100 @@
   homepage: https://2027.sigmod.org/
   location: Huntington Beach, California, USA
   cycles:
+  - name: '2021'
+    abstract: '2020-07-02T17:00:00-12:00'
+    deadline: '2020-07-07T17:00:00-12:00'
+  - name: '2021'
+    abstract: '2020-12-13T17:00:00-12:00'
+    deadline: '2020-12-20T17:00:00-12:00'
+  - name: '2022'
+    abstract: '2021-06-11T17:00:00-12:00'
+    deadline: '2021-06-18T17:00:00-12:00'
+  - name: '2022'
+    abstract: '2021-12-10T17:00:00-12:00'
+    deadline: '2021-12-17T17:00:00-12:00'
+  - name: '2023'
+    abstract: '2022-05-30T17:00:00-12:00'
+    deadline: '2022-06-06T17:00:00-12:00'
+  - name: '2023'
+    abstract: '2022-11-28T17:00:00-12:00'
+    deadline: '2022-12-05T17:00:00-12:00'
+  - name: '2024'
+    abstract: '2023-06-06T17:00:00-12:00'
+    deadline: '2023-06-12T17:00:00-12:00'
+  - name: '2024'
+    abstract: '2023-12-04T17:00:00-12:00'
+    deadline: '2023-12-11T17:00:00-12:00'
+  - name: '2025'
+    abstract: '2024-05-31T17:00:00-12:00'
+    deadline: '2024-06-07T17:00:00-12:00'
+  - name: '2025'
+    abstract: '2024-12-02T17:00:00-12:00'
+    deadline: '2024-12-09T17:00:00-12:00'
+  - name: '2026'
+    abstract: '2025-06-03T23:59:00-12:00'
+    deadline: '2025-06-10T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-12-03T23:59:00-12:00'
+    deadline: '2025-12-10T23:59:00-12:00'
+  - name: '2027'
+    abstract: '2026-05-23T23:59:59-12:00'
+    deadline: '2026-05-30T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-12-03T23:59:59-12:00'
     deadline: '2026-12-10T23:59:59-12:00'
+- name: RecSys
+  slug: recsys
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://recsys.acm.org/recsys27/
+  location: Honolulu, O‘ahu, Hawaii, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-04-27T23:59:00-12:00'
+    deadline: '2021-05-04T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-04-26T23:59:00-12:00'
+    deadline: '2022-05-03T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-04-14T23:59:59-12:00'
+    deadline: '2023-04-21T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-04-22T23:59:59-12:00'
+    deadline: '2024-04-29T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-01T23:59:59-12:00'
+    deadline: '2025-04-08T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-14T23:59:59-12:00'
+    deadline: '2026-04-21T23:59:59-12:00'
+- name: SDM
+  slug: sdm
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://www.siam.org/conferences-events/siam-conferences/sdm26/
+  location: Salt Lake City, Utah, USA
+  cycles:
+  - name: '2022'
+    deadline: '2021-10-12T23:59:00-07:00'
+  - name: '2023'
+    abstract: '2022-09-30T23:59:00-07:00'
+    deadline: '2022-10-07T23:59:00-07:00'
+  - name: '2024'
+    abstract: '2023-09-15T23:59:00-07:00'
+    deadline: '2023-09-22T23:59:00-07:00'
+  - name: '2025'
+    abstract: '2024-09-27T23:59:59-07:00'
+    deadline: '2024-10-04T23:59:59-07:00'
+  - name: '2026'
+    abstract: '2026-04-10T23:59:59-12:00'
+    deadline: '2026-04-17T23:59:59-12:00'
 - name: SIGIR
   slug: sigir
   rank:
@@ -95,9 +498,61 @@
   homepage: https://sigir2027.org/
   location: San Jose, California, USA
   cycles:
+  - name: '2021'
+    abstract: '2021-02-02T23:59:59-12:00'
+    deadline: '2021-02-09T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-01-21T23:59:59-12:00'
+    deadline: '2022-01-28T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-01-24T23:59:59-12:00'
+    deadline: '2023-01-31T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-01-18T23:59:59-12:00'
+    deadline: '2024-01-25T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-01-16T23:59:59-12:00'
+    deadline: '2025-01-23T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-01-15T23:59:59-12:00'
+    deadline: '2026-01-22T23:59:59-12:00'
   - name: '2027'
     abstract: '2027-01-14T23:59:59-12:00'
     deadline: '2027-01-21T23:59:59-12:00'
+- name: SIGKDD
+  slug: sigkdd
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - database
+  homepage: https://kdd2027.kdd.org/
+  location: San Jose, California, USA
+  cycles:
+  - name: '2021'
+    deadline: '2021-02-08T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-02-10T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-02-02T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-02-01T23:59:59-12:00'
+    deadline: '2024-02-08T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-08-01T23:59:59-12:00'
+    deadline: '2024-08-08T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-02-03T23:59:59-12:00'
+    deadline: '2025-02-10T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-07-24T23:59:59-12:00'
+    deadline: '2025-07-31T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-01T23:59:59-12:00'
+    deadline: '2026-02-08T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-07-19T23:59:59-12:00'
+    deadline: '2026-07-26T23:59:59-12:00'
 - name: SIGMOD
   slug: sigmod
   rank:
@@ -163,6 +618,165 @@
   homepage: https://www.vldb.org/2027/
   location: Athens, Greece
   cycles:
+  - name: '2021'
+    deadline: '2020-04-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-05-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-06-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-07-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-08-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-09-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-10-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-11-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2020-12-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2021-01-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2021-02-01T17:00:00-12:00'
+  - name: '2021'
+    deadline: '2021-03-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-04-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-05-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-06-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-07-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-08-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-09-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-10-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-11-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-12-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2022-01-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2022-02-01T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2022-03-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-04-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-05-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-06-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-07-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-08-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-09-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-10-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-11-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2022-12-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2023-01-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2023-02-01T17:00:00-12:00'
+  - name: '2023'
+    deadline: '2023-03-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-04-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-05-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-06-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-07-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-08-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-09-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-10-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-11-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2023-12-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2024-01-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2024-02-01T17:00:00-12:00'
+  - name: '2024'
+    deadline: '2024-03-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-04-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-05-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-06-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-07-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-08-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-09-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-10-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-11-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2024-12-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2025-01-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2025-02-01T17:00:00-12:00'
+  - name: '2025'
+    deadline: '2025-03-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-04-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-05-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-06-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-07-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-08-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-09-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-10-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-11-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2025-12-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2026-01-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2026-02-01T17:00:00-12:00'
+  - name: '2026'
+    deadline: '2026-03-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-03-25T17:00:00-12:00'
+    deadline: '2026-04-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-04-25T17:00:00-12:00'
+    deadline: '2026-05-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-05-25T17:00:00-12:00'
+    deadline: '2026-06-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-06-25T17:00:00-12:00'
+    deadline: '2026-07-01T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-07-25T17:00:00-12:00'
+    deadline: '2026-08-01T17:00:00-12:00'
   - name: '2027'
     abstract: '2026-08-25T17:00:00-12:00'
     deadline: '2026-09-01T17:00:00-12:00'
@@ -184,3 +798,55 @@
   - name: '2027'
     abstract: '2027-02-25T17:00:00-12:00'
     deadline: '2027-03-01T17:00:00-12:00'
+- name: WISA
+  slug: wisa
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - database
+  homepage: https://conf.ccf.org.cn/WISA2026
+  location: Kunming, China
+  cycles:
+  - name: '2026'
+    abstract: '2026-05-18T23:59:59+08:00'
+    deadline: '2026-05-18T23:59:59+08:00'
+- name: WISE
+  slug: wise
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - database
+  homepage: https://conferences.sigappfr.org/wise2026/
+  location: Venice, Italy
+  cycles:
+  - name: '2026'
+    deadline: '2026-06-30T23:59:59-12:00'
+- name: WSDM
+  slug: wsdm
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - database
+  homepage: https://wsdm-conference.org/2027/
+  location: Cordis, Hong Kong SAR, China
+  cycles:
+  - name: '2021'
+    deadline: '2020-08-16T23:59:00-11:00'
+  - name: '2022'
+    deadline: '2021-08-13T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-08-12T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-08-10T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-08-09T23:59:59-12:00'
+    deadline: '2024-08-14T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-08-07T23:59:59-12:00'
+    deadline: '2025-08-14T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-08-17T23:59:59-12:00'
+    deadline: '2026-08-24T23:59:59-12:00'

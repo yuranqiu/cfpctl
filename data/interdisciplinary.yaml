@@ -1,3 +1,181 @@
+- name: AFT
+  slug: aft
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://aft.ifca.ai/aft26/index.html
+  location: London, UK
+  cycles:
+  - name: '2019'
+    deadline: '2019-05-24T23:59:59-12:00'
+  - name: '2020'
+    deadline: '2020-06-11T23:59:59-12:00'
+  - name: '2021'
+    deadline: '2021-05-27T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-05-13T23:59:59-07:00'
+  - name: '2023'
+    deadline: '2023-06-15T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-05-15T23:59:59-12:00'
+    deadline: '2024-05-22T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-28T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-20T23:59:59-12:00'
+    deadline: '2026-05-27T23:59:59-12:00'
+- name: APBC
+  slug: apbc
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://www.apbc2026.com/home
+  location: Hsinchu, Taiwan， China
+  cycles:
+  - name: '2025'
+    deadline: '2025-06-15T23:59:59+00:00'
+  - name: '2026'
+    deadline: '2026-06-15T23:59:59+00:00'
+- name: BIBM
+  slug: bibm
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - interdisciplinary
+  homepage: https://ieeebibm.org/BIBM2026/
+  location: Dallas, USA
+  cycles:
+  - name: '2021'
+    deadline: '2021-08-28T17:00:00-05:00'
+  - name: '2022'
+    deadline: '2022-08-21T17:00:00-05:00'
+  - name: '2023'
+    deadline: '2023-08-15T17:00:00-05:00'
+  - name: '2024'
+    deadline: '2024-06-20T17:00:00-05:00'
+  - name: '2024'
+    deadline: '2024-08-16T17:00:00-05:00'
+  - name: '2025'
+    deadline: '2025-08-03T17:00:00-05:00'
+  - name: '2026'
+    deadline: '2026-07-05T17:00:00-05:00'
+- name: BigData
+  slug: bigdata
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://bigdataieee.org/BigData2026/
+  location: Phoenix, Arizona, United State
+  cycles:
+  - name: '2025'
+    deadline: '2025-08-29T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-08-21T23:59:59-12:00'
+- name: Cloud
+  slug: cloud
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://services.conferences.computer.org/2026/cloud/
+  location: Sydney, Australia
+  cycles:
+  - name: '2025'
+    deadline: '2025-03-10T23:00:00-12:00'
+  - name: '2026'
+    deadline: '2026-03-22T23:00:00-12:00'
+- name: CogSci
+  slug: cogsci
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://cognitivesciencesociety.org/cogsci-2026/
+  location: Rio de Janeiro, Brazil
+  cycles:
+  - name: '2023'
+    deadline: '2023-02-01T23:59:59+08:00'
+  - name: '2024'
+    deadline: '2024-02-01T23:59:59+08:00'
+  - name: '2025'
+    deadline: '2025-02-01T23:59:59+08:00'
+  - name: '2026'
+    deadline: '2026-02-02T23:59:59-12:00'
+- name: EMSOFT
+  slug: emsoft
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - interdisciplinary
+  homepage: https://esweek.org/emsoft/
+  location: Barcelona, Spain
+  cycles:
+  - name: '2025'
+    abstract: '2025-03-23T23:59:59-12:00'
+    deadline: '2025-03-30T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-23T23:59:59-12:00'
+    deadline: '2026-03-30T23:59:59-12:00'
+- name: ICIC
+  slug: icic
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - interdisciplinary
+  homepage: http://www.ic-icc.cn/2026/
+  location: Toronto, Canada
+  cycles:
+  - name: '2024'
+    deadline: '2024-04-11T12:00:00+08:00'
+  - name: '2025'
+    deadline: '2025-04-10T11:59:59+08:00'
+  - name: '2026'
+    deadline: '2026-04-04T11:59:59+08:00'
+- name: ISBRA
+  slug: isbra
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - interdisciplinary
+  homepage: https://isbra2026.scimeeting.cn/
+  location: Macau, China
+  cycles:
+  - name: '2025'
+    deadline: '2025-04-01T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-03-22T23:59:59-12:00'
+- name: MICCAI
+  slug: miccai
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - interdisciplinary
+  homepage: https://conferences.miccai.org/2028/en/
+  location: São Paulo, Brazil
+  cycles:
+  - name: '2023'
+    deadline: '2023-03-09T23:59:59+00:00'
+  - name: '2024'
+    deadline: '2024-03-07T23:59:59-08:00'
+  - name: '2025'
+    abstract: '2025-02-13T23:59:00-08:00'
+    deadline: '2025-02-27T23:59:00-08:00'
+  - name: '2026'
+    abstract: '2026-02-12T23:59:00-08:00'
+    deadline: '2026-02-26T23:59:00-08:00'
 - name: RECOMB
   slug: recomb
   rank:
@@ -8,9 +186,87 @@
   homepage: https://recomb.org/recomb2027/
   location: Toronto, Canada
   cycles:
+  - name: '2025'
+    abstract: '2024-10-16T23:59:59-12:00'
+    deadline: '2024-10-25T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-11-07T23:59:59-12:00'
+    deadline: '2025-11-20T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-10-28T23:59:59-12:00'
     deadline: '2026-11-04T23:59:59-12:00'
+- name: RTSS
+  slug: rtss
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - interdisciplinary
+  homepage: http://2026.rtss.org/
+  location: Yokohama, Japan
+  cycles:
+  - name: '2022'
+    deadline: '2022-05-26T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-22T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-21T23:59:59-12:00'
+    deadline: '2026-05-26T23:59:59-12:00'
+- name: SIGSPATIAL
+  slug: sigspatial
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - interdisciplinary
+  homepage: https://sigspatial2026.sigspatial.org/
+  location: Riverside, CA, USA
+  cycles:
+  - name: '2023'
+    abstract: '2023-06-09T23:59:59-07:00'
+    deadline: '2023-06-16T23:59:59-07:00'
+  - name: '2025'
+    abstract: '2025-05-23T23:59:59-07:00'
+    deadline: '2025-05-30T23:59:59-07:00'
+  - name: '2026'
+    abstract: '2026-05-29T23:59:59-07:00'
+    deadline: '2026-06-05T23:59:59-07:00'
+- name: SMC
+  slug: smc
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - interdisciplinary
+  homepage: https://www.ieeesmc2026.org/
+  location: Bellevue, WA, USA
+  cycles:
+  - name: '2023'
+    deadline: '2023-03-30T23:59:59-08:00'
+  - name: '2024'
+    deadline: '2024-04-08T23:59:59+08:00'
+  - name: '2025'
+    deadline: '2025-05-04T23:59:59+08:00'
+  - name: '2026'
+    deadline: '2026-05-03T23:59:59-07:00'
+- name: WINE
+  slug: wine
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - interdisciplinary
+  homepage: https://wine2026conf.github.io/
+  location: Hong Kong, China
+  cycles:
+  - name: '2023'
+    deadline: '2023-07-07T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-07-15T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-07-03T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-07-02T23:59:59-12:00'
 - name: WWW
   slug: www
   rank:
@@ -20,24 +276,25 @@
   - interdisciplinary
   homepage: https://www2027.thewebconf.org/
   location: Dublin, Ireland
-  verified: true
   cycles:
+  - name: '2021'
+    abstract: '2020-10-12T23:59:59-12:00'
+    deadline: '2020-10-19T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2021-10-14T23:59:59-12:00'
+    deadline: '2021-10-21T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-10-06T23:59:59-12:00'
+    deadline: '2022-10-13T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-10-05T23:59:59-12:00'
+    deadline: '2023-10-12T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-07T23:59:59-12:00'
+    deadline: '2024-10-14T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-30T23:59:59-12:00'
+    deadline: '2025-10-07T23:59:59-12:00'
   - name: '2027'
-    tracks:
-    - name: Full Paper (Research & Industry)
-      abstract: '2026-10-18T23:59:59-12:00'
-      deadline: '2026-10-25T23:59:59-12:00'
-      notification: '2027-01-04'
-    - name: Short Paper
-      abstract: '2026-11-09T23:59:59-12:00'
-      deadline: '2026-11-16T23:59:59-12:00'
-      notification: '2027-01-04'
-    - name: Demo Paper
-      deadline: '2026-11-16T23:59:59-12:00'
-      notification: '2027-01-04'
-    - name: Workshop Proposal
-      deadline: '2026-09-28T23:59:59-12:00'
-      notification: '2026-10-12'
-    - name: Tutorial Proposal
-      deadline: '2026-10-19T23:59:59-12:00'
-      notification: '2026-11-02'
+    abstract: '2026-10-18T23:59:59-12:00'
+    deadline: '2026-10-25T23:59:59-12:00'

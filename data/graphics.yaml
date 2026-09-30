@@ -1,3 +1,104 @@
+- name: 3DV
+  slug: 3dv
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://3dvconf.github.io/2027/
+  location: Thessaloniki, Greece
+  cycles:
+  - name: '2021'
+    abstract: '2021-07-30T23:59:00-07:00'
+    deadline: '2021-07-30T23:59:00-07:00'
+  - name: '2022'
+    abstract: '2022-06-02T23:59:00-07:00'
+    deadline: '2022-06-02T23:59:00-07:00'
+  - name: '2024'
+    deadline: '2023-08-07T23:59:59-07:00'
+  - name: '2025'
+    deadline: '2024-08-12T23:59:59-07:00'
+  - name: '2026'
+    deadline: '2025-08-18T23:59:59-07:00'
+  - name: '2027'
+    abstract: '2026-08-28T23:59:59-12:00'
+    deadline: '2026-08-28T23:59:59-12:00'
+- name: ACM MM
+  slug: acm-mm
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - vision
+  - graphics
+  homepage: https://2026.acmmm.org/
+  location: Rio de Janeiro, Brazil
+  cycles:
+  - name: '2021'
+    abstract: '2021-04-10T23:59:59-12:00'
+    deadline: '2021-04-17T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-03-31T23:59:59-12:00'
+    deadline: '2022-04-11T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-04-23T23:59:59-12:00'
+    deadline: '2023-05-04T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-04-08T23:59:59-12:00'
+    deadline: '2024-04-12T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-04T23:59:59-12:00'
+    deadline: '2025-04-11T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-25T23:59:59-12:00'
+    deadline: '2026-04-01T23:59:59-12:00'
+- name: ACM SIGGRAPH
+  slug: acm-siggraph
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - vision
+  - graphics
+  homepage: https://s2027.siggraph.org/
+  location: Anaheim, California
+  cycles:
+  - name: '2021'
+    abstract: '2021-01-27T22:00:00+00:00'
+    deadline: '2021-01-28T22:00:00+00:00'
+  - name: '2022'
+    abstract: '2022-01-26T22:00:00+00:00'
+    deadline: '2022-01-27T22:00:00+00:00'
+  - name: '2023'
+    abstract: '2023-01-24T22:00:00+00:00'
+    deadline: '2023-01-25T22:00:00+00:00'
+  - name: '2024'
+    abstract: '2024-01-23T22:00:00+00:00'
+    deadline: '2024-01-24T22:00:00+00:00'
+  - name: '2025'
+    abstract: '2025-01-16T22:00:00+00:00'
+    deadline: '2025-01-23T22:00:00+00:00'
+  - name: '2026'
+    abstract: '2026-01-15T22:00:00+00:00'
+    deadline: '2026-01-22T22:00:00+00:00'
+- name: CASA
+  slug: casa
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://cgs-network.org/CASAXR26/
+  location: Geneva, Switzerland
+  cycles:
+  - name: '2024'
+    deadline: '2024-03-05T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-03-08T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-10T23:59:59-12:00'
 - name: CGI
   slug: cgi
   rank:
@@ -9,6 +110,12 @@
   homepage: https://cgs-network.org/cgi27/
   location: Cairns, Australia
   cycles:
+  - name: '2024'
+    deadline: '2024-05-09T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2025-05-04T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2026-04-30T23:59:00-12:00'
   - name: '2027'
     deadline: '2027-04-20T23:59:59-12:00'
 - name: CVM
@@ -22,6 +129,24 @@
   homepage: http://iccvm.org/2027/
   location: Nanyang Technological University, Singapore
   cycles:
+  - name: '2021'
+    abstract: '2020-10-31T23:59:00+00:00'
+    deadline: '2020-11-03T23:59:00+00:00'
+  - name: '2022'
+    abstract: '2021-10-18T23:59:00+00:00'
+    deadline: '2021-10-22T23:59:00+00:00'
+  - name: '2023'
+    abstract: '2022-10-19T23:59:00+00:00'
+    deadline: '2022-10-21T23:59:00+00:00'
+  - name: '2024'
+    abstract: '2023-10-09T23:59:00+00:00'
+    deadline: '2023-10-12T23:59:00+00:00'
+  - name: '2025'
+    abstract: '2024-10-09T23:59:59+00:00'
+    deadline: '2024-10-12T23:59:59+00:00'
+  - name: '2026'
+    abstract: '2025-10-10T23:59:59+00:00'
+    deadline: '2025-10-13T23:59:59+00:00'
   - name: '2027'
     abstract: '2026-10-23T23:59:59+00:00'
     deadline: '2026-10-26T23:59:59+00:00'
@@ -36,8 +161,33 @@
   homepage: https://datacompressionconference.org/
   location: Snowbird, Utah, United States
   cycles:
+  - name: '2025'
+    deadline: '2024-10-11T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-02T23:59:59-12:00'
+- name: EGSR
+  slug: egsr
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://egsr2026.inria.fr/
+  location: Bordeaux, France
+  cycles:
+  - name: '2023'
+    abstract: '2023-04-05T23:59:59+00:00'
+    deadline: '2023-04-12T23:59:59+00:00'
+  - name: '2024'
+    abstract: '2024-04-09T23:59:59+00:00'
+    deadline: '2024-04-15T23:59:59+00:00'
+  - name: '2025'
+    abstract: '2025-04-01T23:59:59-12:00'
+    deadline: '2025-04-07T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-08T23:59:59-12:00'
+    deadline: '2026-04-15T23:59:59-12:00'
 - name: Eurographics
   slug: eurographics
   rank:
@@ -49,9 +199,35 @@
   homepage: https://eg2027.isti.cnr.it/
   location: Lucca, Italy
   cycles:
+  - name: '2024'
+    abstract: '2023-09-28T23:59:59-12:00'
+    deadline: '2023-10-05T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-01T23:59:59-12:00'
+    deadline: '2024-10-03T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-22T23:59:59-12:00'
+    deadline: '2025-09-26T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-09-26T09:59:00-12:00'
     deadline: '2026-10-01T23:59:00-12:00'
+- name: EuroVis
+  slug: eurovis
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.eurovis.org.uk/
+  location: Nottingham, United Kingdom
+  cycles:
+  - name: '2025'
+    abstract: '2024-11-27T23:59:59-12:00'
+    deadline: '2024-12-04T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-11-26T23:59:59-12:00'
+    deadline: '2025-12-03T23:59:59-12:00'
 - name: GMP
   slug: gmp
   rank:
@@ -63,9 +239,84 @@
   homepage: https://gmp-conference-2027.github.io/gmp2027/
   location: Singapore
   cycles:
+  - name: '2024'
+    deadline: '2023-12-11T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-12-18T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-12-09T23:59:59-12:00'
+    deadline: '2024-12-16T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-16T23:59:59-12:00'
+    deadline: '2025-12-18T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-12-14T23:59:59-12:00'
     deadline: '2026-12-21T23:59:59-12:00'
+- name: ICASSP
+  slug: icassp
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://2028.ieeeicassp.org/
+  location: Tokyo, Japan
+  cycles:
+  - name: '2022'
+    deadline: '2021-10-06T23:59:59+00:00'
+  - name: '2023'
+    deadline: '2022-10-26T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-09-06T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-09-12T23:59:59-07:00'
+  - name: '2026'
+    deadline: '2025-09-17T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-09-23T23:59:59-12:00'
+- name: ICIP
+  slug: icip
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://2026.ieeeicip.org/
+  location: Tampere, Finland
+  cycles:
+  - name: '2023'
+    deadline: '2023-02-15T23:59:59+00:00'
+  - name: '2024'
+    deadline: '2024-01-31T23:59:59+00:00'
+  - name: '2025'
+    deadline: '2025-01-22T23:59:59+00:00'
+  - name: '2026'
+    deadline: '2026-02-04T23:59:59-12:00'
+- name: ICME
+  slug: icme
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - vision
+  - graphics
+  homepage: https://ieee-cas.org/event/conference/2027-ieee-international-conference-multimedia-expo-icme
+  location: Xiamen, China
+  cycles:
+  - name: '2021'
+    deadline: '2020-12-13T23:59:00-08:00'
+  - name: '2022'
+    deadline: '2021-12-22T23:59:00-08:00'
+  - name: '2023'
+    deadline: '2022-12-22T23:59:59-08:00'
+  - name: '2024'
+    deadline: '2023-12-30T23:59:59+00:00'
+  - name: '2025'
+    deadline: '2024-12-23T23:59:59+00:00'
+  - name: '2026'
+    deadline: '2025-12-31T23:59:59-12:00'
 - name: ICMR
   slug: icmr
   rank:
@@ -77,8 +328,66 @@
   homepage: https://www.icmr2027.org/
   location: Singapore
   cycles:
+  - name: '2024'
+    deadline: '2024-02-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-02-23T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-13T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-01-31T23:59:59-12:00'
+- name: IEEE VIS
+  slug: ieee-vis
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - vision
+  - graphics
+  homepage: https://ieeevis.org/year/2026/welcome
+  location: Boston, Massachusetts, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-03-21T17:00:00-07:00'
+    deadline: '2021-03-31T17:00:00-07:00'
+  - name: '2022'
+    abstract: '2022-03-21T17:00:00-07:00'
+    deadline: '2022-03-31T17:00:00-07:00'
+  - name: '2023'
+    abstract: '2023-03-21T23:59:59-12:00'
+    deadline: '2023-03-31T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-03-21T23:59:00-12:00'
+    deadline: '2024-03-31T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2025-03-21T23:59:59-12:00'
+    deadline: '2025-03-31T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-21T23:59:59-12:00'
+    deadline: '2026-03-31T23:59:59-12:00'
+- name: IEEE VR
+  slug: ieee-vr
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - vision
+  - graphics
+  homepage: https://ieeevr.org/2027/
+  location: Melbourne, Australia
+  cycles:
+  - name: '2024'
+    abstract: '2023-09-27T23:59:59-12:00'
+    deadline: '2023-10-04T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-09-11T23:59:59-12:00'
+    deadline: '2024-09-18T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-05T23:59:59-12:00'
+    deadline: '2025-09-12T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-08-24T23:59:59-12:00'
+    deadline: '2026-08-31T23:59:59-12:00'
 - name: InterSpeech
   slug: interspeech
   rank:
@@ -90,8 +399,96 @@
   homepage: https://interspeech2027.org/
   location: São Paulo, Brazil
   cycles:
+  - name: '2021'
+    deadline: '2021-03-26T23:59:00-12:00'
+  - name: '2022'
+    deadline: '2022-03-21T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-03-01T23:59:00-12:00'
+  - name: '2024'
+    deadline: '2024-03-02T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2025-02-12T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2026-02-25T23:59:59+00:00'
   - name: '2027'
     deadline: '2027-02-09T23:59:59+00:00'
+- name: ISMAR
+  slug: ismar
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.ieeeismar.net/2026/
+  location: Bari, Italy
+  cycles:
+  - name: '2021'
+    abstract: '2021-05-24T23:59:00-12:00'
+    deadline: '2021-05-28T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-05-27T23:59:00-12:00'
+    deadline: '2022-06-03T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-06-05T23:59:59-12:00'
+    deadline: '2023-06-12T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-05-03T23:59:59-12:00'
+    deadline: '2024-05-08T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-04T23:59:59-12:00'
+    deadline: '2025-04-11T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-09T23:59:59-12:00'
+    deadline: '2026-03-16T23:59:59-12:00'
+- name: MMAsia
+  slug: mmasia
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.mmasia2026.org/
+  location: VinUniversity, Hanoi, Vietnam
+  cycles:
+  - name: '2023'
+    deadline: '2023-07-22T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-08-13T23:59:59-07:00'
+  - name: '2026'
+    deadline: '2026-08-14T23:59:59-12:00'
+- name: MMM
+  slug: mmm
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.mmm2027.net/
+  location: Siem Reap, Cambodia
+  cycles:
+  - name: '2025'
+    deadline: '2024-08-19T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-08-19T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-08-30T23:59:00-12:00'
+- name: NCMMSC
+  slug: ncmmsc
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.ncmmsc.org.cn/
+  location: Hengqin, China
+  cycles:
+  - name: '2026'
+    deadline: '2026-07-05T23:59:59+08:00'
 - name: PacificVis
   slug: pacificvis
   rank:
@@ -103,6 +500,161 @@
   homepage: https://pacificvis2027.github.io/
   location: Busan, South Korea
   cycles:
+  - name: '2022'
+    abstract: '2021-10-15T21:00:00-07:00'
+    deadline: '2021-10-22T21:00:00-07:00'
+  - name: '2025'
+    abstract: '2024-11-13T23:59:00-12:00'
+    deadline: '2024-11-20T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-11-01T23:59:00-12:00'
+    deadline: '2025-11-08T23:59:00-12:00'
   - name: '2027'
     abstract: '2026-11-02T23:59:59-12:00'
     deadline: '2026-11-09T23:59:59-12:00'
+- name: PG
+  slug: pg
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://pacificgraphics2026.github.io/
+  location: Singapore Management University, Singapore
+  cycles:
+  - name: '2023'
+    abstract: '2023-06-01T23:59:59-12:00'
+    deadline: '2023-06-06T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-05-31T21:59:00-12:00'
+    deadline: '2024-06-07T21:59:00-12:00'
+  - name: '2025'
+    abstract: '2025-05-30T23:59:59-12:00'
+    deadline: '2025-06-06T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-06-01T23:59:59-12:00'
+    deadline: '2026-06-08T23:59:59-12:00'
+- name: PRCV
+  slug: prcv
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://www.prcv.cn/web/#/home
+  location: Harbin, China
+  cycles:
+  - name: '2023'
+    deadline: '2023-06-20T23:59:59+08:00'
+  - name: '2024'
+    abstract: '2024-04-18T23:59:59+08:00'
+    deadline: '2024-04-28T23:59:59+08:00'
+  - name: '2025'
+    deadline: '2025-06-30T23:59:59+08:00'
+  - name: '2026'
+    deadline: '2026-05-30T23:59:59-12:00'
+- name: SCA
+  slug: sca
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://computeranimation.org/
+  location: Barcelona, Spain
+  cycles:
+  - name: '2021'
+    deadline: '2021-05-12T23:59:00+00:00'
+  - name: '2024'
+    deadline: '2024-04-29T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-04-07T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-10T23:59:00+00:00'
+    deadline: '2026-04-17T23:59:00+00:00'
+- name: SGP
+  slug: sgp
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - vision
+  - graphics
+  homepage: https://igs2027singapore.github.io/
+  location: Singapore
+  cycles:
+  - name: '2025'
+    abstract: '2025-02-04T23:59:59-12:00'
+    deadline: '2025-02-07T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-08T23:59:59-12:00'
+    deadline: '2025-04-11T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-02T23:59:59+00:00'
+    deadline: '2026-02-04T23:59:59+00:00'
+  - name: '2026'
+    abstract: '2026-04-13T23:59:59+00:00'
+    deadline: '2026-04-15T23:59:59+00:00'
+- name: SLT
+  slug: slt
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://attend.ieee.org/slt-2026/
+  location: Palermo, Sicily, Italy
+  cycles:
+  - name: '2021'
+    deadline: '2020-08-14T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-07-15T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-24T23:59:59-12:00'
+- name: SMI
+  slug: smi
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - vision
+  - graphics
+  homepage: https://smiconf.github.io/2027/
+  location: Singapore
+  cycles:
+  - name: '2022'
+    abstract: '2022-03-12T23:59:00+00:00'
+    deadline: '2022-03-15T23:59:00+00:00'
+  - name: '2023'
+    abstract: '2023-03-23T23:59:00+00:00'
+    deadline: '2023-03-30T23:59:00+00:00'
+  - name: '2024'
+    abstract: '2024-03-29T23:59:00+00:00'
+    deadline: '2024-04-02T23:59:00+00:00'
+  - name: '2025'
+    abstract: '2025-04-14T23:59:00+00:00'
+    deadline: '2025-04-22T23:59:00+00:00'
+  - name: '2026'
+    abstract: '2026-03-23T23:59:59-12:00'
+    deadline: '2026-03-30T23:59:59-12:00'
+- name: SPM
+  slug: spm
+  rank:
+    ccf: B
+    core: C
+  fields:
+  - vision
+  - graphics
+  homepage: https://igs2027singapore.github.io/
+  location: Singapore
+  cycles:
+  - name: '2025'
+    abstract: '2025-03-08T23:59:59-12:00'
+    deadline: '2025-03-15T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-08T23:59:59-12:00'
+    deadline: '2026-02-15T23:59:59-12:00'

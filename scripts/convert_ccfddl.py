@@ -32,8 +32,6 @@ CATEGORY_MAP = {
     "SE": ("software.yaml", ["software"]),
 }
 
-CUTOFF_DATE = datetime(2026, 9, 1, tzinfo=timezone.utc)
-
 GITHUB_API_BASE = "https://api.github.com/repos/ccfddl/ccf-deadlines/contents/conference"
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ccfddl/ccf-deadlines/main/conference"
 
@@ -145,13 +143,12 @@ def is_past_deadline(deadline_str):
 def convert_conference(data, category_fields):
     """Convert a single ccfddl conference entry to cfpctl format.
     
-    Returns a list of cfpctl conference dicts (usually one, but could be zero
-    if filtered out).
+    Keeps ALL years as separate cycles (history + future).
+    Returns a list of cfpctl conference dicts.
     """
     if not isinstance(data, dict):
         return []
     
-    # Must have CCF rank
     rank_info = data.get("rank", {})
     if not isinstance(rank_info, dict):
         return []
@@ -161,27 +158,23 @@ def convert_conference(data, category_fields):
         return []
     
     core_rank = rank_info.get("core")
-    
     title = data.get("title", "").strip()
     if not title:
         return []
     
     slug = title.lower().replace(" ", "-")
-    
-    # Get conferences list
     confs = data.get("confs", [])
     if not confs:
         return []
     
-    # Find the latest year's conf entry (highest year number)
+    # Use latest conf for metadata (homepage, location)
     latest_conf = None
     latest_year = -1
     for conf in confs:
         if not isinstance(conf, dict):
             continue
-        year = conf.get("year", 0)
         try:
-            year = int(year)
+            year = int(conf.get("year", 0))
         except (ValueError, TypeError):
             continue
         if year > latest_year:
@@ -191,55 +184,53 @@ def convert_conference(data, category_fields):
     if latest_conf is None:
         return []
     
-    # Extract homepage and location from latest conf
     homepage = latest_conf.get("link", "")
-    location = latest_conf.get("place", "TBD")
-    if not location:
-        location = "TBD"
+    location = latest_conf.get("place", "TBD") or "TBD"
     
-    # Get timezone
-    tz_raw = latest_conf.get("timezone", "")
-    tz_suffix = parse_timezone(tz_raw)
-    
-    # Process timeline entries
-    timelines = latest_conf.get("timeline", [])
-    if not timelines:
-        return []
+    # Build cycles from ALL years (sorted by year ascending)
+    sorted_confs = sorted(
+        [c for c in confs if isinstance(c, dict)],
+        key=lambda c: int(c.get("year", 0))
+    )
     
     cycles = []
-    for tl in timelines:
-        if not isinstance(tl, dict):
+    for conf in sorted_confs:
+        try:
+            year = int(conf.get("year", 0))
+        except (ValueError, TypeError):
             continue
         
-        deadline_raw = tl.get("deadline")
-        abstract_raw = tl.get("abstract_deadline")
-        notification_raw = tl.get("notification")
-        
-        deadline_iso = convert_datetime(deadline_raw, tz_suffix)
-        abstract_iso = convert_datetime(abstract_raw, tz_suffix)
-        notification_iso = convert_datetime(notification_raw, tz_suffix) if notification_raw else None
-        
-        # Skip if deadline is in the past
-        if deadline_iso and is_past_deadline(deadline_iso):
+        tz_suffix = parse_timezone(conf.get("timezone", ""))
+        timelines = conf.get("timeline", [])
+        if not timelines:
             continue
         
-        cycle = {"name": str(latest_year)}
-        
-        if abstract_iso:
-            cycle["abstract"] = abstract_iso
-        
-        if deadline_iso:
+        for tl in timelines:
+            if not isinstance(tl, dict):
+                continue
+            
+            deadline_raw = tl.get("deadline")
+            abstract_raw = tl.get("abstract_deadline")
+            notification_raw = tl.get("notification")
+            
+            deadline_iso = convert_datetime(deadline_raw, tz_suffix)
+            abstract_iso = convert_datetime(abstract_raw, tz_suffix)
+            notification_iso = convert_datetime(notification_raw, tz_suffix) if notification_raw else None
+            
+            if not deadline_iso:
+                continue
+            
+            cycle = {"name": str(year)}
+            if abstract_iso:
+                cycle["abstract"] = abstract_iso
             cycle["deadline"] = deadline_iso
-        
-        if notification_iso:
-            cycle["notification"] = notification_iso
-        
-        cycles.append(cycle)
+            if notification_iso:
+                cycle["notification"] = notification_iso
+            cycles.append(cycle)
     
     if not cycles:
         return []
     
-    # Build the cfpctl entry
     entry = {
         "name": title,
         "slug": slug,

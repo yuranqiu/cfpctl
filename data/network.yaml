@@ -1,3 +1,110 @@
+- name: APNet
+  slug: apnet
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - network
+  homepage: https://conferences.sigcomm.org/events/apnet2026/
+  location: Singapore
+  cycles:
+  - name: '2021'
+    abstract: '2021-03-19T23:59:00-04:00'
+    deadline: '2021-03-19T23:59:00-04:00'
+  - name: '2022'
+    abstract: '2022-03-18T23:15:00-04:00'
+    deadline: '2022-03-18T23:15:00-04:00'
+  - name: '2023'
+    deadline: '2023-03-17T23:30:00-04:00'
+  - name: '2024'
+    abstract: '2024-03-08T23:59:59-12:00'
+    deadline: '2024-03-15T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-03-06T23:59:59-12:00'
+    deadline: '2025-03-13T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-03-11T23:59:59-12:00'
+- name: CoNEXT
+  slug: conext
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - network
+  homepage: https://conferences.sigcomm.org/co-next/2026/#!/home
+  location: Utrecht, The Netherlands
+  cycles:
+  - name: '2025'
+    abstract: '2024-11-28T23:59:59-12:00'
+    deadline: '2024-12-05T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-05-29T23:59:59-12:00'
+    deadline: '2025-06-05T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-05T23:59:59-12:00'
+    deadline: '2025-12-12T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-29T23:59:59-12:00'
+    deadline: '2026-06-05T23:59:59-12:00'
+- name: FORTE
+  slug: forte
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - network
+  homepage: https://www.discotec.org/2026/forte
+  location: Urbino, Italy
+  cycles:
+  - name: '2024'
+    abstract: '2024-02-16T23:59:59-12:00'
+    deadline: '2024-02-23T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-02-14T23:59:59-12:00'
+    deadline: '2025-02-21T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-13T23:59:59-12:00'
+    deadline: '2026-02-20T23:59:59-12:00'
+- name: GLOBECOM
+  slug: globecom
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - network
+  homepage: https://globecom2026.ieee-globecom.org/
+  location: Macao, China
+  cycles:
+  - name: '2023'
+    deadline: '2023-04-15T23:59:59-04:00'
+  - name: '2025'
+    deadline: '2025-04-15T23:59:59-04:00'
+  - name: '2026'
+    deadline: '2026-05-03T23:59:59-04:00'
+- name: HotNets
+  slug: hotnets
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - network
+  homepage: https://conferences.sigcomm.org/hotnets/2026/
+  location: Salt Lake City, Utah, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-06-18T18:00:00-04:00'
+    deadline: '2021-06-25T18:00:00-04:00'
+  - name: '2022'
+    abstract: '2022-06-16T18:00:00-04:00'
+    deadline: '2022-06-23T18:00:00-04:00'
+  - name: '2023'
+    deadline: '2023-06-30T17:59:59-04:00'
+  - name: '2024'
+    deadline: '2024-06-27T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2025-07-09T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2026-07-16T23:59:59-12:00'
 - name: ICC
   slug: icc
   rank:
@@ -8,8 +115,171 @@
   homepage: https://icc2027.ieee-icc.org
   location: Washington, DC, USA
   cycles:
+  - name: '2025'
+    deadline: '2024-10-11T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-10-31T00:59:59-04:00'
   - name: '2027'
     deadline: '2026-10-02T23:59:59-04:00'
+- name: ICCCN
+  slug: icccn
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - network
+  homepage: http://www.icccn.org/ICCCN26/
+  location: Honolulu, Hawaii, USA
+  cycles:
+  - name: '2026'
+    abstract: '2026-03-07T23:59:59-10:00'
+    deadline: '2026-03-13T23:59:59-10:00'
+- name: ICNP
+  slug: icnp
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - network
+  homepage: https://icnp26.cs.ucr.edu/
+  location: Tempe, Arizona, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-05-17T20:00:00-04:00'
+    deadline: '2021-05-24T20:00:00-04:00'
+  - name: '2022'
+    abstract: '2022-05-19T20:00:00-04:00'
+    deadline: '2022-05-26T20:00:00-04:00'
+  - name: '2023'
+    abstract: '2023-05-24T20:00:00-04:00'
+    deadline: '2023-05-31T20:00:00-04:00'
+  - name: '2024'
+    abstract: '2024-05-17T23:59:59-12:00'
+    deadline: '2024-05-24T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-05-09T23:59:59-12:00'
+    deadline: '2025-05-16T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-15T23:59:59-12:00'
+    deadline: '2026-05-22T23:59:59-12:00'
+- name: IMC
+  slug: imc
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - network
+  homepage: https://www.sigcomm.org/news/november-2025-sigcomm-newsletter
+  location: Atlanta, GA, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-05-19T23:59:00-12:00'
+    deadline: '2021-05-26T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-05-11T23:59:00-12:00'
+    deadline: '2022-05-18T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-05-20T23:59:00-12:00'
+    deadline: '2023-05-26T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2024-05-08T23:59:59-12:00'
+    deadline: '2024-05-15T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-11-14T23:59:59-12:00'
+    deadline: '2024-11-21T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-05-08T23:59:59-12:00'
+    deadline: '2025-05-15T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-11-13T23:59:59-12:00'
+    deadline: '2025-11-20T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-22T23:59:59-12:00'
+    deadline: '2026-04-29T23:59:59-12:00'
+- name: INFOCOM
+  slug: infocom
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - network
+  homepage: https://infocom2027.ieee-infocom.org/
+  location: Honolulu, HI, USA
+  cycles:
+  - name: '2021'
+    abstract: '2020-08-08T23:59:59-04:00'
+    deadline: '2020-08-15T23:59:59-04:00'
+  - name: '2022'
+    abstract: '2021-07-24T23:59:59-04:00'
+    deadline: '2021-07-31T23:59:59-04:00'
+  - name: '2023'
+    abstract: '2022-07-25T23:59:59-04:00'
+    deadline: '2022-08-01T23:59:59-04:00'
+  - name: '2024'
+    abstract: '2023-07-24T23:59:59-12:00'
+    deadline: '2023-07-31T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-07-24T23:59:59-07:00'
+    deadline: '2024-07-31T23:59:59-07:00'
+  - name: '2026'
+    abstract: '2025-07-24T23:59:59-12:00'
+    deadline: '2025-07-31T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-07-24T23:59:59-12:00'
+    deadline: '2026-07-31T23:59:59-12:00'
+- name: IPSN
+  slug: ipsn
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - network
+  homepage: https://ipsn.acm.org/2024/
+  location: Hong Kong, China
+  cycles:
+  - name: '2022'
+    abstract: '2021-10-22T23:59:59-12:00'
+    deadline: '2021-10-29T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-10-31T23:59:59-12:00'
+    deadline: '2022-10-31T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-10-24T23:59:59-12:00'
+    deadline: '2023-10-31T23:59:59-12:00'
+- name: IWQoS
+  slug: iwqos
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - network
+  homepage: https://iwqos2026.ieee-iwqos.org/
+  location: Istanbul, Türkiye
+  cycles:
+  - name: '2022'
+    abstract: '2022-02-01T23:59:59-12:00'
+    deadline: '2022-02-07T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-01-29T23:59:59-12:00'
+    deadline: '2023-02-07T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-02-16T23:59:59-12:00'
+    deadline: '2025-02-23T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-16T23:59:59-12:00'
+    deadline: '2026-02-23T23:59:59-12:00'
+- name: LCN
+  slug: lcn
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - network
+  homepage: https://www.ieeelcn.org/
+  location: Coimbra, Portugal
+  cycles:
+  - name: '2026'
+    deadline: '2026-05-04T23:59:59-12:00'
 - name: MobiCom
   slug: mobicom
   rank:
@@ -20,9 +290,73 @@
   homepage: https://www.sigmobile.org/mobicom/2027/
   location: TBD
   cycles:
+  - name: '2021'
+    abstract: '2020-08-14T23:59:00-04:00'
+    deadline: '2020-08-21T23:59:00-04:00'
+  - name: '2021'
+    abstract: '2021-03-19T23:59:00-04:00'
+    deadline: '2021-03-26T23:59:00-04:00'
+  - name: '2022'
+    abstract: '2021-08-13T23:59:59-07:00'
+    deadline: '2021-08-20T23:59:59-07:00'
+  - name: '2022'
+    abstract: '2022-03-18T23:59:59-07:00'
+    deadline: '2022-03-25T23:59:59-07:00'
+  - name: '2023'
+    abstract: '2022-08-12T23:59:59-07:00'
+    deadline: '2022-08-19T23:59:59-07:00'
+  - name: '2023'
+    abstract: '2023-03-10T23:59:59-07:00'
+    deadline: '2023-03-17T23:59:59-07:00'
+  - name: '2024'
+    abstract: '2023-08-18T23:59:59-12:00'
+    deadline: '2023-08-25T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-03-08T23:59:59-12:00'
+    deadline: '2024-03-15T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-08-29T23:59:59-12:00'
+    deadline: '2024-09-05T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-03-11T23:59:59-12:00'
+    deadline: '2025-03-18T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-08-27T23:59:59-12:00'
+    deadline: '2025-09-03T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-06T23:59:59-12:00'
+    deadline: '2026-03-13T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-08-26T23:59:59-12:00'
     deadline: '2026-09-02T23:59:59-12:00'
+- name: MobiHoc
+  slug: mobihoc
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - network
+  homepage: https://www.sigmobile.org/mobihoc/2026/
+  location: Tokyo, Japan
+  cycles:
+  - name: '2021'
+    abstract: '2020-12-12T23:59:00-05:00'
+    deadline: '2020-12-19T23:59:00-05:00'
+  - name: '2022'
+    abstract: '2022-03-04T23:59:59-05:00'
+    deadline: '2022-03-11T23:59:59-05:00'
+  - name: '2023'
+    abstract: '2023-03-10T23:59:00-05:00'
+    deadline: '2023-03-10T23:59:00-05:00'
+  - name: '2024'
+    abstract: '2024-04-14T23:59:00-04:00'
+    deadline: '2024-04-14T23:59:00-04:00'
+  - name: '2025'
+    abstract: '2025-03-30T23:59:00-04:00'
+    deadline: '2025-04-06T23:59:00-04:00'
+  - name: '2026'
+    abstract: '2026-04-13T23:59:59-12:00'
+    deadline: '2026-04-20T23:59:59-12:00'
 - name: MobiSys
   slug: mobisys
   rank:
@@ -33,48 +367,121 @@
   homepage: https://www.sigmobile.org/mobisys/2027/
   location: Ho Chi Minh City, Vietnam
   cycles:
+  - name: '2022'
+    abstract: '2021-12-13T23:59:59-12:00'
+    deadline: '2021-12-20T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-11-28T23:59:59-12:00'
+    deadline: '2025-12-05T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-11-27T23:59:59-12:00'
     deadline: '2026-12-04T23:59:59-12:00'
+- name: MSN
+  slug: msn
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - network
+  homepage: https://ieee-msn.org/2026
+  location: Ningbo, China
+  cycles:
+  - name: '2024'
+    deadline: '2024-07-31T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-09-29T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-08-30T23:59:59-12:00'
+- name: MSWiM
+  slug: mswim
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - network
+  homepage: https://mswimconf.com/2026/
+  location: Paris, France
+  cycles:
+  - name: '2026'
+    deadline: '2026-06-01T23:59:59+01:00'
+- name: Networking
+  slug: networking
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - network
+  homepage: https://networking.ifip.org/2026/
+  location: Lugano, Switzerland
+  cycles:
+  - name: '2026'
+    deadline: '2026-02-28T23:59:59-12:00'
+- name: NOSSDAV
+  slug: nossdav
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - network
+  homepage: https://nossdav.org/
+  location: Ghent, Belgium
+  cycles:
+  - name: '2025'
+    deadline: '2025-01-17T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-01-16T23:59:59-12:00'
 - name: NSDI
   slug: nsdi
   rank:
     ccf: A
-    core: A*
+    core: N
   fields:
   - network
-  homepage: https://www.usenix.org/conference/nsdi27/call-for-papers
+  homepage: https://www.usenix.org/conference/nsdi27
   location: Providence, RI, USA
-  verified: true
   cycles:
-  - name: Spring Cycle
-    tracks:
-    - name: Traditional Research
-      abstract: '2026-04-16T23:59:59-04:00'
-      deadline: '2026-04-23T23:59:59-04:00'
-      notification: '2026-07-23'
-    - name: Frontiers
-      abstract: '2026-04-16T23:59:59-04:00'
-      deadline: '2026-04-23T23:59:59-04:00'
-      notification: '2026-07-23'
-    - name: Operational Systems
-      abstract: '2026-04-16T23:59:59-04:00'
-      deadline: '2026-04-23T23:59:59-04:00'
-      notification: '2026-07-23'
-  - name: Fall Cycle
-    tracks:
-    - name: Traditional Research
-      abstract: '2026-09-10T23:59:59-04:00'
-      deadline: '2026-09-17T23:59:59-04:00'
-      notification: '2026-12-08'
-    - name: Frontiers
-      abstract: '2026-09-10T23:59:59-04:00'
-      deadline: '2026-09-17T23:59:59-04:00'
-      notification: '2026-12-08'
-    - name: Operational Systems
-      abstract: '2026-09-10T23:59:59-04:00'
-      deadline: '2026-09-17T23:59:59-04:00'
-      notification: '2026-12-08'
+  - name: '2021'
+    abstract: '2020-04-10T23:59:00-04:00'
+    deadline: '2020-04-17T23:59:00-04:00'
+  - name: '2021'
+    abstract: '2020-09-10T23:59:00-04:00'
+    deadline: '2020-09-17T23:59:00-04:00'
+  - name: '2022'
+    abstract: '2021-03-04T20:59:59-12:00'
+    deadline: '2021-03-10T20:59:59-12:00'
+  - name: '2022'
+    abstract: '2021-09-09T20:59:59-12:00'
+    deadline: '2021-09-15T20:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-04-13T17:59:59-07:00'
+    deadline: '2022-04-20T17:59:59-07:00'
+  - name: '2023'
+    abstract: '2022-09-13T17:59:59-07:00'
+    deadline: '2022-09-20T17:59:59-07:00'
+  - name: '2024'
+    abstract: '2023-04-27T20:59:59-07:00'
+    deadline: '2023-05-04T20:59:59-07:00'
+  - name: '2024'
+    abstract: '2023-09-14T20:59:59-07:00'
+    deadline: '2023-09-21T20:59:59-07:00'
+  - name: '2025'
+    abstract: '2024-04-30T23:59:59-04:00'
+    deadline: '2024-05-07T23:59:59-04:00'
+  - name: '2025'
+    abstract: '2024-09-12T23:59:59-04:00'
+    deadline: '2024-09-19T23:59:59-04:00'
+  - name: '2026'
+    abstract: '2025-04-18T23:59:59-07:00'
+    deadline: '2025-04-25T23:59:59-07:00'
+  - name: '2026'
+    abstract: '2025-09-11T23:59:59-07:00'
+    deadline: '2025-09-18T23:59:59-07:00'
+  - name: '2027'
+    abstract: '2026-04-16T23:59:59-04:00'
+    deadline: '2026-04-23T23:59:59-04:00'
+  - name: '2027'
+    abstract: '2026-09-10T23:59:59-04:00'
+    deadline: '2026-09-17T23:59:59-04:00'
 - name: SECON
   slug: secon
   rank:
@@ -85,6 +492,9 @@
   homepage: https://secon2027.ieee-secon.org/
   location: Lisbon, Portugal
   cycles:
+  - name: '2026'
+    abstract: '2025-12-30T23:59:59-12:00'
+    deadline: '2025-12-30T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-11-30T23:59:59-05:00'
 - name: SenSys
@@ -97,9 +507,74 @@
   homepage: https://sensys.acm.org/2027/
   location: Boulder, CO, USA
   cycles:
+  - name: '2026'
+    abstract: '2025-06-24T23:59:00-12:00'
+    deadline: '2025-07-01T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-11-06T23:59:00-12:00'
+    deadline: '2025-11-13T23:59:00-12:00'
+  - name: '2027'
+    abstract: '2026-05-29T23:59:00-12:00'
+    deadline: '2026-06-05T23:59:00-12:00'
   - name: '2027'
     abstract: '2026-10-29T23:59:00-12:00'
     deadline: '2026-11-05T23:59:00-12:00'
+- name: SIGCOMM
+  slug: sigcomm
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - network
+  homepage: https://conferences.sigcomm.org/sigcomm/2027/
+  location: Bangkok, Thailand
+  cycles:
+  - name: '2021'
+    abstract: '2021-01-20T16:59:59-05:00'
+    deadline: '2021-01-27T16:59:59-05:00'
+  - name: '2022'
+    abstract: '2022-01-26T23:59:59-12:00'
+    deadline: '2022-02-02T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-02-08T23:59:59-12:00'
+    deadline: '2023-02-15T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-01-26T23:59:59-12:00'
+    deadline: '2024-02-02T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-01-24T23:59:59-12:00'
+    deadline: '2025-01-31T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-01-30T23:59:59-12:00'
+    deadline: '2026-02-06T23:59:59-12:00'
+- name: WASA
+  slug: wasa
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - network
+  homepage: http://wasa-conference.org/WASA2026/
+  location: Xi'an, China
+  cycles:
+  - name: '2025'
+    deadline: '2025-01-15T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-04-10T23:59:59-12:00'
+- name: WCNC
+  slug: wcnc
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - network
+  homepage: https://wcnc2027.ieee-wcnc.org/
+  location: Panama City, Panama
+  cycles:
+  - name: '2025'
+    deadline: '2024-09-02T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-09-14T23:59:59-12:00'
 - name: WoWMoM
   slug: wowmom
   rank:
@@ -110,5 +585,10 @@
   homepage: https://wowmom2027.dii.unipi.it/index.html
   location: Irvine, California, USA
   cycles:
+  - name: '2025'
+    deadline: '2024-11-22T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-05T23:59:59-05:00'
+    deadline: '2025-12-15T23:59:59-05:00'
   - name: '2027'
     deadline: '2026-12-01T23:59:59-12:00'

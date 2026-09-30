@@ -1,3 +1,58 @@
+- name: APPT
+  slug: appt
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.appt-conference.com/2026
+  location: Brussels, Belgium
+  cycles:
+  - name: '2026'
+    abstract: '2026-04-03T23:59:59-12:00'
+    deadline: '2026-04-10T23:59:59-12:00'
+- name: ASAP
+  slug: asap
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://2026.asap-conf.org/
+  location: London, UK
+  cycles:
+  - name: '2026'
+    abstract: '2026-04-03T23:59:59-12:00'
+    deadline: '2026-04-10T23:59:59-12:00'
+- name: ASP-DAC
+  slug: asp-dac
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - systems
+  homepage: https://www.aspdac.com/aspdac2027/
+  location: Hitotsubashi Hall, Tokyo, Japan
+  cycles:
+  - name: '2021'
+    deadline: '2020-07-26T17:00:00-12:00'
+  - name: '2022'
+    deadline: '2021-07-21T17:00:00-12:00'
+  - name: '2023'
+    abstract: '2022-07-24T17:00:00-12:00'
+    deadline: '2022-07-29T17:00:00-12:00'
+  - name: '2024'
+    abstract: '2023-07-28T17:00:00-12:00'
+    deadline: '2023-08-04T17:00:00-12:00'
+  - name: '2025'
+    abstract: '2024-07-05T17:00:00-12:00'
+    deadline: '2024-07-12T17:00:00-12:00'
+  - name: '2026'
+    abstract: '2025-07-04T17:00:00-12:00'
+    deadline: '2025-07-11T17:00:00-12:00'
+  - name: '2027'
+    abstract: '2026-07-11T17:00:00-12:00'
+    deadline: '2026-07-18T17:00:00-12:00'
 - name: ASPLOS
   slug: asplos
   rank:
@@ -31,6 +86,18 @@
     - name: Full Paper (PL)
       deadline: '2026-09-09T23:59:59-12:00'
       notification: '2026-12-21'
+- name: ATS
+  slug: ats
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.ats2026.tw/
+  location: Kaohsiung, Taiwan
+  cycles:
+  - name: '2026'
+    deadline: '2026-07-07T23:59:59-12:00'
 - name: CCGRID
   slug: ccgrid
   rank:
@@ -41,9 +108,60 @@
   homepage: https://hpcclab.org/ccgrid27/
   location: Dallas-Fort Worth, Texas, USA
   cycles:
+  - name: '2026'
+    abstract: '2025-12-21T23:59:59-12:00'
+    deadline: '2025-12-21T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-11-24T23:59:59-12:00'
     deadline: '2026-12-01T23:59:59-12:00'
+- name: CF
+  slug: cf
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.computingfrontiers.org/2026/
+  location: Catania, Sicily, Italy
+  cycles:
+  - name: '2024'
+    deadline: '2024-01-11T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-01T23:59:59-12:00'
+    deadline: '2026-02-01T23:59:59-12:00'
+- name: CLUSTER
+  slug: cluster
+  rank:
+    ccf: B
+    core: C
+  fields:
+  - systems
+  homepage: https://clustercomp.org/2026
+  location: Alexandria, Virginia, USA
+  cycles:
+  - name: '2022'
+    deadline: '2022-05-13T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-05-11T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-05-09T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-02T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-07T23:59:59-12:00'
+    deadline: '2026-05-07T23:59:59-12:00'
+- name: CODES+ISSS
+  slug: codes+isss
+  rank:
+    ccf: B
+  fields:
+  - systems
+  homepage: https://esweek.org/codes_isss_cfp/
+  location: Barcelona, Spain
+  cycles:
+  - name: '2026'
+    abstract: '2026-03-23T23:59:59-12:00'
+    deadline: '2026-03-30T23:59:59-12:00'
 - name: DAC
   slug: dac
   rank:
@@ -54,6 +172,23 @@
   homepage: https://dac.com/2027/authors/call-for-contributions
   location: San Jose, CA
   cycles:
+  - name: '2022'
+    deadline: '2021-11-15T17:00:00-08:00'
+  - name: '2022'
+    deadline: '2021-11-22T17:00:00-08:00'
+  - name: '2023'
+    deadline: '2022-11-14T17:00:00-08:00'
+  - name: '2023'
+    deadline: '2022-11-21T17:00:00-08:00'
+  - name: '2024'
+    abstract: '2023-11-13T17:00:00-08:00'
+    deadline: '2023-11-20T17:00:00-08:00'
+  - name: '2025'
+    abstract: '2024-11-12T17:00:00-08:00'
+    deadline: '2024-11-19T17:00:00-08:00'
+  - name: '2026'
+    abstract: '2025-11-11T17:00:00-08:00'
+    deadline: '2025-11-18T17:00:00-08:00'
   - name: '2027'
     abstract: '2026-11-11T17:00:00-08:00'
     deadline: '2026-11-18T17:00:00-08:00'
@@ -67,9 +202,69 @@
   homepage: https://www.date-conference.com/date-2027-call-papers
   location: Dresden, Germany
   cycles:
+  - name: '2023'
+    deadline: '2022-09-18T23:59:59+01:00'
+  - name: '2023'
+    deadline: '2022-09-25T23:59:59+01:00'
+  - name: '2024'
+    abstract: '2023-09-10T23:59:59-12:00'
+    deadline: '2023-09-17T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-09-15T23:59:59-12:00'
+    deadline: '2024-09-22T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-07T23:59:59-12:00'
+    deadline: '2025-09-14T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-09-13T23:59:59-12:00'
     deadline: '2026-09-20T23:59:59-12:00'
+- name: ETS
+  slug: ets
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - systems
+  homepage: https://www.ets2027.co.uk/
+  location: London, UK
+  cycles:
+  - name: '2024'
+    abstract: '2023-12-08T23:59:59-12:00'
+    deadline: '2023-12-16T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-12-09T23:59:59-12:00'
+    deadline: '2024-12-15T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-15T23:59:59-12:00'
+    deadline: '2026-01-12T23:59:59-12:00'
+- name: Euro-Par
+  slug: euro-par
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - systems
+  homepage: https://2026.euro-par.org/
+  location: Pisa, Italy
+  cycles:
+  - name: '2021'
+    abstract: '2021-02-08T23:59:59-12:00'
+    deadline: '2021-02-19T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-02-11T23:59:59-12:00'
+    deadline: '2022-02-18T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-02-24T23:59:59-12:00'
+    deadline: '2023-03-03T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-03-15T23:59:59-12:00'
+    deadline: '2024-03-25T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-03-03T23:59:59-12:00'
+    deadline: '2025-03-17T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-06T23:59:59-12:00'
+    deadline: '2026-03-13T23:59:59-12:00'
 - name: EuroSys
   slug: eurosys
   rank:
@@ -80,6 +275,37 @@
   homepage: https://2027.eurosys.org/
   location: Rabat, Morocco
   cycles:
+  - name: '2021'
+    abstract: '2020-10-01T23:59:59-12:00'
+    deadline: '2020-10-09T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2021-10-01T23:59:59-12:00'
+    deadline: '2021-10-09T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-05-11T23:59:59-12:00'
+    deadline: '2022-05-18T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-10-12T23:59:59-12:00'
+    deadline: '2022-10-19T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-05-24T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-10-19T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-05-14T23:59:59-12:00'
+    deadline: '2024-05-21T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-15T23:59:59-12:00'
+    deadline: '2024-10-22T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-05-08T23:59:59-12:00'
+    deadline: '2025-05-15T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-18T23:59:59-12:00'
+    deadline: '2025-09-25T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-05-07T23:59:59-12:00'
+    deadline: '2026-05-14T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-09-17T23:59:59-12:00'
     deadline: '2026-09-24T23:59:59-12:00'
@@ -93,8 +319,48 @@
   homepage: https://www.usenix.org/conference/fast27
   location: Renton, WA, USA
   cycles:
+  - name: '2021'
+    deadline: '2020-09-24T23:59:59-07:00'
+  - name: '2022'
+    deadline: '2021-09-23T23:59:59-07:00'
+  - name: '2023'
+    deadline: '2022-09-22T23:59:59-07:00'
+  - name: '2024'
+    deadline: '2023-09-21T23:59:59-07:00'
+  - name: '2025'
+    deadline: '2024-09-17T23:59:59-07:00'
+  - name: '2026'
+    deadline: '2025-03-18T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2025-09-16T23:59:00-12:00'
+  - name: '2027'
+    deadline: '2026-03-17T23:59:00-12:00'
   - name: '2027'
     deadline: '2026-09-15T23:59:00-12:00'
+- name: FCCM
+  slug: fccm
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - systems
+  homepage: https://www.fccm.org/past/2026/
+  location: Atlanta, Georgia, USA
+  cycles:
+  - name: '2022'
+    deadline: '2022-01-03T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-01-10T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-01-09T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-01-15T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-01-10T23:59:59-12:00'
+    deadline: '2025-01-17T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-01-10T23:59:59-12:00'
+    deadline: '2026-01-17T23:59:59-12:00'
 - name: FPGA
   slug: fpga
   rank:
@@ -105,9 +371,338 @@
   homepage: https://www.isfpga.org/
   location: Monterey, California, USA
   cycles:
+  - name: '2021'
+    abstract: '2020-09-07T23:59:00-12:00'
+    deadline: '2020-09-14T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2021-09-06T23:59:00-12:00'
+    deadline: '2021-09-13T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2022-09-16T23:59:59-12:00'
+    deadline: '2022-09-23T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-10-06T23:59:59-12:00'
+    deadline: '2023-10-13T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-01T23:59:59-12:00'
+    deadline: '2024-10-08T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-24T23:59:59-12:00'
+    deadline: '2025-10-01T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-10-01T23:59:59-12:00'
     deadline: '2026-10-08T23:59:59-12:00'
+- name: FPT
+  slug: fpt
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://fpt2026.uark.edu
+  location: Honolulu, Hawaii, USA
+  cycles:
+  - name: '2024'
+    deadline: '2024-07-14T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-07-21T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-07-20T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-08-01T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-19T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-19T23:59:59-12:00'
+- name: GLSVLSI
+  slug: glsvlsi
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.glsvlsi.org/
+  location: Canandaigua, NY, USA
+  cycles:
+  - name: '2025'
+    deadline: '2025-03-17T23:59:00-05:00'
+  - name: '2026'
+    deadline: '2026-03-23T23:59:00-05:00'
+- name: HiPEAC
+  slug: hipeac
+  rank:
+    ccf: B
+  fields:
+  - systems
+  homepage: https://www.hipeac.net/2027/glasgow/#/call-for-papers/
+  location: Glasgow, Scotland, UK
+  cycles:
+  - name: '2027'
+    deadline: '2026-06-01T23:59:59-12:00'
+- name: Hot Chips
+  slug: hot-chips
+  rank:
+    ccf: B
+    core: C
+  fields:
+  - systems
+  homepage: https://www.hotchips.org/
+  location: Memorial Auditorium, Stanford, Palo Alto, CA
+  cycles:
+  - name: '2025'
+    deadline: '2025-04-16T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-04-08T23:59:59-12:00'
+- name: HotStorage
+  slug: hotstorage
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.hotstorage.org/2026/
+  location: Prague, Czechia
+  cycles:
+  - name: '2026'
+    deadline: '2026-06-12T23:59:59-12:00'
+- name: HPCA
+  slug: hpca
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - systems
+  homepage: https://conf.researchr.org/home/hpca-2027
+  location: Salt Lake City, Utah
+  cycles:
+  - name: '2022'
+    deadline: '2021-07-23T23:59:59+00:00'
+  - name: '2022'
+    deadline: '2021-07-30T23:59:59+00:00'
+  - name: '2023'
+    deadline: '2022-07-25T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-08-01T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-07-28T23:59:59-07:00'
+  - name: '2024'
+    deadline: '2023-08-04T23:59:59-07:00'
+  - name: '2025'
+    abstract: '2024-07-26T23:59:59-12:00'
+    deadline: '2024-08-03T06:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-07-25T23:59:59-12:00'
+    deadline: '2025-08-01T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-07-24T23:59:59-12:00'
+    deadline: '2026-07-31T23:59:59-12:00'
+- name: HPCC
+  slug: hpcc
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - systems
+  homepage: https://ieee-hyper-intelligence.org/2026/hpcc/
+  location: Luoyang, Henan, China
+  cycles:
+  - name: '2025'
+    deadline: '2025-05-18T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-08-05T23:59:59-12:00'
+- name: HPDC
+  slug: hpdc
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - systems
+  homepage: https://hpdc.sci.utah.edu/2026/
+  location: Cleveland, OH, USA
+  cycles:
+  - name: '2025'
+    deadline: '2025-02-07T11:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-01-29T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-05T23:59:59-12:00'
+- name: ICA3PP
+  slug: ica3pp
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - systems
+  homepage: https://hpcn.exeter.ac.uk/ica3pp2026/
+  location: Exeter, UK
+  cycles:
+  - name: '2023'
+    deadline: '2023-05-30T23:59:00-08:00'
+  - name: '2025'
+    deadline: '2025-06-30T23:59:00-08:00'
+  - name: '2026'
+    deadline: '2026-07-25T23:59:00-12:00'
+- name: ICCAD
+  slug: iccad
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://iccad.com/2026
+  location: San Jose, California, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-05-21T17:00:00-07:00'
+    deadline: '2021-05-28T17:00:00-07:00'
+  - name: '2022'
+    abstract: '2022-05-16T23:59:59-12:00'
+    deadline: '2022-05-23T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-05-15T23:59:59-12:00'
+    deadline: '2023-05-22T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-04-28T23:59:59-12:00'
+    deadline: '2024-05-05T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-14T23:59:59-12:00'
+    deadline: '2025-04-21T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-07T23:59:59-12:00'
+    deadline: '2026-04-14T23:59:59-12:00'
+- name: ICCD
+  slug: iccd
+  rank:
+    ccf: B
+    core: C
+  fields:
+  - systems
+  homepage: https://www.iccd-conf.com/2026/home.html
+  location: Hong Kong SAR, China
+  cycles:
+  - name: '2021'
+    abstract: '2021-06-11T23:59:00-12:00'
+    deadline: '2021-06-11T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-06-18T23:59:00-12:00'
+    deadline: '2022-06-18T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-06-25T23:59:00-12:00'
+    deadline: '2023-06-27T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2024-05-20T23:59:00-12:00'
+    deadline: '2024-05-20T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2025-05-25T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2026-06-03T23:59:00-12:00'
+    deadline: '2026-06-10T23:59:00-12:00'
+- name: ICDCS
+  slug: icdcs
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://icdcs2027.icdcs.org/
+  location: Melbourne, Australia
+  cycles:
+  - name: '2020'
+    abstract: '2020-01-06T23:59:59-07:00'
+    deadline: '2020-01-13T23:59:59-07:00'
+  - name: '2021'
+    abstract: '2021-01-06T23:59:59-05:00'
+    deadline: '2021-01-13T23:59:59-05:00'
+  - name: '2022'
+    abstract: '2022-01-24T23:59:59-05:00'
+    deadline: '2022-01-31T23:59:59-05:00'
+  - name: '2023'
+    abstract: '2023-01-14T23:59:59-05:00'
+    deadline: '2023-01-21T23:59:59-05:00'
+  - name: '2024'
+    abstract: '2024-01-12T23:59:00-05:00'
+    deadline: '2024-01-26T23:59:00-05:00'
+  - name: '2025'
+    abstract: '2024-12-04T23:59:59-12:00'
+    deadline: '2024-12-11T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-01-21T23:59:59-12:00'
+    deadline: '2026-01-21T23:59:59-12:00'
+- name: ICPADS
+  slug: icpads
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - systems
+  homepage: https://www.cloud-conf.net/icpads2026
+  location: Tokyo, Japan
+  cycles:
+  - name: '2025'
+    deadline: '2025-08-31T18:00:00+08:00'
+  - name: '2026'
+    deadline: '2026-06-30T23:59:59-12:00'
+- name: ICPP
+  slug: icpp
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - systems
+  homepage: https://icpp2026.github.io/
+  location: Singapore
+  cycles:
+  - name: '2021'
+    deadline: '2021-04-16T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-04-08T23:59:59-12:00'
+    deadline: '2022-04-14T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-04-14T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-04-22T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-04-22T23:59:59-12:00'
+    deadline: '2024-04-29T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-01T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-24T23:59:59-12:00'
+    deadline: '2026-05-01T23:59:59-12:00'
+- name: ICS
+  slug: ics
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://ics-conference.org/index.html
+  location: Atlanta, Georgia, USA
+  cycles:
+  - name: '2021'
+    abstract: '2021-01-28T23:59:59-12:00'
+    deadline: '2021-02-04T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-01-28T23:59:00-12:00'
+    deadline: '2022-02-04T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-01-27T23:59:59-12:00'
+    deadline: '2023-02-03T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-01-11T23:59:59-12:00'
+    deadline: '2024-01-18T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-01-13T23:59:59-12:00'
+    deadline: '2025-01-16T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-02-24T23:59:59-12:00'
+    deadline: '2025-02-27T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-09T23:59:59-12:00'
+    deadline: '2025-12-16T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-02T23:59:59-12:00'
+    deadline: '2026-02-09T23:59:59-12:00'
 - name: IEEE/ACM CGO
   slug: ieee/acm-cgo
   rank:
@@ -118,6 +713,16 @@
   homepage: https://conf.researchr.org/home/cgo-2027
   location: Salt Lake City, Utah, USA
   cycles:
+  - name: '2024'
+    deadline: '2023-05-19T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-05-30T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-05-29T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-09-11T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-06-11T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-09-10T23:59:59-12:00'
 - name: IPDPS
@@ -130,9 +735,57 @@
   homepage: https://www.ipdps.org/
   location: Seattle, USA
   cycles:
+  - name: '2021'
+    abstract: '2020-10-12T23:59:59-12:00'
+    deadline: '2020-10-19T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2021-10-08T23:59:59-12:00'
+    deadline: '2021-10-15T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-09-29T23:59:59-12:00'
+    deadline: '2022-10-06T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-09-28T23:59:59-12:00'
+    deadline: '2023-10-05T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-03T23:59:59-12:00'
+    deadline: '2024-10-10T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-02T23:59:59-12:00'
+    deadline: '2025-10-09T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-10-01T23:59:59-12:00'
     deadline: '2026-10-08T23:59:59-12:00'
+- name: ISCA
+  slug: isca
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - systems
+  homepage: https://www.iscaconf.org/
+  location: Atlanta, Georgia, USA
+  cycles:
+  - name: '2022'
+    deadline: '2021-11-16T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2021-11-23T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-11-14T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-11-21T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-11-14T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-11-21T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-15T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-22T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-11-10T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-11-17T23:59:59-12:00'
 - name: ISCAS
   slug: iscas
   rank:
@@ -143,6 +796,10 @@
   homepage: https://2027.ieee-iscas.org/
   location: Bordeaux, France
   cycles:
+  - name: '2025'
+    deadline: '2024-10-14T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-10-12T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-13T23:59:59-05:00'
 - name: ISPA
@@ -155,6 +812,8 @@
   homepage: https://ieee-ai-for-science.org/2026/ispa/
   location: Kuala Lumpur, Malaysia
   cycles:
+  - name: '2021'
+    deadline: '2021-07-09T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-09-30T23:59:59-12:00'
 - name: ISPD
@@ -169,6 +828,194 @@
   - name: '2027'
     abstract: '2026-09-21T23:59:59-12:00'
     deadline: '2026-09-28T23:59:59-12:00'
+- name: ITC
+  slug: itc
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - systems
+  homepage: https://www.itctestweek.org/
+  location: Grand Hyatt San Antonio Riverwalk, TX, USA
+  cycles:
+  - name: '2026'
+    abstract: '2026-03-20T23:59:59-12:00'
+    deadline: '2026-04-24T23:59:59-12:00'
+- name: ITC-Asia
+  slug: itc-asia
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.castest.com.cn/itcasia_2026
+  location: Ningbo International Conference Center, Ningbo, China
+  cycles:
+  - name: '2026'
+    abstract: '2026-04-18T23:59:59+08:00'
+    deadline: '2026-04-25T23:59:59+08:00'
+- name: JCC
+  slug: jcc
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://jointcloud.cloud
+  location: Tokyo, Japan
+  cycles:
+  - name: '2026'
+    abstract: '2026-04-10T23:59:59-12:00'
+    deadline: '2026-04-15T23:59:59-12:00'
+- name: LISA
+  slug: lisa
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - systems
+  homepage: https://www.usenix.org/conference/lisa21
+  location: Virtual Event
+  cycles:
+  - name: '2021'
+    deadline: '2021-02-23T20:59:59-12:00'
+- name: MICRO
+  slug: micro
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - systems
+  homepage: https://microarch.org/micro59/
+  location: Athens, Greece
+  cycles:
+  - name: '2021'
+    deadline: '2021-04-09T23:59:59-07:00'
+  - name: '2021'
+    deadline: '2021-04-16T23:59:59-07:00'
+  - name: '2022'
+    deadline: '2022-04-14T23:59:59-07:00'
+  - name: '2022'
+    deadline: '2022-04-21T23:59:59-07:00'
+  - name: '2023'
+    deadline: '2023-04-21T23:59:59-07:00'
+  - name: '2023'
+    deadline: '2023-04-28T23:59:59-07:00'
+  - name: '2024'
+    deadline: '2024-04-11T23:59:59-05:00'
+  - name: '2024'
+    deadline: '2024-04-18T23:59:59-05:00'
+  - name: '2025'
+    abstract: '2025-04-04T23:59:59-04:00'
+    deadline: '2025-04-11T23:59:59-04:00'
+  - name: '2026'
+    abstract: '2026-03-31T23:59:59-04:00'
+    deadline: '2026-04-07T23:59:59-04:00'
+- name: MSST
+  slug: msst
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - systems
+  homepage: https://www.msstconference.org/
+  location: TBD
+  cycles:
+  - name: '2024'
+    deadline: '2024-01-07T04:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-04-14T23:59:59-12:00'
+- name: PACT
+  slug: pact
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - systems
+  homepage: https://pact2026.github.io/
+  location: Chicago, Illinois, USA
+  cycles:
+  - name: '2023'
+    deadline: '2023-03-25T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-04-15T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-03-25T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-04-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-04-18T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-04-25T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-23T23:59:59-12:00'
+    deadline: '2026-04-30T23:59:59-12:00'
+- name: Performance
+  slug: performance
+  rank:
+    ccf: B
+  fields:
+  - systems
+  homepage: https://performance2026.github.io/call/
+  location: Ghent, Belgium
+  cycles:
+  - name: '2026'
+    abstract: '2026-05-15T23:59:59-12:00'
+    deadline: '2026-05-22T23:59:59-12:00'
+- name: PODC
+  slug: podc
+  rank:
+    ccf: B
+    core: A*
+  fields:
+  - systems
+  homepage: https://www.podc.org/podc2026/
+  location: Egham, England
+  cycles:
+  - name: '2021'
+    abstract: '2021-02-11T23:59:00-12:00'
+    deadline: '2021-02-15T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-02-10T23:59:00-12:00'
+    deadline: '2022-02-13T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-01-06T23:59:00-12:00'
+    deadline: '2023-01-10T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2024-02-11T23:59:59-12:00'
+    deadline: '2024-02-15T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-02-04T23:59:59-12:00'
+    deadline: '2025-02-08T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-11T23:59:59-12:00'
+    deadline: '2026-02-16T23:59:59-12:00'
+- name: PPoPP
+  slug: ppopp
+  rank:
+    ccf: A
+    core: B
+  fields:
+  - systems
+  homepage: https://ppopp27.sigplan.org/
+  location: Salt Lake City, Utah, USA
+  cycles:
+  - name: '2021'
+    abstract: '2020-08-06T23:59:59-12:00'
+    deadline: '2020-08-13T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2021-08-09T23:59:59-12:00'
+    deadline: '2021-08-13T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-08-17T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-08-04T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-08-16T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-09-01T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-08-03T23:59:59-12:00'
 - name: RTAS
   slug: rtas
   rank:
@@ -179,8 +1026,59 @@
   homepage: https://2027.rtas.org/
   location: Boulder, Colorado
   cycles:
+  - name: '2021'
+    deadline: '2020-10-26T23:59:00-12:00'
+  - name: '2022'
+    deadline: '2021-10-29T23:59:00-12:00'
+  - name: '2023'
+    deadline: '2022-10-31T23:59:00-12:00'
+  - name: '2024'
+    deadline: '2023-10-31T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-14T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2025-11-13T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-11-05T23:59:59-12:00'
+- name: SC
+  slug: sc
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - systems
+  homepage: https://sc26.supercomputing.org/
+  location: McCormick Place, Chicago, Illinois, USA
+  cycles:
+  - name: '2022'
+    abstract: '2022-03-25T23:59:00-12:00'
+    deadline: '2022-04-01T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-03-30T23:59:00-12:00'
+    deadline: '2023-04-06T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2024-03-26T23:59:59-12:00'
+    deadline: '2024-04-02T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2025-04-07T23:59:59-12:00'
+    deadline: '2025-04-14T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2026-04-01T23:59:59-12:00'
+    deadline: '2026-04-08T23:59:00-12:00'
+- name: IFIP SEC
+  slug: ifip-sec
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  - security
+  homepage: https://acm-ieee-sec.org/2026/
+  location: Santa Clara University, CA, USA
+  cycles:
+  - name: '2026'
+    abstract: '2026-05-08T23:59:59-12:00'
+    deadline: '2026-05-08T23:59:59-12:00'
 - name: SIGMETRICS
   slug: sigmetrics
   rank:
@@ -191,12 +1089,89 @@
   homepage: https://www.sigmetrics.org/sigmetrics2027/
   location: Atlanta, Georgia, USA
   cycles:
+  - name: '2025'
+    abstract: '2024-07-31T23:59:00-12:00'
+    deadline: '2024-08-07T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2024-10-02T23:59:00-12:00'
+    deadline: '2024-10-09T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2025-01-15T23:59:00-12:00'
+    deadline: '2025-01-22T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-07-22T23:59:00-12:00'
+    deadline: '2025-07-29T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-10-07T23:59:00-12:00'
+    deadline: '2025-10-14T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2026-01-06T23:59:00-12:00'
+    deadline: '2026-01-13T23:59:00-12:00'
+  - name: '2027'
+    abstract: '2026-07-03T23:59:00-12:00'
+    deadline: '2026-07-10T23:59:00-12:00'
   - name: '2027'
     abstract: '2026-10-02T23:59:00-12:00'
     deadline: '2026-10-09T23:59:00-12:00'
   - name: '2027'
     abstract: '2027-01-04T23:59:00-12:00'
     deadline: '2027-01-11T23:59:00-12:00'
+- name: SIGOPS ATC
+  slug: sigops-atc
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - systems
+  homepage: https://sigops.org/s/conferences/atc/2026/index.html
+  location: Hyatt Hotel, Shatin, Hong Kong, China
+  cycles:
+  - name: '2021'
+    deadline: '2021-01-12T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-01-06T23:59:59+00:00'
+    deadline: '2022-01-13T23:59:59+00:00'
+  - name: '2023'
+    abstract: '2023-01-05T23:59:59+00:00'
+    deadline: '2023-01-12T23:59:59+00:00'
+  - name: '2024'
+    abstract: '2024-01-09T23:59:59+00:00'
+    deadline: '2024-01-16T23:59:59+00:00'
+  - name: '2025'
+    abstract: '2025-01-07T23:59:59+00:00'
+    deadline: '2025-01-14T23:59:59+00:00'
+  - name: '2026'
+    deadline: '2026-06-11T11:59:59+00:00'
+- name: SoCC
+  slug: socc
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - systems
+  homepage: https://acmsocc.org/2026/
+  location: Singapore
+  cycles:
+  - name: '2021'
+    abstract: '2021-05-21T17:00:00-04:00'
+    deadline: '2021-05-28T17:00:00-04:00'
+  - name: '2022'
+    abstract: '2022-06-10T17:00:00-04:00'
+    deadline: '2022-06-17T17:00:00-04:00'
+  - name: '2023'
+    deadline: '2023-06-09T14:00:00-07:00'
+  - name: '2024'
+    abstract: '2024-07-08T17:00:00-04:00'
+    deadline: '2024-07-15T17:00:00-04:00'
+  - name: '2025'
+    abstract: '2025-07-07T17:00:00-04:00'
+    deadline: '2025-07-14T17:00:00-04:00'
+  - name: '2026'
+    abstract: '2026-02-06T23:59:59-12:00'
+    deadline: '2026-02-13T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-07-07T23:59:59-12:00'
+    deadline: '2026-07-14T23:59:59-12:00'
 - name: SPAA
   slug: spaa
   rank:
@@ -207,9 +1182,57 @@
   homepage: https://spaa.acm.org/
   location: Atlanta, GA, USA
   cycles:
+  - name: '2021'
+    abstract: '2021-02-08T23:59:00-12:00'
+    deadline: '2021-02-11T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-02-21T23:59:00-12:00'
+    deadline: '2022-02-28T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-01-12T23:59:00-12:00'
+    deadline: '2023-01-17T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2024-01-19T23:59:00-12:00'
+    deadline: '2024-01-24T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2025-02-21T23:59:59-12:00'
+    deadline: '2025-02-28T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-20T23:59:59-12:00'
+    deadline: '2026-02-27T23:59:59-12:00'
   - name: '2027'
     abstract: '2026-09-18T23:59:59-12:00'
     deadline: '2026-09-25T23:59:59-12:00'
   - name: '2027'
     abstract: '2027-01-22T23:59:59-12:00'
     deadline: '2027-01-29T23:59:59-12:00'
+- name: SYSTOR
+  slug: systor
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - systems
+  homepage: https://www.systor.org/2026/
+  location: Virtual
+  cycles:
+  - name: '2024'
+    deadline: '2024-06-24T23:59:59+02:00'
+  - name: '2025'
+    deadline: '2025-05-26T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-05-25T23:59:59-12:00'
+- name: VEE
+  slug: vee
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - systems
+  homepage: https://conf.researchr.org/home/vee-2022
+  location: Virtual
+  cycles:
+  - name: '2021'
+    deadline: '2021-01-22T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2021-12-03T23:59:59-12:00'

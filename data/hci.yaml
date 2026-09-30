@@ -1,3 +1,17 @@
+- name: ASSETS
+  slug: assets
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - hci
+  homepage: https://assets26.sigaccess.org/
+  location: Porto, Portugal
+  cycles:
+  - name: '2025'
+    deadline: '2025-04-16T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-04-22T23:59:59-12:00'
 - name: CHI
   slug: chi
   rank:
@@ -6,32 +20,57 @@
   fields:
   - hci
   homepage: https://chi2027.acm.org/
-  location: Pittsburgh, USA
-  verified: true
+  location: David L. Lawrence Convention Center, Pittsburgh, USA
   cycles:
+  - name: '2024'
+    abstract: '2023-09-07T23:59:59-12:00'
+    deadline: '2023-09-14T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-09-05T23:59:59-12:00'
+    deadline: '2024-09-12T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-09-04T23:59:59-12:00'
+    deadline: '2025-09-11T23:59:59-12:00'
   - name: '2027'
-    tracks:
-    - name: Full Papers
-      deadline: '2026-09-10T23:59:59-12:00'
-      notification: '2026-12-17'
-    - name: Panels
-      deadline: '2026-11-19T23:59:59-12:00'
-      notification: '2027-01-14'
-    - name: Workshops (Organizer)
-      deadline: '2026-10-01T23:59:59-12:00'
-      notification: '2026-11-19'
-    - name: Posters
-      deadline: '2027-01-21T23:59:59-12:00'
-      notification: '2027-02-18'
-    - name: Interactive Demos
-      deadline: '2027-01-21T23:59:59-12:00'
-      notification: '2027-02-18'
-    - name: Student Research Competition
-      deadline: '2027-01-21T23:59:59-12:00'
-      notification: '2027-02-18'
-    - name: Digital Experience Competition
-      deadline: '2026-12-04T23:59:59-12:00'
-      notification: '2027-01-31'
+    deadline: '2026-09-10T23:59:59-12:00'
+- name: CollaborateCom
+  slug: collaboratecom
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - hci
+  homepage: https://collaboratecom.eai-conferences.org/2026/
+  location: Hong Kong SAR, China
+  cycles:
+  - name: '2025'
+    deadline: '2025-05-01T23:59:59-08:00'
+  - name: '2026'
+    deadline: '2026-05-01T23:59:59-08:00'
+- name: CSCW
+  slug: cscw
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - hci
+  homepage: https://cscw.acm.org/2026/
+  location: Salt Lake City, Utah, USA
+  cycles:
+  - name: '2021'
+    deadline: '2021-04-15T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-01-15T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-06-01T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-01-16T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-07-02T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-10-29T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-05-14T12:00:00-04:00'
 - name: CSCWD
   slug: cscwd
   rank:
@@ -42,6 +81,16 @@
   homepage: http://2027.cscwd.org
   location: Brisbane, Australia
   cycles:
+  - name: '2022'
+    deadline: '2021-11-30T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-10-31T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-11-20T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-15T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-11-30T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-31T23:59:59-12:00'
 - name: DIS
@@ -54,9 +103,69 @@
   homepage: https://dis.acm.org/2027/
   location: Stockholm, Sweden
   cycles:
+  - name: '2025'
+    abstract: '2025-01-13T23:59:59-12:00'
+    deadline: '2025-01-20T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-01-09T23:59:59-12:00'
+    deadline: '2026-01-19T23:59:59-12:00'
   - name: '2027'
     abstract: '2027-01-11T23:59:59-12:00'
     deadline: '2027-01-18T23:59:59-12:00'
+- name: ECSCW
+  slug: ecscw
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - hci
+  homepage: https://ecscw.eusset.eu/2026
+  location: Munich, Germany
+  cycles:
+  - name: '2025'
+    deadline: '2025-02-25T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-03-06T23:59:59-12:00'
+- name: GROUP
+  slug: group
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - hci
+  homepage: https://group.acm.org/conferences/group27/
+  location: St Simons Island, Georgia, USA
+  cycles:
+  - name: '2025'
+    deadline: '2023-06-07T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-05-01T23:59:59-12:00'
+    deadline: '2024-05-08T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2025-07-08T23:59:59-12:00'
+    deadline: '2025-07-15T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-03-24T23:59:59-12:00'
+    deadline: '2026-03-31T23:59:59-12:00'
+- name: ICMI
+  slug: icmi
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - hci
+  homepage: https://icmi.acm.org/2026/
+  location: Napoli, Italy
+  cycles:
+  - name: '2024'
+    abstract: '2024-04-26T23:59:59+07:00'
+    deadline: '2024-05-10T23:59:59+07:00'
+  - name: '2025'
+    abstract: '2025-04-25T23:59:59+07:00'
+    deadline: '2025-05-02T23:59:59+07:00'
+  - name: '2026'
+    abstract: '2026-04-13T23:59:59-07:00'
+    deadline: '2026-04-24T04:59:59-07:00'
 - name: ICWSM
   slug: icwsm
   rank:
@@ -67,6 +176,20 @@
   homepage: https://www.icwsm.org/2027/
   location: Edinburgh, Scotland
   cycles:
+  - name: '2025'
+    deadline: '2024-05-15T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-09-15T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-01-15T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-05-15T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-09-15T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-01-15T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-05-15T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-09-15T23:59:59-12:00'
   - name: '2027'
@@ -83,6 +206,46 @@
   - name: '2027'
     abstract: '2027-01-25T23:59:59-12:00'
     deadline: '2027-02-01T23:59:59-12:00'
+- name: ISS
+  slug: iss
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - hci
+  homepage: https://iss.acm.org/2026/
+  location: Turin, Italy
+  cycles:
+  - name: '2026'
+    deadline: '2025-03-14T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-07-25T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-12T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-07-22T23:59:59-12:00'
+- name: IUI
+  slug: iui
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - hci
+  homepage: https://iui.hosting.acm.org/2027/
+  location: Helsinki, Finland
+  cycles:
+  - name: '2024'
+    abstract: '2023-10-02T23:59:59-12:00'
+    deadline: '2023-10-09T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-03T23:59:59-12:00'
+    deadline: '2024-10-10T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-03T23:59:59-12:00'
+    deadline: '2025-10-10T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-08-13T23:59:59-12:00'
+    deadline: '2026-08-20T23:59:59-12:00'
 - name: MobileHCI
   slug: mobilehci
   rank:
@@ -105,6 +268,12 @@
   homepage: https://percom.org/
   location: Goa, India
   cycles:
+  - name: '2025'
+    abstract: '2024-09-29T23:59:00-12:00'
+    deadline: '2024-10-04T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-10-03T23:59:00-12:00'
+    deadline: '2025-10-03T23:59:00-12:00'
   - name: '2027'
     abstract: '2026-09-11T23:59:59-12:00'
     deadline: '2026-09-18T23:59:59-12:00'
@@ -112,36 +281,73 @@
   slug: ubicomp/iswc
   rank:
     ccf: A
+    core: N
+  fields:
+  - hci
+  homepage: https://www.ubicomp.org/ubicomp-iswc-2026
+  location: Shanghai, China
+  cycles:
+  - name: '2023'
+    deadline: '2023-02-15T23:59:59-05:00'
+  - name: '2023'
+    deadline: '2023-05-15T23:59:59-05:00'
+  - name: '2023'
+    deadline: '2023-08-15T23:59:59-05:00'
+  - name: '2023'
+    deadline: '2023-11-15T23:59:59-05:00'
+  - name: '2024'
+    deadline: '2024-02-01T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-05-01T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-11-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-02-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-11-01T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-01T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-05-01T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-11-01T23:59:59-12:00'
+- name: UIC
+  slug: uic
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - hci
+  homepage: https://swc-ieee-2026.github.io/uic/
+  location: Rende, Italy
+  cycles:
+  - name: '2025'
+    deadline: '2025-05-01T23:59:59-04:00'
+  - name: '2026'
+    deadline: '2026-05-31T23:59:59+02:00'
+- name: UIST
+  slug: uist
+  rank:
+    ccf: A
     core: A*
   fields:
   - hci
-  homepage: https://www.ubicomp.org/ubicomp-iswc-2026/author/
-  location: Shanghai, China
-  verified: true
+  homepage: https://uist.acm.org/2026/
+  location: GM Renaissance Center, Detroit, MI, USA
   cycles:
+  - name: '2024'
+    deadline: '2024-03-27T17:00:00-07:00'
+  - name: '2024'
+    deadline: '2024-04-03T17:00:00-07:00'
+  - name: '2025'
+    deadline: '2025-04-02T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2025-04-09T23:59:00-12:00'
   - name: '2026'
-    tracks:
-    - name: ISWC Notes & Briefs
-      abstract: '2026-05-17T23:59:59-12:00'
-      deadline: '2026-05-24T23:59:59-12:00'
-      notification: '2026-07-01'
-    - name: Workshop Proposal
-      deadline: '2026-04-30T23:59:59-12:00'
-      notification: '2026-05-02'
-    - name: Tutorial Proposal
-      deadline: '2026-05-07T23:59:59-12:00'
-    - name: Posters & Demos
-      deadline: '2026-06-06T23:59:59-12:00'
-      notification: '2026-07-20'
-    - name: Design Exhibition
-      deadline: '2026-06-22T23:59:59-12:00'
-      notification: '2026-07-24'
-    - name: Doctoral Colloquium
-      deadline: '2026-06-19T23:59:59-12:00'
-      notification: '2026-07-15'
-    - name: Student Challenge
-      deadline: '2026-06-24T23:59:59-12:00'
-      notification: '2026-07-20'
+    abstract: '2026-03-24T23:59:59-12:00'
+    deadline: '2026-03-31T23:59:59-12:00'
 - name: WHC
   slug: whc
   rank:

@@ -39,6 +39,7 @@ var upcomingCmd = &cobra.Command{
 
 		confs := s.Filter(ccf, fields)
 		now := time.Now()
+		yearFilter, _ := cmd.Flags().GetInt("year")
 
 		maxDays := 365
 		if within != "" {
@@ -47,25 +48,55 @@ var upcomingCmd = &cobra.Command{
 
 		var entries []upcomingEntry
 		for _, c := range confs {
-			for _, fd := range c.AllFutureDeadlines(now) {
-				days := model.DaysRemaining(fd.Track.Deadline, now)
-				if days > maxDays {
-					continue
+			// If --year is set, show all deadlines for that year (including past)
+			if yearFilter > 0 {
+				for _, cyc := range c.Cycles {
+					pc, err := model.ParseCycle(cyc)
+					if err != nil {
+						continue
+					}
+					for _, t := range pc.Tracks {
+						if t.Deadline.Year() != yearFilter {
+							continue
+						}
+						name := c.Name
+						if pc.Name != "" {
+							name = fmt.Sprintf("%s %s", c.Name, pc.Name)
+						}
+						if t.Name != "" {
+							name = fmt.Sprintf("%s [%s]", name, t.Name)
+						}
+						days := model.DaysRemaining(t.Deadline, now)
+						entries = append(entries, upcomingEntry{
+							Name:     name,
+							CCF:      c.Rank.CCF,
+							Deadline: t.Deadline,
+							DaysLeft: days,
+							Verified: c.Verified,
+						})
+					}
 				}
-				name := c.Name
-				if fd.CycleName != "" {
-					name = fmt.Sprintf("%s %s", c.Name, fd.CycleName)
+			} else {
+				for _, fd := range c.AllFutureDeadlines(now) {
+					days := model.DaysRemaining(fd.Track.Deadline, now)
+					if days > maxDays {
+						continue
+					}
+					name := c.Name
+					if fd.CycleName != "" {
+						name = fmt.Sprintf("%s %s", c.Name, fd.CycleName)
+					}
+					if fd.TrackName != "" {
+						name = fmt.Sprintf("%s [%s]", name, fd.TrackName)
+					}
+					entries = append(entries, upcomingEntry{
+						Name:     name,
+						CCF:      c.Rank.CCF,
+						Deadline: fd.Track.Deadline,
+						DaysLeft: days,
+						Verified: c.Verified,
+					})
 				}
-				if fd.TrackName != "" {
-					name = fmt.Sprintf("%s [%s]", name, fd.TrackName)
-				}
-				entries = append(entries, upcomingEntry{
-					Name:     name,
-					CCF:      c.Rank.CCF,
-					Deadline: fd.Track.Deadline,
-					DaysLeft: days,
-					Verified: c.Verified,
-				})
 			}
 		}
 
@@ -81,7 +112,11 @@ var upcomingCmd = &cobra.Command{
 		}
 
 		fmt.Println()
-		fmt.Println(ui.TitleStyle.Render("📅 Upcoming Deadlines"))
+		if yearFilter > 0 {
+			fmt.Printf(ui.TitleStyle.Render("📅 Deadlines for %d")+"\n", yearFilter)
+		} else {
+			fmt.Println(ui.TitleStyle.Render("📅 Upcoming Deadlines"))
+		}
 		fmt.Println()
 
 		widths := []int{34, 5, 12, 8}
@@ -124,6 +159,7 @@ func init() {
 	upcomingCmd.Flags().String("ccf", "", "Filter by CCF rank (A/B/C)")
 	upcomingCmd.Flags().String("field", "", "Filter by field (comma-separated)")
 	upcomingCmd.Flags().String("within", "", "Show deadlines within duration (e.g., 30d, 90d, 6m)")
+	upcomingCmd.Flags().Int("year", 0, "Show deadlines for a specific year (e.g., --year 2025)")
 	rootCmd.AddCommand(upcomingCmd)
 }
 

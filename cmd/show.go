@@ -26,13 +26,20 @@ var showCmd = &cobra.Command{
 			return fmt.Errorf("conference not found: %s\nUse 'cfpctl search %s' to find the correct slug", args[0], args[0])
 		}
 
+		year, _ := cmd.Flags().GetInt("year")
 		now := time.Now()
-		printConferenceDetail(conf, now)
+
+		if year > 0 {
+			printConferenceDetailByYear(conf, year)
+		} else {
+			printConferenceDetail(conf, now)
+		}
 		return nil
 	},
 }
 
 func init() {
+	showCmd.Flags().Int("year", 0, "Show data for a specific year (e.g., --year 2025)")
 	rootCmd.AddCommand(showCmd)
 }
 
@@ -155,4 +162,115 @@ func nextYear(c *model.Conference, now time.Time) int {
 		return nd.Deadline.Year()
 	}
 	return now.Year() + 1
+}
+
+// printConferenceDetailByYear shows only cycles matching the specified year.
+func printConferenceDetailByYear(c *model.Conference, year int) {
+	sep := strings.Repeat("─", 50)
+
+	fmt.Println()
+	fmt.Println(ui.TitleStyle.Render(fmt.Sprintf("%s %d (Historical)", strings.ToUpper(c.Name), year)))
+	fmt.Println(ui.DimStyle.Render(sep))
+	fmt.Println()
+
+	if c.Rank.CCF != "" {
+		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("CCF:"), ui.StyleCCF(c.Rank.CCF))
+	}
+	fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Field:"), joinFields(c.Fields))
+	fmt.Println()
+
+	found := false
+	for _, cyc := range c.Cycles {
+		pc, err := model.ParseCycle(cyc)
+		if err != nil || len(pc.Tracks) == 0 {
+			continue
+		}
+
+		// Check if any track in this cycle matches the requested year
+		matchesYear := false
+		// Try parsing year from cycle name first
+		if pc.Name != "" {
+			cycleYear := 0
+			for i := 0; i < len(pc.Name); i++ {
+				if pc.Name[i] >= '0' && pc.Name[i] <= '9' {
+					cycleYear = cycleYear*10 + int(pc.Name[i]-'0')
+				} else if cycleYear > 0 {
+					break
+				}
+			}
+			if cycleYear == year {
+				matchesYear = true
+			}
+		}
+		// Also check if any track's deadline falls in the requested year
+		if !matchesYear {
+			for _, t := range pc.Tracks {
+				if t.Deadline.Year() == year {
+					matchesYear = true
+					break
+				}
+			}
+		}
+		if !matchesYear {
+			continue
+		}
+
+		found = true
+		cycleName := pc.Name
+		if cycleName == "" {
+			cycleName = "Default"
+		}
+
+		hasMultipleTracks := len(pc.Tracks) > 1 || (len(pc.Tracks) == 1 && pc.Tracks[0].Name != "")
+
+		if hasMultipleTracks {
+			fmt.Println(ui.HeaderStyle.Render(fmt.Sprintf("  ▸ %s", cycleName)))
+			for _, t := range pc.Tracks {
+				trackLabel := t.Name
+				if trackLabel == "" {
+					trackLabel = "Main"
+				}
+				fmt.Println(ui.DimStyle.Render(fmt.Sprintf("    └─ %s", trackLabel)))
+				printTrackTimesHistorical(t)
+			}
+		} else {
+			fmt.Println(ui.HeaderStyle.Render(fmt.Sprintf("  ▸ %s", cycleName)))
+			printTrackTimesHistorical(pc.Tracks[0])
+		}
+		fmt.Println()
+	}
+
+	if !found {
+		fmt.Println(ui.SoonStyle.Render(fmt.Sprintf("  ⚠ No data found for year %d", year)))
+		fmt.Println(ui.DimStyle.Render("  Available years:"))
+		yearsSeen := make(map[int]bool)
+		for _, cyc := range c.Cycles {
+			pc, err := model.ParseCycle(cyc)
+			if err != nil || len(pc.Tracks) == 0 {
+				continue
+			}
+			y := pc.Tracks[0].Deadline.Year()
+			if !yearsSeen[y] {
+				yearsSeen[y] = true
+				fmt.Printf("    - %d\n", y)
+			}
+		}
+		fmt.Println()
+	}
+}
+
+func printTrackTimesHistorical(t model.ParsedTrack) {
+	if t.Abstract != nil {
+		fmt.Printf("      %-14s %s\n",
+			ui.MutedStyle.Render("Abstract"),
+			t.Abstract.Format("2006-01-02"))
+	}
+	fmt.Printf("      %-14s %s\n",
+		ui.MutedStyle.Render("Submission"),
+		t.Deadline.Format("2006-01-02"))
+	if t.Notification != nil {
+		fmt.Printf("      %-14s %s\n",
+			ui.MutedStyle.Render("Notification"),
+			t.Notification.Format("2006-01-02"))
+	}
 }

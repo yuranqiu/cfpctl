@@ -1,3 +1,370 @@
+- name: APLAS
+  slug: aplas
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://conf.researchr.org/track/aplas-atva-2026/aplas-2026
+  location: Hong Kong SAR, China
+  cycles:
+  - name: '2021'
+    abstract: '2021-06-16T23:59:59-12:00'
+    deadline: '2021-06-19T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-06-18T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-05-31T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-06-07T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-22T23:59:59-12:00'
+- name: APSEC
+  slug: apsec
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/apsec-2026
+  location: Bali, Indonesia
+  cycles:
+  - name: '2025'
+    abstract: '2025-07-06T23:59:59-12:00'
+    deadline: '2025-07-13T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-07-13T23:59:59-12:00'
+    deadline: '2026-07-20T23:59:59-12:00'
+- name: ASE
+  slug: ase
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/ase-2026
+  location: Munich, Germany
+  cycles:
+  - name: '2022'
+    abstract: '2022-04-29T23:59:59-12:00'
+    deadline: '2022-05-06T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-04-28T23:59:59-12:00'
+    deadline: '2023-05-05T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-05-31T23:59:59-12:00'
+    deadline: '2024-06-07T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-30T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-03-26T23:59:59-12:00'
+- name: ATVA
+  slug: atva
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://conf.researchr.org/track/aplas-atva-2026/atva-2026
+  location: Hong Kong SAR, China
+  cycles:
+  - name: '2025'
+    deadline: '2025-04-25T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-19T23:59:59-12:00'
+    deadline: '2026-05-21T23:59:59-12:00'
+- name: CAiSE
+  slug: caise
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://deal.us.es/caise27/
+  location: Seville, Spain
+  cycles:
+  - name: '2022'
+    deadline: '2021-11-22T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2021-11-29T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-11-22T23:59:59-12:00'
+    deadline: '2024-12-01T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-11-21T23:59:59-12:00'
+    deadline: '2025-11-28T23:59:59-12:00'
+- name: COMPSAC
+  slug: compsac
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://ieeecompsac.computer.org/2027/
+  location: Tokyo, Japan
+  cycles:
+  - name: '2025'
+    deadline: '2025-03-05T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-20T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2027-01-31T23:59:59-12:00'
+- name: CP
+  slug: cp
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://cp2026.a4cp.org/
+  location: Lisbon, Portugal
+  cycles:
+  - name: '2022'
+    deadline: '2022-02-25T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-03-24T23:00:00-12:00'
+    deadline: '2025-04-03T23:00:00-12:00'
+  - name: '2026'
+    abstract: '2026-03-02T23:00:00-12:00'
+    deadline: '2026-03-14T23:00:00-12:00'
+- name: EASE
+  slug: ease
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/ease-2027
+  location: Hanoi, Vietnam
+  cycles:
+  - name: '2025'
+    abstract: '2025-01-24T23:59:59-12:00'
+    deadline: '2025-01-31T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-01-16T23:59:59-12:00'
+    deadline: '2026-01-23T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2027-01-15T23:59:59-12:00'
+    deadline: '2027-01-22T23:59:59-12:00'
+- name: ECOOP
+  slug: ecoop
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://2027.ecoop.org/
+  location: Turin, Italy
+  cycles:
+  - name: '2022'
+    deadline: '2021-12-01T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-03-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-01-06T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-03-05T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-11-27T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-12T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-11-19T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2027-02-11T23:59:59-12:00'
+- name: ESEM
+  slug: esem
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/eseiw-2026
+  location: München, Germany
+  cycles:
+  - name: '2022'
+    abstract: '2022-04-25T23:59:59-12:00'
+    deadline: '2022-05-02T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-04-24T23:59:59-12:00'
+    deadline: '2023-05-02T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-05-02T23:59:59-12:00'
+    deadline: '2024-05-06T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-18T23:59:59-12:00'
+    deadline: '2025-04-25T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-11T23:59:59-12:00'
+    deadline: '2026-05-18T23:59:59-12:00'
+- name: ETAPS
+  slug: etaps
+  rank:
+    ccf: B
+    core: N
+  fields:
+  - software
+  homepage: https://etaps.org/2027
+  location: Copenhagen, Denmark
+  cycles:
+  - name: '2021'
+    deadline: '2020-10-15T23:59:00-12:00'
+  - name: '2022'
+    deadline: '2021-10-14T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-10-13T23:59:00-12:00'
+  - name: '2024'
+    deadline: '2023-10-12T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2024-05-30T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2024-10-10T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2025-06-03T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-10-16T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-05-28T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-10-15T23:59:59-12:00'
+- name: FM
+  slug: fm
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - software
+  homepage: https://www.fmeurope.org/feature/upcoming_conferences/
+  location: Athens, Greece
+  cycles:
+  - name: '2021'
+    abstract: '2021-04-30T23:59:59-12:00'
+    deadline: '2021-05-06T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-09-04T23:59:00-12:00'
+    deadline: '2022-09-11T23:59:00-12:00'
+  - name: '2024'
+    abstract: '2024-04-19T23:59:00-12:00'
+    deadline: '2024-04-19T23:59:00-12:00'
+  - name: '2026'
+    abstract: '2025-11-25T23:59:00-12:00'
+    deadline: '2025-12-02T23:59:00-12:00'
+- name: FSE / ESEC-FSE
+  slug: fse
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - software
+  - se
+  homepage: https://fseconf.org
+  location: TBD
+  verified: true
+  cycles:
+  - name: '2027'
+    tracks:
+    - name: Research
+      deadline: '2026-09-12T23:59:59-12:00'
+      notification: '2026-12-20'
+    - name: Industry
+      deadline: '2026-10-03T23:59:59-12:00'
+      notification: '2027-01-10'
+    - name: NIER
+      deadline: '2026-10-10T23:59:59-12:00'
+      notification: '2027-01-15'
+- name: HotOS
+  slug: hotos
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://sigops.org/s/conferences/hotos/2027/
+  location: Burghausen, Bavaria, Germany
+  cycles:
+  - name: '2021'
+    deadline: '2021-02-03T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-01-15T23:59:59-12:00'
+- name: ICECCS
+  slug: iceccs
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://formal-analysis.com/iceccs/2026/
+  location: Brisbane, Australia
+  cycles:
+  - name: '2024'
+    deadline: '2023-12-29T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-01-05T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-07-20T23:59:59-12:00'
+- name: ICFEM
+  slug: icfem
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - software
+  homepage: https://icfem2026.github.io/
+  location: Southampton, UK
+  cycles:
+  - name: '2023'
+    abstract: '2023-05-21T23:59:59-12:00'
+    deadline: '2023-05-28T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-06-11T23:59:00-12:00'
+    deadline: '2025-06-15T23:59:00-12:00'
+  - name: '2026'
+    deadline: '2026-06-22T23:59:59-12:00'
+- name: ICFP
+  slug: icfp
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://icfp27.sigplan.org/
+  location: Nijmegen, Netherlands
+  cycles:
+  - name: '2023'
+    deadline: '2023-03-01T23:59:00-12:00'
+  - name: '2024'
+    deadline: '2024-02-28T23:59:00-12:00'
+  - name: '2025'
+    deadline: '2025-02-27T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-02-19T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2027-02-25T23:59:59-12:00'
+- name: ICPC
+  slug: icpc
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/icpc-2027
+  location: Dublin, Ireland
+  cycles:
+  - name: '2022'
+    abstract: '2022-01-13T23:59:59-12:00'
+    deadline: '2022-01-18T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-10-30T23:59:59-12:00'
+    deadline: '2023-11-03T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-11-06T23:59:59-12:00'
+    deadline: '2024-11-09T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-19T23:59:59-12:00'
+    deadline: '2025-10-23T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-10-29T23:59:59-12:00'
+    deadline: '2026-11-05T23:59:59-12:00'
 - name: ICSE
   slug: icse
   rank:
@@ -32,100 +399,145 @@
       deadline: '2026-10-23T23:59:59-12:00'
     - name: SEET (Education)
       deadline: '2026-10-23T23:59:59-12:00'
-- name: FSE / ESEC-FSE
-  slug: fse
-  rank:
-    ccf: A
-    core: A*
-  fields:
-  - software
-  - se
-  homepage: https://fseconf.org
-  location: TBD
-  verified: true
-  cycles:
-  - name: '2027'
-    tracks:
-    - name: Research
-      deadline: '2026-09-12T23:59:59-12:00'
-      notification: '2026-12-20'
-    - name: Industry
-      deadline: '2026-10-03T23:59:59-12:00'
-      notification: '2027-01-10'
-    - name: NIER
-      deadline: '2026-10-10T23:59:59-12:00'
-      notification: '2027-01-15'
-- name: ASE
-  slug: ase
-  rank:
-    ccf: A
-    core: A
-  fields:
-  - software
-  - se
-  homepage: https://aseconf.org
-  location: TBD
-  cycles:
-  - name: '2026'
-    deadline: '2026-06-10T23:59:59-12:00'
-    notification: '2026-08-15'
-- name: PLDI
-  slug: pldi
-  rank:
-    ccf: A
-    core: A*
-  fields:
-  - software
-  - pl
-  homepage: https://pldi-conf.org
-  location: TBD
-  cycles:
-  - name: '2027'
-    deadline: '2026-10-20T23:59:59-12:00'
-    notification: '2027-01-15'
-- name: POPL
-  slug: popl
-  rank:
-    ccf: A
-    core: A*
-  fields:
-  - software
-  - pl
-  homepage: https://popl-conf.org
-  location: TBD
-  cycles:
-  - name: '2027'
-    deadline: '2026-07-11T23:59:59-12:00'
-    notification: '2026-10-01'
-- name: OOPSLA
-  slug: oopsla
-  rank:
-    ccf: A
-    core: A
-  fields:
-  - software
-  - pl
-  homepage: https://oopsla.org
-  location: TBD
-  cycles:
-  - name: '2027'
-    deadline: '2026-10-15T23:59:59-12:00'
-    notification: '2027-01-15'
-- name: ISSTA
-  slug: issta
+- name: ICSME
+  slug: icsme
   rank:
     ccf: B
     core: A
   fields:
   - software
-  - se
-  - testing
-  homepage: https://issta.org
-  location: TBD
+  homepage: https://conf.researchr.org/home/icsme-2027
+  location: Toronto, Canada
   cycles:
+  - name: '2021'
+    abstract: '2021-04-26T23:59:00-12:00'
+    deadline: '2021-04-29T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-03-25T23:59:59-12:00'
+    deadline: '2022-04-01T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-04-20T23:59:59-12:00'
+    deadline: '2023-04-27T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-03-06T23:59:59-12:00'
+    deadline: '2025-03-13T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-27T23:59:59-12:00'
+    deadline: '2026-03-06T23:59:59-12:00'
   - name: '2027'
-    deadline: '2026-10-31T23:59:59-12:00'
-    notification: '2027-02-01'
+    deadline: '2027-03-05T23:59:59-12:00'
+- name: ICSOC
+  slug: icsoc
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://icsoc2026.it.p.lodz.pl/
+  location: Lodz, Poland
+  cycles:
+  - name: '2022'
+    deadline: '2022-03-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-09T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-07-07T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-07-14T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-05-10T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-07-12T23:59:59-12:00'
+    deadline: '2026-07-19T23:59:59-12:00'
+- name: ICST
+  slug: icst
+  rank:
+    ccf: C
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/icst-2027
+  location: San Sebastian, Spain
+  cycles:
+  - name: '2026'
+    deadline: '2025-12-22T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-11-02T23:59:59-12:00'
+- name: ICWS
+  slug: icws
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://services.conferences.computer.org/2026/icws-2026/
+  location: Sydney, Australia
+  cycles:
+  - name: '2022'
+    deadline: '2022-09-15T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-03-25T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-02-24T23:59:59-12:00'
+    deadline: '2025-03-03T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-03-22T23:59:59-12:00'
+- name: Internetware
+  slug: internetware
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/internetware-2026
+  location: Gold Coast, Australia
+  cycles:
+  - name: '2023'
+    abstract: '2023-04-17T23:59:59-12:00'
+    deadline: '2023-04-22T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2024-04-09T23:59:59-12:00'
+    deadline: '2024-04-17T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-05-31T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-03-01T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-03-31T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-28T23:59:59-12:00'
+    deadline: '2026-04-04T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-27T23:59:59-12:00'
+    deadline: '2026-05-04T23:59:59-12:00'
+- name: ISPASS
+  slug: ispass
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://ispass.org/ispass2026/
+  location: Seoul, South Korea
+  cycles:
+  - name: '2021'
+    abstract: '2020-10-23T23:59:59-04:00'
+    deadline: '2020-10-30T23:59:59-04:00'
+  - name: '2022'
+    abstract: '2021-12-07T23:59:59-05:00'
+    deadline: '2021-12-14T23:59:59-05:00'
+  - name: '2023'
+    abstract: '2022-11-29T23:59:59-05:00'
+    deadline: '2022-12-11T23:59:59-05:00'
+  - name: '2024'
+    abstract: '2023-12-08T23:59:59-12:00'
+    deadline: '2023-12-18T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-12-09T23:59:59-12:00'
+    deadline: '2024-12-16T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-08T17:00:00-05:00'
+    deadline: '2025-12-15T17:00:00-05:00'
 - name: ISSRE
   slug: issre
   rank:
@@ -133,13 +545,105 @@
     core: A
   fields:
   - software
-  - se
-  homepage: https://issre.github.io
-  location: TBD
+  homepage: https://conf.researchr.org/home/issre-2027
+  location: Taipa, Macao SAR, China
   cycles:
+  - name: '2023'
+    abstract: '2023-06-01T23:59:59-12:00'
+    deadline: '2023-06-07T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-05-15T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-05-05T23:59:59-12:00'
+    deadline: '2025-05-12T23:59:59-12:00'
   - name: '2026'
-    deadline: '2026-07-05T23:59:59-12:00'
-    notification: '2026-09-15'
+    abstract: '2026-04-24T23:59:59-12:00'
+    deadline: '2026-04-24T23:59:59-12:00'
+- name: ISSTA
+  slug: issta
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/issta-2027
+  location: Singapore
+  cycles:
+  - name: '2022'
+    deadline: '2022-01-28T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-11-10T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-02-16T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-12-15T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-04-12T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-10-31T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-01-29T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2027-01-08T23:59:59-12:00'
+    deadline: '2027-01-11T23:59:59-12:00'
+- name: LCTES
+  slug: lctes
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - software
+  homepage: https://pldi26.sigplan.org/home/LCTES-2026
+  location: Boulder, Colorado, USA
+  cycles:
+  - name: '2021'
+    deadline: '2021-03-08T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-03-14T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-03-24T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2024-02-29T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-03-21T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-13T23:59:59-12:00'
+    deadline: '2026-03-20T23:59:59-12:00'
+- name: Middleware
+  slug: middleware
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://middleware-conf.github.io/2026/
+  location: Universitat Rovira i Virgili, Tarragona, Spain
+  cycles:
+  - name: '2022'
+    deadline: '2021-11-20T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-05-25T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-09T23:59:59-12:00'
+    deadline: '2025-12-12T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-29T23:59:59-12:00'
+    deadline: '2026-06-05T23:59:59-12:00'
+- name: MoDELS
+  slug: models
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/models-2026
+  location: Málaga, Spain
+  cycles:
+  - name: '2022'
+    deadline: '2022-05-18T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-03-20T23:59:59-12:00'
+    deadline: '2026-03-27T23:59:59-12:00'
 - name: MSR
   slug: msr
   rank:
@@ -147,25 +651,382 @@
     core: A
   fields:
   - software
-  - se
-  - mining
-  homepage: https://mining-software-repositories.github.io
-  location: TBD
+  homepage: https://2027.msrconf.org/
+  location: Dublin, Ireland
+  cycles:
+  - name: '2021'
+    abstract: '2021-01-05T23:59:59-12:00'
+    deadline: '2021-01-12T23:59:59-12:00'
+  - name: '2022'
+    abstract: '2022-01-17T23:59:59-12:00'
+    deadline: '2022-01-20T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-01-16T23:59:59-12:00'
+    deadline: '2023-01-19T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-11-14T23:59:59-12:00'
+    deadline: '2023-11-17T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-11-06T23:59:59-12:00'
+    deadline: '2024-11-09T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-20T23:59:59-12:00'
+    deadline: '2025-10-23T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-10-20T23:59:59-12:00'
+    deadline: '2026-10-23T23:59:59-12:00'
+- name: OOPSLA
+  slug: oopsla
+  rank:
+    ccf: A
+    core: A
+  fields:
+  - software
+  homepage: https://2027.splashcon.org/track/splashoopsla2027
+  location: Prague, Czechia
+  cycles:
+  - name: '2022'
+    deadline: '2021-10-12T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2022-04-15T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-10-28T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2023-04-14T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-10-21T07:59:59-04:00'
+  - name: '2024'
+    deadline: '2024-04-06T07:59:59-04:00'
+  - name: '2025'
+    deadline: '2025-03-25T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-10-10T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-03-17T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-10-14T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2027-04-07T23:59:59-12:00'
+- name: OSDI
+  slug: osdi
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - software
+  homepage: https://www.usenix.org/conference/osdi27
+  location: Baltimore, MD, USA
+  cycles:
+  - name: '2021'
+    abstract: '2020-12-03T15:00:00-08:00'
+    deadline: '2020-12-10T15:00:00-08:00'
+  - name: '2022'
+    abstract: '2021-12-07T22:59:59-12:00'
+    deadline: '2021-12-14T22:59:59-12:00'
+  - name: '2023'
+    abstract: '2022-12-06T22:59:59-12:00'
+    deadline: '2022-12-13T22:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-11-30T22:59:59-12:00'
+    deadline: '2023-12-07T22:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-12-03T22:59:59-12:00'
+    deadline: '2024-12-10T22:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-12-04T22:59:59-12:00'
+    deadline: '2025-12-11T22:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-12-01T22:59:59-12:00'
+    deadline: '2026-12-08T22:59:59-12:00'
+- name: PEPM
+  slug: pepm
+  rank:
+    ccf: C
+  fields:
+  - software
+  homepage: https://popl27.sigplan.org/home/pepm-2027
+  location: Mexico City, Mexico
   cycles:
   - name: '2027'
-    deadline: '2026-11-08T23:59:59-12:00'
-    notification: '2027-02-01'
-- name: SANER
-  slug: saner
+    deadline: '2026-10-23T23:59:59-12:00'
+- name: PLDI
+  slug: pldi
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - software
+  homepage: https://pldi27.sigplan.org/
+  location: Atlanta, Georgia, USA
+  cycles:
+  - name: '2021'
+    deadline: '2020-11-20T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2021-11-19T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-11-10T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-11-16T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-11-14T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-11-13T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-11-12T23:59:59-12:00'
+- name: POPL
+  slug: popl
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - software
+  homepage: https://popl27.sigplan.org/
+  location: Mexico City
+  cycles:
+  - name: '2021'
+    deadline: '2020-07-09T23:59:59-12:00'
+  - name: '2022'
+    deadline: '2021-07-08T23:59:59-12:00'
+  - name: '2023'
+    deadline: '2022-07-07T23:59:59-12:00'
+  - name: '2024'
+    deadline: '2023-07-11T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2024-07-11T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-07-10T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-07-09T23:59:59-12:00'
+- name: QRS
+  slug: qrs
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - software
+  homepage: https://qrs26.techconf.org/
+  location: University of Florence, Florence, Italy
+  cycles:
+  - name: '2021'
+    abstract: '2021-08-15T23:59:59-12:00'
+    deadline: '2021-08-22T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2025-04-05T23:59:59-12:00'
+    deadline: '2025-04-15T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-04-08T23:59:59-12:00'
+    deadline: '2026-04-22T23:59:59-12:00'
+- name: RE
+  slug: re
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/RE-2027
+  location: Milan, Italy
+  cycles:
+  - name: '2022'
+    abstract: '2022-02-17T23:59:59-12:00'
+    deadline: '2022-02-24T23:59:59-12:00'
+  - name: '2023'
+    abstract: '2023-03-10T23:59:59-12:00'
+    deadline: '2023-03-17T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-02-16T23:59:59-12:00'
+    deadline: '2026-02-23T23:59:59-12:00'
+- name: REFSQ
+  slug: refsq
   rank:
     ccf: C
     core: B
   fields:
   - software
-  - se
-  homepage: https://saner-conf.org
-  location: TBD
+  homepage: https://2027.refsq.org/
+  location: Basel, Switzerland
   cycles:
+  - name: '2025'
+    abstract: '2024-11-01T23:59:59-12:00'
+    deadline: '2024-11-08T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-10T23:59:59-12:00'
+    deadline: '2025-10-17T23:59:59-12:00'
   - name: '2027'
-    deadline: '2026-09-20T23:59:59-12:00'
-    notification: '2026-11-30'
+    abstract: '2026-11-05T23:59:59-12:00'
+    deadline: '2026-11-12T23:59:59-12:00'
+- name: RV
+  slug: rv
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://rv2026.smithengineering.queensu.ca/
+  location: Kingston, Canada
+  cycles:
+  - name: '2025'
+    deadline: '2025-05-30T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-16T23:59:59-12:00'
+- name: SANER
+  slug: saner
+  rank:
+    ccf: B
+    core: A
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/saner-2027
+  location: Richmond, Virginia, United States
+  cycles:
+  - name: '2022'
+    abstract: '2021-10-14T23:59:59-12:00'
+    deadline: '2021-10-21T23:59:59-12:00'
+  - name: '2024'
+    abstract: '2023-10-13T23:59:59-12:00'
+    deadline: '2023-10-29T23:59:59-12:00'
+  - name: '2025'
+    abstract: '2024-10-04T23:59:59-12:00'
+    deadline: '2024-10-13T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2025-10-09T23:59:59-12:00'
+    deadline: '2025-10-16T23:59:59-12:00'
+  - name: '2027'
+    abstract: '2026-09-21T23:59:59-12:00'
+    deadline: '2026-09-25T23:59:59-12:00'
+- name: SAS
+  slug: sas
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/splash-issta-2026/sas-2026
+  location: Oakland, California, USA
+  cycles:
+  - name: '2022'
+    deadline: '2022-05-04T23:59:59-12:00'
+  - name: '2025'
+    deadline: '2025-05-11T23:59:59-12:00'
+  - name: '2026'
+    abstract: '2026-05-01T23:59:59-12:00'
+    deadline: '2026-05-07T23:59:59-12:00'
+- name: SCAM
+  slug: scam
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/scam-2026
+  location: Benevento, Italy
+  cycles:
+  - name: '2021'
+    abstract: '2021-06-24T23:59:00-12:00'
+    deadline: '2021-06-30T23:59:00-12:00'
+  - name: '2022'
+    abstract: '2022-06-17T23:59:00-12:00'
+    deadline: '2022-06-23T23:59:00-12:00'
+  - name: '2023'
+    abstract: '2023-06-29T23:59:00-12:00'
+    deadline: '2023-07-06T23:59:00-12:00'
+  - name: '2025'
+    abstract: '2025-06-05T23:59:59-12:00'
+    deadline: '2025-06-09T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2026-06-11T23:59:59-12:00'
+- name: SEKE
+  slug: seke
+  rank:
+    ccf: C
+    core: C
+  fields:
+  - software
+  homepage: https://ksiresearch.org/seke/seke26.html
+  location: Toronto, Canada & Virtual
+  cycles:
+  - name: '2021'
+    deadline: '2021-03-15T23:59:59-05:00'
+  - name: '2022'
+    deadline: '2022-03-15T23:59:59-05:00'
+  - name: '2023'
+    deadline: '2023-03-15T23:59:59-05:00'
+  - name: '2024'
+    deadline: '2024-06-07T23:59:59-05:00'
+  - name: '2025'
+    deadline: '2025-05-15T23:59:59-05:00'
+  - name: '2026'
+    deadline: '2026-05-10T23:59:59-05:00'
+- name: SOSP
+  slug: sosp
+  rank:
+    ccf: A
+    core: A*
+  fields:
+  - software
+  homepage: https://sigops.org/s/conferences/sosp/2026/index.html
+  location: Clarion Congress Hotel Prague, Prague, Czechia
+  cycles:
+  - name: '2021'
+    abstract: '2021-04-30T14:59:59-07:00'
+    deadline: '2021-05-07T14:59:59-07:00'
+  - name: '2023'
+    abstract: '2023-04-10T23:59:59-04:00'
+    deadline: '2023-04-17T23:59:59-04:00'
+  - name: '2024'
+    abstract: '2024-04-12T23:59:59-07:00'
+    deadline: '2024-04-19T23:59:59-07:00'
+  - name: '2025'
+    abstract: '2025-04-10T23:59:59-07:00'
+    deadline: '2025-04-17T23:59:59-07:00'
+  - name: '2026'
+    abstract: '2026-03-26T23:59:59-12:00'
+    deadline: '2026-04-01T23:59:59-12:00'
+- name: SSE
+  slug: sse
+  rank:
+    ccf: C
+    core: B
+  fields:
+  - software
+  homepage: https://services.conferences.computer.org/2026/sse/
+  location: Sydney, Australia
+  cycles:
+  - name: '2021'
+    deadline: '2021-03-01T05:00:00+00:00'
+  - name: '2021'
+    deadline: '2021-04-30T05:00:00+00:00'
+  - name: '2025'
+    deadline: '2025-03-10T23:00:00-12:00'
+  - name: '2026'
+    deadline: '2026-03-22T23:59:59-12:00'
+- name: TASE
+  slug: tase
+  rank:
+    ccf: C
+    core: N
+  fields:
+  - software
+  homepage: https://tase2026.github.io/
+  location: Shanghai, China
+  cycles:
+  - name: '2026'
+    abstract: '2026-03-01T23:59:59-12:00'
+    deadline: '2026-03-07T23:59:59-12:00'
+- name: VMCAI
+  slug: vmcai
+  rank:
+    ccf: B
+    core: B
+  fields:
+  - software
+  homepage: https://conf.researchr.org/home/VMCAI-2027
+  location: Mexico City, Mexico
+  cycles:
+  - name: '2022'
+    deadline: '2021-09-09T23:59:59-12:00'
+  - name: '2026'
+    deadline: '2025-09-15T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-09-23T23:59:59-12:00'
+  - name: '2027'
+    deadline: '2026-09-30T23:59:59-12:00'

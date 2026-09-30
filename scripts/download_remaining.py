@@ -112,6 +112,7 @@ def convert_conference(data, fields):
     confs = data.get("confs", [])
     if not confs:
         return []
+    # Use latest conf for metadata
     latest_conf = None
     latest_year = -1
     for conf in confs:
@@ -128,27 +129,36 @@ def convert_conference(data, fields):
         return []
     homepage = latest_conf.get("link", "")
     location = latest_conf.get("place", "TBD") or "TBD"
-    tz_suffix = parse_timezone(latest_conf.get("timezone", ""))
-    timelines = latest_conf.get("timeline", [])
-    if not timelines:
-        return []
+    # Build cycles from ALL years (keep history)
+    sorted_confs = sorted(
+        [c for c in confs if isinstance(c, dict)],
+        key=lambda c: int(c.get("year", 0))
+    )
     cycles = []
-    for tl in timelines:
-        if not isinstance(tl, dict):
+    for conf in sorted_confs:
+        try:
+            year = int(conf.get("year", 0))
+        except (ValueError, TypeError):
             continue
-        deadline_iso = convert_datetime(tl.get("deadline"), tz_suffix)
-        abstract_iso = convert_datetime(tl.get("abstract_deadline"), tz_suffix)
-        notification_iso = convert_datetime(tl.get("notification"), tz_suffix) if tl.get("notification") else None
-        if deadline_iso and is_past(deadline_iso):
+        tz_suffix = parse_timezone(conf.get("timezone", ""))
+        timelines = conf.get("timeline", [])
+        if not timelines:
             continue
-        cycle = {"name": str(latest_year)}
-        if abstract_iso:
-            cycle["abstract"] = abstract_iso
-        if deadline_iso:
+        for tl in timelines:
+            if not isinstance(tl, dict):
+                continue
+            deadline_iso = convert_datetime(tl.get("deadline"), tz_suffix)
+            abstract_iso = convert_datetime(tl.get("abstract_deadline"), tz_suffix)
+            notification_iso = convert_datetime(tl.get("notification"), tz_suffix) if tl.get("notification") else None
+            if not deadline_iso:
+                continue
+            cycle = {"name": str(year)}
+            if abstract_iso:
+                cycle["abstract"] = abstract_iso
             cycle["deadline"] = deadline_iso
-        if notification_iso:
-            cycle["notification"] = notification_iso
-        cycles.append(cycle)
+            if notification_iso:
+                cycle["notification"] = notification_iso
+            cycles.append(cycle)
     if not cycles:
         return []
     entry = {

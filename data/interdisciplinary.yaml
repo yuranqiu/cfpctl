@@ -26,6 +26,7 @@
   - name: '2026'
     abstract: '2026-05-20T23:59:59-12:00'
     deadline: '2026-05-27T23:59:59-12:00'
+  accept_rate: 25.9%(35/135 25')
 - name: APBC
   slug: apbc
   rank:
@@ -64,6 +65,7 @@
     deadline: '2025-08-03T17:00:00-05:00'
   - name: '2026'
     deadline: '2026-07-05T17:00:00-05:00'
+  accept_rate: 19.8%(167/842 22')
 - name: BigData
   slug: bigdata
   rank:
@@ -92,6 +94,7 @@
     deadline: '2025-03-10T23:00:00-12:00'
   - name: '2026'
     deadline: '2026-03-22T23:00:00-12:00'
+  accept_rate: 22.4%(43/192 22')
 - name: CogSci
   slug: cogsci
   rank:
@@ -110,6 +113,7 @@
     deadline: '2025-02-01T23:59:59+08:00'
   - name: '2026'
     deadline: '2026-02-02T23:59:59-12:00'
+  accept_rate: 68.2%(484/710 21')
 - name: EMSOFT
   slug: emsoft
   rank:
@@ -126,6 +130,7 @@
   - name: '2026'
     abstract: '2026-03-23T23:59:59-12:00'
     deadline: '2026-03-30T23:59:59-12:00'
+  accept_rate: 26.6%(49/184 26')
 - name: ICIC
   slug: icic
   rank:
@@ -142,6 +147,7 @@
     deadline: '2025-04-10T11:59:59+08:00'
   - name: '2026'
     deadline: '2026-04-04T11:59:59+08:00'
+  accept_rate: 40.4%(1844/4561 26')
 - name: ISBRA
   slug: isbra
   rank:
@@ -156,6 +162,7 @@
     deadline: '2025-04-01T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-03-22T23:59:59-12:00'
+  accept_rate: 36.3%(61/168 26')
 - name: MICCAI
   slug: miccai
   rank:
@@ -176,6 +183,7 @@
   - name: '2026'
     abstract: '2026-02-12T23:59:00-08:00'
     deadline: '2026-02-26T23:59:00-08:00'
+  accept_rate: 26.5%(1167/4402 26')
 - name: RECOMB
   slug: recomb
   rank:
@@ -195,6 +203,7 @@
   - name: '2027'
     abstract: '2026-10-28T23:59:59-12:00'
     deadline: '2026-11-04T23:59:59-12:00'
+  accept_rate: 16.2%(55/339 25')
 - name: RTSS
   slug: rtss
   rank:
@@ -212,6 +221,7 @@
   - name: '2026'
     abstract: '2026-05-21T23:59:59-12:00'
     deadline: '2026-05-26T23:59:59-12:00'
+  accept_rate: 28.9%(37/128 22')
 - name: SIGSPATIAL
   slug: sigspatial
   rank:
@@ -231,6 +241,7 @@
   - name: '2026'
     abstract: '2026-05-29T23:59:59-07:00'
     deadline: '2026-06-05T23:59:59-07:00'
+  accept_rate: 20.1%(38/189 23')
 - name: SMC
   slug: smc
   rank:
@@ -267,6 +278,7 @@
     deadline: '2025-07-03T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-07-02T23:59:59-12:00'
+  accept_rate: 29.8%(67/225 25')
 - name: WWW
   slug: www
   rank:
@@ -298,3 +310,4 @@
   - name: '2027'
     abstract: '2026-10-18T23:59:59-12:00'
     deadline: '2026-10-25T23:59:59-12:00'
+  accept_rate: 20.1%(676/3370 26')

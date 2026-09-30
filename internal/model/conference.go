@@ -2,17 +2,27 @@ package model
 
 import "time"
 
+// RollingReview describes an ARR-style rolling review process.
+type RollingReview struct {
+	Name              string   `yaml:"name"`               // e.g., "ACL Rolling Review"
+	URL               string   `yaml:"url,omitempty"`       // submission portal URL
+	CommitmentWindows []string `yaml:"commitment_windows"` // e.g., ["2026-01-15", "2026-02-15", ...]
+	Note              string   `yaml:"note,omitempty"`      // any special notes
+}
+
 // Conference represents an academic conference with its metadata and submission cycles.
 type Conference struct {
-	Name     string   `yaml:"name"`
-	Slug     string   `yaml:"slug"`
-	Rank     Rank     `yaml:"rank"`
-	Fields   []string `yaml:"fields"`
-	Homepage string   `yaml:"homepage"`
-	CFP      string   `yaml:"cfp,omitempty"`
-	Location string   `yaml:"location,omitempty"`
-	Verified bool     `yaml:"verified,omitempty"` // true = deadline verified against official CFP
-	Cycles   []Cycle  `yaml:"cycles"`
+	Name          string         `yaml:"name"`
+	Slug          string         `yaml:"slug"`
+	Rank          Rank           `yaml:"rank"`
+	Fields        []string       `yaml:"fields"`
+	Homepage      string         `yaml:"homepage"`
+	CFP           string         `yaml:"cfp,omitempty"`
+	Location      string         `yaml:"location,omitempty"`
+	Verified      bool           `yaml:"verified,omitempty"`
+	AcceptRate    string         `yaml:"accept_rate,omitempty"` // e.g., "25.3% (2026)"
+	RollingReview *RollingReview `yaml:"rolling_review,omitempty"`
+	Cycles        []Cycle        `yaml:"cycles"`
 }
 
 // Rank holds the ranking information from different evaluation systems.

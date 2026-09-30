@@ -26,6 +26,7 @@
   - name: '2027'
     abstract: '2026-07-21T23:59:59-12:00'
     deadline: '2026-07-28T23:59:59-12:00'
+  accept_rate: 17.6%(4167/23680 26')
 - name: AAMAS
   slug: aamas
   rank:
@@ -57,6 +58,7 @@
   - name: '2027'
     abstract: '2026-10-01T23:59:59-12:00'
     deadline: '2026-10-08T23:59:59-12:00'
+  accept_rate: 24.9%(338/1359 26')
 - name: ACCV
   slug: accv
   rank:
@@ -82,6 +84,24 @@
   - ai
   homepage: https://2027.aclweb.org/
   location: Kyoto, Japan
+  verified: true
+  rolling_review:
+    name: ACL Rolling Review (ARR)
+    url: https://openreview.net/group?id=aclweb.org/ACL/ARR
+    commitment_windows:
+    - '2026-01-15'
+    - '2026-02-15'
+    - '2026-03-15'
+    - '2026-04-15'
+    - '2026-05-15'
+    - '2026-06-15'
+    - '2026-07-15'
+    - '2026-08-15'
+    - '2026-09-15'
+    - '2026-10-15'
+    - '2026-11-15'
+    - '2026-12-15'
+    note: Submit via ARR monthly; commit to ACL by Feb 15 for main conference
   cycles:
   - name: '2021'
     abstract: '2021-01-25T23:59:59-12:00'
@@ -103,6 +123,7 @@
     deadline: '2025-02-15T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-01-05T23:59:59-12:00'
+  accept_rate: 18.9%(2296/12148 26')
 - name: ACML
   slug: acml
   rank:
@@ -156,6 +177,7 @@
   - name: '2027'
     abstract: '2026-09-29T23:59:59-12:00'
     deadline: '2026-10-06T23:59:59-12:00'
+  accept_rate: 28.1%(590/2102 26')
 - name: ALT
   slug: alt
   rank:
@@ -174,6 +196,7 @@
     deadline: '2025-10-02T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-12T23:59:59-12:00'
+  accept_rate: 35.4%(51/144 25')
 - name: BMVC
   slug: bmvc
   rank:
@@ -201,6 +224,7 @@
   - name: '2026'
     abstract: '2026-05-22T23:59:59-12:00'
     deadline: '2026-05-29T23:59:59-12:00'
+  accept_rate: 27.9%(404/1448 26')
 - name: COLING
   slug: coling
   rank:
@@ -223,6 +247,7 @@
     deadline: '2026-10-12T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-12-23T23:59:59-12:00'
+  accept_rate: 27.9%(760/2723 25')
 - name: COLT
   slug: colt
   rank:
@@ -245,6 +270,7 @@
     deadline: '2025-02-06T16:59:59-05:00'
   - name: '2026'
     deadline: '2026-02-04T23:59:59-12:00'
+  accept_rate: 29.1%(191/657 26')
 - name: CoNLL
   slug: conll
   rank:
@@ -267,6 +293,7 @@
     deadline: '2025-03-14T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-02-19T23:59:59-12:00'
+  accept_rate: 18.3%(47/257 26')
 - name: CVPR
   slug: cvpr
   rank:
@@ -290,6 +317,7 @@
     - name: Tutorials
       deadline: '2027-02-28T23:59:59-12:00'
       notification: '2027-03-20'
+  accept_rate: 25.4%(4089/16092 26')
 - name: DAI
   slug: dai
   rank:
@@ -312,6 +340,7 @@
     deadline: '2025-08-21T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-08-03T23:59:59-12:00'
+  accept_rate: 48.4%(15/31 21')
 - name: ECAI
   slug: ecai
   rank:
@@ -339,6 +368,7 @@
     deadline: '2026-01-19T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-04-14T23:59:59-12:00'
+  accept_rate: 23.3%(547/2344 24')
 - name: ECCV
   slug: eccv
   rank:
@@ -357,6 +387,7 @@
   - name: '2026'
     abstract: '2026-02-26T14:00:00-08:00'
     deadline: '2026-03-05T14:00:00-08:00'
+  accept_rate: 27.1%(2834/10473 26')
 - name: EMNLP
   slug: emnlp
   rank:
@@ -366,6 +397,18 @@
   - ai
   homepage: https://2026.emnlp.org/
   location: Budapest, Hungary
+  verified: true
+  rolling_review:
+    name: ACL Rolling Review (ARR)
+    url: https://openreview.net/group?id=aclweb.org/ACL/ARR
+    commitment_windows:
+    - '2026-01-15'
+    - '2026-02-15'
+    - '2026-03-15'
+    - '2026-04-15'
+    - '2026-05-15'
+    - '2026-06-15'
+    note: Submit via ARR monthly; commit to EMNLP by Jun 15 for main conference
   cycles:
   - name: '2021'
     abstract: '2021-05-10T23:59:00-12:00'
@@ -394,6 +437,7 @@
     deadline: '2026-05-25T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-08-02T23:59:59-12:00'
+  accept_rate: 22.2%(1811/8174 25')
 - name: FG
   slug: fg
   rank:
@@ -425,6 +469,7 @@
   - name: '2027'
     abstract: '2026-10-09T23:59:59-12:00'
     deadline: '2026-10-16T23:59:59-12:00'
+  accept_rate: 60.0%(51/85 23')
 - name: GECCO
   slug: gecco
   rank:
@@ -441,6 +486,7 @@
   - name: '2026'
     abstract: '2026-01-19T23:59:00-12:00'
     deadline: '2026-01-26T23:59:00-12:00'
+  accept_rate: 36.1%(181/501 25')
 - name: ICANN
   slug: icann
   rank:
@@ -455,6 +501,7 @@
     deadline: '2025-03-29T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-03-30T23:59:59-12:00'
+  accept_rate: 45.3%(170/375 25')
 - name: ICAPS
   slug: icaps
   rank:
@@ -474,6 +521,7 @@
   - name: '2027'
     abstract: '2026-12-07T23:59:59-12:00'
     deadline: '2026-12-14T23:59:59-12:00'
+  accept_rate: 22.7%(90/397 26')
 - name: ICCBR
   slug: iccbr
   rank:
@@ -491,6 +539,7 @@
   - name: '2026'
     abstract: '2026-03-20T23:59:59-12:00'
     deadline: '2026-03-27T23:59:59-12:00'
+  accept_rate: 42.4%(36/85 26')
 - name: ICCV
   slug: iccv
   rank:
@@ -509,6 +558,7 @@
   - name: '2025'
     abstract: '2025-03-04T09:59:59+00:00'
     deadline: '2025-03-08T09:59:59+00:00'
+  accept_rate: 24.0%(2701/11239 25')
 - name: ICDAR
   slug: icdar
   rank:
@@ -529,6 +579,7 @@
   - name: '2027'
     abstract: '2027-01-31T23:59:59-12:00'
     deadline: '2027-02-20T23:59:59-12:00'
+  accept_rate: 47.5%(140/295 26')
 - name: ICLR
   slug: iclr
   rank:
@@ -544,6 +595,7 @@
     abstract: '2026-09-18T23:59:59-12:00'
     deadline: '2026-09-25T23:59:59-12:00'
     notification: '2026-12-16'
+  accept_rate: 27.4%(5355/19525 26')
 - name: ICML
   slug: icml
   rank:
@@ -567,6 +619,7 @@
   - name: '2026'
     abstract: '2026-01-24T11:59:59+00:00'
     deadline: '2026-01-29T11:59:59+00:00'
+  accept_rate: 26.6%(6552/24661 26')
 - name: ICONIP
   slug: iconip
   rank:
@@ -587,6 +640,7 @@
     deadline: '2025-05-22T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-05-31T23:59:59-12:00'
+  accept_rate: 39.0%(426/1092 25')
 - name: ICPR
   slug: icpr
   rank:
@@ -604,6 +658,7 @@
     deadline: '2024-07-08T23:59:59-07:00'
   - name: '2026'
     deadline: '2026-01-10T23:59:59-12:00'
+  accept_rate: 44.3%(945/2135 24')
 - name: ICRA
   slug: icra
   rank:
@@ -626,6 +681,7 @@
     deadline: '2025-09-15T23:59:00-08:00'
   - name: '2027'
     deadline: '2026-09-16T23:59:59-08:00'
+  accept_rate: 37.8%(1606/4250 25')
 - name: ICTAI
   slug: ictai
   rank:
@@ -638,6 +694,7 @@
   cycles:
   - name: '2026'
     deadline: '2026-07-21T23:59:00-12:00'
+  accept_rate: 33.0%(209/633 25')
 - name: IEEE CEC
   slug: ieee-cec
   rank:
@@ -684,6 +741,7 @@
   - name: '2026'
     abstract: '2026-01-12T23:59:59-12:00'
     deadline: '2026-01-19T23:59:59-12:00'
+  accept_rate: 17.6%(1023/5806 25')
 - name: IJCB
   slug: ijcb
   rank:
@@ -706,6 +764,7 @@
     deadline: '2025-05-05T23:59:59-07:00'
   - name: '2026'
     deadline: '2026-04-30T23:59:59-12:00'
+  accept_rate: 39.1%(95/243 25')
 - name: IJCNN
   slug: ijcnn
   rank:
@@ -724,6 +783,7 @@
     deadline: '2026-01-31T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-01-31T23:59:59-12:00'
+  accept_rate: 38.9%(2152/5526 25')
 - name: IROS
   slug: iros
   rank:
@@ -744,6 +804,7 @@
     deadline: '2025-03-01T23:59:59-08:00'
   - name: '2026'
     deadline: '2026-03-02T23:59:59-08:00'
+  accept_rate: 36.5%(1585/4348 26')
 - name: KR
   slug: kr
   rank:
@@ -769,6 +830,7 @@
   - name: '2026'
     abstract: '2026-02-08T23:59:59-12:00'
     deadline: '2026-02-13T23:59:59-12:00'
+  accept_rate: 24.4%(112/459 26')
 - name: KSEM
   slug: ksem
   rank:
@@ -787,6 +849,7 @@
     deadline: '2025-03-20T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-01-15T23:59:59+00:00'
+  accept_rate: 41.0%(285/695 26')
 - name: NAACL
   slug: naacl
   rank:
@@ -797,6 +860,21 @@
   homepage: https://2027.naacl.org/
   location: San Francisco, California, USA
   verified: true
+  rolling_review:
+    name: ACL Rolling Review (ARR)
+    url: https://openreview.net/group?id=aclweb.org/ACL/ARR
+    commitment_windows:
+    - '2026-01-15'
+    - '2026-02-15'
+    - '2026-03-15'
+    - '2026-04-15'
+    - '2026-05-15'
+    - '2026-06-15'
+    - '2026-07-15'
+    - '2026-08-15'
+    - '2026-09-15'
+    - '2026-10-15'
+    note: Submit via ARR monthly; commit to NAACL by Oct 15 for main conference
   cycles:
   - name: '2027'
     tracks:
@@ -817,6 +895,7 @@
       notification: '2026-10-02'
   - name: '2027'
     deadline: '2026-12-23T23:59:59-12:00'
+  accept_rate: 23.2%(565/2434 24')
 - name: NeurIPS
   slug: neurips
   rank:
@@ -845,6 +924,7 @@
   - name: '2026'
     abstract: '2026-05-05T11:59:00+00:00'
     deadline: '2026-05-07T11:59:00+00:00'
+  accept_rate: 24.5%(5290/21575 25')
 - name: NLPCC
   slug: nlpcc
   rank:
@@ -863,6 +943,7 @@
     deadline: '2025-04-20T23:59:59+08:00'
   - name: '2026'
     deadline: '2026-06-20T23:59:59+08:00'
+  accept_rate: 30.1%(152/505 25')
 - name: PPSN
   slug: ppsn
   rank:
@@ -877,6 +958,7 @@
     deadline: '2024-04-18T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-03-28T23:59:59-12:00'
+  accept_rate: 31.3%(165/527 26')
 - name: PRICAI
   slug: pricai
   rank:
@@ -895,6 +977,7 @@
     deadline: '2025-06-27T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-06-27T23:59:59-12:00'
+  accept_rate: 42.1%(286/679 25')
 - name: UAI
   slug: uai
   rank:
@@ -917,3 +1000,4 @@
     deadline: '2025-02-10T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-02-25T23:59:59-12:00'
+  accept_rate: 26.9%(200/744 24')

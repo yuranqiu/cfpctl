@@ -24,6 +24,7 @@
   - name: '2027'
     abstract: '2026-08-28T23:59:59-12:00'
     deadline: '2026-08-28T23:59:59-12:00'
+  accept_rate: 43.8%(177/404 26')
 - name: ACM MM
   slug: acm-mm
   rank:
@@ -118,6 +119,7 @@
     deadline: '2026-04-30T23:59:00-12:00'
   - name: '2027'
     deadline: '2027-04-20T23:59:59-12:00'
+  accept_rate: 54.7%(35/64 21')
 - name: CVM
   slug: cvm
   rank:
@@ -188,6 +190,7 @@
   - name: '2026'
     abstract: '2026-04-08T23:59:59-12:00'
     deadline: '2026-04-15T23:59:59-12:00'
+  accept_rate: 57.4%(27/47 22')
 - name: Eurographics
   slug: eurographics
   rank:
@@ -228,6 +231,7 @@
   - name: '2026'
     abstract: '2025-11-26T23:59:59-12:00'
     deadline: '2025-12-03T23:59:59-12:00'
+  accept_rate: 26.7%(52/195 26')
 - name: GMP
   slug: gmp
   rank:
@@ -252,6 +256,7 @@
   - name: '2027'
     abstract: '2026-12-14T23:59:59-12:00'
     deadline: '2026-12-21T23:59:59-12:00'
+  accept_rate: 35.0%(21/60 26')
 - name: ICASSP
   slug: icassp
   rank:
@@ -275,6 +280,7 @@
     deadline: '2025-09-17T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-09-23T23:59:59-12:00'
+  accept_rate: 48.5%(2812/5796 24')
 - name: ICIP
   slug: icip
   rank:
@@ -294,6 +300,7 @@
     deadline: '2025-01-22T23:59:59+00:00'
   - name: '2026'
     deadline: '2026-02-04T23:59:59-12:00'
+  accept_rate: 39.6%(412/1040 25')
 - name: ICME
   slug: icme
   rank:
@@ -317,6 +324,7 @@
     deadline: '2024-12-23T23:59:59+00:00'
   - name: '2026'
     deadline: '2025-12-31T23:59:59-12:00'
+  accept_rate: 27.3%(1019/3737 25')
 - name: ICMR
   slug: icmr
   rank:
@@ -336,6 +344,7 @@
     deadline: '2026-02-13T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-01-31T23:59:59-12:00'
+  accept_rate: 35.2%(277/788 26')
 - name: IEEE VIS
   slug: ieee-vis
   rank:
@@ -413,6 +422,7 @@
     deadline: '2026-02-25T23:59:59+00:00'
   - name: '2027'
     deadline: '2027-02-09T23:59:59+00:00'
+  accept_rate: 44.9%(1360/3028 26')
 - name: ISMAR
   slug: ismar
   rank:
@@ -442,6 +452,7 @@
   - name: '2026'
     abstract: '2026-03-09T23:59:59-12:00'
     deadline: '2026-03-16T23:59:59-12:00'
+  accept_rate: 28.4%(217/763 25')
 - name: MMAsia
   slug: mmasia
   rank:
@@ -476,6 +487,7 @@
     deadline: '2025-08-19T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-08-30T23:59:00-12:00'
+  accept_rate: 54.6%(137/251 26')
 - name: NCMMSC
   slug: ncmmsc
   rank:
@@ -489,6 +501,7 @@
   cycles:
   - name: '2026'
     deadline: '2026-07-05T23:59:59+08:00'
+  accept_rate: 65.1%(157/241 25')
 - name: PacificVis
   slug: pacificvis
   rank:
@@ -512,6 +525,7 @@
   - name: '2027'
     abstract: '2026-11-02T23:59:59-12:00'
     deadline: '2026-11-09T23:59:59-12:00'
+  accept_rate: 19.2%(19/99 26')
 - name: PG
   slug: pg
   rank:
@@ -535,6 +549,7 @@
   - name: '2026'
     abstract: '2026-06-01T23:59:59-12:00'
     deadline: '2026-06-08T23:59:59-12:00'
+  accept_rate: 37.7%(97/257 25')
 - name: PRCV
   slug: prcv
   rank:
@@ -555,6 +570,7 @@
     deadline: '2025-06-30T23:59:59+08:00'
   - name: '2026'
     deadline: '2026-05-30T23:59:59-12:00'
+  accept_rate: 27.5%(772/2809 26')
 - name: SCA
   slug: sca
   rank:
@@ -575,6 +591,7 @@
   - name: '2026'
     abstract: '2026-04-10T23:59:00+00:00'
     deadline: '2026-04-17T23:59:00+00:00'
+  accept_rate: 38.5%(30/78 22')
 - name: SGP
   slug: sgp
   rank:
@@ -615,6 +632,7 @@
     deadline: '2022-07-15T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-06-24T23:59:59-12:00'
+  accept_rate: 45.6%(170/373 24')
 - name: SMI
   slug: smi
   rank:
@@ -641,6 +659,7 @@
   - name: '2026'
     abstract: '2026-03-23T23:59:59-12:00'
     deadline: '2026-03-30T23:59:59-12:00'
+  accept_rate: 41.7%(10/24 22')
 - name: SPM
   slug: spm
   rank:
@@ -658,3 +677,4 @@
   - name: '2026'
     abstract: '2026-02-08T23:59:59-12:00'
     deadline: '2026-02-15T23:59:59-12:00'
+  accept_rate: 27.1%(13/48 24')

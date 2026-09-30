@@ -21,6 +21,7 @@
     deadline: '2025-06-05T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-07-17T23:59:59-12:00'
+  accept_rate: 45.0%(147/327 25')
 - name: APWeb-WAIM
   slug: apweb-waim
   rank:
@@ -97,6 +98,7 @@
   - name: '2026'
     abstract: '2026-05-16T23:59:59-12:00'
     deadline: '2026-05-23T23:59:59-12:00'
+  accept_rate: 27.2%(443/1627 25')
 - name: DASFAA
   slug: dasfaa
   rank:
@@ -125,6 +127,7 @@
     deadline: '2025-10-27T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-11-25T23:59:59-12:00'
+  accept_rate: 27.3%(228/834 26')
 - name: ECIR
   slug: ecir
   rank:
@@ -155,6 +158,7 @@
   - name: '2027'
     abstract: '2026-09-21T23:59:59+00:00'
     deadline: '2026-10-05T23:59:59+00:00'
+  accept_rate: 20.4%(57/280 24')
 - name: ECML-PKDD
   slug: ecml-pkdd
   rank:
@@ -225,6 +229,7 @@
     deadline: '2026-06-10T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-07T23:59:59-12:00'
+  accept_rate: 25.0%(27/108 21')
 - name: ICDE
   slug: icde
   rank:
@@ -263,6 +268,7 @@
     deadline: '2026-06-11T17:00:00-12:00'
   - name: '2027'
     deadline: '2026-11-11T17:00:00-12:00'
+  accept_rate: 25.4%(376/1481 24')
 - name: ICDM
   slug: icdm
   rank:
@@ -285,6 +291,7 @@
     deadline: '2025-06-06T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-06-06T23:59:59-12:00'
+  accept_rate: 13.5%(106/785 25')
 - name: ICDT
   slug: icdt
   rank:
@@ -331,6 +338,7 @@
   - name: '2027'
     abstract: '2026-09-03T23:59:59-12:00'
     deadline: '2026-09-10T23:59:59-12:00'
+  accept_rate: 27.4%(20/73 26')
 - name: ISWC
   slug: iswc
   rank:
@@ -359,6 +367,7 @@
   - name: '2026'
     abstract: '2026-05-02T23:59:59-12:00'
     deadline: '2026-05-07T23:59:59-12:00'
+  accept_rate: 21.7%(60/277 25')
 - name: PAKDD
   slug: pakdd
   rank:
@@ -384,6 +393,7 @@
     deadline: '2025-11-25T23:59:59-08:00'
   - name: '2027'
     deadline: '2026-11-20T23:59:59-12:00'
+  accept_rate: 25.3%(184/728 26')
 - name: PODS
   slug: pods
   rank:
@@ -436,6 +446,7 @@
   - name: '2027'
     abstract: '2026-12-03T23:59:59-12:00'
     deadline: '2026-12-10T23:59:59-12:00'
+  accept_rate: 35.4%(45/127 25')
 - name: RecSys
   slug: recsys
   rank:
@@ -464,6 +475,7 @@
   - name: '2026'
     abstract: '2026-04-14T23:59:59-12:00'
     deadline: '2026-04-21T23:59:59-12:00'
+  accept_rate: 18.8%(49/261 25')
 - name: SDM
   slug: sdm
   rank:
@@ -488,6 +500,7 @@
   - name: '2026'
     abstract: '2026-04-10T23:59:59-12:00'
     deadline: '2026-04-17T23:59:59-12:00'
+  accept_rate: 29.3%(98/335 24')
 - name: SIGIR
   slug: sigir
   rank:
@@ -519,6 +532,7 @@
   - name: '2027'
     abstract: '2027-01-14T23:59:59-12:00'
     deadline: '2027-01-21T23:59:59-12:00'
+  accept_rate: 20.2%(160/791 24')
 - name: SIGKDD
   slug: sigkdd
   rank:
@@ -553,6 +567,7 @@
   - name: '2027'
     abstract: '2026-07-19T23:59:59-12:00'
     deadline: '2026-07-26T23:59:59-12:00'
+  accept_rate: 20.1%(411/2046 24')
 - name: SIGMOD
   slug: sigmod
   rank:
@@ -608,6 +623,7 @@
       abstract: '2026-12-03T23:59:59-12:00'
       deadline: '2026-12-10T23:59:59-12:00'
       notification: '2027-02-08'
+  accept_rate: 24.8%(250/1008 25')
 - name: VLDB
   slug: vldb
   rank:
@@ -798,6 +814,7 @@
   - name: '2027'
     abstract: '2027-02-25T17:00:00-12:00'
     deadline: '2027-03-01T17:00:00-12:00'
+  accept_rate: 19.5%(280/1437 24')
 - name: WISA
   slug: wisa
   rank:
@@ -823,6 +840,7 @@
   cycles:
   - name: '2026'
     deadline: '2026-06-30T23:59:59-12:00'
+  accept_rate: 54.3%(76/140 25')
 - name: WSDM
   slug: wsdm
   rank:
@@ -850,3 +868,4 @@
   - name: '2027'
     abstract: '2026-08-17T23:59:59-12:00'
     deadline: '2026-08-24T23:59:59-12:00'
+  accept_rate: 17.7%(109/615 24')

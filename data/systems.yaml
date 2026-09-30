@@ -11,6 +11,7 @@
   - name: '2026'
     abstract: '2026-04-03T23:59:59-12:00'
     deadline: '2026-04-10T23:59:59-12:00'
+  accept_rate: 36.5%(27/74 25')
 - name: ASAP
   slug: asap
   rank:
@@ -24,6 +25,7 @@
   - name: '2026'
     abstract: '2026-04-03T23:59:59-12:00'
     deadline: '2026-04-10T23:59:59-12:00'
+  accept_rate: 51.8%(43/83 26')
 - name: ASP-DAC
   slug: asp-dac
   rank:
@@ -86,6 +88,7 @@
     - name: Full Paper (PL)
       deadline: '2026-09-09T23:59:59-12:00'
       notification: '2026-12-21'
+  accept_rate: 25.3%(151/598 23')
 - name: ATS
   slug: ats
   rank:
@@ -98,6 +101,7 @@
   cycles:
   - name: '2026'
     deadline: '2026-07-07T23:59:59-12:00'
+  accept_rate: 21.8%(42/193 24')
 - name: CCGRID
   slug: ccgrid
   rank:
@@ -114,6 +118,7 @@
   - name: '2027'
     abstract: '2026-11-24T23:59:59-12:00'
     deadline: '2026-12-01T23:59:59-12:00'
+  accept_rate: 26.1%(60/230 21')
 - name: CF
   slug: cf
   rank:
@@ -129,6 +134,7 @@
   - name: '2026'
     abstract: '2026-02-01T23:59:59-12:00'
     deadline: '2026-02-01T23:59:59-12:00'
+  accept_rate: 35.3%(24/68 22')
 - name: CLUSTER
   slug: cluster
   rank:
@@ -192,6 +198,7 @@
   - name: '2027'
     abstract: '2026-11-11T17:00:00-08:00'
     deadline: '2026-11-18T17:00:00-08:00'
+  accept_rate: 21.8%(337/1545 24')
 - name: DATE
   slug: date
   rank:
@@ -218,6 +225,7 @@
   - name: '2027'
     abstract: '2026-09-13T23:59:59-12:00'
     deadline: '2026-09-20T23:59:59-12:00'
+  accept_rate: 24.8%(325/1310 26')
 - name: ETS
   slug: ets
   rank:
@@ -309,6 +317,7 @@
   - name: '2027'
     abstract: '2026-09-17T23:59:59-12:00'
     deadline: '2026-09-24T23:59:59-12:00'
+  accept_rate: 12.2%(85/696 25')
 - name: FAST
   slug: fast
   rank:
@@ -337,6 +346,7 @@
     deadline: '2026-03-17T23:59:00-12:00'
   - name: '2027'
     deadline: '2026-09-15T23:59:00-12:00'
+  accept_rate: 17.4%(44/253 26')
 - name: FCCM
   slug: fccm
   rank:
@@ -392,6 +402,7 @@
   - name: '2027'
     abstract: '2026-10-01T23:59:59-12:00'
     deadline: '2026-10-08T23:59:59-12:00'
+  accept_rate: 28.0%(23/82 23')
 - name: FPT
   slug: fpt
   rank:
@@ -465,6 +476,7 @@
   cycles:
   - name: '2026'
     deadline: '2026-06-12T23:59:59-12:00'
+  accept_rate: 29.5%(23/78 26')
 - name: HPCA
   slug: hpca
   rank:
@@ -496,6 +508,7 @@
   - name: '2027'
     abstract: '2026-07-24T23:59:59-12:00'
     deadline: '2026-07-31T23:59:59-12:00'
+  accept_rate: 21.1%(119/563 26')
 - name: HPCC
   slug: hpcc
   rank:
@@ -526,6 +539,7 @@
     deadline: '2026-01-29T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-02-05T23:59:59-12:00'
+  accept_rate: 12.5%(35/281 26')
 - name: ICA3PP
   slug: ica3pp
   rank:
@@ -542,6 +556,7 @@
     deadline: '2025-06-30T23:59:00-08:00'
   - name: '2026'
     deadline: '2026-07-25T23:59:00-12:00'
+  accept_rate: 57.1%(310/543 25')
 - name: ICCAD
   slug: iccad
   rank:
@@ -570,6 +585,7 @@
   - name: '2026'
     abstract: '2026-04-07T23:59:59-12:00'
     deadline: '2026-04-14T23:59:59-12:00'
+  accept_rate: 25.3%(371/1465 26')
 - name: ICCD
   slug: iccd
   rank:
@@ -703,6 +719,7 @@
   - name: '2026'
     abstract: '2026-02-02T23:59:59-12:00'
     deadline: '2026-02-09T23:59:59-12:00'
+  accept_rate: 29.4%(40/136 23')
 - name: IEEE/ACM CGO
   slug: ieee/acm-cgo
   rank:
@@ -786,6 +803,7 @@
     deadline: '2025-11-10T23:59:59-12:00'
   - name: '2026'
     deadline: '2025-11-17T23:59:59-12:00'
+  accept_rate: 19.6%(83/423 24')
 - name: ISCAS
   slug: iscas
   rank:
@@ -802,6 +820,7 @@
     deadline: '2025-10-12T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-13T23:59:59-05:00'
+  accept_rate: 51.9%(869/1673 26')
 - name: ISPA
   slug: ispa
   rank:
@@ -841,6 +860,7 @@
   - name: '2026'
     abstract: '2026-03-20T23:59:59-12:00'
     deadline: '2026-04-24T23:59:59-12:00'
+  accept_rate: 24.4%(40/164 25')
 - name: ITC-Asia
   slug: itc-asia
   rank:
@@ -854,6 +874,7 @@
   - name: '2026'
     abstract: '2026-04-18T23:59:59+08:00'
     deadline: '2026-04-25T23:59:59+08:00'
+  accept_rate: 64.5%(20/31 23')
 - name: JCC
   slug: jcc
   rank:
@@ -879,6 +900,7 @@
   cycles:
   - name: '2021'
     deadline: '2021-02-23T20:59:59-12:00'
+  accept_rate: 61.4%(35/57 21')
 - name: MICRO
   slug: micro
   rank:
@@ -911,6 +933,7 @@
   - name: '2026'
     abstract: '2026-03-31T23:59:59-04:00'
     deadline: '2026-04-07T23:59:59-04:00'
+  accept_rate: 20.8%(124/597 25')
 - name: MSST
   slug: msst
   rank:
@@ -962,6 +985,7 @@
   - name: '2026'
     abstract: '2026-05-15T23:59:59-12:00'
     deadline: '2026-05-22T23:59:59-12:00'
+  accept_rate: 26.9%(14/52 23')
 - name: PODC
   slug: podc
   rank:
@@ -1016,6 +1040,7 @@
     deadline: '2025-09-01T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-08-03T23:59:59-12:00'
+  accept_rate: 23.7%(31/131 23')
 - name: RTAS
   slug: rtas
   rank:
@@ -1040,6 +1065,7 @@
     deadline: '2025-11-13T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-11-05T23:59:59-12:00'
+  accept_rate: 25.0%(29/116 24')
 - name: SC
   slug: sc
   rank:
@@ -1065,6 +1091,7 @@
   - name: '2026'
     abstract: '2026-04-01T23:59:59-12:00'
     deadline: '2026-04-08T23:59:00-12:00'
+  accept_rate: 22.0%(137/623 25')
 - name: IFIP SEC
   slug: ifip-sec
   rank:
@@ -1079,6 +1106,7 @@
   - name: '2026'
     abstract: '2026-05-08T23:59:59-12:00'
     deadline: '2026-05-08T23:59:59-12:00'
+  accept_rate: 25.4%(18/71 23')
 - name: SIGMETRICS
   slug: sigmetrics
   rank:
@@ -1116,6 +1144,7 @@
   - name: '2027'
     abstract: '2027-01-04T23:59:00-12:00'
     deadline: '2027-01-11T23:59:00-12:00'
+  accept_rate: 17.3%(66/382 25')
 - name: SIGOPS ATC
   slug: sigops-atc
   rank:
@@ -1222,6 +1251,7 @@
     deadline: '2025-05-26T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-05-25T23:59:59-12:00'
+  accept_rate: 37.2%(16/43 25')
 - name: VEE
   slug: vee
   rank:
@@ -1236,3 +1266,4 @@
     deadline: '2021-01-22T23:59:59-12:00'
   - name: '2022'
     deadline: '2021-12-03T23:59:59-12:00'
+  accept_rate: 55.6%(15/27 21')

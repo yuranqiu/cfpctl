@@ -26,6 +26,7 @@
     deadline: '2026-11-30T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-03-01T23:59:59-12:00'
+  accept_rate: 26.5%(69/260 26')
 - name: ACNS
   slug: acns
   rank:
@@ -56,6 +57,7 @@
     deadline: '2026-09-24T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-01-21T23:59:59-12:00'
+  accept_rate: 20.9%(59/282 26')
 - name: ACSAC
   slug: acsac
   rank:
@@ -79,6 +81,7 @@
     deadline: '2025-05-30T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-05-26T23:59:59-12:00'
+  accept_rate: 18.8%(84/446 25')
 - name: AsiaCCS
   slug: asiaccs
   rank:
@@ -166,6 +169,7 @@
     - name: Poster/Demo
       deadline: '2027-06-01T23:59:59-12:00'
       notification: '2027-07-15'
+  accept_rate: 22.3%(196/880 21')
 - name: CHES
   slug: ches
   rank:
@@ -284,6 +288,7 @@
     deadline: '2025-02-13T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-02-12T23:59:59-12:00'
+  accept_rate: 24.3%(156/643 25')
 - name: CSCloud
   slug: cscloud
   rank:
@@ -362,6 +367,7 @@
     deadline: '2025-10-24T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-22T23:59:59-12:00'
+  accept_rate: 30.8%(12/39 26')
 - name: DFRWS
   slug: dfrws
   rank:
@@ -424,6 +430,7 @@
     deadline: '2025-12-10T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-02-18T23:59:59-12:00'
+  accept_rate: 24.3%(25/103 25')
 - name: DSN
   slug: dsn
   rank:
@@ -450,6 +457,7 @@
   - name: '2027'
     abstract: '2026-11-25T23:59:59-12:00'
     deadline: '2026-12-02T23:59:59-12:00'
+  accept_rate: 19.8%(65/329 26')
 - name: ESORICS
   slug: esorics
   rank:
@@ -486,6 +494,7 @@
     deadline: '2026-01-09T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-04-21T23:59:59-12:00'
+  accept_rate: 16.7%(100/600 25')
 - name: EUROCRYPT
   slug: eurocrypt
   rank:
@@ -510,6 +519,7 @@
     deadline: '2025-10-02T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-09-17T23:59:59-12:00'
+  accept_rate: 21.0%(142/675 26')
 - name: EuroS&P
   slug: euros&p
   rank:
@@ -555,6 +565,7 @@
     deadline: '2025-09-20T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-09-24T23:59:59-12:00'
+  accept_rate: 15.3%(46/300 25')
 - name: FSE (Fast Software Encryption)
   slug: fse-crypto
   rank:
@@ -610,6 +621,7 @@
     deadline: '2026-09-01T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-12-01T23:59:59-12:00'
+  accept_rate: 26.4%(211/799 26')
 - name: HotSec
   slug: hotsec
   rank:
@@ -640,6 +652,7 @@
     deadline: '2026-01-20T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-12-15T23:59:59-12:00'
+  accept_rate: 24.4%(30/123 26')
 - name: ICICS
   slug: icics
   rank:
@@ -666,6 +679,7 @@
     deadline: '2026-03-12T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-06-01T23:59:59-12:00'
+  accept_rate: 25.5%(91/357 25')
 - name: IFIP WG 11.9
   slug: ifip-wg-11.9
   rank:
@@ -698,6 +712,7 @@
     deadline: '2024-02-29T23:59:59-12:00'
   - name: '2025'
     deadline: '2025-02-28T23:59:59-12:00'
+  accept_rate: 50.0%(20/40 25')
 - name: INSCRYPT
   slug: inscrypt
   rank:
@@ -714,6 +729,7 @@
     deadline: '2025-06-30T23:59:59-08:00'
   - name: '2026'
     deadline: '2026-05-08T23:59:59-12:00'
+  accept_rate: 25.1%(79/315 25')
 - name: ISC
   slug: isc
   rank:
@@ -732,6 +748,7 @@
     deadline: '2025-06-04T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-07-02T23:59:59-12:00'
+  accept_rate: 36.4%(28/77 25')
 - name: NDSS
   slug: ndss
   rank:
@@ -753,6 +770,7 @@
     - name: Technical Papers
       deadline: '2026-08-19T23:59:59-12:00'
       notification: '2026-11-24'
+  accept_rate: 17.9%(265/1481 26')
 - name: NSPW
   slug: nspw
   rank:
@@ -868,6 +886,7 @@
     deadline: '2026-11-30T23:59:59-12:00'
   - name: '2027'
     deadline: '2027-02-28T23:59:59-12:00'
+  accept_rate: 22.4%(160/714 26')
 - name: PKC
   slug: pkc
   rank:
@@ -890,6 +909,7 @@
     deadline: '2025-10-24T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-08-16T23:59:59-12:00'
+  accept_rate: 25.1%(65/259 26')
 - name: RAID
   slug: raid
   rank:
@@ -912,6 +932,7 @@
     deadline: '2025-04-24T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-04-16T23:59:59-12:00'
+  accept_rate: 19.2%(59/307 26')
 - name: S&P
   slug: s&p
   rank:
@@ -990,6 +1011,7 @@
     deadline: '2026-02-02T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-05-11T23:59:59-12:00'
+  accept_rate: 25.7%(29/113 26')
 - name: SACMAT
   slug: sacmat
   rank:
@@ -1088,6 +1110,7 @@
   - name: '2026'
     abstract: '2026-02-12T23:59:59-12:00'
     deadline: '2026-02-19T23:59:59-12:00'
+  accept_rate: 19.1%(30/157 25')
 - name: SRDS
   slug: srds
   rank:
@@ -1117,6 +1140,7 @@
   - name: '2026'
     abstract: '2026-05-01T23:59:59-12:00'
     deadline: '2026-05-08T23:59:59-12:00'
+  accept_rate: 30.7%(35/114 26')
 - name: TCC
   slug: tcc
   rank:
@@ -1139,6 +1163,7 @@
     deadline: '2025-05-27T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-05-19T23:59:59-12:00'
+  accept_rate: 28.9%(70/242 25')
 - name: TrustCom
   slug: trustcom
   rank:
@@ -1182,6 +1207,7 @@
       abstract: '2027-01-19T23:59:59-12:00'
       deadline: '2027-01-26T23:59:59-12:00'
       notification: '2027-05-06'
+  accept_rate: 12.0%(362/3028 26')
 - name: WiSec
   slug: wisec
   rank:
@@ -1210,3 +1236,4 @@
     deadline: '2025-11-18T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-03-03T23:59:59-12:00'
+  accept_rate: 19.0(23/121 26')

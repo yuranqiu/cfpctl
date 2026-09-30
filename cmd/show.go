@@ -61,6 +61,38 @@ func printConferenceDetail(c *model.Conference, now time.Time) {
 	if c.Location != "" && c.Location != "TBD" {
 		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Location:"), c.Location)
 	}
+	if c.AcceptRate != "" {
+		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Acceptance:"), ui.HeaderStyle.Render(c.AcceptRate))
+	}
+	if c.RollingReview != nil {
+		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Submission:"), ui.SoonStyle.Render(fmt.Sprintf("🔄 %s", c.RollingReview.Name)))
+		if c.RollingReview.URL != "" {
+			fmt.Printf("  %-12s %s\n", "", ui.LinkStyle.Render(c.RollingReview.URL))
+		}
+		if len(c.RollingReview.CommitmentWindows) > 0 {
+			// Show next upcoming commitment windows
+			nextWindows := []string{}
+			for _, w := range c.RollingReview.CommitmentWindows {
+				t, err := time.Parse("2006-01-02", w)
+				if err == nil && t.After(now) {
+					nextWindows = append(nextWindows, w)
+				}
+			}
+			if len(nextWindows) > 0 {
+				show := nextWindows
+				if len(show) > 3 {
+					show = show[:3]
+				}
+				fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Commit by:"), strings.Join(show, ", "))
+				if len(nextWindows) > 3 {
+					fmt.Printf("  %-12s %s\n", "", ui.DimStyle.Render(fmt.Sprintf("(+%d more)", len(nextWindows)-3)))
+				}
+			}
+		}
+		if c.RollingReview.Note != "" {
+			fmt.Printf("  %-12s %s\n", "", ui.DimStyle.Render(c.RollingReview.Note))
+		}
+	}
 	if c.Verified {
 		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Status:"), ui.CheckStyle.Render("✓ Verified against official CFP"))
 	} else {

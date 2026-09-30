@@ -12,6 +12,7 @@
     deadline: '2025-04-16T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-04-22T23:59:59-12:00'
+  accept_rate: 29.7%(83/279 25')
 - name: CHI
   slug: chi
   rank:
@@ -33,6 +34,7 @@
     deadline: '2025-09-11T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-09-10T23:59:59-12:00'
+  accept_rate: 25.3%(1705/6730 26')
 - name: CollaborateCom
   slug: collaboratecom
   rank:
@@ -47,6 +49,7 @@
     deadline: '2025-05-01T23:59:59-08:00'
   - name: '2026'
     deadline: '2026-05-01T23:59:59-08:00'
+  accept_rate: 28.0%(58/207 25')
 - name: CSCW
   slug: cscw
   rank:
@@ -71,6 +74,7 @@
     deadline: '2024-10-29T23:59:59-12:00'
   - name: '2026'
     deadline: '2025-05-14T12:00:00-04:00'
+  accept_rate: 30.5%(194/637 26')
 - name: CSCWD
   slug: cscwd
   rank:
@@ -93,6 +97,7 @@
     deadline: '2025-11-30T23:59:59-12:00'
   - name: '2027'
     deadline: '2026-10-31T23:59:59-12:00'
+  accept_rate: 71.1%(741/1042 26')
 - name: DIS
   slug: dis
   rank:
@@ -112,6 +117,7 @@
   - name: '2027'
     abstract: '2027-01-11T23:59:59-12:00'
     deadline: '2027-01-18T23:59:59-12:00'
+  accept_rate: 21.5%(101/469 22')
 - name: ECSCW
   slug: ecscw
   rank:
@@ -147,6 +153,7 @@
   - name: '2027'
     abstract: '2026-03-24T23:59:59-12:00'
     deadline: '2026-03-31T23:59:59-12:00'
+  accept_rate: 35.8%(69/193 23')
 - name: ICMI
   slug: icmi
   rank:
@@ -166,6 +173,7 @@
   - name: '2026'
     abstract: '2026-04-13T23:59:59-07:00'
     deadline: '2026-04-24T04:59:59-07:00'
+  accept_rate: 38.3%(59/154 24')
 - name: ICWSM
   slug: icwsm
   rank:
@@ -224,6 +232,7 @@
     deadline: '2026-02-12T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-07-22T23:59:59-12:00'
+  accept_rate: 29.9%(23/77 21')
 - name: IUI
   slug: iui
   rank:
@@ -246,6 +255,7 @@
   - name: '2027'
     abstract: '2026-08-13T23:59:59-12:00'
     deadline: '2026-08-20T23:59:59-12:00'
+  accept_rate: 25.1%(97/387 25')
 - name: MobileHCI
   slug: mobilehci
   rank:
@@ -258,6 +268,7 @@
   - name: '2027'
     abstract: '2027-02-10T23:59:59-12:00'
     deadline: '2027-02-17T23:59:59-12:00'
+  accept_rate: 38.2%(42/110 23')
 - name: PerCom
   slug: percom
   rank:
@@ -277,6 +288,7 @@
   - name: '2027'
     abstract: '2026-09-11T23:59:59-12:00'
     deadline: '2026-09-18T23:59:59-12:00'
+  accept_rate: 9.5%(15/158 24')
 - name: UbiComp/ISWC
   slug: ubicomp/iswc
   rank:
@@ -348,6 +360,7 @@
   - name: '2026'
     abstract: '2026-03-24T23:59:59-12:00'
     deadline: '2026-03-31T23:59:59-12:00'
+  accept_rate: 24.0%(146/608 24')
 - name: WHC
   slug: whc
   rank:

@@ -24,6 +24,7 @@
     deadline: '2025-03-13T23:59:59-12:00'
   - name: '2026'
     deadline: '2026-03-11T23:59:59-12:00'
+  accept_rate: 25.6%(34/133 25')
 - name: CoNEXT
   slug: conext
   rank:
@@ -46,6 +47,7 @@
   - name: '2026'
     abstract: '2026-05-29T23:59:59-12:00'
     deadline: '2026-06-05T23:59:59-12:00'
+  accept_rate: 18.5%(29/157 23')
 - name: FORTE
   slug: forte
   rank:
@@ -65,6 +67,7 @@
   - name: '2026'
     abstract: '2026-02-13T23:59:59-12:00'
     deadline: '2026-02-20T23:59:59-12:00'
+  accept_rate: 55.6%(15/27 26')
 - name: GLOBECOM
   slug: globecom
   rank:
@@ -81,6 +84,7 @@
     deadline: '2025-04-15T23:59:59-04:00'
   - name: '2026'
     deadline: '2026-05-03T23:59:59-04:00'
+  accept_rate: 39.7%(911/2295 24')
 - name: HotNets
   slug: hotnets
   rank:
@@ -105,6 +109,7 @@
     deadline: '2025-07-09T23:59:00-12:00'
   - name: '2026'
     deadline: '2026-07-16T23:59:59-12:00'
+  accept_rate: 22.9%(43/188 26')
 - name: ICC
   slug: icc
   rank:
@@ -196,6 +201,7 @@
   - name: '2026'
     abstract: '2026-04-22T23:59:59-12:00'
     deadline: '2026-04-29T23:59:59-12:00'
+  accept_rate: 21.7%(55/253 24')
 - name: INFOCOM
   slug: infocom
   rank:
@@ -227,6 +233,7 @@
   - name: '2027'
     abstract: '2026-07-24T23:59:59-12:00'
     deadline: '2026-07-31T23:59:59-12:00'
+  accept_rate: 18.8%(327/1740 26')
 - name: IPSN
   slug: ipsn
   rank:
@@ -329,6 +336,7 @@
   - name: '2027'
     abstract: '2026-08-26T23:59:59-12:00'
     deadline: '2026-09-02T23:59:59-12:00'
+  accept_rate: 20.9%(103/494 24')
 - name: MobiHoc
   slug: mobihoc
   rank:
@@ -357,6 +365,7 @@
   - name: '2026'
     abstract: '2026-04-13T23:59:59-12:00'
     deadline: '2026-04-20T23:59:59-12:00'
+  accept_rate: 23.1%(39/169 25')
 - name: MobiSys
   slug: mobisys
   rank:
@@ -376,6 +385,7 @@
   - name: '2027'
     abstract: '2026-11-27T23:59:59-12:00'
     deadline: '2026-12-04T23:59:59-12:00'
+  accept_rate: 18.0%(42/233 25')
 - name: MSN
   slug: msn
   rank:
@@ -482,6 +492,7 @@
   - name: '2027'
     abstract: '2026-09-10T23:59:59-04:00'
     deadline: '2026-09-17T23:59:59-04:00'
+  accept_rate: 22.8%(150/659 26')
 - name: SECON
   slug: secon
   rank:
@@ -519,6 +530,7 @@
   - name: '2027'
     abstract: '2026-10-29T23:59:00-12:00'
     deadline: '2026-11-05T23:59:00-12:00'
+  accept_rate: 19.1%(45/235 25')
 - name: SIGCOMM
   slug: sigcomm
   rank:
@@ -547,6 +559,7 @@
   - name: '2026'
     abstract: '2026-01-30T23:59:59-12:00'
     deadline: '2026-02-06T23:59:59-12:00'
+  accept_rate: 16.9%(62/366 24')
 - name: WASA
   slug: wasa
   rank:

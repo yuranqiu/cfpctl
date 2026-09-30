@@ -2,34 +2,77 @@
 
 > Conference deadlines, without leaving your terminal.
 
-A terminal-first conference deadline tracker for researchers. Track deadlines, search conferences, manage your watchlist, and plan your submission strategy — all from the command line.
+A terminal-first conference deadline tracker for researchers. Track deadlines, search conferences, compare venues, manage your watchlist, plan submissions, and get notified — all from the command line.
+
+**327 conferences · 10 CCF fields · 238 acceptance rates · Multi-track deadlines**
+
+**English** | [中文](./README.zh-CN.md)
 
 ## Quick Start
 
 ```bash
 $ cfpctl upcoming --ccf A --field ai
 
-NAME          CCF  DEADLINE  LEFT
-ICLR 2027     A    Oct 01    3d
-CVPR 2027     A    Nov 10    43d
-ICML 2027     A    Jan 28    122d
-ACL 2027      A    Feb 15    140d
-AAAI 2027     A    Aug 15    322d
-NeurIPS 2026  A    May 15    passed
+📅 Upcoming Deadlines
+
+NAME                            CCF  DEADLINE   LEFT
+──────────────────────────────────────────────────────
+ICLR 2027                       A    Sep 25     0d      ⚡
+CVPR 2027 [Main]                A    Nov 16     48d
+SIGMOD Round 4 [Research]       A    Oct 17     18d
+WWW 2027 [Full Paper]           A    Oct 25     26d
+STOC 2027                       A    Nov 02     34d
+```
+
+### Interactive TUI
+
+Run `cfpctl` without arguments to launch the interactive explorer:
+
+```
+┌─────────────────────────────────────────────────────┐
+│ 📋 cfpctl — Conference Explorer                     │
+│ [/] Search  [Enter] Detail  [w] Watch  [Tab] View   │
+│ [s] Sort    [f] Field Filter                        │
+│                                                     │
+│ ▸ ICLR                   A    3d    👁              │
+│   CVPR                   A    48d                   │
+│   SIGMOD                 A    18d                   │
+│   NeurIPS                A    -                     │
+│   USENIX Security        A    44d                   │
+│                                                     │
+│ 327/327 conferences  │  Sorted by: Deadline         │
+└─────────────────────────────────────────────────────┘
 ```
 
 ## Installation
 
-### From source (requires Go 1.21+)
+### Homebrew (macOS/Linux)
 
 ```bash
-git clone https://github.com/cfpctl/cfpctl.git
+brew install yuranqiu/tap/cfpctl
+```
+
+### Scoop (Windows)
+
+```bash
+scoop bucket add yuranqiu https://github.com/yuranqiu/scoop-bucket
+scoop install cfpctl
+```
+
+### From Release
+
+Download pre-built binaries from [GitHub Releases](https://github.com/yuranqiu/cfpctl/releases).
+
+### From Source (requires Go 1.21+)
+
+```bash
+git clone https://github.com/yuranqiu/cfpctl.git
 cd cfpctl
 make build
 ./bin/cfpctl version
 ```
 
-### Using Docker (no Go needed)
+### Using Docker
 
 ```bash
 docker run --rm -v $(pwd):/app -w /app golang:alpine \
@@ -40,104 +83,145 @@ docker run --rm -v $(pwd):/app -w /app golang:alpine \
 
 | Command | Description |
 |---------|-------------|
-| `cfpctl list` | List all conferences in the database |
+| `cfpctl` | Launch interactive TUI |
+| `cfpctl list` | List all conferences |
 | `cfpctl search <keyword>` | Search by name, slug, or field |
-| `cfpctl show <conference>` | Show detailed conference info |
+| `cfpctl show <conf>` | Show detailed info with tracks |
 | `cfpctl upcoming` | Show upcoming deadlines |
 | `cfpctl timeline` | Visual ASCII deadline timeline |
 | `cfpctl plan` | Submission planning assistant |
-| `cfpctl watch <conference>` | Add to your watchlist |
-| `cfpctl unwatch <conference>` | Remove from watchlist |
-| `cfpctl watchlist` | Show watched conferences & deadlines |
-| `cfpctl calendar export` | Export deadlines to .ics calendar file |
+| `cfpctl compare <c1> <c2>...` | Side-by-side conference comparison |
+| `cfpctl stats` | Database statistics overview |
+| `cfpctl diff` | Detect deadline changes since last check |
+| `cfpctl watch <conf>` | Add to watchlist |
+| `cfpctl unwatch <conf>` | Remove from watchlist |
+| `cfpctl watchlist` | Show watched conferences |
+| `cfpctl calendar export` | Export to .ics calendar file |
 | `cfpctl remind set/list/check` | Manage deadline reminders |
-| `cfpctl validate` | Validate conference data files |
-| `cfpctl update` | Update local conference database |
+| `cfpctl notify setup/test/status` | Configure Telegram/Webhook notifications |
+| `cfpctl update` | Sync data from [cfpctl-data](https://github.com/yuranqiu/cfpctl-data) |
+| `cfpctl validate` | Validate data files |
 | `cfpctl version` | Print version info |
+
+**Aliases:** `up`=upcoming, `tl`=timeline, `s`=search, `w`=watch, `wl`=watchlist
+
+## Feature Highlights
+
+### Multi-Track Deadlines
+
+Many conferences have different deadlines per paper type. cfpctl shows them all:
+
+```bash
+$ cfpctl show sigmod
+
+SIGMOD 2027
+──────────────────────────────────────────────────
+  Acceptance:  24.8%(250/1008 25')
+  Status:      ✓ Verified against official CFP
+
+Submission Cycles
+
+  ▸ Research Round 4
+    └─ Research Paper ← NEXT
+      Abstract       2026-10-10
+      Submission     2026-10-17  (18d 08h 25m)
+      Notification   2027-01-19
+
+  ▸ Industrial & Demo
+    └─ Industrial Track
+      Submission     2026-11-24
+    └─ Demonstration
+      Submission     2027-01-11
+
+  ▸ PODS Cycle 2
+    └─ PODS Paper
+      Abstract       2026-12-03
+      Submission     2026-12-10
+```
+
+### ARR Rolling Review
+
+For NLP conferences using ACL Rolling Review:
+
+```bash
+$ cfpctl show acl
+
+ACL 2027
+──────────────────────────────────────────────────
+  Acceptance:  18.9%(2296/12148 26')
+  Submission:  🔄 ACL Rolling Review (ARR)
+               https://openreview.net/group?id=aclweb.org/ACL/ARR
+  Commit by:   2026-10-15, 2026-11-15, 2026-12-15
+               Submit via ARR monthly; commit to ACL by Feb 15
+```
+
+### Conference Comparison
+
+```bash
+$ cfpctl compare iclr neurips cvpr
+
+📊 Conference Comparison
+
+                  ICLR                      NeurIPS                   CVPR
+──────────────────────────────────────────────────────────────────────────────
+CCF:              A                         A                         A
+Acceptance:       27.4%(5355/19525 26')     24.5%(5290/21575 25')     25.4%(4089/16092 26')
+Verified:         ✓ Yes                     ⚠ No                      ✓ Yes
+Next Deadline:    2026-09-25 (0d)           -                         2026-11-16 (48d)
+Notification:     2026-12-16                -                         2027-02-25
+```
+
+### Historical Data
+
+Look up past deadlines for any year:
+
+```bash
+cfpctl show neurips --year 2025
+cfpctl upcoming --year 2025 --field ai
+```
+
+### Statistics
+
+```bash
+$ cfpctl stats
+
+📊 cfpctl Database Statistics
+
+Overview
+  Total conferences:  327
+  Verified:           ✓ 12 (4%)
+  Acceptance rates:   238
+  Rolling review:     3
+
+CCF Distribution
+  A: 58   B: 130   C: 139
+
+Upcoming Deadlines
+  Next 30 days:  41 (14 CCF-A)
+  Next 90 days:  85
+
+Top Research Fields
+  systems             57  ████████████████████████████
+  software            48  ████████████████████████
+  security            47  ███████████████████████
+  ai                  42  █████████████████████
+```
 
 ### Filtering
 
 ```bash
 # By CCF rank
 cfpctl upcoming --ccf A
-cfpctl list --ccf B
 
 # By research field
-cfpctl upcoming --field ai
-cfpctl upcoming --field security,software
+cfpctl upcoming --field ai,security
 
-# Combined
+# Combined with time window
 cfpctl upcoming --ccf A --field ai --within 90d
 
 # Duration format: 30d, 90d, 6m, 1y
 cfpctl upcoming --within 60d
 ```
-
-### Conference Detail
-
-```bash
-$ cfpctl show usenix-security
-
-USENIX SECURITY 2027
-──────────────────────────────────────────────────
-
-CCF:        A
-CORE:       A*
-Field:      security
-Location:   TBD
-
-Submission Cycles
-
-  Summer 2027
-    Abstract      2026-05-27
-    Submission    2026-06-03
-    Notification  2026-09-15
-
-  Winter 2027
-    Abstract      2026-11-05
-    Submission    2026-11-12
-    Notification  2027-02-15
-
-Next Deadline:  2026-06-03 (64d 07h 21m)
-
-Links:
-  Homepage:  https://www.usenix.org/conferences/byname/108
-```
-
-### Watchlist
-
-```bash
-$ cfpctl watch iclr
-✓ Watching ICLR (iclr)
-
-$ cfpctl watchlist
-
-CONFERENCE  EVENT            DEADLINE  LEFT
-ICLR        2027 abstract    Sep 25    0d
-ICLR        2027 submission  Oct 01    3d
-```
-
-## Data Format
-
-Conference data is stored as YAML files embedded in the binary:
-
-```yaml
-- name: USENIX Security
-  slug: usenix-security
-  rank:
-    ccf: A
-    core: A*
-  fields:
-    - security
-  homepage: https://www.usenix.org/conferences/byname/108
-  cycles:
-    - name: Summer
-      abstract: "2026-05-27T23:59:59-12:00"
-      deadline: "2026-06-03T23:59:59-12:00"
-      notification: "2026-09-15"
-```
-
-All deadlines default to **AoE (UTC-12)** when no timezone is specified.
 
 ### Calendar Export
 
@@ -147,78 +231,87 @@ cfpctl calendar export
 
 # Export all AI conferences with custom reminders
 cfpctl calendar export --all --field ai --remind 30d,14d,7d,1d -o ai-deadlines.ics
-
-# Export security CCF-A deadlines
-cfpctl calendar export --all --ccf A --field security
 ```
 
 Generates standard `.ics` files compatible with Apple Calendar, Google Calendar, Outlook, etc.
 
-### Submission Planning
+### Notifications
 
 ```bash
-$ cfpctl plan --field ai --next 6m
+# Telegram
+cfpctl notify setup telegram --token <BOT_TOKEN> --chat-id <CHAT_ID>
 
-📋 Submission Plan
-   Filters: field=ai, next=180d
+# Webhook (Slack, Discord, custom)
+cfpctl notify setup webhook --url https://hooks.slack.com/services/...
 
-  Oct 2026
-  ─────────────────────────────────────
-  ◇ B    AAMAS 2027                   abstract     3d
-  ○ A    ICLR 2027                    submission   3d
-  ○ B    AAMAS 2027                   submission   10d
-
-  Nov 2026
-  ─────────────────────────────────────
-  ◇ A    CVPR 2027                    abstract     36d
-  ○ A    CVPR 2027                    submission   43d
-
-  Jan 2027
-  ─────────────────────────────────────
-  ○ A    ICML 2027                    submission   122d
-  ○ A    ACL 2027                     submission   140d
+# Test & status
+cfpctl notify test
+cfpctl notify status
 ```
 
 ### Reminders
 
 ```bash
-# Set reminders for a conference
 cfpctl remind set iclr --before 30d,14d,7d,1d
-
-# List all configured reminders
 cfpctl remind list
-
-# Check which reminders are due soon
 cfpctl remind check
-
-# Remove reminders
-cfpctl remind remove iclr
 ```
 
-### Data Validation
+### Deadline Change Detection
 
 ```bash
-# Validate all embedded data files
-cfpctl validate
+# First run saves baseline
+cfpctl diff
+# ✓ Baseline saved (76 deadlines)
 
-# Useful in CI pipelines
-cfpctl validate || exit 1
+# After update, see what changed
+cfpctl update && cfpctl diff
+# ⚠ CHANGED  neurips (2027)
+#     2027-05-15 → 2027-05-12
 ```
 
-## Roadmap
+## Data
 
-### Next
-- `cfpctl sync` — Remote data repository sync (`cfpctl-data`)
-- `cfpctl recommend` — AI-powered venue recommendations
-- TUI mode (Bubble Tea interactive explorer)
-- goreleaser + automated releases (brew/scoop/choco)
+Conference data is maintained in a separate repository: [cfpctl-data](https://github.com/yuranqiu/cfpctl-data)
+
+- **327 conferences** across all 10 CCF categories
+- **238 acceptance rates** from official sources
+- **Multi-track deadlines** for 12+ conferences
+- **Historical data** preserved for all years
+- **ARR rolling review** modeling for ACL/EMNLP/NAACL
+
+Data is embedded in the binary for offline use. Run `cfpctl update` to sync the latest data from the remote repository.
+
+### Data Format
+
+```yaml
+- name: USENIX Security
+  slug: usenix-security
+  rank:
+    ccf: A
+    core: A*
+  fields: [security]
+  homepage: https://www.usenix.org/conference/usenixsecurity27/call-for-papers
+  verified: true
+  accept_rate: "12.0%(362/3028 26')"
+  cycles:
+    - name: Cycle 1
+      tracks:
+        - name: Paper (incl. SoK)
+          abstract: "2026-08-18T23:59:59-12:00"
+          deadline: "2026-08-25T23:59:59-12:00"
+          notification: "2026-12-03"
+```
+
+All deadlines default to **AoE (UTC-12)** when no timezone is specified.
 
 ## Contributing
 
 Contributions welcome! Especially:
-- New conference data (add YAML files to `data/`)
-- Bug fixes and feature implementations
-- Documentation improvements
+- **Conference data**: PR to [cfpctl-data](https://github.com/yuranqiu/cfpctl-data)
+- **Verified deadlines**: Help verify conference deadlines against official CFPs
+- **Bug fixes & features**: PR to this repository
+- **Documentation improvements**
 
 ## License
 

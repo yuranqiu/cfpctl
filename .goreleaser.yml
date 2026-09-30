@@ -1,0 +1,98 @@
+version: 2
+
+project_name: cfpctl
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: cfpctl
+    main: .
+    binary: cfpctl
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/cfpctl/cfpctl/cmd.version={{.Version}}
+      - -X github.com/cfpctl/cfpctl/cmd.commit={{.Commit}}
+      - -X github.com/cfpctl/cfpctl/cmd.date={{.Date}}
+
+archives:
+  - id: default
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE*
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"
+
+release:
+  github:
+    owner: yuranqiu
+    name: cfpctl
+  draft: false
+  prerelease: auto
+  header: |
+    ## cfpctl {{ .Version }}
+    
+    Conference deadlines, without leaving your terminal.
+
+brews:
+  - name: cfpctl
+    repository:
+      owner: yuranqiu
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    homepage: https://github.com/yuranqiu/cfpctl
+    description: Conference deadline tracker for researchers
+    license: MIT
+    test: |
+      system "#{bin}/cfpctl version"
+    install: |
+      bin.install "cfpctl"
+
+scoops:
+  - name: cfpctl
+    repository:
+      owner: yuranqiu
+      name: scoop-bucket
+      token: "{{ .Env.SCOOP_BUCKET_TOKEN }}"
+    homepage: https://github.com/yuranqiu/cfpctl
+    description: Conference deadline tracker for researchers
+    license: MIT
+
+nfpms:
+  - id: cfpctl
+    package_name: cfpctl
+    vendor: cfpctl
+    homepage: https://github.com/yuranqiu/cfpctl
+    maintainer: cfpctl maintainers
+    description: Conference deadline tracker for researchers
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    contents:
+      - src: ./README.md
+        dst: /usr/share/doc/cfpctl/README.md

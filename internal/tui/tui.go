@@ -2,6 +2,7 @@ package tui
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 	"time"
 
@@ -34,18 +35,36 @@ type confItem struct {
 	daysLeft int
 }
 
+type sortMode int
+
+const (
+	sortByName sortMode = iota
+	sortByDeadline
+	sortByCCF
+)
+
+type viewMode int
+
+const (
+	viewAll viewMode = iota
+	viewWatchlist
+)
+
 type Model struct {
-	store     *store.Store
-	items     []confItem
-	filtered  []confItem
-	cursor    int
-	search    string
-	searching bool
-	width     int
-	height    int
-	watchlist *watchlist.WatchList
+	store      *store.Store
+	items      []confItem
+	filtered   []confItem
+	cursor     int
+	search     string
+	searching  bool
+	width      int
+	height     int
+	watchlist  *watchlist.WatchList
 	showDetail bool
 	detailConf *model.Conference
+	sortMode   sortMode
+	viewMode   viewMode
+	fieldFilter string
 }
 
 func NewModel() (Model, error) {
@@ -124,6 +143,33 @@ func (m Model) updateList(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			m.watchlist.Save()
 		}
 		return m, nil
+	case "tab":
+		// Toggle view: All → Watchlist → All
+		if m.viewMode == viewAll {
+			m.viewMode = viewWatchlist
+		} else {
+			m.viewMode = viewAll
+		}
+		m.applyFilter()
+		return m, nil
+	case "s":
+		// Cycle sort mode
+		m.sortMode = (m.sortMode + 1) % 3
+		m.applySort()
+		return m, nil
+	case "f":
+		// Quick field filter cycle
+		fields := []string{"", "ai", "security", "software", "systems", "database", "network", "hci", "theory"}
+		idx := 0
+		for i, f := range fields {
+			if f == m.fieldFilter {
+				idx = i
+				break
+			}
+		}
+		m.fieldFilter = fields[(idx+1)%len(fields)]
+		m.applyFilter()
+		return m, nil
 	case "up", "k":
 		if m.cursor > 0 {
 			m.cursor--
@@ -176,20 +222,91 @@ func (m Model) updateDetail(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 }
 
 func (m *Model) applyFilter() {
-	kw := strings.ToLower(m.search)
-	if kw == "" {
-		m.filtered = m.items
-	} else {
-		var f []confItem
+	var result []confItem
+
+	// Start with all items or watchlist only
+	if m.viewMode == viewWatchlist {
 		for _, item := range m.items {
+			if m.watchlist.Contains(item.conf.Slug) {
+				result = append(result, item)
+			}
+		}
+	} else {
+		result = make([]confItem, len(m.items))
+		copy(result, m.items)
+	}
+
+	// Apply field filter
+	if m.fieldFilter != "" {
+		var f []confItem
+		for _, item := range result {
+			for _, field := range item.conf.Fields {
+				if strings.EqualFold(field, m.fieldFilter) {
+					f = append(f, item)
+					break
+				}
+			}
+		}
+		result = f
+	}
+
+	// Apply search filter
+	kw := strings.ToLower(m.search)
+	if kw != "" {
+		var f []confItem
+		for _, item := range result {
 			if strings.Contains(strings.ToLower(item.conf.Name), kw) ||
 				strings.Contains(strings.ToLower(item.conf.Slug), kw) {
 				f = append(f, item)
 			}
 		}
-		m.filtered = f
+		result = f
 	}
+
+	m.filtered = result
+	m.applySort()
 	m.cursor = 0
+}
+
+func (m *Model) applySort() {
+	switch m.sortMode {
+	case sortByName:
+		// Already sorted by name from initial load
+	case sortByDeadline:
+		sort.Slice(m.filtered, func(i, j int) bool {
+			di := 99999
+			dj := 99999
+			if m.filtered[i].deadline != nil {
+				di = m.filtered[i].daysLeft
+			}
+			if m.filtered[j].deadline != nil {
+				dj = m.filtered[j].daysLeft
+			}
+			return di < dj
+		})
+	case sortByCCF:
+		sort.Slice(m.filtered, func(i, j int) bool {
+			ci := ccfRank(m.filtered[i].conf.Rank.CCF)
+			cj := ccfRank(m.filtered[j].conf.Rank.CCF)
+			if ci != cj {
+				return ci < cj
+			}
+			return m.filtered[i].conf.Name < m.filtered[j].conf.Name
+		})
+	}
+}
+
+func ccfRank(r string) int {
+	switch r {
+	case "A":
+		return 0
+	case "B":
+		return 1
+	case "C":
+		return 2
+	default:
+		return 3
+	}
 }
 
 func (m Model) View() string {
@@ -206,13 +323,29 @@ func (m Model) renderList() string {
 	b.WriteString(titleStyle.Render("  📋 cfpctl — Conference Explorer"))
 	b.WriteString("\n")
 
-	// Search bar
+	// Search bar / filter info
 	if m.searching {
 		b.WriteString(searchStyle.Render(fmt.Sprintf("  🔍 %s█", m.search)))
 	} else {
-		b.WriteString(dimStyle.Render("  [/] Search  [Enter] Detail  [w] Watch  [q] Quit"))
+		b.WriteString(dimStyle.Render("  [/] Search  [Enter] Detail  [w] Watch  [Tab] View  [s] Sort  [f] Field  [q] Quit"))
 	}
-	b.WriteString("\n\n")
+	b.WriteString("\n")
+
+	// Active filters/status bar
+	var statusParts []string
+	if m.viewMode == viewWatchlist {
+		statusParts = append(statusParts, "👁 Watchlist")
+	}
+	if m.fieldFilter != "" {
+		statusParts = append(statusParts, fmt.Sprintf("📂 %s", m.fieldFilter))
+	}
+	sortLabels := []string{"Name", "Deadline", "CCF"}
+	statusParts = append(statusParts, fmt.Sprintf("↕ %s", sortLabels[m.sortMode]))
+	if len(statusParts) > 0 {
+		b.WriteString(searchStyle.Render("  " + strings.Join(statusParts, "  │  ")))
+		b.WriteString("\n")
+	}
+	b.WriteString("\n")
 
 	// List
 	listHeight := m.height - 6

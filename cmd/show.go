@@ -54,6 +54,11 @@ func printConferenceDetail(c *model.Conference, now time.Time) {
 	if c.Location != "" && c.Location != "TBD" {
 		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Location:"), c.Location)
 	}
+	if c.Verified {
+		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Status:"), ui.CheckStyle.Render("✓ Verified against official CFP"))
+	} else {
+		fmt.Printf("  %-12s %s\n", ui.MutedStyle.Render("Status:"), ui.SoonStyle.Render("⚠ Unverified — confirm at conference website"))
+	}
 	fmt.Println()
 
 	fmt.Println(ui.SectionHeader("Submission Cycles"))

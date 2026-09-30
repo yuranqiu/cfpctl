@@ -16,6 +16,7 @@ type upcomingEntry struct {
 	CCF      string
 	Deadline time.Time
 	DaysLeft int
+	Verified bool
 }
 
 var upcomingCmd = &cobra.Command{
@@ -63,6 +64,7 @@ var upcomingCmd = &cobra.Command{
 					CCF:      c.Rank.CCF,
 					Deadline: fd.Track.Deadline,
 					DaysLeft: days,
+					Verified: c.Verified,
 				})
 			}
 		}
@@ -86,21 +88,34 @@ var upcomingCmd = &cobra.Command{
 		fmt.Println(ui.TableHeader([]string{"NAME", "CCF", "DEADLINE", "LEFT"}, widths))
 		fmt.Println(ui.SeparatorLine(70))
 
+		unverifiedCount := 0
 		for _, e := range entries {
 			daysStr := fmt.Sprintf("%dd", e.DaysLeft)
 			styledDays := ui.StyleDaysLeft(e.DaysLeft)
 			daysPadded := ui.PadRight(styledDays, widths[3]+len(styledDays)-len(daysStr))
 
-			fmt.Printf("%s  %s  %s  %s\n",
+			vMark := ""
+			if !e.Verified {
+				vMark = ui.SoonStyle.Render(" ⚠")
+				unverifiedCount++
+			}
+
+			fmt.Printf("%s  %s  %s  %s%s\n",
 				ui.PadRight(e.Name, widths[0]),
 				ui.StyleCCF(e.CCF),
 				ui.PadRight(e.Deadline.Format("Jan 02"), widths[2]),
 				daysPadded,
+				vMark,
 			)
 		}
 
 		fmt.Println()
-		fmt.Printf(ui.MutedStyle.Render("%d deadlines in the next %d days")+"\n", len(entries), maxDays)
+		fmt.Printf(ui.MutedStyle.Render("%d deadlines in the next %d days"), len(entries), maxDays)
+		if unverifiedCount > 0 {
+			fmt.Printf(ui.SoonStyle.Render("  (%d unverified ⚠)")+"\n", unverifiedCount)
+		} else {
+			fmt.Println()
+		}
 		return nil
 	},
 }

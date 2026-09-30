@@ -59,10 +59,12 @@
   - ai
   homepage: https://cvpr.thecvf.com/Conferences/2027
   location: Seattle, WA, United States
+  verified: true
   cycles:
   - name: '2027'
-    abstract: '2026-11-10T23:59:00-12:00'
-    deadline: '2026-11-16T23:59:00-12:00'
+    abstract: '2026-11-10T23:59:59-12:00'
+    deadline: '2026-11-16T23:59:59-12:00'
+    notification: '2027-02-25'
 - name: ECAI
   slug: ecai
   rank:
@@ -123,10 +125,12 @@
   - ai
   homepage: https://iclr.cc/Conferences/2027
   location: San Francisco, CA, USA
+  verified: true
   cycles:
   - name: '2027'
     abstract: '2026-09-18T23:59:59-12:00'
     deadline: '2026-09-25T23:59:59-12:00'
+    notification: '2026-12-16'
 - name: ICRA
   slug: icra
   rank:

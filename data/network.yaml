@@ -40,15 +40,27 @@
   slug: nsdi
   rank:
     ccf: A
-    core: N
+    core: A*
   fields:
   - network
   homepage: https://www.usenix.org/conference/nsdi27
   location: Providence, RI, USA
+  verified: true
   cycles:
-  - name: '2027'
-    abstract: '2026-09-10T23:59:59-04:00'
-    deadline: '2026-09-17T23:59:59-04:00'
+  - name: Fall 2027
+    tracks:
+    - name: Research
+      abstract: '2026-09-10T23:59:59-04:00'
+      deadline: '2026-09-17T23:59:59-04:00'
+      notification: '2026-12-08'
+    - name: Frontiers
+      abstract: '2026-09-10T23:59:59-04:00'
+      deadline: '2026-09-17T23:59:59-04:00'
+      notification: '2026-12-08'
+    - name: Operational Systems
+      abstract: '2026-09-10T23:59:59-04:00'
+      deadline: '2026-09-17T23:59:59-04:00'
+      notification: '2026-12-08'
 - name: SECON
   slug: secon
   rank:

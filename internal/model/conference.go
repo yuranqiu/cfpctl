@@ -11,6 +11,7 @@ type Conference struct {
 	Homepage string   `yaml:"homepage"`
 	CFP      string   `yaml:"cfp,omitempty"`
 	Location string   `yaml:"location,omitempty"`
+	Verified bool     `yaml:"verified,omitempty"` // true = deadline verified against official CFP
 	Cycles   []Cycle  `yaml:"cycles"`
 }
 

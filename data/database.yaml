@@ -107,10 +107,20 @@
   - database
   homepage: https://2027.sigmod.org/
   location: Huntington Beach, CA, USA
+  verified: true
   cycles:
-  - name: '2027'
-    abstract: '2026-10-10T23:59:00-12:00'
-    deadline: '2026-10-17T23:59:00-12:00'
+  - name: Round 4
+    tracks:
+    - name: Research
+      abstract: '2026-10-10T23:59:59-12:00'
+      deadline: '2026-10-17T23:59:59-12:00'
+      notification: '2027-01-19'
+    - name: Industrial
+      deadline: '2026-11-24T23:59:59-12:00'
+      notification: '2027-02-15'
+    - name: Demonstration
+      deadline: '2027-01-11T23:59:59-12:00'
+      notification: '2027-03-01'
 - name: VLDB
   slug: vldb
   rank:

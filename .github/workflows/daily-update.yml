@@ -1,81 +1,128 @@
-name: Daily Data Update
+name: Daily Official Data Update
 
 on:
   schedule:
-    # Run daily at 00:00 UTC
+    # 00:00 UTC / 08:00 Asia/Shanghai; GitHub may delay scheduled runs.
     - cron: '0 0 * * *'
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
 
+# The application repository is only a source of updater code.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: daily-official-data-update
+  cancel-in-progress: false
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - name: Checkout
+      - name: Checkout default branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Require data repository token
+        env:
+          DATA_TOKEN: ${{ secrets.CFPCTL_DATA_TOKEN }}
+        run: |
+          if [ -z "$DATA_TOKEN" ]; then
+            echo '::error::Set CFPCTL_DATA_TOKEN with contents and pull requests write access to yuranqiu/cfpctl-data.'
+            exit 1
+          fi
+
+      - name: Checkout maintained data repository
+        uses: actions/checkout@v4
+        with:
+          repository: yuranqiu/cfpctl-data
+          ref: main
+          path: .upstream/cfpctl-data
+          token: ${{ secrets.CFPCTL_DATA_TOKEN }}
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
 
       - name: Install dependencies
-        run: pip install pyyaml
+        run: python -m pip install -r scripts/requirements.txt
 
-      - name: Download latest data from ccfddl
-        run: python scripts/convert_ccfddl.py
-
-      - name: Clean invalid entries
-        run: |
-          python scripts/clean_tbd.py
-          python scripts/clean_no_deadline.py
-
-      - name: Scrape CFP pages for track data
-        run: python scripts/scrape_cfp.py || true  # Don't fail on scrape errors
+      - name: Test data update scripts
+        run: python -m unittest discover -s scripts/tests
 
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.23'
+          go-version-file: go.mod
 
-      - name: Validate data
+      - name: Test and build validator
         run: |
-          go build -o bin/cfpctl .
-          ./bin/cfpctl validate
+          go test ./...
+          go build -o "$RUNNER_TEMP/cfpctl" .
 
-      - name: Check for changes
-        id: changes
-        run: |
-          if git diff --quiet data/; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
+      - name: Update maintained data from official conference websites
+        run: >-
+          python scripts/update_official.py
+          --data-dir .upstream/cfpctl-data
+          --report "$RUNNER_TEMP/official-report.json"
+          --summary "$RUNNER_TEMP/official-report.md"
+          --apply --workers 4 --timeout 20
 
-      - name: Create Pull Request
-        if: steps.changes.outputs.changed == 'true'
+      - name: Validate maintained data
+        run: '"$RUNNER_TEMP/cfpctl" validate --data-dir .upstream/cfpctl-data'
+
+      # The action maintains one PR in cfpctl-data and closes stale no-change PRs.
+      - name: Create or update data pull request
+        id: pull-request
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "chore(data): daily update from ccfddl + CFP scrape"
-          title: "📅 Daily data update"
-          body: |
-            Automated daily data update.
-
-            ## Changes
-            - Synced latest conference data from [ccfddl/ccf-deadlines](https://github.com/ccfddl/ccf-deadlines)
-            - Scraped CFP pages for track-level deadlines
-            - Cleaned invalid/TBD entries
-            - Validated all data files
-
-            ## Validation
-            All data files pass `cfpctl validate`.
-          branch: auto/daily-update
+          token: ${{ secrets.CFPCTL_DATA_TOKEN }}
+          path: .upstream/cfpctl-data
+          base: main
+          add-paths: |
+            ai.yaml
+            database.yaml
+            graphics.yaml
+            hci.yaml
+            interdisciplinary.yaml
+            network.yaml
+            security.yaml
+            software.yaml
+            systems.yaml
+            theory.yaml
+          commit-message: "chore(data): update deadlines from official conference websites"
+          title: "Daily official conference data update"
+          body-path: ${{ runner.temp }}/official-report.md
+          branch: auto/official-update
           delete-branch: true
-          labels: automated,data-update
 
-      - name: No changes
-        if: steps.changes.outputs.changed == 'false'
-        run: echo "No data changes detected."
+      - name: Publish update summary
+        if: always()
+        env:
+          PR_OPERATION: ${{ steps.pull-request.outputs.pull-request-operation }}
+          PR_URL: ${{ steps.pull-request.outputs.pull-request-url }}
+        run: |
+          if [ -f "$RUNNER_TEMP/official-report.md" ]; then
+            cat "$RUNNER_TEMP/official-report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "Pull request operation: ${PR_OPERATION:-none}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$PR_URL" ]; then
+            echo "Pull request: $PR_URL" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload official update report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-update-report
+          path: |
+            ${{ runner.temp }}/official-report.json
+            ${{ runner.temp }}/official-report.md
+          if-no-files-found: warn
+          retention-days: 14

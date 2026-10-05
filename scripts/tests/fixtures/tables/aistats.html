@@ -1,0 +1,2170 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <style>html { scroll-padding-top: 70px; /* height of sticky header plus extra */ }</style>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/virtual/js/virtual.js"></script>
+    <meta name="google-site-verification" content="0jwPnVXIAk4FvFdT37dwMmd-kjHF86e5DKwvqlStUW0">
+
+
+    
+    <link rel="stylesheet" href="/static/core/css/core.css" type="text/css">
+    <link rel="stylesheet" href="/static/virtual/css/virtual.css" type="text/css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/static/core/css/custom.css" type="text/css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script nonce="c/xs782jK9QjCWeOIes3og==">
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+            processEscapes: true,
+          },
+          options: {
+            ignoreHtmlClass: 'no-mathjax',
+          }
+        };
+    </script>
+
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+            nonce="c/xs782jK9QjCWeOIes3og==" >
+    </script>
+
+    <!--This script keeps local links inside the web app rather than opening them
+in Safari, and has nothing to do with editing or Aloha.-->
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+    (function (document, navigator, standalone) {
+
+        if ((standalone in navigator) && navigator[standalone]) {
+            var curnode, location = document.location, stop = /^(a|html)$/i;
+            document.addEventListener('click', function (e) {
+                curnode = e.target;
+                while (!(stop).test(curnode.nodeName)) {
+                    curnode = curnode.parentNode;
+                }
+
+                if (
+                    'href' in curnode && // is a link
+                    (chref = curnode.href).replace(location.href, '').indexOf('#') && // is not an anchor
+                    (!(/^[a-z\+\.\-]+:/i).test(chref) ||                       // either does not have a proper scheme (relative links)
+                        chref.indexOf(location.protocol + '//' + location.host) === 0) // or is in the same protocol and domain
+                ) {
+                    e.preventDefault();
+                    location.href = curnode.href;
+                }
+            }, false);
+        }
+    })(document, window.navigator, 'standalone');
+</script>
+
+
+<style>
+
+    @media screen and (min-width: 767px) {
+        .blurb {
+            min-height: 260px;
+        }
+    }
+</style>
+    
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+</script>
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+    if (typeof jQuery === 'undefined') {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "/static/core/js/jquery-3.6.1.min.js";
+        document.head.appendChild(script);
+    }
+</script>
+
+    
+    <script nonce="c/xs782jK9QjCWeOIes3og==">
+        var $ = jQuery;
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <script src="/static/core/js/ajax-csrf-snippet.js"></script>
+    
+    <link rel="stylesheet" href="/static/fontawesomefree/css/all.min.css">
+    <script src="/static/fontawesomefree/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+
+
+    <style nonce="c/xs782jK9QjCWeOIes3og==">
+        body {
+            font-family: Exo;}
+    </style>
+
+
+
+
+
+
+
+
+        
+
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/virtual/css/virtual.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.3.1/typeahead.bundle.min.js" integrity="sha512-lEb9Vp/rkl9g2E/LdHIMFTqz21+LA79f84gqP75fbimHqVTu6483JG1AwJlWLLQ8ezTehty78fObKupq3HSHPQ==" crossorigin="anonymous"></script>
+    <script src="/static/core/js/moment/min/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/static/core/js/ajax-csrf-snippet.js" ></script>
+    <script src="/static/virtual/js/virtual.js"></script>
+    
+
+    
+
+    
+    <link rel="canonical" href="https://virtual.aistats.org/Conferences/2027">
+
+    <title>2027 Conference</title>
+</head>
+
+<body>
+<!-- <h1><a href="#" onclick="alert('CSP Test');">CSP Test</a></h1> -->
+
+
+
+
+<div class="noprint">
+    
+        
+            <!--Navbar start-->
+<header>
+    <a href="#child-menu" class="off-screen">Skip to yearly menu bar</a>
+    <a href="#main" class="off-screen">Skip to main content</a>
+    <div id="id_navbar" class="navbar navbar-expand-sm navbar-dark" aria-label="Main Navigation"
+         style="background-color:#212529">
+        <h2 class="off-screen">Main Navigation</h2>
+        <div class="container-fluid">
+            <div><a class="navbar-brand" href="/" aria-label="Home">
+
+                <img src="/static/core/img/aistats-navbar-logo.svg" alt="conference_logo" height="40"></a></div>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggler1"
+                    aria-expanded="false" aria-label="Toggle main navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler1">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+    <li class="dropdown-item dropdown pe-3">
+        <a class="nav-link dropdown-toggle  p-1" 
+           href="#"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            AISTATS
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2026/CodeOfConduct">
+                    <span >
+                        Code of Conduct
+                    </span>
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Profile/create">
+                    <span >
+                        Create Profile
+                    </span>
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/public/PrivacyPolicy">
+                    <span >
+                        Privacy Policy
+                    </span>
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Help/Contact">
+                    <span >
+                        Contact AISTATS
+                    </span>
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/FAQ">
+                    <span >
+                        Help/FAQ
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+        </ul>
+    </li>
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/MyStuff">
+                    <span >
+                        My Stuff
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+                    
+                </ul>
+
+                
+                <form class="d-flex mx-2" aria-label="Search" role="search" action="/search">
+                    <div class="input-group" role="search" style="outline-color:green;">
+                        <input type="text" class="form-control" placeholder="Search" name="q"
+                               value=""
+                               aria-label="Search" aria-describedby="btnGroupAddon"
+                                id="navbar-search">
+                        <div class="input-group-text btn-primary" id="btnGroupAddon">
+                            <button style="border: none; background-color: transparent; padding: 0;" type="submit" aria-label="execute search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+
+                
+                    <a href="/accounts/login?nextp=/virtual/2022/serve_config.json " class="navbar-brand"><span
+                            class="fa-solid fa-right-to-bracket"></span> Login</a>
+                
+
+            </div>
+        </div>
+    </div>
+</header>
+<!--Navbar end-->
+        
+    
+</div><!--noprint div-->
+
+<!--This holds the whole page including the navbar-->
+<main id="main">
+    
+        
+            <div class="container-fluid">
+                
+<!--Navbar start-->
+
+
+
+
+<div class="container-fluid">
+
+    <div class="dropdown" id="child-menu">
+        <nav class="align-middle navbar navbar-expand-md mx-4 border border-3 border-top-0 rounded-bottom"
+             style="min-height: 57px; background-color: #F6f6f6;">
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarToggler1229"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarToggler1229">
+                    <ul class="navbar-nav me-auto mb-lg-0">
+                        
+
+
+    <li class="dropdown-item dropdown pe-3">
+        <a class="nav-link dropdown-toggle border-3  btn btn-primary text-white p-1" style= "background-color: #070bff; font-size: 1.2 em;"
+           href="#"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Year: (2027)
+        </a>
+        <ul class="dropdown-menu">
+            
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2027">2027
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2026">2026
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2025">2025
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2024">2024
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2023">2023
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2022">2022
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item " >
+                <a class="dropdown-item p-1"
+                   href="/Conferences/2021">2021
+                </a>
+                
+            </li>
+        
+
+    
+
+
+
+        </ul>
+    </li>
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/Dates">
+                    <span >
+                        Dates
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+    <li class="dropdown-item dropdown pe-3">
+        <a class="nav-link dropdown-toggle  p-1" 
+           href="#"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Organization
+        </a>
+        <ul class="dropdown-menu">
+            
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/CodeOfConduct">
+                    <span >
+                        Code of Conduct
+                    </span>
+                </a>
+                
+                    <hr class="dropdown-divider" aria-hidden="true">
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/virtual/2027/organizers">
+                    <span >
+                        Organizing Committee
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+        </ul>
+    </li>
+    
+
+
+
+    <li class="dropdown-item dropdown pe-3">
+        <a class="nav-link dropdown-toggle  p-1" 
+           href="#"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Calls
+        </a>
+        <ul class="dropdown-menu">
+            
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/CallForPapers">
+                    <span >
+                        Call For Papers
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/SubmissionFAQ">
+                    <span style="font-size: .8em;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;Submission FAQ
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/ACGuidelines">
+                    <span >
+                        AC Guidelines
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/SACGuidelines">
+                    <span >
+                        SAC Guidelines
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+    
+        
+            <li class="dropdown-item  pe-2" >
+                <a class="nav-link p-1"  href="/Conferences/2027/CallForWorkshops">
+                    <span >
+                        Call For Workshops
+                    </span>
+                </a>
+                
+            </li>
+
+        
+
+    
+
+
+
+        </ul>
+    </li>
+    
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--Navbar end-->
+
+            </div>
+            <br><br>
+        
+    
+    
+        
+        <div class="container">
+    
+    
+    
+
+    
+    <div class="container">
+        
+            <!--JUst above the HTML in document-snippet.html-->
+            <div>
+
+<!-- Hero Section with Background Image -->
+<div class="hero-section position-relative overflow-hidden">
+    <div class="hero-background position-absolute w-100 h-100" style="background: linear-gradient(100deg, rgba(30, 41, 59, 0.92) 0%, rgba(45, 58, 78, 0.82) 32%, rgba(60, 74, 96, 0.55) 62%, rgba(71, 85, 105, 0.34) 100%), url('/static/core/img/montreal_qc_aistats_2027.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+
+    <div class="container position-relative py-3" style="z-index: 2;">
+        <div class="row align-items-center hero-content-height">
+            <div class="col-lg-8">
+                <div class="hero-content text-white py-3 ps-4 ps-lg-5">
+                    <h1 class="display-4 fw-bold mb-3 text-shadow">AISTATS 2027</h1>
+                    <p class="fs-5 mb-3 text-light opacity-90">Thirtieth Annual Conference on Artificial Intelligence and Statistics</p>
+
+                    <div class="hero-actions mt-3">
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <div>
+             <p><span class="hero-chip"><span class="hero-loc">Montreal, Canada</span> <span class="hero-date">May 3rd - 6th, 2027</span></span><br>
+<a class="btn btn-hero-plain" href="/Conferences/2026">AISTATS 2027</a> <a class="btn btn-hero-plain" href="/Help/Contact">Contact Us</a></p>
+
+            </div>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a target="_blank"
+                   href="https://twitter.com/intent/tweet?text=Looking%20forward%20to%20%23AISTATS2027%21%20https%3A%2F%2Fvirtual.aistats.org"
+                   class="btn hero-btn px-3 py-2 fw-semibold rounded-3" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">
+                    <i class="fab fa-twitter me-2"></i>Share Event
+                </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="bg-light py-4">
+    <div class="container">
+        <!-- Announcements & Quick Links -->
+        <section class="mb-4">
+            <div class="row">
+                <!-- Latest Announcements (70%) -->
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <div class="content-card h-100">
+                        <div class="mb-3 text-center">
+                            <h2 class="h3 fw-bold text-primary-dark mb-2">Latest Announcements</h2>
+                            <p class="text-muted mb-0 small">Stay updated with conference news</p>
+                        </div>
+                        <div class="card-content">
+                            <div>
+             <div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="row">
+<ul>
+	<li>
+	<p>The submissions are open on <a href="https://openreview.net/group?id=aistats.org/AISTATS/2027/Conference">OpenReview</a> (template <a href="https://aistats.org/aistats2027/AISTATS2027PaperPack.zip">here</a>).</p>
+	</li>
+	<li>
+	<p>The <a href="https://virtual.aistats.org/Conferences/2027/Dates">schedule</a> and <a href="https://virtual.aistats.org/Conferences/2027/CallForPapers">Call for Papers</a> for AISTATS 2027 are now available.</p>
+	</li>
+	<li>
+	<p><a href="https://forms.gle/T27iEqDAS4ddM9HA7">AISTATS 2027 Reviewer &amp; AC Self-Nomination Form</a><strong>.</strong></p>
+	</li>
+	<li>
+	<p>Registration and the sponsor portal will be announced here as they are confirmed - please check back for updates.</p>
+	</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick Links (30%) -->
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <div class="content-card h-100">
+                        <div class="mb-3 text-center">
+                            <h2 class="h3 fw-bold text-primary-dark mb-2">Quick Links</h2>
+                            <p class="text-muted mb-0 small">Helpful resources</p>
+                        </div>
+                        <div class="card-content">
+                            <div>
+             <div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-lg-12">
+<div class="d-grid gap-2"><a class="btn btn-outline-primary" href="/Conferences/2026">AISTATS 2026 Conference </a> <a class="btn btn-outline-secondary" href="/Conferences/2027/CallForPapers">Call for Papers </a> <a class="btn btn-outline-secondary" href="/Conferences/2027/Dates">Dates and Deadlines </a> <a class="btn btn-outline-secondary" href="/Help/Contact">Contact Us</a></div>
+</div>
+</div>
+</div>
+
+            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Dates -->
+        <section class="mb-4">
+            <div class="content-card">
+                <div class="mb-3 text-center">
+                    <h2 class="h3 fw-bold text-primary-dark mb-2">Important Dates</h2>
+                    <p class="text-muted mb-0 small">Key deadlines and events will be posted as they are confirmed</p>
+                </div>
+                <div class="card-content">
+                    
+                    <div>
+             
+            </div>
+                    
+
+<div class="dates-modern">
+    <div class="dates-container">
+        
+            <div class="date-card date-expired">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="date-content">
+                    <div class="date-row">
+                        <div class="date-title">
+                            
+                                Abstract Submission Deadline
+                            
+                        </div>
+                        <div class="date-time">
+                            <span class='gray'>Sep 29 '26 (Anywhere on Earth)</span> 
+                        </div>
+                    </div>
+                    <div class="date-countdown">
+                        
+<script src="/static/core/js/jquery.countdown.min.js" ></script>
+
+<span class="abstractsubmissiondeadline-countdown"></span>
+
+<script nonce="c/xs782jK9QjCWeOIes3og==" >
+    if ("abstractsubmissiondeadline" != "") {
+          var abstractsubmissiondeadline = "2026/09/30 11:59:59 UTC";
+      $('.abstractsubmissiondeadline-countdown').countdown(abstractsubmissiondeadline, function (event) {
+        $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+        
+      });
+    }
+
+</script>
+
+                    </div>
+                </div>
+            </div>
+        
+            <div class="date-card ">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="date-content">
+                    <div class="date-row">
+                        <div class="date-title">
+                            
+                                Full Paper Submission Deadline (including all supplementary material)
+                            
+                        </div>
+                        <div class="date-time">
+                            <span class=''>Oct 06 '26 (Anywhere on Earth)</span> 
+                        </div>
+                    </div>
+                    <div class="date-countdown">
+                        
+<script src="/static/core/js/jquery.countdown.min.js" ></script>
+
+<span class="fullpapersubmissiondeadline-countdown"></span>
+
+<script nonce="c/xs782jK9QjCWeOIes3og==" >
+    if ("fullpapersubmissiondeadline" != "") {
+          var fullpapersubmissiondeadline = "2026/10/07 11:59:59 UTC";
+      $('.fullpapersubmissiondeadline-countdown').countdown(fullpapersubmissiondeadline, function (event) {
+        $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+        
+      });
+    }
+
+</script>
+
+                    </div>
+                </div>
+            </div>
+        
+            <div class="date-card ">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="date-content">
+                    <div class="date-row">
+                        <div class="date-title">
+                            
+                                Reviews Released
+                            
+                        </div>
+                        <div class="date-time">
+                            <span class=''>Nov 16 '26</span> <span class="text-muted small">*</span>
+                        </div>
+                    </div>
+                    <div class="date-countdown">
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="date-card ">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="date-content">
+                    <div class="date-row">
+                        <div class="date-title">
+                            
+                                Paper Decision Notifications
+                            
+                        </div>
+                        <div class="date-time">
+                            <span class=''>Jan 20 '27</span> <span class="text-muted small">*</span>
+                        </div>
+                    </div>
+                    <div class="date-countdown">
+                        
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    <div class="dates-footer">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <a href="/Conferences/2027/Dates" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-calendar-week me-1"></i> View All Dates
+                </a>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="text-muted mb-0 small">
+                    <i class="fas fa-globe me-1"></i> Timezone: 
+                    <a href="/set_timezone?nextp=/Conferences/2027" class="text-primary">
+                        
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.dates-modern {
+    background: var(--bg-white, #ffffff);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dates-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem 0;
+}
+
+.date-card {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    background: var(--bg-light, #f8fafc);
+    border-left: 3px solid var(--accent, #0ea5e9);
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+}
+
+.date-card:hover {
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.date-expired {
+    border-left-color: var(--text-muted, #64748b);
+    opacity: 0.7;
+}
+
+.date-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--primary-light, #64748b);
+    color: white;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+}
+
+.date-expired .date-icon {
+    background: var(--text-muted, #64748b);
+}
+
+.date-content {
+    flex: 1;
+    width: 100%;
+}
+
+.date-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.1rem;
+    padding: 0.1rem 0;
+}
+
+.date-title {
+    font-weight: 600;
+    color: var(--primary-dark, #334155);
+    flex: 1;
+}
+
+.date-link {
+    color: var(--primary-dark, #334155);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.date-link:hover {
+    color: var(--accent, #0ea5e9);
+}
+
+.date-time {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark, #1e293b);
+    text-align: right;
+    padding-left: 1.5rem;
+    white-space: nowrap;
+}
+
+.date-countdown {
+    font-size: 0.8rem;
+    color: var(--accent, #0ea5e9);
+    font-weight: 500;
+}
+
+.date-expired .date-countdown,
+.date-expired .date-title,
+.date-expired .date-time {
+    color: var(--text-muted, #64748b);
+}
+
+.dates-footer {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+@media (max-width: 768px) {
+    .dates-footer .col-md-6:last-child {
+        margin-top: 0.75rem;
+        text-align: left !important;
+    }
+}
+</style>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors -->
+        <section class="mb-4">
+            <div class="content-card-accent">
+                <div class="text-center mb-3">
+                    <h2 class="h3 fw-bold text-primary-dark mb-2">Sponsorship</h2>
+                    <p class="text-muted mb-0">Our sponsors make this conference possible.</p>
+                </div>
+                <div class="text-center">
+                    <div>
+             <p class="text-muted mb-0">Sponsorship opportunities for AIStats 2027 are not open yet, check back for details and when applications open.</p>
+
+            </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Leadership -->
+        <section class="mb-4">
+            <!-- Organizing Committee -->
+            <div class="content-card mb-3">
+                <div class="mb-3 text-center">
+                    <h3 class="h4 fw-bold text-primary-dark mb-2">Organizing Committee</h3>
+                    <p class="text-muted mb-0 small">Meet the team planning and executing this year's conference</p>
+                </div>
+                <div class="card-content text-center">
+                    
+                    <div>
+             
+            </div>
+                    
+    
+        <div class="row mb-3">
+            
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 border-light shadow-sm">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title text-dark fw-bold mb-2 border-bottom pb-2" style="font-size: 1.25rem;">
+                                General Chair
+                            </h6>
+                            
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="http://stat.cmu.edu/~aramdas/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Aaditya Ramdas</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">Stanford University</div>
+                                        
+                                    </div>
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="https://arno.solin.fi" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Arno Solin</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">ELLIS Institute Finland / Aalto University</div>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 border-light shadow-sm">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title text-dark fw-bold mb-2 border-bottom pb-2" style="font-size: 1.25rem;">
+                                Program Chair
+                            </h6>
+                            
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                <span class="fw-semibold text-dark">Quentin Berthet</span>
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">Google DeepMind</div>
+                                        
+                                    </div>
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="https://www.cmap.polytechnique.fr/~aymeric.dieuleveut/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Aymeric Dieuleveut</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">École polytechnique</div>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 border-light shadow-sm">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title text-dark fw-bold mb-2 border-bottom pb-2" style="font-size: 1.25rem;">
+                                Workflow Chair
+                            </h6>
+                            
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="https://jeanbaptistefermanian.github.io/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Jean-Baptiste Fermanian</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">INRIA/INRAE</div>
+                                        
+                                    </div>
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="https://matdag.github.io/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Mathieu Dagréou</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">INRIA</div>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 border-light shadow-sm">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title text-dark fw-bold mb-2 border-bottom pb-2" style="font-size: 1.25rem;">
+                                Workshop Chair
+                            </h6>
+                            
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="http://www.cvernade.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Claire Vernade</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">University of Technology Nuremberg</div>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    
+        <div class="row mb-3">
+            
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 border-light shadow-sm">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title text-dark fw-bold mb-2 border-bottom pb-2" style="font-size: 1.25rem;">
+                                Publication Chair
+                            </h6>
+                            
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                
+                                                    <a href="https://trappmartin.github.io/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark fw-semibold">Martin Trapp</a>
+                                                
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">KTH Royal Institute of Technology</div>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 border-light shadow-sm">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title text-dark fw-bold mb-2 border-bottom pb-2" style="font-size: 1.25rem;">
+                                Logistics Chair
+                            </h6>
+                            
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                <span class="fw-semibold text-dark">Mary Ellen Perry</span>
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">AISTATS</div>
+                                        
+                                    </div>
+                                
+                                    <div class="committee-member mb-2">
+                                        <div class="member-name">
+                                            
+                                                <span class="fw-semibold text-dark">Max Wiesner</span>
+                                            
+                                        </div>
+                                        
+                                            <div class="institution-name text-muted">AIStats</div>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    
+
+
+<style>
+.committee-member:last-child {
+    margin-bottom: 0 !important;
+}
+
+.member-name {
+    font-size: 0.85rem;
+    line-height: 1.25;
+}
+
+.member-name a {
+    color: #1e293b !important;
+    transition: color 0.2s ease;
+}
+
+.member-name a:hover {
+    color: #0066cc !important;
+    text-decoration: underline !important;
+}
+
+.institution-name {
+    font-size: 0.75rem;
+    line-height: 1.15;
+    font-style: italic;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .member-name {
+        font-size: 0.8rem;
+    }
+
+    .institution-name {
+        font-size: 0.7rem;
+    }
+
+    .card-body {
+        padding: 0.5rem !important;
+    }
+}
+</style>
+
+                </div>
+            </div>
+
+            <!-- Board -->
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="content-card">
+                        <div class="mb-3 text-center">
+                            <h3 class="h4 fw-bold text-primary-dark mb-2">Board</h3>
+                            <p class="text-muted mb-0 small">Executive leadership and governance</p>
+                        </div>
+                        <div class="card-content text-center">
+                            <div>
+             <div><h5><strong>President</strong></h5>
+
+<p>Arindam Banerjee</p>
+
+<h5><strong>Secretary</strong></h5>
+
+<p>Silvia Chiappa</p>
+
+<h5><strong>Treasurer</strong></h5>
+
+<p>Daryl Pregibon</p>
+
+<h5><strong>Board Members</strong></h5>
+
+<p>Kenji Fukumizu<br>
+Neil D. Lawrence<br>
+Marina Meila<br>
+Bernhard Scholkopf</p>
+</div>
+            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- About -->
+        <section class="mb-4">
+            <div class="content-card-primary">
+                <div class="text-center mb-3">
+                    <h2 class="h3 mb-2 text-primary-dark">About AISTATS</h2>
+                </div>
+                <div class="text-dark about-content text-center">
+                    <div>
+             <blockquote>AISTATS is an interdisciplinary gathering of researchers at the intersection of computer science, artificial intelligence, machine learning, statistics, and related areas. Since its inception in 1985, the primary goal of AISTATS has been to broaden research in these fields by promoting the exchange of ideas among them.</blockquote>
+
+            </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Error Messages -->
+
+
+<!-- Back to Top -->
+<button type="button" class="back-to-top" id="backToTop" style="display: none;">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+
+
+<style nonce="c/xs782jK9QjCWeOIes3og==">
+/* Action buttons */
+.hero-actions a.btn-hero-register,
+.hero-actions a.btn-hero-hotel,
+.hero-actions a.btn-hero-ghost,
+.hero-actions a.btn-hero-policy,
+.hero-actions a.btn-hero-plain,
+.hero-actions a.btn-hero-blue {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.hero-actions a[class*="btn-hero-"]:hover {
+    color: #fff;
+    filter: brightness(1.1);
+}
+.hero-actions a.btn-hero-register      { background: rgba(34, 197, 94, 0.4); }
+.hero-actions a.btn-hero-hotel,
+.hero-actions a.btn-hero-ghost,
+.hero-actions a.btn-hero-policy,
+.hero-actions a.btn-hero-plain         { background: rgba(255, 255, 255, 0.15); }
+.hero-actions a.btn-hero-blue          { background: rgba(14, 165, 233, 0.4); }
+.hero-actions a[class*="btn-hero-"]::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 0.5rem;
+}
+.hero-actions a.btn-hero-register::before { content: "\f234"; } /* user-plus */
+.hero-actions a.btn-hero-hotel::before    { content: "\f594"; } /* hotel */
+.hero-actions a.btn-hero-ghost::before    { content: "\f02b"; } /* tag */
+.hero-actions a.btn-hero-policy::before   { content: "\f56c"; } /* file-contract */
+.hero-actions a.btn-hero-plain::before,
+.hero-actions a.btn-hero-blue::before     { content: none; }    /* no icon */
+
+/* Neutralize CKEditor's auto-<p> wrap inside the document body, but keep
+   breathing room between adjacent chips/buttons (CKEditor puts them as inline
+   siblings inside a single <p>, so flex gap doesn't apply). */
+.hero-actions p { margin: 0; }
+.hero-actions .hero-chip,
+.hero-actions a[class*="btn-hero-"] {
+    margin: 0.25rem 0.5rem 0.25rem 0;
+}
+</style>
+
+
+<style>
+:root {
+    --primary-dark: #334155;
+    --primary: #64748b;
+    --primary-light: #94a3b8;
+    --accent: #fbbf24;  /* Yellow/orange for dates and highlights */
+    --accent-blue: #3b82f6;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+}
+
+.hero-section {
+    min-height: 35vh;
+    position: relative;
+}
+
+.hero-content-height {
+    min-height: 30vh;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Hero info chips + action buttons — reusable classes so the editable
+   /Conferences/{year}/HeroButtons document can contain minimal HTML that
+   survives CKEditor's extraAllowedContent filter (anchors only keep classes
+   starting with btn*, spans keep any class, <i> tags and inline styles get
+   stripped). Icons render via ::before using Font Awesome 5 Free codepoints. */
+
+.hero-actions .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    gap: 0.75rem;
+}
+.hero-actions .hero-chip .hero-loc,
+.hero-actions .hero-chip .hero-date {
+    display: inline-flex;
+    align-items: center;
+}
+.hero-actions .hero-chip .hero-loc::before,
+.hero-actions .hero-chip .hero-date::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 0.4rem;
+}
+.hero-actions .hero-chip .hero-loc::before  { content: "\f3c5"; } /* map-marker-alt */
+.hero-actions .hero-chip .hero-date::before { content: "\f073"; } /* calendar-alt */
+
+
+
+.content-card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.content-card:hover::before {
+    opacity: 0.5;
+}
+
+.content-card-large {
+    background: var(--bg-white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.content-card-accent {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.content-card-primary {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 197, 253, 0.05) 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    color: var(--text-dark);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.text-primary-dark {
+    color: var(--primary-dark) !important;
+}
+
+.text-accent {
+    color: var(--accent-blue) !important;
+}
+
+.mission-content, .about-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Date styling overrides */
+.dates-modern .date-card {
+    border-left-color: var(--accent) !important;  /* Keep yellow/orange for date cards */
+}
+
+.dates-modern .date-countdown {
+    color: var(--accent-blue) !important;
+}
+
+/* Organizing committee title styling */
+.card-title.text-primary {
+    color: var(--text-dark) !important;
+}
+
+/* Icon accent colors - use blue for section headers */
+.content-card .text-accent {
+    color: var(--accent-blue) !important;
+}
+
+/* Remove yellow accent border - keeping card position relative for other purposes */
+.content-card {
+    position: relative;
+}
+
+.badge-custom {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.qr-card {
+    backdrop-filter: blur(20px);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--primary-dark);
+    color: white;
+    border: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 30vh;
+    }
+
+    .hero-content-height {
+        min-height: 25vh;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .content-card, .content-card-large, .content-card-accent, .content-card-primary {
+        padding: 1.25rem;
+    }
+
+    .hero-background {
+        background-attachment: scroll !important;
+    }
+
+    .badge-custom {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    .hero-actions .d-flex {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        min-height: 25vh;
+    }
+
+    .hero-content-height {
+        min-height: 20vh;
+    }
+
+    .hero-actions .d-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem !important;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+</style>
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+document.addEventListener('DOMContentLoaded', function() {
+    // Back to top functionality
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Parallax effect for hero background (on desktop only)
+    if (window.innerWidth > 768) {
+        const heroBackground = document.querySelector('.hero-background');
+        if (heroBackground) {
+            // Set initial position
+            heroBackground.style.transform = 'translateY(0px)';
+
+            // Add parallax scroll effect with throttling for better performance
+            let ticking = false;
+
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                const heroSection = document.querySelector('.hero-section');
+
+                // Only apply parallax effect when hero section is visible
+                if (heroSection && scrolled < heroSection.offsetHeight) {
+                    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            });
+
+            // Initial call to set position
+            updateParallax();
+        }
+    }
+});
+</script></div>
+        
+    </div>
+
+
+
+    
+        </div>
+    
+
+</main>
+<!--END BLOCK CONTENT-->
+
+
+<!--Footer for the edit button-->
+
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+
+    $(function () {
+        if ($(".editable").length == 0) {
+            $("#editFooter").hide();
+        }
+
+        // Event bindings for edit buttons
+        $('.startEditBtn').on('click', function() {
+            start_edit();
+        });
+        
+        $('.stopEditBtn').on('click', function() {
+            stop_edit();
+        });
+        $('#id_accepted_terms_and_conditions').on('change', function() {
+            this.form.submit();
+        });
+        $('.accepted_terms_and_conditions').on('change', function() {
+            this.form.submit();
+        });
+        $('.workshopstatus').on('change', function() {
+            changeStatus(this);
+        });
+        $('.action-select').on('change', function() {
+            actionChanged(this);
+        });
+        $('.extra').on('change', function() {
+            extraChanged(this);
+        });
+        $('.filter_workshop').on('change', function() {
+            this.form.submit();
+        });
+        $('.volunteer-status, .recommendation-letter-status').on('change', function() {
+            setStatus(this);
+        });
+        $('.status-form-show').on('change', function() {
+            this.form.submit();
+        });
+        $('.download-form-download').on('change', function() {
+            this.form.submit();
+        });
+        $('.presentation-type-form-presentation-type').on('change', function() {
+            this.form.submit();
+        });
+        $('.export-form-resource').on('change', function() {
+            showFieldsForResource(this.value);
+        });
+        $('.import-form-resource').on('change', function() {
+            showFieldsForResource(this.value);
+        });
+        $('.vol-email-form-to, .vol-email-form-template').on('change', function() {
+            this.form.submit();
+        });
+        $('.organizer-alert').on('click', function() {
+            getUserCreateForm(this.href);
+        });
+    })
+</script>
+
+<script src="/static/core/js/fastclick.min.js" ></script>
+
+<!--We don't know if there are editable tags on the page until after the django template engine has rendered the page. So,
+test in javascript for "editable" tags and if present, load the ckeditor engine dynamically. -->
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+    if (document.getElementsByClassName('editable').length > 0) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "/static/core/ckeditor/4.18/ckeditor.js";    // use this for linked script
+      script.onload = function () {
+        console.log("ckeditor loaded");
+        // Initial setup when each editor is ready
+        CKEDITOR.on("instanceReady", function (e) {
+          updateToggleDocName(e.editor);
+        });
+
+        // React to any editor entering/leaving read-only
+        CKEDITOR.on("readOnly", function (e) {
+          updateToggleDocName(e.editor);
+        });
+      };
+        document.body.appendChild(script);
+    }
+
+    function updateToggleDocName(editor) {
+      var id = editor && editor.name;
+      if (!id || id.indexOf("id_") !== 0) return;
+
+      var doc_name_element = document.getElementById("document_name_" + id.slice(3));
+      console.log(doc_name_element);
+      if (!doc_name_element) return;
+
+      doc_name_element.style.display = editor.readOnly ? "none" : "block";
+    }
+
+</script>
+
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+    function fetchContent() {
+        $(".editable").each(function (index) {
+            var myself = this;
+            var docvID = this.getAttribute('id').replace("id_", "");
+            var blurbtext = this.getAttribute("blurbtext");
+            $.ajax({
+                url: "/Admin/RetrieveDocumentVersion",
+                type: "POST",
+                data: {
+                    docvID: docvID,
+                    blurbtext: blurbtext,
+                    csrfmiddlewaretoken: csrftoken,
+                },
+                success: function (data, textStatus, jqXHR) {
+                    myself.setAttribute("contenteditable", "true");
+                    myself.innerHTML = data;
+                    CKEDITOR.inline(myself.id);
+                },
+            });
+        })
+    }
+
+    $("#nopageedit").hide();
+
+    function start_edit() {
+
+        $(".editable").addClass("warning-ring");
+
+        //At the beginning of an edit, we need to replace the content of the
+        //editable div with it's databased content in order to preserve the
+        //template tags. We want the tag, not the rendered tag.
+
+        /* You must remove any countdown.js timers on the page before replacing the page with it's
+        document version otherwise, Javascript will throw an exception.  */
+
+
+        $("[class$='-countdown']").parent().remove();
+        fetchContent();
+        $(".editable").attr("onblur", "ckeditorsave(this)");
+        window.status.bold();
+        window.status = "Click outside the editable area to save. Changes are LIVE!! Refresh page to discard changes.";
+        $("#editpage").hide();
+        $("#noeditpage").show();
+    }
+
+
+    function stop_edit() {
+        ckeditorsave();
+        $("#noeditpage").hide();
+        $("#editpage").show();
+        window.location.reload();
+    }
+
+    function ckeditorsave(event) {
+        for (var name in CKEDITOR.instances) {
+            if (CKEDITOR.instances[name].checkDirty()) {
+                editor = CKEDITOR.instances[name];
+                saveEditable(editor);
+            }
+        }
+    }
+
+    function saveEditable(editor) {
+        var content = editor.getData();
+        var contentId = editor.name;
+        var pageId = window.location.pathname;
+        var originalContent = "N/A";
+        var documentversion = editor.container.getAttribute("id").replace("id_", "");
+        var blurbtext = editor.container.getAttribute("blurbtext");
+        if (contentId.match(/-aloha$/gi)) {
+            contentId = contentId.replace(/-aloha/gi, '');
+        }  /*I'm not sure what this does but it seems like it would matter*/
+        var request = jQuery.ajax({
+            url: "/Admin/SaveDocument",
+            type: "POST",
+            async: false,
+            data: {
+                content: content,
+                originalContent: originalContent,
+                contentId: contentId,
+                pageId: pageId,
+                documentversion: documentversion,
+                blurbtext: blurbtext,
+                csrfmiddlewaretoken: csrftoken
+            },
+            success: function (data) {
+                if (data['message']) {
+                    alert(data['message']);
+                }
+            },
+            error: function (xqXHR, textStatus) {
+                window.status = textStatus;
+                debugger;
+            }
+
+        });
+
+    };
+
+
+</script>
+
+<script nonce="c/xs782jK9QjCWeOIes3og==">
+    jQuery(document).ajaxSend(function (event, xhr, settings) {
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function sameOrigin(url) {
+            // url could be relative or scheme relative or absolute
+            var host = document.location.host; // host + port
+            var protocol = document.location.protocol;
+            var sr_origin = '//' + host;
+            var origin = protocol + sr_origin;
+            // Allow absolute or scheme relative URLs to same origin
+            return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                // or any other URL that isn't scheme relative or absolute i.e relative.
+                !(/^(\/\/|http:|https:).*/.test(url));
+        }
+
+        function safeMethod(method) {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    });
+</script>
+
+
+
+
+
+<div id="successful-page-load" class='hidden'>Successful Page Load</div>
+
+
+
+
+
+    
+        <link href="/static/conf_gdpr/css/conf_gdpr.css" rel="stylesheet">
+        <div id="cookie-bar" style="z-index: 8">
+            <table class="gdpr-statement">
+                <col>
+                <col style="width:120px">
+                <tr>
+                    <td style="padding:5px">
+                        AISTATS uses cookies for essential functions only. We do not sell your personal
+                        information.
+                        <a href="/public/PrivacyPolicy">Our Privacy Policy &raquo;&nbsp;</a>
+                    </td>
+                    <td>
+                        <button float-end class="btn btn-light btn-sm btn btn-outline-dark" id="accept_cookies_button" >Accept</button>
+                           
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <script nonce="c/xs782jK9QjCWeOIes3og==">
+            function accept_cookies() {
+
+                $.ajax({
+                    method: "POST",
+                    url: "/conf_gdpr/accept",
+                    data: {
+                        csrfmiddlewaretoken: csrftoken,
+                    },
+                }).done(function (data) {
+                    console.log(data);
+                    $("#cookie-bar").fadeOut();
+                }).fail(function (jqXHR, textStatus) {
+                    alert(textStatus);
+                });
+            }
+            $("#accept_cookies_button").on("click", () => {
+                accept_cookies();
+            });
+        </script>
+
+    
+
+
+
+
+
+
+
+<br>
+<div class="noprint">
+    <footer id="bootstrap-footer" class="text-center text-lg-start bg-light text-muted noprint">
+
+        <div class="text-center p-1 border-top border-dark">
+        </div>
+        <!-- Section: Links  -->
+        <section class="pt-1">
+            <div class="container text-center text-md-start mt-3">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-3">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <img src="/static/core/img/AISTATS-logo.svg" alt="AISTATS logo" height='30'>
+                        </h6>
+                        <p>
+                            The AISTATS Logo above may be used on presentations. Right-click and choose
+                            download. It is a vector graphic and may be used at any scale.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Grid column -->
+                    <div class="col-md-5 col-lg-4 col-xl-3 mx-auto mb-4" style="max-width: 300px;">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4 text-center">
+                            Useful links
+                        </h6>
+                        <div>
+             <ul>
+	<li><a href="/Profile/create">Create Profile</a></li>
+	<li><a href="/resetpassword" target="_blank">Reset / Forgot Password</a></li>
+</ul>
+
+            </div>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        
+                            <p>
+                                <i class="fas fa-home me-3"></i> 82799 Kingsboro Lane, Indio CA 92201
+                            </p>
+                        
+                        <p>
+                            <i class="fas fa-envelope me-3"></i> <a href="/Help/Contact">Email</a>
+                        </p>
+                        
+                        
+
+
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            <div>
+             <p><a href="https://proceedings.mlr.press">AISTATS Proceedings</a></p>
+
+            </div>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</div>
+<!-- Footer -->
+
+
+<!-- Footer -->
+
+</body>
+</html>

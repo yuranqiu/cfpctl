@@ -307,6 +307,32 @@ All deadlines default to **AoE (UTC-12)** when no timezone is specified.
 
 ## Contributing
 
+### Daily data updates (maintainers)
+
+`cfpctl-data` is the maintained source of truth. At **00:00 UTC / 08:00 Asia/Shanghai**, `Daily Official Data Update` checks conferences' existing official `cfp` URLs (preferred) or `homepage` URLs. It never downloads or synchronizes ccfddl; that repository was only an initial bootstrap reference.
+
+Only official dates with explicit edition, round and track evidence that uniquely match existing records can change data. Submission deadlines require explicit time/zone evidence; notifications may retain an explicitly published calendar date. Ambiguous dates, unavailable pages, new editions and unknown tracks are reported for review without overwriting existing records. Metadata, acceptance rates, ARR information, manual tracks and history are preserved. Reliable evidence can correct verified records. Partial site failures remain visible; a run where every fetch fails exits unsuccessfully.
+
+The parser supports date lists, tables, explicitly global deadline timezone statements, and discovery of main-conference CFP / Important Dates links on the same host. Dedicated adapters cover ICLR, AISTATS and ECCV tables and inspected editions of ASPLOS, NDSS, OSDI and NSDI. Multiple submission rounds must uniquely match existing records; NSDI's duplicate `2027` cycle names still require manual disambiguation. Deleted dates, extension arrows, conflicting dates and ambiguous tracks cannot update data automatically. If only notification evidence is uncertain, reliable submission fields may be applied while the result remains marked for review.
+
+After validation, the workflow maintains an `auto/official-update` PR in **yuranqiu/cfpctl-data**, with before/after dates and source evidence. Changes become canonical after review and merge. Detailed JSON and Markdown reports are uploaded as artifacts. Daily updates do not overwrite this application's embedded data.
+
+Configure the app repository's Actions secret **`CFPCTL_DATA_TOKEN`** with a fine-grained token granting **Contents: read/write** and **Pull requests: read/write** on `yuranqiu/cfpctl-data`. The default `GITHUB_TOKEN` cannot write to another repository. Keep credentials out of source files.
+
+Local usage (Python 3.12+ and the Go version in `go.mod`):
+
+```bash
+python -m pip install -r scripts/requirements.txt
+python -m unittest discover -s scripts/tests
+# Use your existing cfpctl-data checkout. Default: report only.
+python scripts/update_official.py --data-dir /path/to/cfpctl-data \
+  --report /tmp/official-report.json --summary /tmp/official-report.md
+# Add --apply to write eligible changes; --slug limits conference selection.
+go run . validate --data-dir /path/to/cfpctl-data
+```
+
+`full_refresh.py` uses the same official-site updater. `convert_ccfddl.py` is an offline historical bootstrap tool requiring explicit local `--source-dir` and `--output-dir`; it performs no network access.
+
 Contributions welcome! Especially:
 - **Conference data**: PR to [cfpctl-data](https://github.com/yuranqiu/cfpctl-data)
 - **Verified deadlines**: Help verify conference deadlines against official CFPs

@@ -3,6 +3,7 @@ package validate
 import (
 	"fmt"
 	"io/fs"
+	"os"
 	"strings"
 
 	"github.com/cfpctl/cfpctl/data"
@@ -24,22 +25,33 @@ func (e ValidationError) Error() string {
 
 // Result holds the validation outcome.
 type Result struct {
-	Errors       []ValidationError
-	TotalFiles   int
-	TotalConfs   int
-	SlugsSeen    map[string]string // slug -> file where first seen
+	Errors     []ValidationError
+	TotalFiles int
+	TotalConfs int
+	SlugsSeen  map[string]string // slug -> file where first seen
 }
 
 // ValidateAll validates all embedded YAML data files.
 func ValidateAll() *Result {
+	return ValidateFS(data.FS)
+}
+
+// ValidateDir validates YAML files directly inside dir.
+func ValidateDir(dir string) *Result {
+	return ValidateFS(os.DirFS(dir))
+}
+
+// ValidateFS validates root-level YAML files in a data filesystem.
+// An empty filesystem or empty conference file is an invalid dataset.
+func ValidateFS(dataFS fs.FS) *Result {
 	result := &Result{
 		SlugsSeen: make(map[string]string),
 	}
 
-	entries, err := fs.ReadDir(data.FS, ".")
+	entries, err := fs.ReadDir(dataFS, ".")
 	if err != nil {
 		result.Errors = append(result.Errors, ValidationError{
-			File:    "(embedded)",
+			File:    ".",
 			Field:   "fs",
 			Message: fmt.Sprintf("cannot read data dir: %v", err),
 		})
@@ -51,14 +63,19 @@ func ValidateAll() *Result {
 			continue
 		}
 		result.TotalFiles++
-		validateFile(result, entry.Name())
+		validateFile(result, dataFS, entry.Name())
 	}
 
+	if result.TotalFiles == 0 {
+		result.Errors = append(result.Errors, ValidationError{
+			File: ".", Field: "fs", Message: "no YAML data files found",
+		})
+	}
 	return result
 }
 
-func validateFile(result *Result, filename string) {
-	raw, err := fs.ReadFile(data.FS, filename)
+func validateFile(result *Result, dataFS fs.FS, filename string) {
+	raw, err := fs.ReadFile(dataFS, filename)
 	if err != nil {
 		result.Errors = append(result.Errors, ValidationError{
 			File:    filename,
@@ -74,6 +91,13 @@ func validateFile(result *Result, filename string) {
 			File:    filename,
 			Field:   "yaml",
 			Message: fmt.Sprintf("parse error: %v", err),
+		})
+		return
+	}
+
+	if len(confs) == 0 {
+		result.Errors = append(result.Errors, ValidationError{
+			File: filename, Field: "yaml", Message: "at least one conference required",
 		})
 		return
 	}

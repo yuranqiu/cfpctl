@@ -305,6 +305,33 @@ cfpctl update && cfpctl diff
 
 未指定时区时默认使用 **AoE (UTC-12)**。
 
+### 每日数据更新（维护者）
+
+`cfpctl-data` 是唯一维护的数据基准。`Daily Official Data Update` 每天北京时间 **08:00（00:00 UTC）**读取该仓库，从各会议现有 `cfp`（优先）或 `homepage` 官方页面检查截止日期。日更不读取、下载或同步 ccfddl；它仅作为最初建库时的参考。
+
+官网解析结果必须明确对应会议年份、投稿轮次、Track，投稿截止时间还须有明确时间/时区证据，才能修改现有记录。通知日期允许保留官网仅公布的日历日期。无法匹配、网页不可访问或日期有歧义时保留原值并在报告中标注；不删会议、历史、人工 Track、接受率和 ARR 信息。新届次或未知 Track 留待人工核对。部分站点失败不会丢失其他会议的可靠结果，全部抓取失败则任务失败。`verified` 不阻止有明确官网证据的日期修正。
+
+解析器支持日期列表、表格、明确适用于全部截止时间的时区声明，以及同站主会 CFP / Important Dates 链接发现；另有 ICLR、AISTATS、ECCV 表格和 ASPLOS、NDSS、OSDI、NSDI 特定届次适配。多轮投稿必须唯一匹配现有轮次，NSDI 中重名的 `2027` 轮次仍需人工消歧。划线旧日期、延期箭头、冲突日期和无法区分主会的 Track 不会自动写入。仅通知日期不确定而投稿截止日期可靠时，报告保留待核查状态，并允许采用可靠字段。
+
+任务校验数据后在 **yuranqiu/cfpctl-data** 创建或更新 `auto/official-update` PR，包含日期前后对照和官网证据。合并 PR 后才能成为正式更新。JSON 详细报告和 Markdown 摘要作为 Actions 附件保留。程序仓库的内嵌数据不会被日更覆盖。
+
+首次启用需在本程序仓库配置 Actions secret **`CFPCTL_DATA_TOKEN`**，使用对 `yuranqiu/cfpctl-data` 有 **Contents: read/write** 和 **Pull requests: read/write** 权限的细粒度令牌；默认 `GITHUB_TOKEN` 不能写另一个仓库。不要把令牌写入代码。
+
+本地复现（Python 3.12+，Go 版本见 `go.mod`）：
+
+```bash
+python -m pip install -r scripts/requirements.txt
+python -m unittest discover -s scripts/tests
+# 先克隆你维护的 cfpctl-data，以下默认只生成报告、不修改数据
+python scripts/update_official.py --data-dir /path/to/cfpctl-data \
+  --report /tmp/official-report.json --summary /tmp/official-report.md
+# 加 --apply 才写入有明确官网证据且能匹配的修改；--slug 可限定会议
+# python scripts/update_official.py ... --apply --slug usenix-security
+go run . validate --data-dir /path/to/cfpctl-data
+```
+
+`full_refresh.py` 使用同一官网更新入口。旧 `convert_ccfddl.py` 仅保留离线首次导入用途，必须明确提供本地 `--source-dir` 和 `--output-dir`，不会访问网络。
+
 ## 参与贡献
 
 欢迎贡献！特别是：

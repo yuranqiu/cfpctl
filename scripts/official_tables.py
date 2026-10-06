@@ -76,6 +76,7 @@ def extract_table(html, url, conference):
         'neurips': ('neurips.cc', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
         'icml': ('icml.cc', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
         'cvpr': ('cvpr.thecvf.com', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'iccv': ('iccv.thecvf.com', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
         'acl': ('2027.aclweb.org', r'/?'),
         'emnlp': ('2026.emnlp.org', r'/?'),
     }

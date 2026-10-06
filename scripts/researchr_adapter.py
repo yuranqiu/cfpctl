@@ -89,15 +89,23 @@ def extract_researchr(html, url, conference):
     from urllib.parse import urlparse
     parsed_url = urlparse(url)
 
-    # Only handle conf.researchr.org or *.sigplan.org or similar researchr-hosted sites
-    valid_hosts = {'conf.researchr.org'}
-    # Also accept subdomain-style: pldi27.sigplan.org, popl27.sigplan.org, etc.
-    if parsed_url.hostname not in valid_hosts and not (parsed_url.hostname and 'sigplan.org' in parsed_url.hostname):
+    # Handle conf.researchr.org, *.sigplan.org, *.splashcon.org, and similar
+    hostname = parsed_url.hostname or ''
+    valid = (hostname == 'conf.researchr.org'
+             or 'sigplan.org' in hostname
+             or 'splashcon.org' in hostname
+             or 'msrconf.org' in hostname
+             or 'formalise.org' in hostname)
+    if not valid:
         return None
 
-    # Must be a /dates/ or /track/ page
+    # Must be a /dates/ or /track/ page, or the root of a sigplan/splashcon site
     if not re.search(r'/dates/|/track/', parsed_url.path):
-        return None
+        # For sigplan.org sites, also try the root path with /dates appended
+        if 'sigplan.org' in hostname or 'splashcon.org' in hostname:
+            pass  # Allow root pages for these hosts
+        else:
+            return None
 
     parser = _TableParser()
     parser.feed(html)

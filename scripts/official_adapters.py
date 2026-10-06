@@ -41,7 +41,11 @@ _SITES = {
     'ndss': ('www.ndss-symposium.org', '/ndss2027/submissions/call-for-papers', ['Summer Cycle', 'Fall Cycle']),
     'nsdi': ('www.usenix.org', '/conference/nsdi27/call-for-papers', ['Spring deadline:', 'Fall deadline:']),
     'osdi': ('www.usenix.org', '/conference/osdi27/call-for-papers', ['Important Dates']),
+    'fast': ('www.usenix.org', '/conference/fast27/call-for-papers', ['Spring deadline:', 'Fall deadline:']),
+    'atc': ('www.usenix.org', '/conference/atc27/call-for-papers', ['Spring deadline:', 'Fall deadline:']),
+    'eurosys': ('www.usenix.org', '/conference/eurosys27/call-for-papers', ['Important Dates']),
     'eurocrypt': ('eurocrypt.iacr.org', '/2027/', []),
+    'crypto': ('crypto.iacr.org', '/2027/', []),
     'mobicom': ('www.sigmobile.org', '/mobicom/2027/', []),
     'stoc': ('acm-stoc.org', '/stoc2027/', []),
 }
@@ -73,11 +77,13 @@ def extract_adapter(html, url, conference):
     parser.feed(html)
     candidates, reasons = [], []
     identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
-    edition_pattern = rf"\b{slug}(?:\s+Symposium)?\s+(?:2027|['’]27)\b"
+    slug_pat = slug.replace('-', r'[ -]?')
+    edition_pattern = rf'\b{slug_pat}(?:\s+(?:Symposium|Conference))?\s+(?:2027|[\u2018\u2019\'"]27)\b'
     identity_years = set(re.findall(r'\b20\d{2}\b', identity))
-    identity_short_years = set(re.findall(rf"\b{slug}\s+['’](\d{{2}})\b", identity, re.I))
+    identity_short_years = set(re.findall(rf'\b{slug_pat}\s+[\u2018\u2019\'"](\d{2})\b', identity, re.I))
     if not re.search(edition_pattern, identity, re.I) or identity_years - {'2027'} or identity_short_years - {'27'}:
         return {'candidates': [], 'review_reasons': ['Official title or h1 does not unambiguously identify the expected 2027 edition']}
+    usenix_slugs = {'nsdi', 'osdi', 'fast', 'atc', 'eurosys'}
     section_counts, field_counts = Counter(), Counter()
     policy = ''
     for _, text in parser.blocks:
@@ -85,6 +91,9 @@ def extract_adapter(html, url, conference):
             policy = 'AoE'
         if slug == 'ndss' and text == 'All deadlines are 11:59 PM AoE (UTC-12).':
             policy = '11:59 PM AoE (UTC-12)'
+        # USENIX conferences use AoE
+        if slug in usenix_slugs and re.search(r'\bAoE\b|Anywhere on Earth|23:59\s*AoE', text, re.I):
+            policy = 'AoE'
     section = None
     for tag, text in parser.blocks:
         if text in headings:
@@ -96,7 +105,7 @@ def extract_adapter(html, url, conference):
         if not section or tag != 'li':
             continue
         field = None
-        if re.match(r'(Full paper submission|Complete paper submissions due|Paper titles and abstracts due|Abstract registrations due)', text, re.I):
+        if re.match(r'(Full paper submission|Complete paper submissions due|Paper titles and abstracts due|Abstract registrations due|Paper submissions due)', text, re.I):
             field = 'abstract' if re.search('abstract', text, re.I) else 'deadline'
         elif slug == 'ndss' and re.search(r': Paper submission deadline$', text):
             field = 'deadline'
@@ -109,7 +118,12 @@ def extract_adapter(html, url, conference):
         if not date:
             reasons.append(f'{section}: ambiguous or missing explicit date: {text}')
             continue
-        cycle_name = '2027' if slug == 'osdi' else section.rstrip(':').replace(' deadline', ' Cycle')
+        if slug in usenix_slugs and re.match(r'(Spring|Fall)\s+deadline', section, re.I):
+            cycle_name = section.rstrip(':').replace(' deadline:', ' Cycle').replace(' deadline', ' Cycle')
+        elif slug == 'osdi':
+            cycle_name = '2027'
+        else:
+            cycle_name = section.rstrip(':').replace(' deadline', ' Cycle')
         cycles = [c for c in conference.get('cycles', []) if c.get('name') == cycle_name]
         tracks = [None]
         reason = ''
@@ -261,7 +275,7 @@ def extract_adapter(html, url, conference):
         return {'candidates': candidates, 'review_reasons': reasons}
 
     # --- Default: USENIX/ASPLOS/NDSS/NSDI list-based adapters ---
-    expected_fields = ['abstract', 'deadline'] if slug in {'nsdi', 'osdi'} else ['deadline']
+    expected_fields = ['abstract', 'deadline'] if slug in usenix_slugs else ['deadline']
     for heading in headings:
         if section_counts[heading] != 1:
             reasons.append(f'{heading}: expected exactly one official schedule section')

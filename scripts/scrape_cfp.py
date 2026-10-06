@@ -30,10 +30,12 @@ if __package__:
     from .official_dates import parse_date, parse_timestamp as _timestamp
     from .official_adapters import extract_adapter
     from .official_tables import extract_table
+    from .researchr_adapter import extract_researchr
 else:
     from official_dates import parse_date, parse_timestamp as _timestamp
     from official_adapters import extract_adapter
     from official_tables import extract_table
+    from researchr_adapter import extract_researchr
 
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
@@ -322,7 +324,7 @@ def _extract_official(html, url, conference):
     slug = conference.get('slug')
     metadata = PageMetadata()
     metadata.feed(html)
-    for adapter in (extract_adapter, extract_table):
+    for adapter in (extract_adapter, extract_table, extract_researchr):
         adapted = adapter(html, url, conference)
         if adapted is not None:
             return adapted['candidates'], adapted['review_reasons'], metadata

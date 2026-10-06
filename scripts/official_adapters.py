@@ -41,6 +41,9 @@ _SITES = {
     'ndss': ('www.ndss-symposium.org', '/ndss2027/submissions/call-for-papers', ['Summer Cycle', 'Fall Cycle']),
     'nsdi': ('www.usenix.org', '/conference/nsdi27/call-for-papers', ['Spring deadline:', 'Fall deadline:']),
     'osdi': ('www.usenix.org', '/conference/osdi27/call-for-papers', ['Important Dates']),
+    'eurocrypt': ('eurocrypt.iacr.org', '/2027/', []),
+    'mobicom': ('www.sigmobile.org', '/mobicom/2027/', []),
+    'stoc': ('acm-stoc.org', '/stoc2027/', []),
 }
 _TRACKS = {'asplos': {'Full Paper (Architecture)', 'Full Paper (Systems)', 'Full Paper (PL)'},
            'ndss': {'Technical Papers'}}
@@ -64,7 +67,7 @@ def extract_adapter(html, url, conference):
         return None
     host, path, headings = _SITES[slug]
     parsed = urlparse(url)
-    if parsed.hostname != host or parsed.path.rstrip('/') != path:
+    if parsed.hostname != host or parsed.path.rstrip('/') != path.rstrip('/'):
         return None
     parser = _Blocks()
     parser.feed(html)
@@ -129,6 +132,135 @@ def extract_adapter(html, url, conference):
                                'field': field, 'date': date, 'value': value,
                                'evidence': f'{section}: {text}' + (f' [{policy}]' if policy else ''),
                                'applicable': not reason, 'reason': reason})
+    # --- Eurocrypt: IACR template with h6 date headers ---
+    if slug == 'eurocrypt':
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        edition_pattern = r"\bEurocrypt\s+(?:2027|['']27)\b"
+        identity_years = set(re.findall(r'\b20\d{2}\b', identity))
+        if not re.search(edition_pattern, identity, re.I) or identity_years - {'2027'}:
+            return {'candidates': [], 'review_reasons': ['Official title or h1 does not unambiguously identify the expected 2027 edition']}
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'23:59\s+anywhere\s+on\s+earth|AoE', text, re.I):
+                policy = 'AoE'
+                break
+        # Eurocrypt uses h6 tags for dates followed by event description
+        prev_tag, prev_text = None, None
+        for tag, text in parser.blocks:
+            if tag == 'h6':
+                date = parse_date(text)
+                if date and parse_date(prev_text or '') is None:
+                    # This h6 is a date header; next block should be the event
+                    pass
+                prev_tag, prev_text = tag, text
+                continue
+            if prev_tag == 'h6' and tag in ('p', 'li'):
+                date = parse_date(prev_text)
+                if date:
+                    field = None
+                    if re.search(r'submission|paper.*deadline|deadline.*paper', text, re.I):
+                        field = 'deadline'
+                    elif re.search(r'abstract|registration', text, re.I):
+                        field = 'abstract'
+                    elif re.search(r'notification|acceptance|decision', text, re.I):
+                        field = 'notification'
+                    if field:
+                        value = date if field == 'notification' else parse_timestamp(prev_text + (' ' + policy if policy else ''), date)
+                        reason = '' if value else 'No unambiguous timezone'
+                        candidates.append({'year': 2027, 'cycle_name': '2027', 'track_name': None,
+                                           'field': field, 'date': date, 'value': value,
+                                           'evidence': f'{prev_text} — {text}',
+                                           'applicable': not reason, 'reason': reason})
+            prev_tag, prev_text = tag, text
+        if not candidates:
+            reasons.append('Eurocrypt page has no recognizable date/event pairs')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- MobiCom: dual-column HTML table with Summer/Winter ---
+    if slug == 'mobicom':
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        edition_pattern = r"\bMobiCom\s+(?:2027|['']27)\b"
+        identity_years = set(re.findall(r'\b20\d{2}\b', identity))
+        if not re.search(edition_pattern, identity, re.I) or identity_years - {'2027'}:
+            return {'candidates': [], 'review_reasons': ['Official title or h1 does not unambiguously identify the expected 2027 edition']}
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'23:59\s*AoE|Anywhere on Earth', text, re.I):
+                policy = 'AoE'
+                break
+        # Parse blocks looking for Summer/Winter cycle labels and deadline items
+        current_cycle = None
+        for tag, text in parser.blocks:
+            if re.match(r'\s*Summer\s*(Cycle|Deadline|Submission)?\s*$', text, re.I):
+                current_cycle = 'Summer Cycle'
+                continue
+            if re.match(r'\s*Winter\s*(Cycle|Deadline|Submission)?\s*$', text, re.I):
+                current_cycle = 'Winter Cycle'
+                continue
+            if not current_cycle:
+                continue
+            field = None
+            if re.search(r'abstract\s+registration|paper\s+registration|abstract.*due', text, re.I):
+                field = 'abstract'
+            elif re.search(r'paper\s+submission|full\s+paper|submission\s+deadline', text, re.I):
+                field = 'deadline'
+            elif re.search(r'notification|acceptance|decision', text, re.I):
+                field = 'notification'
+            if not field:
+                continue
+            date = parse_date(text)
+            if not date:
+                continue
+            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
+            reason = '' if value else 'No unambiguous timezone'
+            if 'TBD' in text.upper() or 'tentative' in text.lower():
+                reason = 'Date is TBD or tentative'
+            candidates.append({'year': 2027, 'cycle_name': current_cycle, 'track_name': None,
+                               'field': field, 'date': date, 'value': value,
+                               'evidence': f'{current_cycle}: {text}',
+                               'applicable': not reason, 'reason': reason})
+        if not candidates:
+            reasons.append('MobiCom page has no recognizable Summer/Winter deadlines')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- STOC: prose with inline AoE dates ---
+    if slug == 'stoc':
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        edition_pattern = r"\bSTOC\s+(?:2027|['']27)\b"
+        identity_years = set(re.findall(r'\b20\d{2}\b', identity))
+        if not re.search(edition_pattern, identity, re.I) or identity_years - {'2027'}:
+            return {'candidates': [], 'review_reasons': ['Official title or h1 does not unambiguously identify the expected 2027 edition']}
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'11:59\s*pm?\s*AoE|Anywhere on Earth', text, re.I):
+                policy = 'AoE'
+                break
+        for tag, text in parser.blocks:
+            if tag not in ('p', 'li'):
+                continue
+            field = None
+            if re.search(r'(?:full\s+)?paper\s+submission|submission\s+deadline', text, re.I) and not re.search(r'workshop|tutorial|poster|demo', text, re.I):
+                field = 'deadline'
+            elif re.search(r'abstract\s+(?:submission|registration)|paper\s+registration', text, re.I):
+                field = 'abstract'
+            elif re.search(r'notification|acceptance|decision', text, re.I):
+                field = 'notification'
+            if not field:
+                continue
+            date = parse_date(text)
+            if not date:
+                continue
+            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
+            reason = '' if value else 'No unambiguous timezone'
+            candidates.append({'year': 2027, 'cycle_name': '2027', 'track_name': None,
+                               'field': field, 'date': date, 'value': value,
+                               'evidence': text,
+                               'applicable': not reason, 'reason': reason})
+        if not candidates:
+            reasons.append('STOC page has no recognizable paper deadline in prose')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- Default: USENIX/ASPLOS/NDSS/NSDI list-based adapters ---
     expected_fields = ['abstract', 'deadline'] if slug in {'nsdi', 'osdi'} else ['deadline']
     for heading in headings:
         if section_counts[heading] != 1:

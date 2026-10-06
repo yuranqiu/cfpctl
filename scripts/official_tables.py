@@ -69,13 +69,27 @@ def _clean(text):
 
 def extract_table(html, url, conference):
     """Return a candidates/review_reasons result, or None for unrelated pages."""
-    hosts = {'iclr': 'iclr.cc', 'aistats': 'virtual.aistats.org', 'eccv': 'eccv.ecva.net'}
+    hosts = {
+        'iclr': ('iclr.cc', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'aistats': ('virtual.aistats.org', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'eccv': ('eccv.ecva.net', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'neurips': ('neurips.cc', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'icml': ('icml.cc', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'cvpr': ('cvpr.thecvf.com', r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?'),
+        'acl': ('2027.aclweb.org', r'/?'),
+        'emnlp': ('2026.emnlp.org', r'/?'),
+    }
     slug = conference.get('slug') if isinstance(conference, dict) else conference
     parsed = urlsplit(url)
-    match = re.fullmatch(r'/Conferences/(20\d{2})(?:/(?:Dates|CallForPapers))?/?', parsed.path)
-    if slug not in hosts or parsed.hostname != hosts[slug] or parsed.scheme != 'https' or not match:
+    if slug not in hosts:
         return None
-    year = int(match[1])
+    expected_host, path_pattern = hosts[slug]
+    if parsed.hostname != expected_host or parsed.scheme != 'https':
+        return None
+    match = re.fullmatch(path_pattern, parsed.path)
+    if not match:
+        return None
+    year = int(match.group(1)) if match.lastindex and match.lastindex >= 1 else int(re.search(r'(20\d{2})', parsed.netloc + parsed.path).group(1))
     tree = Tree()
     tree.feed(html)
     pairs, reasons = [], []
@@ -83,6 +97,69 @@ def extract_table(html, url, conference):
     heading_years = {int(y) for text in headings for y in re.findall(r'\b20\d{2}\b', text)}
     if heading_years != {year}:
         reasons.append('page title/h1 does not establish the URL conference edition')
+
+    # --- Jekyll/simple two-column table parsing (ACL, EMNLP) ---
+    if slug in ('acl', 'emnlp'):
+        fields_map = {
+            'paper submission deadline': 'deadline',
+            'abstract deadline': 'abstract',
+            'submission deadline': 'deadline',
+            'full paper deadline': 'deadline',
+            'notification': 'notification',
+            'author notification': 'notification',
+            'camera-ready deadline': 'notification',
+            'commitment deadline': 'deadline',
+        }
+        for row in tree.root.walk():
+            if row.tag != 'tr':
+                continue
+            cells = [n for n in row.children if isinstance(n, Node) and n.tag in ('td', 'th')]
+            if len(cells) < 2:
+                continue
+            label = _clean(cells[0].text()).lower().rstrip(':').strip()
+            value_text = _clean(cells[1].text())
+            matched_field = None
+            for pattern, field in fields_map.items():
+                if pattern in label:
+                    matched_field = field
+                    break
+            if matched_field:
+                pairs.append((label.title(), value_text))
+        if not pairs:
+            return None  # Fall through to other parsers
+        candidates = []
+        for label, raw in pairs:
+            normalized = re.sub(r"\b([A-Za-z]+ \d{1,2}) [''](\d{2})\b", r'\1 20\2', raw)
+            date = parse_date(normalized)
+            value = parse_timestamp(normalized, date) if date else None
+            reason = None
+            if '[deleted content]' in raw or re.search(r'\b(?:TBD|TBA|tentative)\b', raw, re.I):
+                reason = 'date contains revised or tentative content'
+            elif not date or int(date[:4]) not in {year - 1, year}:
+                reason = 'date lacks one valid date for this edition'
+            elif value is None:
+                reason = 'date lacks explicit time and unambiguous timezone'
+            field_lower = label.lower()
+            field = 'deadline'
+            if 'abstract' in field_lower or 'registration' in field_lower:
+                field = 'abstract'
+            elif 'notification' in field_lower or 'camera' in field_lower:
+                field = 'notification'
+            candidates.append(dict(year=year, cycle_name=str(year), track_name=None,
+                                   field=field, value=value, date=date,
+                                   evidence=f'{label} {raw}', applicable=reason is None, reason=reason))
+        for f in ('abstract', 'deadline'):
+            matches = [c for c in candidates if c['field'] == f]
+            if len(matches) > 1:
+                reasons.append(f'multiple {f} rows in table')
+        if candidates and not any(c['field'] == 'deadline' and c['applicable'] for c in candidates):
+            reasons.append('table lacks an unambiguous full paper deadline')
+        if reasons:
+            for candidate in candidates:
+                candidate.update(applicable=False, reason='; '.join(reasons))
+        return dict(candidates=candidates, review_reasons=reasons) if pairs or reasons else None
+
+    # --- Virtual platform date-row parsing (ICLR, NeurIPS, ICML, CVPR, etc.) ---
     for row in tree.root.walk():
         if row.has_class('date-row'):
             labels = [n for n in row.walk() if n.has_class('date-title')]

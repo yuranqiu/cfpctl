@@ -48,9 +48,13 @@ _SITES = {
     'crypto': ('crypto.iacr.org', '/2027/', []),
     'mobicom': ('www.sigmobile.org', '/mobicom/2027/', []),
     'stoc': ('acm-stoc.org', '/stoc2027/', []),
+    'sigmod': ('2027.sigmod.org', '/calls_papers_important_dates.shtml', []),
+    'www': ('www2027.thewebconf.org', '/important-dates/', []),
+    'sosp': ('sigops.org', '/s/conferences/sosp/2026/', []),
 }
 _TRACKS = {'asplos': {'Full Paper (Architecture)', 'Full Paper (Systems)', 'Full Paper (PL)'},
-           'ndss': {'Technical Papers'}}
+           'ndss': {'Technical Papers'},
+           'sigmod': {'Research Paper', 'Industrial Track', 'Demonstration', 'PODS Paper'}}
 
 
 def _timestamp(text, date, policy):
@@ -272,6 +276,155 @@ def extract_adapter(html, url, conference):
                                'applicable': not reason, 'reason': reason})
         if not candidates:
             reasons.append('STOC page has no recognizable paper deadline in prose')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- SIGMOD: list-based with multiple rounds and tracks ---
+    if slug == 'sigmod':
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        if not re.search(r'SIGMOD\s+2027', identity, re.I):
+            return {'candidates': [], 'review_reasons': ['Page does not identify SIGMOD 2027']}
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'11:59\s*PM\s*AoE|Anywhere on Earth', text, re.I):
+                policy = 'AoE'
+                break
+        current_section = None
+        for tag, text in parser.blocks:
+            if tag in ('h2', 'h3'):
+                current_section = text.strip()
+                continue
+            if tag != 'li' or not current_section:
+                continue
+            field = None
+            if re.search(r'abstract.*(?:deadline|submission|registration)', text, re.I):
+                field = 'abstract'
+            elif re.search(r'(?:paper|full paper|research).*submission|submission.*deadline', text, re.I) and not re.search(r'abstract', text, re.I):
+                field = 'deadline'
+            elif re.search(r'notification|acceptance|decision', text, re.I):
+                field = 'notification'
+            if not field:
+                continue
+            date = parse_date(text)
+            if not date:
+                continue
+            # Determine cycle and track from section heading
+            cycle_name = '2027'
+            track_name = None
+            if re.search(r'research.*round\s*(\d)', current_section, re.I):
+                m = re.search(r'round\s*(\d)', current_section, re.I)
+                cycle_name = f'Research Round {m.group(1)}'
+                track_name = 'Research Paper'
+            elif re.search(r'industrial', current_section, re.I):
+                cycle_name = 'Industrial & Demo'
+                track_name = 'Industrial Track'
+            elif re.search(r'demonstration', current_section, re.I):
+                cycle_name = 'Industrial & Demo'
+                track_name = 'Demonstration'
+            elif re.search(r'PODS', current_section, re.I):
+                m = re.search(r'cycle\s*(\d)', current_section, re.I)
+                cycle_name = f'PODS Cycle {m.group(1)}' if m else 'PODS'
+                track_name = 'PODS Paper'
+            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
+            reason = '' if value else 'No unambiguous timezone'
+            candidates.append({'year': 2027, 'cycle_name': cycle_name, 'track_name': track_name,
+                               'field': field, 'date': date, 'value': value,
+                               'evidence': f'{current_section}: {text}',
+                               'applicable': not reason, 'reason': reason})
+        if not candidates:
+            reasons.append('SIGMOD page has no recognizable deadlines')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- WWW (The Web Conf): Jekyll-style table or list ---
+    if slug == 'www':
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        if not re.search(r'(?:WWW|Web Conf|The Web)\s+2027', identity, re.I):
+            return {'candidates': [], 'review_reasons': ['Page does not identify WWW 2027']}
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'11:59\s*PM?\s*AoE|Anywhere on Earth|UTC-12', text, re.I):
+                policy = 'AoE'
+                break
+        for tag, text in parser.blocks:
+            if tag not in ('p', 'li', 'td'):
+                continue
+            field = None
+            if re.search(r'(?:full\s+)?paper.*(?:submission|deadline)|research.*deadline', text, re.I) and not re.search(r'workshop|tutorial|demo|poster|short|industry', text, re.I):
+                field = 'deadline'
+            elif re.search(r'abstract.*(?:deadline|submission|registration)', text, re.I):
+                field = 'abstract'
+            elif re.search(r'short\s+paper.*(?:deadline|submission)', text, re.I):
+                field = 'deadline'
+            elif re.search(r'demo.*(?:deadline|submission)', text, re.I):
+                field = 'deadline'
+            elif re.search(r'workshop.*proposal.*(?:deadline|submission)', text, re.I):
+                field = 'deadline'
+            elif re.search(r'tutorial.*proposal.*(?:deadline|submission)', text, re.I):
+                field = 'deadline'
+            elif re.search(r'notification|acceptance|decision', text, re.I):
+                field = 'notification'
+            if not field:
+                continue
+            date = parse_date(text)
+            if not date:
+                continue
+            track_name = None
+            cycle_name = '2027'
+            if re.search(r'short\s+paper', text, re.I):
+                track_name = 'Short Paper'
+            elif re.search(r'demo', text, re.I):
+                track_name = 'Demo Paper'
+            elif re.search(r'workshop.*proposal', text, re.I):
+                track_name = 'Workshop Proposal'
+            elif re.search(r'tutorial.*proposal', text, re.I):
+                track_name = 'Tutorial Proposal'
+            elif re.search(r'abstract', text, re.I):
+                track_name = 'Full Paper (Research & Industry)'
+            else:
+                track_name = 'Full Paper (Research & Industry)'
+            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
+            reason = '' if value else 'No unambiguous timezone'
+            candidates.append({'year': 2027, 'cycle_name': cycle_name, 'track_name': track_name,
+                               'field': field, 'date': date, 'value': value,
+                               'evidence': text,
+                               'applicable': not reason, 'reason': reason})
+        if not candidates:
+            reasons.append('WWW page has no recognizable deadlines')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- SOSP: USENIX-style but different URL pattern ---
+    if slug == 'sosp':
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        if not re.search(r'SOSP\s+(?:2026|2027)', identity, re.I):
+            return {'candidates': [], 'review_reasons': ['Page does not identify SOSP']}
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'\bAoE\b|Anywhere on Earth', text, re.I):
+                policy = 'AoE'
+                break
+        for tag, text in parser.blocks:
+            if tag != 'li':
+                continue
+            field = None
+            if re.search(r'paper\s+submission|submission\s+deadline|full\s+paper', text, re.I) and not re.search(r'abstract', text, re.I):
+                field = 'deadline'
+            elif re.search(r'abstract.*(?:deadline|registration)', text, re.I):
+                field = 'abstract'
+            elif re.search(r'notification|acceptance', text, re.I):
+                field = 'notification'
+            if not field:
+                continue
+            date = parse_date(text)
+            if not date:
+                continue
+            year = int(date[:4])
+            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
+            reason = '' if value else 'No unambiguous timezone'
+            candidates.append({'year': year, 'cycle_name': str(year), 'track_name': None,
+                               'field': field, 'date': date, 'value': value,
+                               'evidence': text,
+                               'applicable': not reason, 'reason': reason})
+        if not candidates:
+            reasons.append('SOSP page has no recognizable deadlines')
         return {'candidates': candidates, 'review_reasons': reasons}
 
     # --- Default: USENIX/ASPLOS/NDSS/NSDI list-based adapters ---

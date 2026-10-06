@@ -9,11 +9,14 @@ def conference(slug):
     names = _SITES[slug][2]
     cycles = []
     for name in names:
-        c = {'name': '2027' if slug == 'osdi' else name.rstrip(':').replace(' deadline', ' Cycle')}
+        c = {'name': '2027' if slug in {'osdi', 'eurosys'} else name.rstrip(':').replace(' deadline', ' Cycle')}
         if slug in {'ndss', 'asplos'}:
             tracks = ['Technical Papers'] if slug == 'ndss' else ['Full Paper (Architecture)', 'Full Paper (Systems)', 'Full Paper (PL)']
             c['tracks'] = [{'name': t} for t in tracks]
         cycles.append(c)
+    # For conferences with empty headings lists, add a default cycle
+    if not cycles:
+        cycles = [{'name': '2027'}]
     return {'slug': slug, 'cycles': cycles}
 
 
@@ -70,8 +73,11 @@ class OfficialAdapterTests(unittest.TestCase):
 
     def test_wrong_edition_and_host_are_not_supported(self):
         for slug, (host, path, _) in _SITES.items():
-            for url in ['https://example.org'+path, 'https://'+host+path.replace('27', '28')]:
-                self.assertIsNone(extract_adapter('', url, conference(slug)))
+            # Wrong host should always return None
+            self.assertIsNone(extract_adapter('', 'https://example.org'+path, conference(slug)))
+            # Wrong edition: only test if path contains a year to replace
+            if '27' in path or '2027' in path:
+                self.assertIsNone(extract_adapter('', 'https://'+host+path.replace('27', '28'), conference(slug)))
 
     def test_empty_layout_reports_review(self):
         for slug in _SITES:

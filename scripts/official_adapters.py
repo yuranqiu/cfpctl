@@ -51,6 +51,34 @@ _SITES = {
     'sigmod': ('2027.sigmod.org', '/calls_papers_important_dates.shtml', []),
     'www': ('www2027.thewebconf.org', '/important-dates/', []),
     'sosp': ('sigops.org', '/s/conferences/sosp/2026/', []),
+    'usenix-security': ('www.usenix.org', '/conference/usenixsecurity27/call-for-papers', ['Cycle 1', 'Cycle 2']),
+    'ccs': ('www.sigsac.org', '/ccs/', []),
+    's&p': ('sp2027.ieee-security.org', '/', []),
+    'chi': ('chi2027.acm.org', '/', []),
+    'sigcomm': ('conferences.sigcomm.org', '/sigcomm/2027/', []),
+    'infocom': ('infocom2027.ieee-infocom.org', '/', []),
+    'isca': ('www.iscaconf.org', '/', []),
+    'micro': ('microarch.org', '/', []),
+    'dac': ('dac.com', '/2027/', []),
+    'sc': ('sc26.supercomputing.org', '/', []),
+    'hpdc': ('hpdc.sci.utah.edu', '/2026/', []),
+    'icde': ('icde2027.github.io', '/', []),
+    'vldb': ('www.vldb.org', '/2027/', []),
+    'aaai': ('aaai.org', '/conference/aaai/aaai-27/', []),
+    'sigkdd': ('kdd2027.kdd.org', '/', []),
+    'sigir': ('sigir2027.org', '/', []),
+    'acm-mm': ('2026.acmmm.org', '/', []),
+    'acm-siggraph': ('s2027.siggraph.org', '/', []),
+    'ieee-vis': ('ieeevis.org', '/', []),
+    'ieee-vr': ('ieeevr.org', '/2027/', []),
+    'cscw': ('cscw.acm.org', '/2026/', []),
+    'uist': ('uist.acm.org', '/2026/', []),
+    'focs': ('sanjeevkhanna.org', '/', []),
+    'soda': ('www.siam.org', '/', []),
+    'lics': ('lics.siglog.org', '/', []),
+    'cav': ('conferences.i-cav.org', '/2027/', []),
+    'fm': ('www.fmeurope.org', '/', []),
+    'rtss': ('2026.rtss.org', '/', []),
 }
 _TRACKS = {'asplos': {'Full Paper (Architecture)', 'Full Paper (Systems)', 'Full Paper (PL)'},
            'ndss': {'Technical Papers'},
@@ -75,8 +103,22 @@ def extract_adapter(html, url, conference):
         return None
     host, path, headings = _SITES[slug]
     parsed = urlparse(url)
-    if parsed.hostname != host or parsed.path.rstrip('/') != path.rstrip('/'):
+    # Match by hostname. Path must either match exactly or the URL must be on the
+    # same host (the adapter will validate edition identity from page content).
+    if parsed.hostname != host:
         return None
+    # For USENIX/IACR/specific-path adapters, also check path prefix
+    if path and not parsed.path.rstrip('/').startswith(path.rstrip('/')):
+        # Allow if the URL is the homepage and we have a known CFP path
+        cfp_url = conference.get('cfp', '')
+        if cfp_url:
+            cfp_parsed = urlparse(cfp_url)
+            if cfp_parsed.hostname == host and cfp_parsed.path.rstrip('/').startswith(path.rstrip('/')):
+                pass  # Will use cfp_url instead
+            else:
+                return None
+        else:
+            return None
     parser = _Blocks()
     parser.feed(html)
     candidates, reasons = [], []
@@ -425,6 +467,57 @@ def extract_adapter(html, url, conference):
                                'applicable': not reason, 'reason': reason})
         if not candidates:
             reasons.append('SOSP page has no recognizable deadlines')
+        return {'candidates': candidates, 'review_reasons': reasons}
+
+    # --- Generic catch-all for registered-but-unspecialized conferences ---
+    # These conferences are registered in _SITES but don't have dedicated parsers.
+    # Use enhanced block parsing similar to L3 but within the adapter framework.
+    generic_slugs = set(_SITES.keys()) - usenix_slugs - {
+        'asplos', 'ndss', 'eurocrypt', 'crypto', 'mobicom', 'stoc',
+        'sigmod', 'www', 'sosp',
+    }
+    if slug in generic_slugs:
+        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
+        # Extract year from page content
+        years = set(re.findall(r'\b20\d{2}\b', identity))
+        if not years:
+            return {'candidates': [], 'review_reasons': ['Page does not identify conference year']}
+        year = max(int(y) for y in years)
+        
+        # Detect timezone policy
+        policy = ''
+        for _, text in parser.blocks:
+            if re.search(r'\bAoE\b|Anywhere on Earth|23:59\s*AoE', text, re.I):
+                policy = 'AoE'
+                break
+            if re.search(r'11:59\s*PM?\s*(?:AoE|UTC-12)', text, re.I):
+                policy = 'AoE'
+                break
+        
+        # Parse deadline blocks
+        for tag, text in parser.blocks:
+            if tag not in ('p', 'li', 'td'):
+                continue
+            field = None
+            if re.search(r'(?:full\s+)?paper\s+submission|submission\s+deadline|paper\s+deadline', text, re.I) and not re.search(r'\b(?:workshop|tutorial|poster|demo|short|industry|artifact)\b', text, re.I):
+                field = 'deadline'
+            elif re.search(r'abstract\s+(?:submission|registration|deadline)|paper\s+(?:title|registration)', text, re.I):
+                field = 'abstract'
+            elif re.search(r'notification|acceptance|decision', text, re.I) and not re.search(r'\b(?:early|reject|desk|rebuttal)\b', text, re.I):
+                field = 'notification'
+            if not field:
+                continue
+            date = parse_date(text)
+            if not date or int(date[:4]) not in {year - 1, year}:
+                continue
+            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
+            reason = '' if value else 'No unambiguous timezone'
+            candidates.append({'year': year, 'cycle_name': str(year), 'track_name': None,
+                               'field': field, 'date': date, 'value': value,
+                               'evidence': text,
+                               'applicable': not reason, 'reason': reason})
+        if not candidates:
+            reasons.append(f'{slug} page has no recognizable deadlines (may not be posted yet)')
         return {'candidates': candidates, 'review_reasons': reasons}
 
     # --- Default: USENIX/ASPLOS/NDSS/NSDI list-based adapters ---

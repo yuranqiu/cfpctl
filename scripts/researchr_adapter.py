@@ -99,12 +99,14 @@ def extract_researchr(html, url, conference):
     if not valid:
         return None
 
-    # Must be a /dates/ or /track/ page, or the root of a sigplan/splashcon site
-    if not re.search(r'/dates/|/track/', parsed_url.path):
-        # For sigplan.org sites, also try the root path with /dates appended
-        if 'sigplan.org' in hostname or 'splashcon.org' in hostname:
-            pass  # Allow root pages for these hosts
-        else:
+    # Accept /dates/, /track/, /home/, or root pages for researchr-hosted sites
+    is_dates_page = bool(re.search(r'/dates/|/track/', parsed_url.path))
+    is_home_page = bool(re.search(r'/home/', parsed_url.path))
+    is_root = parsed_url.path in ('', '/')
+    is_researchr_host = hostname == 'conf.researchr.org'
+
+    if not (is_dates_page or is_home_page or is_root):
+        if not ('sigplan.org' in hostname or 'splashcon.org' in hostname or 'msrconf.org' in hostname):
             return None
 
     parser = _TableParser()

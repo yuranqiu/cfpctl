@@ -27,6 +27,54 @@ def observation(slug='example', **overrides):
 
 
 class MergeTests(unittest.TestCase):
+    def test_minute_precision_does_not_rewrite_deadline_even_across_zones(self):
+        original = conf()
+        for value in ('2026-09-01T23:59:00-12:00', '2026-09-02T11:59:00+00:00'):
+            with self.subTest(value=value):
+                updated, changes, reviews = updater.merge_result(original, observation(value=value))
+                self.assertEqual(updated, original)
+                self.assertFalse(changes)
+                self.assertFalse(reviews)
+
+    def test_explicit_seconds_and_real_time_changes_are_preserved(self):
+        for value, evidence in (
+            ('2026-09-01T23:59:00-12:00', 'Paper deadline: September 1, 2026 23:59:00 AoE'),
+            ('2026-09-01T23:58:00-12:00', 'Paper deadline: September 1, 2026 23:58 AoE'),
+            ('2026-09-01T23:59:00+00:00', 'Paper deadline: September 1, 2026 23:59 UTC'),
+        ):
+            with self.subTest(value=value):
+                updated, changes, reviews = updater.merge_result(conf(), observation(value=value, evidence=evidence))
+                self.assertEqual(updated['cycles'][-1]['deadline'], value)
+                self.assertEqual(len(changes), 1)
+                self.assertFalse(reviews)
+
+    def test_notification_without_row_clock_keeps_calendar_precision(self):
+        for evidence in ('Notification: October 1, 2026 AoE',
+                         'Notification: October 1, 2026 [All deadlines are 23:59 AoE.]'):
+            with self.subTest(evidence=evidence):
+                updated, changes, reviews = updater.merge_result(conf(), observation(
+                    field='notification', value='2026-10-01T23:59:59-12:00', evidence=evidence))
+                self.assertEqual(updated['cycles'][-1]['notification'], '2026-10-01')
+                self.assertEqual(changes[0]['new'], '2026-10-01')
+                self.assertFalse(reviews)
+
+    def test_notification_explicit_clock_is_kept(self):
+        value = '2026-10-01T23:59:00-12:00'
+        updated, changes, reviews = updater.merge_result(conf(), observation(
+            field='notification', value=value, evidence='October 1, 2026 (23:59 AoE): Author notification'))
+        self.assertEqual(updated['cycles'][-1]['notification'], value)
+        self.assertEqual(len(changes), 1)
+        self.assertFalse(reviews)
+
+    def test_date_only_observation_preserves_existing_notification_clock(self):
+        original = conf()
+        original['cycles'][-1]['notification'] = '2026-10-01T17:00:00+00:00'
+        updated, changes, reviews = updater.merge_result(original, observation(
+            field='notification', value='2026-10-01T23:59:59-12:00', evidence='Notification: October 1, 2026 AoE'))
+        self.assertEqual(updated, original)
+        self.assertFalse(changes)
+        self.assertFalse(reviews)
+
     def test_verified_date_changes_without_losing_curated_data(self):
         original = conf()
         updated, changes, review = updater.merge_result(original, observation())

@@ -122,6 +122,16 @@ def merge_result(conference, result):
             if parsed.year not in {candidate['year'] - 1, candidate['year']}:
                 raise ValueError('date falls outside edition')
             target = match_target(updated, candidate)
+            # Bracketed global deadline policies do not establish a clock for
+            # an author-notification row. AoE alone is a zone, not a published
+            # notification time. Preserve the precision of the source row.
+            row_evidence = candidate['evidence'].split(' [', 1)[0]
+            explicit_clock = bool(re.search(
+                r'\b\d{1,2}:\d{2}|\b\d{1,2}\s*(?:a\.?m\.?|p\.?m\.?)\b|\b(?:noon|midnight)\b',
+                row_evidence, re.I))
+            if field == 'notification' and not explicit_clock:
+                value = parsed.date().isoformat()
+                parsed = datetime.fromisoformat(value)
             key = (id(target), field)
             if key in targets and targets[key] != value:
                 return deepcopy(conference), [], reviews + ['conflicting official values for the same field']
@@ -137,7 +147,21 @@ def merge_result(conference, result):
                 continue
             if old:
                 try:
-                    if datetime.fromisoformat(str(old)) == parsed:
+                    old_parsed = datetime.fromisoformat(str(old))
+                    if old_parsed == parsed:
+                        continue
+                    # Keep a curated notification clock when the new evidence
+                    # merely repeats its date without publishing a time.
+                    if field == 'notification' and not explicit_clock and old_parsed.date() == parsed.date():
+                        continue
+                    # End-of-minute conventions (:00 versus :59) are not a
+                    # deadline change unless the source explicitly gives seconds.
+                    # Aware datetime comparison also handles equivalent zones.
+                    if (field in ('abstract', 'deadline') and old_parsed.tzinfo is not None
+                            and parsed.tzinfo is not None
+                            and {old_parsed.second, parsed.second} == {0, 59}
+                            and not re.search(r'\b\d{1,2}:\d{2}:\d{2}\b', candidate['evidence'])
+                            and old_parsed.replace(second=0, microsecond=0) == parsed.replace(second=0, microsecond=0)):
                         continue
                 except ValueError:
                     pass

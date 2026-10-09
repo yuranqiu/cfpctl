@@ -309,6 +309,8 @@ All deadlines default to **AoE (UTC-12)** when no timezone is specified.
 
 ### Daily data updates (maintainers)
 
+Date precision is preserved: an end-of-minute `:00`/`:59` difference alone does not rewrite an abstract or paper deadline unless the source explicitly states seconds. Real date/timezone changes still apply. New notifications without a clock in their own source row are stored as calendar dates; AoE or a global deadline policy does not invent a notification time. Existing curated notification clocks are retained when the source only repeats the same date.
+
 `cfpctl-data` is the maintained source of truth. At **00:00 UTC / 08:00 Asia/Shanghai**, `Daily Official Data Update` checks conferences' existing official `cfp` URLs (preferred) or `homepage` URLs. It never downloads or synchronizes ccfddl; that repository was only an initial bootstrap reference.
 
 Only official dates with explicit edition, round and track evidence that uniquely match existing records can change data. Submission deadlines require explicit time/zone evidence; notifications may retain an explicitly published calendar date. Ambiguous dates, unavailable pages, new editions and unknown tracks are reported for review without overwriting existing records. Metadata, acceptance rates, ARR information, manual tracks and history are preserved. Reliable evidence can correct verified records. Partial site failures remain visible; a run where every fetch fails exits unsuccessfully.

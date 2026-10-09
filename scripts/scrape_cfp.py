@@ -345,7 +345,7 @@ def _extract_official(html, url, conference):
         edition = re.search(r"USENIX Security\s*['’](\d{2})", titles, re.I)
         if edition:
             years.add('20' + edition.group(1))
-    if not years:
+    if not years and not re.search(r'\b20\d{2}\b', titles):
         # An edition in the maintained official URL is usable only when the page
         # also identifies that edition in its visible text (not a copyright year).
         from urllib.parse import urlsplit

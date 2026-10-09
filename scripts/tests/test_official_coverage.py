@@ -115,5 +115,11 @@ class GeneralCoverageTests(unittest.TestCase):
         self.assertEqual(urls, ['https://example.org/2027'])
         self.assertEqual(result['status'], 'ok')
 
+    def test_other_conference_with_same_year_is_not_our_edition(self):
+        result = collect_conference({'slug': 'example', 'homepage': 'https://example.org/2027'},
+                                    lambda _: '<title>Other 2027</title><p>Example 2027</p><p>Paper deadline: June 3, 2027 AoE</p>')
+        self.assertFalse(result['candidates'])
+        self.assertEqual(result['status'], 'review')
+
 
 if __name__=='__main__':unittest.main()

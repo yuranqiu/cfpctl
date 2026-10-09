@@ -164,6 +164,14 @@ class OfficialCollectorTests(unittest.TestCase):
         changed = scraper.collect_conference(conference, lambda url: html.replace('Important Information (AoE)', 'Important Information'))
         self.assertEqual(changed['status'], 'review')
 
+    def test_usenix_page_edition_must_match_url(self):
+        html = (Path(__file__).parent / 'fixtures/usenix-security-2027.html').read_text(encoding='utf-8')
+        conference = {'slug': 'usenix-security', 'homepage': 'https://www.usenix.org/conference/usenixsecurity28/call-for-papers'}
+        result = scraper.collect_conference(conference, lambda url: html)
+        self.assertEqual(result['status'], 'review')
+        self.assertFalse(result['candidates'])
+        self.assertIn('page edition disagrees with the official URL', result['review_reasons'])
+
     def test_follows_only_one_unique_same_host_cfp(self):
         pages = {'https://example.org/2027': '<h1>Example 2027</h1><a href="/cfp">Call for Papers</a><a href="https://other.org/cfp">CFP</a>',
                  'https://example.org/cfp': '<h1>Example 2027</h1><p>Paper deadline: June 3, 2027 AoE</p>'}

@@ -36,6 +36,8 @@ class _Blocks(HTMLParser):
             self.stack[-1][1].append(data)
 
 
+# USENIX Security is handled by the two-cycle parser in scrape_cfp.py.
+# Registering it here would intercept that parser with the generic fallback.
 _SITES = {
     'asplos': ('www.asplos-conference.org', '/asplos2027/cfp', ['April Cycle', 'September Cycle']),
     'ndss': ('www.ndss-symposium.org', '/ndss2027/submissions/call-for-papers', ['Summer Cycle', 'Fall Cycle']),
@@ -51,7 +53,6 @@ _SITES = {
     'sigmod': ('2027.sigmod.org', '/calls_papers_important_dates.shtml', []),
     'www': ('www2027.thewebconf.org', '/important-dates/', []),
     'sosp': ('sigops.org', '/s/conferences/sosp/2026/', []),
-    'usenix-security': ('www.usenix.org', '/conference/usenixsecurity27/call-for-papers', ['Cycle 1', 'Cycle 2']),
     'ccs': ('www.sigsac.org', '/ccs/', []),
     's&p': ('sp2027.ieee-security.org', '/', []),
     'chi': ('chi2027.acm.org', '/', []),

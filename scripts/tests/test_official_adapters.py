@@ -87,11 +87,23 @@ class OfficialAdapterTests(unittest.TestCase):
 
     def test_wrong_identity_at_old_url_is_rejected(self):
         for slug in _SITES:
-            html = (FIXTURES / f'{slug}.html').read_text()
-            html = html.replace('2027', '2028').replace('&#039;27', '&#039;28')
-            result = extract(slug, html)
-            self.assertFalse(result['candidates'])
-            self.assertIn('title or h1', result['review_reasons'][0])
+            with self.subTest(slug=slug):
+                # Every registered site must reject a different edition, even
+                # sites that only use the generic fallback and have no snapshot.
+                html = (f'<title>{slug} 2028</title>'
+                        '<p>Paper submission deadline: June 3, 2027 AoE</p>')
+                result = extract(slug, html)
+                self.assertFalse(result['candidates'])
+                self.assertIn('title or h1', result['review_reasons'][0])
+
+    def test_wrong_identity_in_saved_pages_is_rejected(self):
+        for fixture in sorted(FIXTURES.glob('*.html')):
+            with self.subTest(slug=fixture.stem):
+                html = fixture.read_text(encoding='utf-8')
+                html = html.replace('2027', '2028').replace('&#039;27', '&#039;28')
+                result = extract(fixture.stem, html)
+                self.assertFalse(result['candidates'])
+                self.assertIn('title or h1', result['review_reasons'][0])
 
     def test_deleted_date_remains_review_only(self):
         html = (FIXTURES / 'asplos.html').read_text().replace('April 15, 2026', '<del>April 14, 2026</del> April 15, 2026')

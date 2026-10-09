@@ -2,9 +2,22 @@
 import unittest
 from scripts.scrape_cfp import collect_conference
 from scripts.update_official import merge_result
+from scripts.audit_coverage import summarize
 
 
 class GeneralCoverageTests(unittest.TestCase):
+    def test_coverage_uses_observed_results_not_registered_adapters(self):
+        report = {'conferences': [
+            {'slug': 'a', 'ccf': 'A', 'status': 'ok', 'candidates': [{'field': 'deadline', 'applicable': True}]},
+            {'slug': 'b', 'ccf': 'A', 'status': 'review', 'candidates': [], 'reason_codes': ['no_parsed_deadline']},
+            {'slug': 'c', 'ccf': 'B', 'status': 'failed', 'candidates': []}]}
+        summary = summarize(report, 'A')
+        self.assertEqual(summary['total'], 2)
+        self.assertEqual(summary['matched_deadline_percent'], 50)
+        self.assertEqual(summary['needs_review'][0]['slug'], 'b')
+        with self.assertRaises(ValueError):
+            summarize({'conferences': []})
+
     def collect(self, body):
         return collect_conference({'slug':'example','homepage':'https://example.org/2027'},
                                   lambda _: '<title>Example 2027</title>'+body)
@@ -87,6 +100,20 @@ class GeneralCoverageTests(unittest.TestCase):
         result=collect_conference({'slug':'example','homepage':'https://example.org/2027'},fetch)
         self.assertEqual(len(calls),1)
         self.assertEqual(result['status'],'review')
+
+    def test_resubmission_is_not_a_second_paper_deadline(self):
+        result = self.collect('<p>Paper deadline: June 3, 2027 AoE</p><p>July 3, 2027: Resubmission deadline</p>')
+        self.assertEqual(result['status'], 'ok')
+        self.assertEqual(len(result['candidates']), 1)
+
+    def test_http_maintained_url_is_only_tried_over_https(self):
+        urls = []
+        def fetch(url):
+            urls.append(url)
+            return '<title>Example 2027</title><p>Paper deadline: June 3, 2027 AoE</p>'
+        result = collect_conference({'slug': 'example', 'homepage': 'http://example.org/2027'}, fetch)
+        self.assertEqual(urls, ['https://example.org/2027'])
+        self.assertEqual(result['status'], 'ok')
 
 
 if __name__=='__main__':unittest.main()

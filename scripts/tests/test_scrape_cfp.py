@@ -85,12 +85,19 @@ class CandidateOutputTests(unittest.TestCase):
         for path in (scraper.DATA_DIR / "scraped.yaml", Path("/app/data/scraped.yaml")):
             with self.subTest(path=path), self.assertRaises(ValueError):
                 scraper.validate_output_path(path)
+        self.assertEqual(scraper.validate_output_path("/app/output/candidates.yaml"),
+                         Path("/app/output/candidates.yaml").resolve())
+
+    def test_symlink_to_canonical_path_is_rejected(self):
         link = Path(self.temporary.name) / "canonical"
-        link.symlink_to(scraper.DATA_DIR, target_is_directory=True)
+        try:
+            link.symlink_to(scraper.DATA_DIR, target_is_directory=True)
+        except OSError as exc:
+            if getattr(exc, 'winerror', None) == 1314:
+                self.skipTest('Windows requires symlink privilege; exercised by Linux CI')
+            raise
         with self.assertRaises(ValueError):
             scraper.validate_output_path(link / "scraped.yaml")
-        self.assertEqual(scraper.validate_output_path("/app/output/candidates.yaml"),
-                         Path("/app/output/candidates.yaml"))
 
     def test_success_writes_review_report_only(self):
         with patch.object(scraper, "fetch_page", return_value="<p>Paper deadline: June 3, 2026</p>"), \

@@ -331,9 +331,14 @@ python scripts/update_official.py --data-dir /path/to/cfpctl-data \
   --report /tmp/official-report.json --summary /tmp/official-report.md
 # Add --apply to write eligible changes; --slug limits conference selection.
 go run . validate --data-dir /path/to/cfpctl-data
+python scripts/audit_coverage.py --report /tmp/official-report.json
 ```
 
 `full_refresh.py` uses the same official-site updater. `convert_ccfddl.py` is an offline historical bootstrap tool requiring explicit local `--source-dir` and `--output-dir`; it performs no network access.
+
+Use `--cache-dir /tmp/official-pages` to save official HTML, resolved URLs, fetch times and errors. Add `--offline` to replay without network access. Successful snapshots expire after 24 hours; failures after five minutes. Daily artifacts include snapshots and categorized per-conference diagnostics. Each conference requests at most two pages, with at most one retry per request and a 4 MiB page limit. Legacy HTTP URLs are tried over HTTPS only; certificate verification stays enabled.
+
+Scoped adapters cover AAAI main dates, WWW main tables, explicit SIGMOD/PODS rounds and Eurocrypt date cards. Researchr matches the page edition and explicit tracks, excluding author responses and revision events. `ok` describes the extracted, matched fields, not complete verification of every historical edition or track. A parsing failure does not establish that dates are unpublished; unresolved records need evidence or a new adapter, never extrapolation from earlier years.
 
 Contributions welcome! Especially:
 - **Conference data**: PR to [cfpctl-data](https://github.com/yuranqiu/cfpctl-data)

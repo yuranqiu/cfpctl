@@ -21,7 +21,7 @@ class _Blocks(HTMLParser):
             self.hidden += 1
             if tag in {'del', 's'} and self.stack:
                 self.stack[-1][1].append(' [deleted content] ')
-        if tag in {'title', 'p', 'li', 'h1', 'h2', 'h3', 'h4'}:
+        if tag in {'title', 'p', 'li', 'tr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'}:
             self.stack.append((tag, []))
 
     def handle_endtag(self, tag):
@@ -53,33 +53,6 @@ _SITES = {
     'sigmod': ('2027.sigmod.org', '/calls_papers_important_dates.shtml', []),
     'www': ('www2027.thewebconf.org', '/important-dates/', []),
     'sosp': ('sigops.org', '/s/conferences/sosp/2026/', []),
-    'ccs': ('www.sigsac.org', '/ccs/', []),
-    's&p': ('sp2027.ieee-security.org', '/', []),
-    'chi': ('chi2027.acm.org', '/', []),
-    'sigcomm': ('conferences.sigcomm.org', '/sigcomm/2027/', []),
-    'infocom': ('infocom2027.ieee-infocom.org', '/', []),
-    'isca': ('www.iscaconf.org', '/', []),
-    'micro': ('microarch.org', '/', []),
-    'dac': ('dac.com', '/2027/', []),
-    'sc': ('sc26.supercomputing.org', '/', []),
-    'hpdc': ('hpdc.sci.utah.edu', '/2026/', []),
-    'icde': ('icde2027.github.io', '/', []),
-    'vldb': ('www.vldb.org', '/2027/', []),
-    'aaai': ('aaai.org', '/conference/aaai/aaai-27/', []),
-    'sigkdd': ('kdd2027.kdd.org', '/', []),
-    'sigir': ('sigir2027.org', '/', []),
-    'acm-mm': ('2026.acmmm.org', '/', []),
-    'acm-siggraph': ('s2027.siggraph.org', '/', []),
-    'ieee-vis': ('ieeevis.org', '/', []),
-    'ieee-vr': ('ieeevr.org', '/2027/', []),
-    'cscw': ('cscw.acm.org', '/2026/', []),
-    'uist': ('uist.acm.org', '/2026/', []),
-    'focs': ('sanjeevkhanna.org', '/', []),
-    'soda': ('www.siam.org', '/', []),
-    'lics': ('lics.siglog.org', '/', []),
-    'cav': ('conferences.i-cav.org', '/2027/', []),
-    'fm': ('www.fmeurope.org', '/', []),
-    'rtss': ('2026.rtss.org', '/', []),
 }
 _TRACKS = {'asplos': {'Full Paper (Architecture)', 'Full Paper (Systems)', 'Full Paper (PL)'},
            'ndss': {'Technical Papers'},
@@ -124,12 +97,18 @@ def extract_adapter(html, url, conference):
     parser.feed(html)
     candidates, reasons = [], []
     identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
-    slug_pat = slug.replace('-', r'[ -]?')
+    slug_pat = {'www': r'(?:WWW|ACM Web|The Web Conference)', 'sigmod': r'SIGMOD(?:/PODS)?'}.get(slug, slug.replace('-', r'[ -]?'))
     edition_pattern = rf'\b{slug_pat}(?:\s+(?:Symposium|Conference))?\s+(?:2027|[\u2018\u2019\'"]27)\b'
     identity_years = set(re.findall(r'\b20\d{2}\b', identity))
     identity_short_years = set(re.findall(rf'\b{slug_pat}\s+[\u2018\u2019\'"](\d{2})\b', identity, re.I))
-    if not re.search(edition_pattern, identity, re.I) or identity_years - {'2027'} or identity_short_years - {'27'}:
-        return {'candidates': [], 'review_reasons': ['Official title or h1 does not unambiguously identify the expected 2027 edition']}
+    expected_year = 2026 if slug == 'sosp' else 2027
+    if slug == 'sosp':
+        edition_pattern = edition_pattern.replace('2027', '2026').replace('27)', '26)')
+    identity_matches = re.search(edition_pattern, identity, re.I)
+    if slug == 'sigmod':
+        identity_matches = re.search(slug_pat, identity, re.I) and str(expected_year) in identity_years
+    if not identity_matches or identity_years - {str(expected_year)} or identity_short_years - {str(expected_year % 100)}:
+        return {'candidates': [], 'review_reasons': [f'Official title or h1 does not unambiguously identify the expected {expected_year} edition']}
     usenix_slugs = {'nsdi', 'osdi', 'fast', 'atc', 'eurosys'}
     section_counts, field_counts = Counter(), Counter()
     policy = ''
@@ -219,7 +198,10 @@ def extract_adapter(html, url, conference):
                 date = parse_date(prev_text)
                 if date:
                     field = None
-                    if re.search(r'submission|paper.*deadline|deadline.*paper', text, re.I):
+                    if re.search(r'early|rebuttal|server online|opens|camera.ready', text, re.I):
+                        prev_tag, prev_text = tag, text
+                        continue
+                    if re.search(r'submission deadline|paper.*deadline|deadline.*paper', text, re.I):
                         field = 'deadline'
                     elif re.search(r'abstract|registration', text, re.I):
                         field = 'abstract'
@@ -321,118 +303,12 @@ def extract_adapter(html, url, conference):
             reasons.append('STOC page has no recognizable paper deadline in prose')
         return {'candidates': candidates, 'review_reasons': reasons}
 
-    # --- SIGMOD: list-based with multiple rounds and tracks ---
-    if slug == 'sigmod':
-        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
-        if not re.search(r'SIGMOD\s+2027', identity, re.I):
-            return {'candidates': [], 'review_reasons': ['Page does not identify SIGMOD 2027']}
-        policy = ''
-        for _, text in parser.blocks:
-            if re.search(r'11:59\s*PM\s*AoE|Anywhere on Earth', text, re.I):
-                policy = 'AoE'
-                break
-        current_section = None
-        for tag, text in parser.blocks:
-            if tag in ('h2', 'h3'):
-                current_section = text.strip()
-                continue
-            if tag != 'li' or not current_section:
-                continue
-            field = None
-            if re.search(r'abstract.*(?:deadline|submission|registration)', text, re.I):
-                field = 'abstract'
-            elif re.search(r'(?:paper|full paper|research).*submission|submission.*deadline', text, re.I) and not re.search(r'abstract', text, re.I):
-                field = 'deadline'
-            elif re.search(r'notification|acceptance|decision', text, re.I):
-                field = 'notification'
-            if not field:
-                continue
-            date = parse_date(text)
-            if not date:
-                continue
-            # Determine cycle and track from section heading
-            cycle_name = '2027'
-            track_name = None
-            if re.search(r'research.*round\s*(\d)', current_section, re.I):
-                m = re.search(r'round\s*(\d)', current_section, re.I)
-                cycle_name = f'Research Round {m.group(1)}'
-                track_name = 'Research Paper'
-            elif re.search(r'industrial', current_section, re.I):
-                cycle_name = 'Industrial & Demo'
-                track_name = 'Industrial Track'
-            elif re.search(r'demonstration', current_section, re.I):
-                cycle_name = 'Industrial & Demo'
-                track_name = 'Demonstration'
-            elif re.search(r'PODS', current_section, re.I):
-                m = re.search(r'cycle\s*(\d)', current_section, re.I)
-                cycle_name = f'PODS Cycle {m.group(1)}' if m else 'PODS'
-                track_name = 'PODS Paper'
-            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
-            reason = '' if value else 'No unambiguous timezone'
-            candidates.append({'year': 2027, 'cycle_name': cycle_name, 'track_name': track_name,
-                               'field': field, 'date': date, 'value': value,
-                               'evidence': f'{current_section}: {text}',
-                               'applicable': not reason, 'reason': reason})
-        if not candidates:
-            reasons.append('SIGMOD page has no recognizable deadlines')
-        return {'candidates': candidates, 'review_reasons': reasons}
-
-    # --- WWW (The Web Conf): Jekyll-style table or list ---
-    if slug == 'www':
-        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
-        if not re.search(r'(?:WWW|Web Conf|The Web)\s+2027', identity, re.I):
-            return {'candidates': [], 'review_reasons': ['Page does not identify WWW 2027']}
-        policy = ''
-        for _, text in parser.blocks:
-            if re.search(r'11:59\s*PM?\s*AoE|Anywhere on Earth|UTC-12', text, re.I):
-                policy = 'AoE'
-                break
-        for tag, text in parser.blocks:
-            if tag not in ('p', 'li', 'td'):
-                continue
-            field = None
-            if re.search(r'(?:full\s+)?paper.*(?:submission|deadline)|research.*deadline', text, re.I) and not re.search(r'workshop|tutorial|demo|poster|short|industry', text, re.I):
-                field = 'deadline'
-            elif re.search(r'abstract.*(?:deadline|submission|registration)', text, re.I):
-                field = 'abstract'
-            elif re.search(r'short\s+paper.*(?:deadline|submission)', text, re.I):
-                field = 'deadline'
-            elif re.search(r'demo.*(?:deadline|submission)', text, re.I):
-                field = 'deadline'
-            elif re.search(r'workshop.*proposal.*(?:deadline|submission)', text, re.I):
-                field = 'deadline'
-            elif re.search(r'tutorial.*proposal.*(?:deadline|submission)', text, re.I):
-                field = 'deadline'
-            elif re.search(r'notification|acceptance|decision', text, re.I):
-                field = 'notification'
-            if not field:
-                continue
-            date = parse_date(text)
-            if not date:
-                continue
-            track_name = None
-            cycle_name = '2027'
-            if re.search(r'short\s+paper', text, re.I):
-                track_name = 'Short Paper'
-            elif re.search(r'demo', text, re.I):
-                track_name = 'Demo Paper'
-            elif re.search(r'workshop.*proposal', text, re.I):
-                track_name = 'Workshop Proposal'
-            elif re.search(r'tutorial.*proposal', text, re.I):
-                track_name = 'Tutorial Proposal'
-            elif re.search(r'abstract', text, re.I):
-                track_name = 'Full Paper (Research & Industry)'
-            else:
-                track_name = 'Full Paper (Research & Industry)'
-            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
-            reason = '' if value else 'No unambiguous timezone'
-            candidates.append({'year': 2027, 'cycle_name': cycle_name, 'track_name': track_name,
-                               'field': field, 'date': date, 'value': value,
-                               'evidence': text,
-                               'applicable': not reason, 'reason': reason})
-        if not candidates:
-            reasons.append('WWW page has no recognizable deadlines')
-        return {'candidates': candidates, 'review_reasons': reasons}
+    if slug in {'sigmod', 'www'}:
+        if __package__:
+            from .official_scoped import extract_scoped
+        else:
+            from official_scoped import extract_scoped
+        return extract_scoped(html, url, conference)
 
     # --- SOSP: USENIX-style but different URL pattern ---
     if slug == 'sosp':
@@ -445,12 +321,14 @@ def extract_adapter(html, url, conference):
                 policy = 'AoE'
                 break
         for tag, text in parser.blocks:
-            if tag != 'li':
+            if tag not in ('li', 'tr'):
+                continue
+            if re.search(r'artifact|camera.ready|rebuttal|early', text, re.I):
                 continue
             field = None
             if re.search(r'paper\s+submission|submission\s+deadline|full\s+paper', text, re.I) and not re.search(r'abstract', text, re.I):
                 field = 'deadline'
-            elif re.search(r'abstract.*(?:deadline|registration)', text, re.I):
+            elif re.search(r'abstract.*(?:deadline|registration)|deadline to register abstracts', text, re.I):
                 field = 'abstract'
             elif re.search(r'notification|acceptance', text, re.I):
                 field = 'notification'
@@ -459,7 +337,7 @@ def extract_adapter(html, url, conference):
             date = parse_date(text)
             if not date:
                 continue
-            year = int(date[:4])
+            year = expected_year
             value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
             reason = '' if value else 'No unambiguous timezone'
             candidates.append({'year': year, 'cycle_name': str(year), 'track_name': None,
@@ -468,57 +346,6 @@ def extract_adapter(html, url, conference):
                                'applicable': not reason, 'reason': reason})
         if not candidates:
             reasons.append('SOSP page has no recognizable deadlines')
-        return {'candidates': candidates, 'review_reasons': reasons}
-
-    # --- Generic catch-all for registered-but-unspecialized conferences ---
-    # These conferences are registered in _SITES but don't have dedicated parsers.
-    # Use enhanced block parsing similar to L3 but within the adapter framework.
-    generic_slugs = set(_SITES.keys()) - usenix_slugs - {
-        'asplos', 'ndss', 'eurocrypt', 'crypto', 'mobicom', 'stoc',
-        'sigmod', 'www', 'sosp',
-    }
-    if slug in generic_slugs:
-        identity = ' '.join(text for tag, text in parser.blocks if tag in {'title', 'h1'})
-        # Extract year from page content
-        years = set(re.findall(r'\b20\d{2}\b', identity))
-        if not years:
-            return {'candidates': [], 'review_reasons': ['Page does not identify conference year']}
-        year = max(int(y) for y in years)
-        
-        # Detect timezone policy
-        policy = ''
-        for _, text in parser.blocks:
-            if re.search(r'\bAoE\b|Anywhere on Earth|23:59\s*AoE', text, re.I):
-                policy = 'AoE'
-                break
-            if re.search(r'11:59\s*PM?\s*(?:AoE|UTC-12)', text, re.I):
-                policy = 'AoE'
-                break
-        
-        # Parse deadline blocks
-        for tag, text in parser.blocks:
-            if tag not in ('p', 'li', 'td'):
-                continue
-            field = None
-            if re.search(r'(?:full\s+)?paper\s+submission|submission\s+deadline|paper\s+deadline', text, re.I) and not re.search(r'\b(?:workshop|tutorial|poster|demo|short|industry|artifact)\b', text, re.I):
-                field = 'deadline'
-            elif re.search(r'abstract\s+(?:submission|registration|deadline)|paper\s+(?:title|registration)', text, re.I):
-                field = 'abstract'
-            elif re.search(r'notification|acceptance|decision', text, re.I) and not re.search(r'\b(?:early|reject|desk|rebuttal)\b', text, re.I):
-                field = 'notification'
-            if not field:
-                continue
-            date = parse_date(text)
-            if not date or int(date[:4]) not in {year - 1, year}:
-                continue
-            value = date if field == 'notification' else parse_timestamp(text + (' ' + policy if policy else ''), date)
-            reason = '' if value else 'No unambiguous timezone'
-            candidates.append({'year': year, 'cycle_name': str(year), 'track_name': None,
-                               'field': field, 'date': date, 'value': value,
-                               'evidence': text,
-                               'applicable': not reason, 'reason': reason})
-        if not candidates:
-            reasons.append(f'{slug} page has no recognizable deadlines (may not be posted yet)')
         return {'candidates': candidates, 'review_reasons': reasons}
 
     # --- Default: USENIX/ASPLOS/NDSS/NSDI list-based adapters ---

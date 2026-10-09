@@ -1,10 +1,9 @@
 """Adapter for conf.researchr.org /dates/ pages.
 
 Parses the unified When|Track|What table that all researchr.org conferences share.
-Matches rows to existing conference cycles/tracks by track name fuzzy matching.
+Matches rows only to the explicitly identified edition and exact named tracks.
 """
 import re
-from html.parser import HTMLParser
 
 try:
     from .official_dates import parse_date, parse_timestamp
@@ -12,49 +11,31 @@ except ImportError:
     from official_dates import parse_date, parse_timestamp
 
 
-class _TableParser(HTMLParser):
-    """Extract rows from the first 3-column table on the page."""
+class _TableParser:
+    """Read only a table explicitly headed When / Track / What."""
     def __init__(self):
-        super().__init__(convert_charrefs=True)
-        self.rows = []
-        self.in_table = False
-        self.in_row = False
-        self.cells = []
-        self.cell_text = []
-        self.col_count = 0
-        self.found_dates_table = False
+        self.rows, self.found_dates_table = [], False
 
-    def handle_starttag(self, tag, attrs):
-        attrs = dict(attrs)
-        if tag == 'table' and not self.found_dates_table:
-            self.in_table = True
-            self.col_count = 0
-        elif tag == 'tr' and self.in_table:
-            self.in_row = True
-            self.cells = []
-        elif tag in ('td', 'th') and self.in_row:
-            self.cell_text = []
-            self.col_count += 1
-
-    def handle_endtag(self, tag):
-        if tag in ('td', 'th') and self.in_row:
-            self.cells.append(' '.join(''.join(self.cell_text).split()))
-        elif tag == 'tr' and self.in_row:
-            self.in_row = False
-            if len(self.cells) >= 3:
-                self.rows.append(tuple(self.cells[:3]))
-                if not self.found_dates_table:
-                    # Check if this looks like the dates table header
-                    if any('when' in c.lower() or 'track' in c.lower() for c in self.cells):
-                        self.found_dates_table = True
-        elif tag == 'table' and self.in_table:
-            self.in_table = False
-            if self.found_dates_table:
-                return  # Stop after first dates table
-
-    def handle_data(self, data):
-        if self.in_row:
-            self.cell_text.append(data)
+    def feed(self, html):
+        if __package__:
+            from .official_tables import Tree, Node
+        else:
+            from official_tables import Tree, Node
+        tree = Tree()
+        tree.feed(html)
+        for table in tree.root.walk():
+            if table.tag != 'table':
+                continue
+            rows = []
+            for row in table.walk():
+                if row.tag == 'tr':
+                    cells = [' '.join(c.text().split()) for c in row.children
+                             if isinstance(c, Node) and c.tag in ('td', 'th')]
+                    if len(cells) == 3:
+                        rows.append(tuple(cells))
+            if rows and [c.casefold() for c in rows[0]] == ['when', 'track', 'what']:
+                self.found_dates_table = True
+                self.rows.extend(rows[1:])
 
 
 # Map researchr track names to cfpctl field types
@@ -63,13 +44,15 @@ _FIELD_KEYWORDS = {
     'deadline': [r'(?:paper\s+)?submission\s*(?:deadline)?$', r'submissions?\s+deadline',
                  r'paper\s+deadline', r'full\s+paper', r'submission\s+due',
                  r'submission\s+of\s+(?:solution\s+)?papers'],
-    'notification': [r'notification', r'acceptance', r'author\s+response', r'review\s+release'],
+    'notification': [r'notification', r'acceptance'],
 }
 
 
 def _classify_event(what_text):
     """Classify a 'What' column text into abstract/deadline/notification or None."""
     text = what_text.strip().lower()
+    if re.search(r'early|reject|rebuttal|author.response|review.release|revision|final acceptance', text):
+        return None
     # Skip non-deadline events
     if re.search(r'\b(?:announcement|meeting|tutorial|review\s+tutorial|zoom|members?|committee|camera.ready|artifact\s+submission|revision\s+due|final\s+version)\b', text):
         return None
@@ -84,124 +67,71 @@ def _classify_event(what_text):
 
 
 def extract_researchr(html, url, conference):
-    """Parse a conf.researchr.org /dates/ page. Returns candidates or None."""
-    slug = conference.get('slug', '')
+    """Resolve a dates table only within its explicitly identified edition."""
     from urllib.parse import urlparse
-    parsed_url = urlparse(url)
-
-    # Handle conf.researchr.org, *.sigplan.org, *.splashcon.org, and similar
-    hostname = parsed_url.hostname or ''
-    valid = (hostname == 'conf.researchr.org'
-             or 'sigplan.org' in hostname
-             or 'splashcon.org' in hostname
-             or 'msrconf.org' in hostname
-             or 'formalise.org' in hostname)
-    if not valid:
+    if __package__:
+        from .official_tables import Tree
+        from .official_identity import title_years
+    else:
+        from official_tables import Tree
+        from official_identity import title_years
+    host = urlparse(url).hostname or ''
+    domains = ('researchr.org', 'sigplan.org', 'splashcon.org', 'msrconf.org', 'formalise.org')
+    if not any(host == d or host.endswith('.' + d) for d in domains):
         return None
-
-    # Accept /dates/, /track/, /home/, or root pages for researchr-hosted sites
-    is_dates_page = bool(re.search(r'/dates/|/track/', parsed_url.path))
-    is_home_page = bool(re.search(r'/home/', parsed_url.path))
-    is_root = parsed_url.path in ('', '/')
-    is_researchr_host = hostname == 'conf.researchr.org'
-
-    if not (is_dates_page or is_home_page or is_root):
-        if not ('sigplan.org' in hostname or 'splashcon.org' in hostname or 'msrconf.org' in hostname):
-            return None
-
     parser = _TableParser()
     parser.feed(html)
-
-    if not parser.rows:
+    if not parser.found_dates_table:
         return None
-
-    # Build existing track name set for matching
-    existing_tracks = {}
-    for cycle in conference.get('cycles', []):
-        for track in cycle.get('tracks', []):
-            name = track.get('name', '').lower()
-            if name:
-                existing_tracks[name] = (cycle.get('name'), track.get('name'))
-
-    candidates = []
-    review_reasons = []
-    seen = set()
-
-    for when_text, track_text, what_text in parser.rows:
-        # Skip header row
-        if when_text.lower() == 'when' or track_text.lower() == 'track':
+    tree = Tree()
+    tree.feed(html)
+    headings = [(n.tag, ' '.join(n.text().split())) for n in tree.root.walk() if n.tag in ('title', 'h1')]
+    years = title_years(headings, conference)
+    if len(years) != 1:
+        return {'candidates': [], 'review_reasons': ['researchr page must identify one conference edition']}
+    year = int(next(iter(years)))
+    cycles = [c for c in conference.get('cycles', []) if str(c.get('name')) == str(year) or c.get('year') == year]
+    scopes = [' '.join(n.text().split()) for n in tree.root.walk() if n.tag == 'p'
+              and re.search(r'all (?:deadlines|dates|times) are', n.text(), re.I)
+              and not re.search(r'workshop|poster|artifact', n.text(), re.I)]
+    policy = scopes[0] if len(set(scopes)) == 1 else ''
+    candidates, reasons, seen = [], [], set()
+    for when, track, event in parser.rows:
+        field = _classify_event(event)
+        if not field or re.search(r'workshop|poster|tutorial|doctoral|artifact|challenge|competition|demonstration', track, re.I):
             continue
-
-        field = _classify_event(what_text)
-        if not field:
-            continue
-
-        date = parse_date(when_text)
+        date = parse_date(when)
         if not date:
             continue
-
-        # Extract year from date
-        try:
-            year = int(date[:4])
-        except ValueError:
+        matches = [(c, t) for c in cycles for t in c.get('tracks', [])
+                   if t['name'].strip().casefold() == track.strip().casefold()]
+        main_track = re.fullmatch(r'(?:' + re.escape(conference.get('slug', '')) + r'\s+)?(?:research(?: papers?)?(?: track)?|technical papers(?: track)?|main conference|papers)', track.strip(), re.I)
+        if not matches and len(cycles) == 1 and not cycles[0].get('tracks') and main_track:
+            matches = [(cycles[0], None)]
+        if len(matches) != 1:
+            reasons.append('Track "' + track + '" not uniquely matched within conference edition')
             continue
-
-        # Try to match track name to existing data
-        track_lower = track_text.strip().lower()
-        matched_cycle = None
-        matched_track = None
-
-        # Direct match
-        if track_lower in existing_tracks:
-            matched_cycle, matched_track = existing_tracks[track_lower]
-        else:
-            # Fuzzy match: check if any existing track name is contained in or contains the row track
-            for existing_name, (cyc, trk) in existing_tracks.items():
-                if existing_name in track_lower or track_lower in existing_name:
-                    matched_cycle, matched_track = cyc, trk
-                    break
-
-        # Dedup key
-        key = (year, matched_cycle, matched_track, field)
+        cycle, target = matches[0]
+        evidence = f'{when} | {track} | {event}'
+        value = date if field == 'notification' and not re.search(r'\d{1,2}:\d{2}', when) else parse_timestamp(when, date)
+        if not value and policy and not re.search(r'UTC|GMT|AoE|\b[A-Z]{2,4}T\b', when):
+            value = parse_timestamp(when + ' ' + policy, date)
+            evidence += ' [' + policy + ']'
+        reason = None
+        if int(date[:4]) not in (year-1, year):
+            reason = 'date falls outside explicit conference edition'
+        elif re.search(r'tentative|TBD|deleted content', when + event, re.I):
+            reason = 'researchr date is tentative or revised'
+        elif not value:
+            reason = 'No explicit timezone in researchr dates table'
+        key = (cycle['name'], target['name'] if target else None, field, value, date)
         if key in seen:
             continue
         seen.add(key)
-
-        # For notification fields without explicit time, use date-only
-        value = None
-        if field == 'notification':
-            # Check if there's a time component
-            if re.search(r'\d{1,2}:\d{2}', when_text):
-                value = parse_timestamp(when_text, date)
-            else:
-                value = date  # Date-only notification
-        else:
-            # Deadline/abstract: require timezone
-            value = parse_timestamp(when_text, date)
-            if not value:
-                # Researchr dates typically don't include timezone; mark as review
-                pass
-
-        reason = None
-        if not value:
-            reason = 'No explicit timezone in researchr dates table'
-        if matched_track is None:
-            # Track not found in existing data — still record but mark for review
-            reason = reason or f'Track "{track_text}" not matched to existing data'
-
-        candidates.append({
-            'year': year,
-            'cycle_name': matched_cycle or str(year),
-            'track_name': matched_track,
-            'field': field,
-            'date': date,
-            'value': value,
-            'evidence': f'{when_text} | {track_text} | {what_text}',
-            'applicable': reason is None,
-            'reason': reason,
-        })
-
-    if not candidates:
-        return None
-
-    return {'candidates': candidates, 'review_reasons': review_reasons}
+        candidates.append(dict(year=year, cycle_name=cycle['name'], track_name=target['name'] if target else None,
+                               field=field, date=date, value=value, evidence=evidence,
+                               applicable=reason is None, reason=reason))
+    keys = [(c['cycle_name'], c['track_name'], c['field']) for c in candidates]
+    if len(keys) != len(set(keys)):
+        reasons.append('conflicting researchr dates for one edition/track/field')
+    return {'candidates': candidates, 'review_reasons': list(dict.fromkeys(reasons))} if candidates or reasons else None

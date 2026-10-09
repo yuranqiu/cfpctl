@@ -1,60 +1,42 @@
 #!/usr/bin/env python3
-"""Audit scraper coverage across all conferences."""
-import yaml, glob, sys
-sys.path.insert(0, '/app')
-from scripts.official_adapters import _SITES
+"""Summarize observed updater results, never infer coverage from adapter registration."""
+import argparse
+from collections import Counter
+import json
+from pathlib import Path
 
-total = 0
-l1 = l2 = l3 = 0
-verified = 0
-with_tracks = 0
-no_url = 0
-l1_slugs = set(_SITES.keys())
-l2_hosts = {'iclr.cc','virtual.aistats.org','eccv.ecva.net','neurips.cc','icml.cc',
-            'cvpr.thecvf.com','2027.aclweb.org','2026.emnlp.org'}
 
-for f in sorted(glob.glob('/app/data/*.yaml')):
-    confs = yaml.safe_load(open(f)) or []
-    for c in confs:
-        total += 1
-        slug = c.get('slug','')
-        url = c.get('cfp') or c.get('homepage') or ''
-        
-        tier = 'L3'
-        if slug in l1_slugs:
-            tier = 'L1'
-            l1 += 1
-        elif any(h in url for h in l2_hosts):
-            tier = 'L2'
-            l2 += 1
-        else:
-            l3 += 1
-        
-        if not url or not url.startswith('https://'):
-            no_url += 1
-        if c.get('verified'):
-            verified += 1
-        if any('tracks' in cyc for cyc in c.get('cycles',[])):
-            with_tracks += 1
+def summarize(report, ccf=None):
+    rows = [c for c in report.get('conferences', []) if not ccf or c.get('ccf') == ccf]
+    if not rows:
+        raise ValueError('report has no matching conference results')
+    slugs = [r['slug'] for r in rows]
+    if len(slugs) != len(set(slugs)):
+        raise ValueError('report contains duplicate conference results')
+    counts = dict(Counter(r['status'] for r in rows))
+    accepted = [r['slug'] for r in rows if r['status'] == 'ok' and any(c.get('applicable') and c.get('field') == 'deadline' for c in r.get('candidates', []))]
+    return dict(checked_at=report.get('checked_at'), offline=report.get('offline', False),
+                total=len(rows), counts=counts, matched_deadline_conferences=accepted,
+                matched_deadline_percent=round(100 * len(accepted) / len(rows), 1),
+                reason_counts=dict(Counter(code for r in rows for code in set(r.get('reason_codes', [])))),
+                needs_review=[dict(slug=r['slug'], ccf=r.get('ccf'), source_url=r.get('source_url'),
+                                   status=r['status'], reasons=r.get('review_reasons', []), failure=r.get('failure'))
+                              for r in rows if r['status'] != 'ok'],
+                scope='Coverage describes matched fields in this run, not every edition or track. Unparsed dates are not necessarily unpublished.')
 
-print(f"Total conferences: {total}")
-print(f"  L1 (dedicated adapter): {l1} ({l1*100//total}%)")
-print(f"  L2 (table parser):      {l2} ({l2*100//total}%)")
-print(f"  L3 (generic only):      {l3} ({l3*100//total}%)")
-print(f"  No valid URL:           {no_url}")
-print(f"  Verified:               {verified} ({verified*100//total}%)")
-print(f"  Multi-track:            {with_tracks} ({with_tracks*100//total}%)")
-print()
-print("=== L3 conferences (need adapters or better generic parsing) ===")
-for f in sorted(glob.glob('/app/data/*.yaml')):
-    confs = yaml.safe_load(open(f)) or []
-    for c in confs:
-        slug = c.get('slug','')
-        url = c.get('cfp') or c.get('homepage') or ''
-        if slug in l1_slugs:
-            continue
-        if any(h in url for h in l2_hosts):
-            continue
-        ccf = c.get('rank',{}).get('ccf','')
-        if ccf == 'A':
-            print(f"  CCF-A: {slug:25s} {url[:70]}")
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--report', required=True, type=Path, help='official-report.json from update_official.py')
+    parser.add_argument('--ccf', choices=['A', 'B', 'C'], help='optional rank filter')
+    args = parser.parse_args(argv)
+    try:
+        result = summarize(json.loads(args.report.read_text(encoding='utf-8')), args.ccf)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        parser.error(str(exc))
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

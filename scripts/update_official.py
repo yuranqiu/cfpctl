@@ -7,6 +7,7 @@ Uncertain dates, unavailable sites and unsupported rounds retain existing data.
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
+from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -14,13 +15,14 @@ import re
 from pathlib import Path
 import sys
 import tempfile
-from urllib.request import Request, urlopen
 
 import yaml
 
 if __package__:
+    from .official_fetch import WebsiteFetcher
     from .scrape_cfp import collect_conference, ScrapeError
 else:
+    from official_fetch import WebsiteFetcher
     from scrape_cfp import collect_conference, ScrapeError
 
 FILES = ('ai.yaml', 'graphics.yaml', 'theory.yaml', 'database.yaml', 'systems.yaml',
@@ -190,30 +192,39 @@ def merge_result(conference, result):
     return updated, changes, reviews
 
 
-def make_fetcher(timeout):
-    def fetch(url):
-        if not url.startswith(('https://', 'http://')):
-            raise ScrapeError('unsupported website URL')
-        try:
-            request = Request(url, headers={'User-Agent': 'cfpctl-official-updater/1.0'})
-            with urlopen(request, timeout=timeout) as response:
-                content = response.read(4 * 1024 * 1024 + 1)
-                if len(content) > 4 * 1024 * 1024:
-                    raise ScrapeError('website exceeds 4 MiB limit')
-                return content.decode(response.headers.get_content_charset() or 'utf-8')
-        except Exception as exc:
-            raise ScrapeError(f'{url}: {exc}') from exc
-    return fetch
+def reason_codes(result):
+    """Stable diagnostic categories; lack of parsed dates is not 'unpublished'."""
+    text = '; '.join(result.get('review_reasons', [])) + ' ' + str(result.get('failure') or '')
+    patterns = {
+        'http_forbidden': r'HTTP Error 403', 'http_not_found': r'HTTP Error 404',
+        'tls_error': r'SSL|CERTIFICATE|TLS', 'timeout': r'timed out|timeout',
+        'dns_error': r'Name or service not known|getaddrinfo', 'redirect_error': r'redirect',
+        'missing_edition': r'conference year|edition|identify.*20\d\d',
+        'no_parsed_deadline': r'no explicit paper deadline|no recognizable|no .*deadline',
+        'round_or_track': r'round|track|multiple.*deadline|existing.*cycle',
+        'timezone_missing': r'timezone|explicit time',
+        'ambiguous_dates': r'unrevised|tentative|mixed deadline|conflicting',
+        'ambiguous_links': r'multiple official CFP', 'insecure_url': r'HTTPS official URL',
+        'missing_snapshot': r'offline cache',
+    }
+    codes = [k for k, pattern in patterns.items() if re.search(pattern, text, re.I)]
+    if result['status'] != 'ok' and not codes:
+        codes.append('fetch_error' if result['status'] == 'failed' else 'manual_review')
+    return codes
 
 
-def refresh(directory, *, collector=collect_conference, workers=4, timeout=20, slugs=None, apply=False):
+def make_fetcher(timeout, cache_dir=None, offline=False):
+    return WebsiteFetcher(timeout, cache_dir, offline)
+
+
+def refresh(directory, *, collector=collect_conference, workers=4, timeout=20, slugs=None, apply=False, cache_dir=None, offline=False):
     data = load_data(directory)
     before = {name: (directory / name).read_bytes() for name in FILES}
     work = [(name, i, c) for name, entries in data.items() for i, c in enumerate(entries)
             if not slugs or c['slug'] in slugs]
     if slugs and set(slugs) - {c['slug'] for _, _, c in work}:
         raise ValueError('unknown conference selection')
-    fetcher = make_fetcher(timeout)
+    fetcher = make_fetcher(timeout, cache_dir, offline)
     def collect(item):
         name, i, conf = item
         try:
@@ -235,9 +246,13 @@ def refresh(directory, *, collector=collect_conference, workers=4, timeout=20, s
                 if reviews:
                     result['status'] = 'review'
             report['conferences'].append(result)
+            result['ccf'] = data[name][index].get('rank', {}).get('ccf')
+            result['reason_codes'] = reason_codes(result)
             print(f"{result['slug']}: {result['status']}", flush=True)
     counts = {status: sum(c['status'] == status for c in report['conferences']) for status in ('ok', 'review', 'failed')}
     report['counts'] = counts
+    report['offline'] = offline
+    report['reason_counts'] = dict(Counter(code for c in report['conferences'] for code in c['reason_codes']))
     report['status'] = 'failed' if counts['failed'] == len(work) else 'partial' if counts['failed'] or counts['review'] else 'ok'
     if apply and report['status'] != 'failed':
         # Validate/serialize the full output before touching any source files.
@@ -266,6 +281,9 @@ def write_reports(report, path, summary):
         lines.extend(['', '## Official evidence', ''])
         for change in report['changes']:
             lines.append(f"- {cell(change['slug'])} ({cell(change['field'])}): {cell(change['evidence'])}")
+    lines.extend(['', '## Reason counts (a conference may have multiple reasons)', ''])
+    for code, count in sorted(report.get('reason_counts', {}).items()):
+        lines.append(f'- {code}: {count}')
     lines.extend(['', '## Needs review / fetch failures', ''])
     for item in report.get('conferences', []):
         if item['status'] != 'ok':
@@ -285,13 +303,20 @@ def main(argv=None):
     parser.add_argument('--workers', type=int, default=4, choices=range(1, 9))
     parser.add_argument('--timeout', type=int, default=20)
     parser.add_argument('--slug', action='append', help='limit to an existing conference; repeatable')
+    parser.add_argument('--cache-dir', type=Path, help='save source snapshots for reproducible diagnosis; cache lifetime 24 hours')
+    parser.add_argument('--offline', action='store_true', help='replay cached pages without network access (requires --cache-dir)')
     args = parser.parse_args(argv)
     if args.timeout <= 0:
         parser.error('--timeout must be positive')
+    if args.offline and not args.cache_dir:
+        parser.error('--offline requires --cache-dir')
+    if args.cache_dir and (args.cache_dir.resolve() == args.data_dir.resolve() or args.data_dir.resolve() in args.cache_dir.resolve().parents):
+        parser.error('cache must be outside the data checkout')
     if any(p.resolve() == args.data_dir.resolve() or args.data_dir.resolve() in p.resolve().parents for p in (args.report, args.summary)):
         parser.error('reports must be outside the data checkout')
     try:
-        report = refresh(args.data_dir, workers=args.workers, timeout=args.timeout, slugs=args.slug, apply=args.apply)
+        report = refresh(args.data_dir, workers=args.workers, timeout=args.timeout, slugs=args.slug, apply=args.apply,
+                         cache_dir=args.cache_dir, offline=args.offline)
     except PartialApplyError as exc:
         report = {'status': 'failed', 'applied': True, 'partial_apply': True,
                   'files_needing_recovery': exc.files, 'changes': [], 'error': str(exc)}

@@ -31,11 +31,17 @@ if __package__:
     from .official_adapters import extract_adapter
     from .official_tables import extract_table
     from .researchr_adapter import extract_researchr
+    from .official_identity import title_years
+    from .official_tables import Tree, Node
+    from .official_scoped import extract_scoped
 else:
     from official_dates import parse_date, parse_timestamp as _timestamp
     from official_adapters import extract_adapter
     from official_tables import extract_table
     from researchr_adapter import extract_researchr
+    from official_identity import title_years
+    from official_tables import Tree, Node
+    from official_scoped import extract_scoped
 
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
@@ -205,7 +211,7 @@ def validate_output_path(value):
     path = Path(value).expanduser().absolute()
     resolved = path.resolve()
     for candidate in (path, resolved):
-        if candidate == Path("/app/data") or Path("/app/data") in candidate.parents:
+        if candidate == Path("/app/data").resolve() or Path("/app/data").resolve() in candidate.parents:
             raise ValueError("candidate reports must not use the legacy /app/data directory")
         if candidate == DATA_DIR.resolve() or DATA_DIR.resolve() in candidate.parents:
             raise ValueError("candidate reports must be outside canonical data/")
@@ -324,7 +330,7 @@ def _extract_official(html, url, conference):
     slug = conference.get('slug')
     metadata = PageMetadata()
     metadata.feed(html)
-    for adapter in (extract_adapter, extract_table, extract_researchr):
+    for adapter in (extract_scoped, extract_adapter, extract_table, extract_researchr):
         adapted = adapter(html, url, conference)
         if adapted is not None:
             return adapted['candidates'], adapted['review_reasons'], metadata
@@ -332,7 +338,7 @@ def _extract_official(html, url, conference):
     blocks.feed(html)
     blocks.flush()
     titles = ' '.join(text for tag, text in metadata.headings if tag in {'title', 'h1'})
-    years = set(re.findall(r'\b20\d{2}\b', titles))
+    years = title_years(metadata.headings, conference)
     usenix = slug == 'usenix-security' and re.fullmatch(
         r'https://www\.usenix\.org/conference/usenixsecurity\d{2}/call-for-papers/?', url)
     if usenix:
@@ -395,6 +401,29 @@ def _extract_official(html, url, conference):
         t == scopes[0] or (first_scope_time is not None and _timestamp(t, '2026-01-01') == first_scope_time)
         for t in scopes) else ''
     candidates = []
+    # Explicit DOM pairs and small date cards may split a label/date between
+    # spans or divs. Never join unrelated paragraphs just because they are near.
+    tree = Tree()
+    tree.feed(html)
+    for node in tree.root.walk():
+        if node.tag == 'p' and any(n.tag == 'br' for n in node.walk()):
+            blocks.blocks.append(' '.join(node.text().split()))
+        elif node.tag == 'dl':
+            label = None
+            for child in node.children:
+                if not isinstance(child, Node):
+                    continue
+                if child.tag == 'dt':
+                    label = child.text()
+                elif child.tag == 'dd' and label:
+                    blocks.blocks.append(' '.join((label + ' ' + child.text()).split()))
+                    label = None
+        elif node.tag == 'div':
+            descendants = list(node.walk())[1:]
+            if descendants and not any(n.tag in {'p', 'li', 'tr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'nav', 'footer'} for n in descendants):
+                text = ' '.join(node.text().split())
+                if len(text) < 350 and parse_date(text) and _deadline_field(text):
+                    blocks.blocks.append(text)
     for block in blocks.blocks:
         field = _deadline_field(block)
         if not field:
@@ -443,9 +472,13 @@ def _extract_official(html, url, conference):
 def _deadline_field(block):
     """Recognize both label-first and date-first deadline table/list records."""
     text = ' '.join(block.split())
-    paper = r'(?:full\s+)?papers?\s+(?:submissions?(?:\s+(?:deadline|due))?|deadline|due)|submission\s+deadline|submissions?'
+    if re.search(r'\b(?:resubmission|revised|revision|camera.ready|server|opens?|feedback|rebuttal)\b', text, re.I):
+        return None
+    if re.search(r'\bsupplementary\b', text, re.I) and not re.search(r'including (?:all )?supplementary', text, re.I):
+        return None
+    paper = r'(?:(?:full|research)\s+)?papers?\s+(?:submissions?(?:\s+(?:deadline|due))?|deadline|due)|submission\s+(?:deadline|due)|submissions?'
     abstract = r'abstracts?(?:\s+(?:submission|registration))?(?:\s+(?:deadline|due))?'
-    notification = r'(?:author\s+notification|notification(?:\s+(?:to authors|of acceptance))?)'
+    notification = r'(?:(?:final\s+)?(?:author\s+notification|acceptance\s+notification|notification(?:\s+(?:to authors|of acceptance))?|final\s+decision\s+notification))'
     for field, label in [('abstract', abstract), ('deadline', paper), ('notification', notification)]:
         if field == 'notification' and re.search(r'\b(?:early|reject(?:ion)?|desk|phase|rebuttal)\b', text, re.I):
             continue
@@ -457,7 +490,7 @@ def _deadline_field(block):
                 continue
             if parse_date(text):
                 return field
-        if re.search(r'(?:' + label + r')\s*$', text, re.I) and parse_date(text):
+        if re.search(r'\b(?:' + label + r')\s*$', text, re.I) and parse_date(text):
             return field
     return None
 
@@ -478,16 +511,20 @@ def _discover_cfp_urls(metadata, url, conference):
         target_years = set(re.findall(r'(?<!\d)20\d{2}(?!\d)', urlsplit(target).netloc + urlsplit(target).path))
         if (urlsplit(target).scheme != 'https' or urlsplit(target).netloc != urlsplit(url).netloc
                 or target == url or target.lower().endswith('.pdf')
-                or re.search(r'\b(?:journal|workshop|industry|industrial|poster|demo|doctoral|tutorial|short|artifact|sponsor)\b', text)
+                or re.search(r'\b(?:journals?|workshops?|industry|industrial|posters?|demos?|doctoral|tutorials?|short|artifacts?|sponsors?|committee|committees)\b', text)
                 or (len(current_years) == 1 and target_years and current_years != target_years)):
             continue
         score = 0
         if re.search(r'\bcfp\b|\bcfpapers\b|call[ -]?for[ -]?papers|callforpapers|calls?/papers', label + ' ' + href, re.I):
             score = 2
+            if re.fullmatch(r'\s*(?:main (?:conference )?)?call for papers\s*', label, re.I):
+                score = 3
             if re.search(r'\b(?:news|announcements?)\b', href, re.I):
                 score = 1
         elif re.fullmatch(r'\s*(?:important )?(?:dates|dates and deadlines)\s*', label, re.I):
             score = 1
+        elif re.fullmatch(r'\s*(?:research )?papers\s*', label, re.I):
+            score = 2
         elif re.search(r'\bsubmission\b|\bdeadlines?\b|\bimportant.dates?\b', label + ' ' + href, re.I):
             score = 1
         if score:
@@ -495,77 +532,10 @@ def _discover_cfp_urls(metadata, url, conference):
     return sorted(links.items(), key=lambda x: (-x[1], x[0]))
 
 
-def _try_common_cfp_patterns(fetcher, url, conference):
-    """Try well-known CFP URL patterns when link discovery fails.
-
-    Returns (html, resolved_url) or (None, None). Never raises.
-    """
-    from urllib.parse import urlsplit
-    parsed = urlsplit(url)
-    base = f"{parsed.scheme}://{parsed.netloc}"
-    slug = conference.get('slug', '')
-    # Extract year from URL or conference cycles
-    years = set(re.findall(r'(?<!\d)(20\d{2})(?!\d)', parsed.path))
-    for cycle in conference.get('cycles', []):
-        name = str(cycle.get('name', ''))
-        y = re.match(r'(\d{4})', name)
-        if y:
-            years.add(y.group(1))
-    if not years:
-        return None, None
-    latest_year = max(years)
-    short_year = latest_year[-2:]
-
-    # Common CFP URL patterns by host family
-    patterns = []
-    host = parsed.netloc.lower()
-
-    # USENIX pattern
-    if 'usenix.org' in host:
-        conf_slug = slug.replace('-', '')
-        patterns.append(f"{base}/conference/{conf_slug}{short_year}/call-for-papers")
-        patterns.append(f"{base}/conference/{conf_slug}{latest_year}/call-for-papers")
-
-    # ACM conference pattern (e.g., sigcomm, chi)
-    if 'acm.org' in host or 'sig' in slug:
-        patterns.append(f"{url.rstrip('/')}/cfp")
-        patterns.append(f"{url.rstrip('/')}/call-for-papers")
-        patterns.append(f"{url.rstrip('/')}/dates")
-
-    # IEEE pattern
-    if 'ieee' in host:
-        patterns.append(f"{url.rstrip('/')}/cfps.html")
-        patterns.append(f"{url.rstrip('/')}/call-for-papers")
-
-    # Generic patterns
-    stripped = url.rstrip('/')
-    patterns.extend([
-        f"{stripped}/cfp",
-        f"{stripped}/call-for-papers",
-        f"{stripped}/dates",
-        f"{stripped}/important-dates",
-        f"{stripped}/submission",
-        f"{stripped}/deadlines",
-    ])
-
-    for candidate_url in patterns:
-        if candidate_url == url:
-            continue
-        try:
-            html = fetcher(candidate_url)
-            # Quick sanity check: does the page contain deadline-like content?
-            if re.search(r'(?:deadline|submission|due|notification)', html, re.I):
-                return html, candidate_url
-        except (ScrapeError, OSError):
-            continue
-    return None, None
-
-
 def collect_conference(conference, fetcher=None):
     """Collect evidence from maintained official URLs; never mutate conference data.
 
-    At most three HTTPS pages are requested (initial + one link follow + one
-    pattern probe). Any ambiguity makes every candidate review-only, so a
+    At most two HTTPS pages are requested (maintained URL + one observed link). Any ambiguity makes every candidate review-only, so a
     partially understood schedule cannot overwrite valid data.
     """
     from urllib.parse import urljoin, urlsplit, urldefrag
@@ -573,11 +543,18 @@ def collect_conference(conference, fetcher=None):
     url = conference.get('cfp') or conference.get('homepage') or ''
     result = dict(slug=conference.get('slug'), source_url=url, status='review',
                   candidates=[], review_reasons=[], failure=None)
+    if isinstance(url, str) and urlsplit(url).scheme == 'http':
+        # Try the exact maintained host/path over TLS; never silently fetch HTTP.
+        result['maintained_url'] = url
+        url = 'https://' + url[len('http://'):]
+        result['source_url'] = url
     if not isinstance(url, str) or urlsplit(url).scheme != 'https' or not urlsplit(url).hostname:
         result['review_reasons'] = ['maintained HTTPS official URL is required']
         return result
     try:
         html = fetcher(url)
+        url = getattr(html, 'url', url)
+        result['source_url'] = url
         candidates, reasons, metadata = _extract_official(html, url, conference)
         if reasons or not any(c['field'] == 'deadline' and c['applicable'] for c in candidates):
             ranked_links = _discover_cfp_urls(metadata, url, conference)
@@ -585,22 +562,12 @@ def collect_conference(conference, fetcher=None):
             if len(best) == 1:
                 url = best[0]
                 result['source_url'] = url
-                candidates, reasons, metadata = _extract_official(fetcher(url), url, conference)
+                html = fetcher(url)
+                url = getattr(html, 'url', url)
+                result['source_url'] = url
+                candidates, reasons, metadata = _extract_official(html, url, conference)
             elif len(best) > 1:
                 reasons.append('multiple official CFP links require review')
-            # If link discovery failed AND no explicit cfp URL was configured,
-            # try common URL patterns as last resort (at most one extra fetch).
-            # Only probe when we have NO applicable deadline candidates at all;
-            # structural reasons (e.g., multi-track page) mean the page was
-            # understood and should not trigger blind URL guessing.
-            if (not any(c['field'] == 'deadline' and c['applicable'] for c in candidates)
-                    and not best and not conference.get('cfp')
-                    and not reasons):
-                pattern_html, pattern_url = _try_common_cfp_patterns(fetcher, url, conference)
-                if pattern_html is not None:
-                    url = pattern_url
-                    result['source_url'] = url
-                    candidates, reasons, metadata = _extract_official(pattern_html, url, conference)
         structural_reasons = list(reasons)
         reasons.extend(c['reason'] for c in candidates if c['reason'])
         # An optional notification with no time must not invalidate a separately

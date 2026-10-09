@@ -330,9 +330,14 @@ python scripts/update_official.py --data-dir /path/to/cfpctl-data \
 # 加 --apply 才写入有明确官网证据且能匹配的修改；--slug 可限定会议
 # python scripts/update_official.py ... --apply --slug usenix-security
 go run . validate --data-dir /path/to/cfpctl-data
+python scripts/audit_coverage.py --report /tmp/official-report.json
 ```
 
 `full_refresh.py` 使用同一官网更新入口。旧 `convert_ccfddl.py` 仅保留离线首次导入用途，必须明确提供本地 `--source-dir` 和 `--output-dir`，不会访问网络。
+
+添加 `--cache-dir /tmp/official-pages` 可保存官网 HTML、实际跳转地址、抓取时间和失败信息。再加 `--offline` 即可完全离线复现；成功快照缓存 24 小时，失败缓存 5 分钟。日更附件包含这些快照及按会议列出的原因分类。每个会议最多读取两个页面，每次网络请求最多重试一次，单页上限 4 MiB；HTTP 旧地址仅尝试原地址的 HTTPS 版本，不绕过证书验证。
+
+已补充 AAAI 主会、WWW 主会表格、SIGMOD/PODS 明确轮次和 Eurocrypt 日期卡片解析。Researchr 按页面届次及明确 Track 匹配，区分作者回复、返修和录用通知。`ok` 表示所提取字段可以明确匹配，不代表会议所有年份和 Track 均已核实；无法解析不等于官网尚未公布。查看报告中的待核查原因后再补适配，不凭上一届日期推算下一届。
 
 ## 参与贡献
 

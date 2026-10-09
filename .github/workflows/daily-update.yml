@@ -72,6 +72,7 @@ jobs:
           --data-dir .upstream/cfpctl-data
           --report "$RUNNER_TEMP/official-report.json"
           --summary "$RUNNER_TEMP/official-report.md"
+          --cache-dir "$RUNNER_TEMP/official-pages"
           --apply --workers 4 --timeout 20
 
       - name: Validate maintained data
@@ -124,5 +125,6 @@ jobs:
           path: |
             ${{ runner.temp }}/official-report.json
             ${{ runner.temp }}/official-report.md
+            ${{ runner.temp }}/official-pages/
           if-no-files-found: warn
           retention-days: 14

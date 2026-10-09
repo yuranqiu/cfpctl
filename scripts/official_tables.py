@@ -108,7 +108,6 @@ def extract_table(html, url, conference):
             'full paper deadline': 'deadline',
             'notification': 'notification',
             'author notification': 'notification',
-            'camera-ready deadline': 'notification',
             'commitment deadline': 'deadline',
         }
         for row in tree.root.walk():
@@ -144,7 +143,7 @@ def extract_table(html, url, conference):
             field = 'deadline'
             if 'abstract' in field_lower or 'registration' in field_lower:
                 field = 'abstract'
-            elif 'notification' in field_lower or 'camera' in field_lower:
+            elif 'notification' in field_lower:
                 field = 'notification'
             candidates.append(dict(year=year, cycle_name=str(year), track_name=None,
                                    field=field, value=value, date=date,

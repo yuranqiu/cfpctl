@@ -1,0 +1,9 @@
+{
+  "captured_at": "2026-10-09",
+  "description": "Reduced visible schedule markup from official snapshots; unrelated navigation retained where useful.",
+  "urls": {
+    "aaai": "https://aaai.org/conference/aaai/aaai-27/",
+    "www": "https://www2027.thewebconf.org/important-dates/",
+    "sigmod": "https://2027.sigmod.org/calls_papers_important_dates.shtml"
+  }
+}

@@ -100,7 +100,7 @@ class OfficialAdapterTests(unittest.TestCase):
         for fixture in sorted(FIXTURES.glob('*.html')):
             with self.subTest(slug=fixture.stem):
                 html = fixture.read_text(encoding='utf-8')
-                html = html.replace('2027', '2028').replace('&#039;27', '&#039;28')
+                html = html.replace('2027', '2028').replace('2026', '2028').replace('&#039;27', '&#039;28')
                 result = extract(fixture.stem, html)
                 self.assertFalse(result['candidates'])
                 self.assertIn('title or h1', result['review_reasons'][0])

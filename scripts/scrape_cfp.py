@@ -34,6 +34,8 @@ if __package__:
     from .official_identity import title_years
     from .official_tables import Tree, Node
     from .official_scoped import extract_scoped
+    from .official_sources import repaired_source
+    from .official_inspected import extract_inspected
 else:
     from official_dates import parse_date, parse_timestamp as _timestamp
     from official_adapters import extract_adapter
@@ -42,6 +44,8 @@ else:
     from official_identity import title_years
     from official_tables import Tree, Node
     from official_scoped import extract_scoped
+    from official_sources import repaired_source
+    from official_inspected import extract_inspected
 
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
@@ -330,7 +334,7 @@ def _extract_official(html, url, conference):
     slug = conference.get('slug')
     metadata = PageMetadata()
     metadata.feed(html)
-    for adapter in (extract_scoped, extract_adapter, extract_table, extract_researchr):
+    for adapter in (extract_inspected, extract_scoped, extract_adapter, extract_table, extract_researchr):
         adapted = adapter(html, url, conference)
         if adapted is not None:
             return adapted['candidates'], adapted['review_reasons'], metadata
@@ -510,7 +514,7 @@ def _discover_cfp_urls(metadata, url, conference):
         text = re.sub(r'[^a-z0-9]+', ' ', (label + ' ' + href).lower())
         target_years = set(re.findall(r'(?<!\d)20\d{2}(?!\d)', urlsplit(target).netloc + urlsplit(target).path))
         if (urlsplit(target).scheme != 'https' or urlsplit(target).netloc != urlsplit(url).netloc
-                or target == url or target.lower().endswith('.pdf')
+                or target.rstrip('/') == url.rstrip('/') or target.lower().endswith('.pdf')
                 or re.search(r'\b(?:journals?|workshops?|industry|industrial|posters?|demos?|doctoral|tutorials?|short|artifacts?|sponsors?|committee|committees)\b', text)
                 or (len(current_years) == 1 and target_years and current_years != target_years)):
             continue
@@ -543,6 +547,10 @@ def collect_conference(conference, fetcher=None):
     url = conference.get('cfp') or conference.get('homepage') or ''
     result = dict(slug=conference.get('slug'), source_url=url, status='review',
                   candidates=[], review_reasons=[], failure=None)
+    repair = repaired_source(conference.get('slug'), url)
+    if repair:
+        result['maintained_url'], result['source_repair'] = url, repair[1]
+        url = result['source_url'] = repair[0]
     if isinstance(url, str) and urlsplit(url).scheme == 'http':
         # Try the exact maintained host/path over TLS; never silently fetch HTTP.
         result['maintained_url'] = url
@@ -561,6 +569,10 @@ def collect_conference(conference, fetcher=None):
             best = [target for target, score in ranked_links if score == ranked_links[0][1]] if ranked_links else []
             if len(best) == 1:
                 url = best[0]
+                linked_repair = repaired_source(conference.get('slug'), url)
+                if linked_repair:
+                    result['source_repair'] = linked_repair[1]
+                    url = linked_repair[0]
                 result['source_url'] = url
                 html = fetcher(url)
                 url = getattr(html, 'url', url)

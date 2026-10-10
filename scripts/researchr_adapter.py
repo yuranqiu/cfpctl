@@ -32,6 +32,11 @@ class _TableParser:
                     cells = [' '.join(c.text().split()) for c in row.children
                              if isinstance(c, Node) and c.tag in ('td', 'th')]
                     if len(cells) == 3:
+                        first = next(c for c in row.children if isinstance(c, Node) and c.tag in ('td', 'th'))
+                        zones = {c.attrs['title'].removeprefix('Timezone:').strip() for c in first.walk()
+                                 if c.attrs.get('title', '').startswith('Timezone:')}
+                        if zones:
+                            cells[0] += ' ' + ' / '.join(sorted(zones))
                         rows.append(tuple(cells))
             if rows and [c.casefold() for c in rows[0]] == ['when', 'track', 'what']:
                 self.found_dates_table = True
@@ -81,10 +86,31 @@ def extract_researchr(html, url, conference):
         return None
     parser = _TableParser()
     parser.feed(html)
-    if not parser.found_dates_table:
-        return None
     tree = Tree()
     tree.feed(html)
+    if not parser.found_dates_table and '/track/' in urlparse(url).path:
+        segment = urlparse(url).path.rstrip('/').split('/')[-1]
+        slug = conference.get('slug', '')
+        main_path = (re.fullmatch(re.escape(slug) + r'-20\d{2}', segment) or
+                     re.search(r'(?:research-(?:papers|track)|technical-track|(?<!industry-)papers)$', segment))
+        if main_path and not re.search(r'workshop|artifact|industry|doctoral|demo|short|poster|journal', segment, re.I):
+            for panel in tree.root.walk():
+                if not panel.has_class('panel'):
+                    continue
+                titles = [n.text() for n in panel.walk() if n.has_class('panel-title') and 'Important Dates' in n.text()]
+                tables = [n for n in panel.walk() if n.has_class('important-dates-in-sidebar')]
+                if len(titles) != 1 or len(tables) != 1:
+                    continue
+                policy = titles[0].replace('Important Dates', '').strip()
+                for row in tables[0].walk():
+                    if row.tag != 'tr' or urlparse(row.attrs.get('href', '')).path != urlparse(url).path:
+                        continue
+                    parts = [x.strip() for x in row.text().split('\n') if x.strip()]
+                    if len(parts) == 2:
+                        parser.rows.append((parts[0] + ' ' + policy, 'Research Papers', parts[1]))
+                parser.found_dates_table = bool(parser.rows)
+    if not parser.found_dates_table:
+        return None
     headings = [(n.tag, ' '.join(n.text().split())) for n in tree.root.walk() if n.tag in ('title', 'h1')]
     years = title_years(headings, conference)
     if len(years) != 1:
@@ -105,9 +131,14 @@ def extract_researchr(html, url, conference):
             continue
         matches = [(c, t) for c in cycles for t in c.get('tracks', [])
                    if t['name'].strip().casefold() == track.strip().casefold()]
-        main_track = re.fullmatch(r'(?:' + re.escape(conference.get('slug', '')) + r'\s+)?(?:research(?: papers?)?(?: track)?|technical papers(?: track)?|main conference|papers)', track.strip(), re.I)
+        main_track = re.fullmatch(r'(?:' + re.escape(conference.get('slug', '')) + r'\s*[-:]?\s*)?(?:research(?: papers?)?(?: track)?|technical(?: papers)?(?: track)?|main conference|papers)|' + re.escape(conference.get('slug', '')), track.strip(), re.I)
         if not matches and len(cycles) == 1 and not cycles[0].get('tracks') and main_track:
             matches = [(cycles[0], None)]
+        elif not matches and len(cycles) == 1 and main_track:
+            main_targets = [t for t in cycles[0].get('tracks', []) if t['name'].casefold() in
+                            ('research', 'research papers', 'research paper', 'main', 'main conference', 'technical track')]
+            if len(main_targets) == 1:
+                matches = [(cycles[0], main_targets[0])]
         if len(matches) != 1:
             reasons.append('Track "' + track + '" not uniquely matched within conference edition')
             continue
@@ -131,6 +162,9 @@ def extract_researchr(html, url, conference):
         candidates.append(dict(year=year, cycle_name=cycle['name'], track_name=target['name'] if target else None,
                                field=field, date=date, value=value, evidence=evidence,
                                applicable=reason is None, reason=reason))
+    if candidates:
+        # A positively identified main track does not inherit unrelated workshop dates.
+        reasons = [r for r in reasons if not r.startswith('Track "')]
     keys = [(c['cycle_name'], c['track_name'], c['field']) for c in candidates]
     if len(keys) != len(set(keys)):
         reasons.append('conflicting researchr dates for one edition/track/field')

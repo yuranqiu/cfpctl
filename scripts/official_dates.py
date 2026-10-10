@@ -71,6 +71,8 @@ def parse_timestamp(block, date, aoe=False):
     AoE alone explicitly denotes the end of that calendar day. Other zones
     require a clock. Regional abbreviations such as PT remain review-only.
     """
+    block = re.sub(r'\b(\d{1,2})\.(\d{2})\s*(?=[ap]\.?m)', r'\1:\2 ', block, flags=re.I)
+    block = re.sub(r'\b((?:UTC|GMT)\s*[+-]\s*\d{1,2})h\b', r'\1', block, flags=re.I)
     block = re.sub(r'\b([ap])\s*\.\s*m\s*\.', lambda m: m[1] + 'M', block, flags=re.I)
     try:
         calendar_date.fromisoformat(date)

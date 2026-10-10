@@ -21,6 +21,7 @@ def title_years(headings, conference):
         if generic:
             return set()
     if alias:
+        years.update(re.findall(rf'(?<![A-Za-z]){alias}\s*[-:]?\s*(20\d{{2}})\b', identity, re.I))
         years.update('20' + short for short in re.findall(
             rf'\b{alias}\s*[-\u2018\u2019\x27]\s*(\d{{2}})\b', identity, re.I))
     return years

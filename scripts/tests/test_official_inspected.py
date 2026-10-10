@@ -45,6 +45,8 @@ class InspectedSchedulesTests(unittest.TestCase):
                                            'https://pkc.iacr.org/2027/', {'slug': 'pkc'}))
 
     def test_repaired_links_are_exact_and_followed_as_https(self):
+        self.assertEqual(repaired_source('cscwd', 'http://2027.cscwd.org')[0],
+                         'https://cscwd2027.dailyeliteevents.com.au/')
         self.assertIsNone(repaired_source('icws', 'https://services.conferences.computer.org/2027/icws-2027/'))
         requested = []
         def fetch(url):
